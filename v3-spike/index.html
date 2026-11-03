@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#d7b694">
+  <meta name="description" content="Мир на ниточке — v3 art-first эксперимент: фотографическая текстура настоящих петель, клики и автоматическое вязание.">
+  <title>Мир на ниточке — вязание v3</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+<div class="site-shell">
+  <div class="frame-decor" aria-hidden="true"></div>
+  <header class="masthead">
+    <div class="brand-symbol" aria-hidden="true">🧶</div>
+    <div class="brand"><div>Мир <span>на ниточке</span></div><small>Маленькие чудеса своими руками</small></div>
+    <div class="settings" title="Художественный эксперимент v3" aria-label="Версия v3">✿</div>
+  </header>
+
+  <main>
+    <section class="story-banner"><span>ГЛАВА 01</span><strong>Кроличья полянка</strong><span class="banner-flower" aria-hidden="true">✿</span></section>
+    <section class="task-card" aria-label="Прогресс вязания">
+      <div class="task-head"><div><span class="eyebrow">ТВОЯ МАЛЕНЬКАЯ ЦЕЛЬ</span><h1>Вяжем туловище</h1></div><span class="percent" id="progress-percent">0%</span></div>
+      <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+      <div class="task-stats"><span id="current-row">Ряд 1 из 8</span><span><span class="pink-dot" aria-hidden="true">✧</span> <b id="stitch-count">0</b> петель</span></div>
+    </section>
+
+    <div class="scene-shell" id="scene-touch" aria-label="Нажмите, чтобы добавить петли" role="button" tabindex="0">
+      <div class="scene-head"><span>✧</span> <span>Петля за петлёй...</span> <span>✧</span></div>
+      <canvas id="work-canvas" width="720" height="650" aria-label="Вязаное туловище кролика создаётся из фотофактурных рядов" role="img"></canvas>
+      <div class="stage-footer"><span class="tiny-thread">✿</span><span id="stage-message">Ниточка уже ждёт тебя</span><span class="tiny-thread">✿</span></div>
+      <div id="toast" class="toast" aria-live="polite"></div>
+    </div>
+
+    <div class="action-area"><button id="stitch-button" type="button" class="knit-button"><span class="hand" aria-hidden="true">☝</span><span>Вязать!<small id="click-gain">+6 петель</small></span><span class="sparkle" aria-hidden="true">✧</span></button></div>
+    <div class="passive-line"><span>◷</span> Автовязание: <b id="idle-rate">0,8</b> петель/сек <span class="dot-separator">·</span> <b>идёт само</b></div>
+
+    <section class="upgrades" aria-label="Улучшения мастерской">
+      <div class="section-caption"><span>Маленькая мастерская</span><div class="wallet">🧶 <strong id="coins">30</strong></div></div>
+      <div class="upgrade-grid">
+        <button type="button" class="upgrade" id="upgrade-click"><span class="upgrade-icon">🪝</span><span class="upgrade-content"><strong>Ловкий крючок</strong><small id="click-description">+3 клик</small></span><span class="price"><span id="click-price">20</span> 🧶</span></button>
+        <button type="button" class="upgrade" id="upgrade-idle"><span class="upgrade-icon">🧶</span><span class="upgrade-content"><strong>Клубочек</strong><small id="idle-description">+0,4 / сек</small></span><span class="price"><span id="idle-price">35</span> 🧶</span></button>
+      </div>
+    </section>
+    <div class="experiment"><div><strong>Художественный эксперимент v3</strong><p>Это первые восемь рядов из одного художественного исходника, не весь кролик. Проверь, ощущается ли реальное вязание.</p></div><div class="dev-row"><label for="scrub">Быстрый просмотр: <b id="scrub-percent">0%</b></label><input id="scrub" type="range" min="0" max="100" step="1" value="0"><button type="button" id="reset">↺ Начать заново</button></div></div>
+    <p class="v2-link"><a href="../">Сравнить с предыдущей v2</a> · <a href="https://github.com/apazidi/mir-na-nitke">Исходники</a></p>
+  </main>
+</div>
+<script src="./game.js" defer></script>
+</body>
+</html>
