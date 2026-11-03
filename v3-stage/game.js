@@ -21,7 +21,7 @@ function updateScene(){const stage=stageIndex(state.work,TOTAL);const completed=
   $('progress-track').setAttribute('aria-valuenow',String(Math.floor(progress(state.work,TOTAL)*100)));
   $('next-milestone').textContent=completed?'Все восемь стадий готовы!':`Следующая стадия на ${Math.round((nextMilestone(state.work,TOTAL)?.at||1)*100)}%`;
   if(state.meadow){$('stage-image').hidden=true;$('meadow-image').hidden=false;$('stage-progress').textContent='Первая история окончена';$('interaction').hidden=true;$('shop').hidden=true;$('completion').hidden=true;$('finish-message').hidden=false;}else{$('stage-image').hidden=false;$('meadow-image').hidden=true;revealStage(stage);$('finish-message').hidden=true;$('interaction').hidden=completed;$('shop').hidden=completed;$('completion').hidden=!completed;}
-  $('coins').textContent=format.format(Math.floor(state.coins));$('idle-rate').textContent=idleRate(state.idleLevel).toFixed(1).replace('.',',');$('click-gain').textContent=`+${clickGain(state.clickLevel)} петли за касание`;
+  $('coins').textContent=format.format(Math.floor(state.coins));$('idle-rate').textContent=idleRate(state.idleLevel).toFixed(1).replace('.',',');$('click-gain').textContent=`+${clickGain(state.clickLevel)} очков прогресса`;
   $('click-price').textContent=format.format(upgradeCost('click',state.clickLevel));$('idle-price').textContent=format.format(upgradeCost('idle',state.idleLevel));
   $('click-bonus').textContent=`+12 за клик · уровень ${state.clickLevel}`;$('idle-bonus').textContent=`+1,2 в секунду · уровень ${state.idleLevel}`;
   $('upgrade-click').disabled=completed||state.coins<upgradeCost('click',state.clickLevel);$('upgrade-idle').disabled=completed||state.coins<upgradeCost('idle',state.idleLevel);
