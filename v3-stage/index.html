@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#b98b66">
+  <meta name="description" content="Мир на ниточке — уютная игра про вязаного кролика. Вяжи, отдыхай и наблюдай, как растёт твой маленький мир.">
+  <title>Мир на ниточке — Кроличья полянка</title>
+  <link rel="preload" as="image" href="./assets/stage-00.webp">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="app-shell" id="app">
+    <div class="interior" aria-hidden="true"></div>
+    <header class="top-line">
+      <div class="brand"><span class="brand-yarn" aria-hidden="true">🧶</span><div><strong>Мир на ниточке</strong><small>Маленькое чудо своими руками</small></div></div>
+      <span class="version-label">v3.1 <span class="version-flower">✿</span></span>
+    </header>
+    <main>
+      <section class="chapter">
+        <div class="chapter-heading"><span>ГЛАВА 01</span><b aria-hidden="true">✦</b><span>ТВОЯ ПЕРВАЯ ИСТОРИЯ</span></div>
+        <h1>Кроличья полянка <span aria-hidden="true">🌸</span></h1>
+        <p>Свяжи маленького друга, и он поселится в твоём мире</p>
+      </section>
+      <section class="quest-card" aria-label="Текущий этап работы">
+        <div class="quest-title"><span class="quest-icon" aria-hidden="true">🐰</span><div class="quest-text"><strong id="task-name">Начальное кольцо</strong><small id="task-hint">Сначала — одна маленькая петля</small></div><div class="percent" id="percent">0%</div></div>
+        <div id="progress-track" class="progress-track" role="progressbar" aria-label="Общий прогресс вязания" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="progress-fill" id="progress-fill"></div><div class="progress-shine"></div></div>
+        <div class="progress-foot"><span id="next-milestone">До следующего открытия: 12%</span><span id="stage-progress">Этап 1 из 8</span></div>
+      </section>
+      <section class="play-scene" id="play-scene" aria-label="Иллюстрация текущего этапа вязания">
+        <div class="image-mat"><img id="stage-image" src="./assets/stage-00.webp" width="752" height="500" alt="Клубок пряжи и начальное кольцо" decoding="async"><img id="meadow-image" src="./assets/meadow.webp" width="752" height="680" alt="Готовый кролик в уютной полянке" decoding="async" hidden><div class="image-vignette" aria-hidden="true"></div><div class="sparkles" id="sparkles" aria-hidden="true"><i>✦</i><i>✧</i><i>✦</i></div></div>
+        <div class="scene-ribbon"><span class="ribbon-flower" aria-hidden="true">✿</span><span id="scene-caption">Только начинается волшебство...</span><span class="ribbon-flower" aria-hidden="true">✿</span></div>
+      </section>
+      <section class="interaction" id="interaction">
+        <div class="interaction-info"><span class="current-resource"><span class="money-icon" aria-hidden="true">🧶</span> <b id="coins">160</b> <small>ниточек</small></span><span class="idle-info"><span aria-hidden="true">◷</span> Автовязание <b id="idle-rate">3,0</b>/сек</span></div>
+        <button class="knit-button" id="knit-button" type="button"><span class="knit-hook" aria-hidden="true"><svg width="40" height="40" viewBox="0 0 48 48" fill="none"><path d="M37 8L20 29c-3.5 4.5-7 7-12 3-4-3-3-7 1-10" stroke="#9A522D" stroke-width="7" stroke-linecap="round"/><path d="M37 8L20 29c-3.5 4.5-7 7-12 3-4-3-3-7 1-10" stroke="#F6C477" stroke-width="4.2" stroke-linecap="round"/><path d="M35 6l5 4" stroke="#FBE3A2" stroke-width="3.5" stroke-linecap="round"/></svg></span><span class="knit-copy"><strong id="knit-action">Вязать!</strong><small id="click-gain">+24 петли за касание</small></span><span class="knit-star" aria-hidden="true">✦</span></button>
+        <p class="click-note" id="click-note">Нажимай, чтобы быстрее открыть следующий этап</p>
+        <div class="tap-pop" id="tap-pop" aria-hidden="true">+24</div>
+      </section>
+      <section class="shop" id="shop"><div class="shop-heading"><strong>Твоя уютная мастерская</strong><span aria-hidden="true">✦ ✿ ✦</span></div>
+        <div class="upgrade-grid"><button class="upgrade-card" id="upgrade-click" type="button"><span class="upgrade-icon">🪝</span><strong>Ловкий крючок</strong><small id="click-bonus">+10 к нажатию</small><span class="buy-price"><span>🧶</span> <b id="click-price">160</b></span></button><button class="upgrade-card" id="upgrade-idle" type="button"><span class="upgrade-icon">🧵</span><strong>Клубочек</strong><small id="idle-bonus">+1,2 петли/сек</small><span class="buy-price"><span>🧶</span> <b id="idle-price">220</b></span></button></div>
+      </section>
+      <section class="completion" id="completion" hidden><div class="completion-heading">✧ У тебя получилось! ✧</div><p id="completion-text">Теперь кролик ждёт тебя на полянке.</p><button class="meadow-button" id="show-meadow" type="button">🌷 Отправить на полянку <span aria-hidden="true">→</span></button></section>
+      <section class="finish-message" id="finish-message" hidden><strong>Добро пожаловать домой, кролик! 🐰</strong><p>Первая история завершена. В следующей главе мы свяжем для него цветок и домик.</p></section>
+      <section class="developer" id="developer" hidden><div class="dev-banner">🛠 Режим быстрого просмотра · не влияет на обычную игру</div><label for="debug-stage">Выбрать стадию: <b id="debug-label">0 / 7</b></label><input type="range" id="debug-stage" min="0" max="7" step="1" value="0"><button id="reset-demo" type="button">Начать демо сначала</button></section>
+    </main>
+    <footer><span>Сделано из ниточек и маленького волшебства</span><span class="footer-flower">♥</span></footer>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  </div>
+  <script type="module" src="./game.js"></script>
+</body>
+</html>

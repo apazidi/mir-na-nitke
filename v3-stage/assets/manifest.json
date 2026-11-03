@@ -1,0 +1,17 @@
+{
+  "version": "3.1",
+  "source": "art-source/stage-concept.webp",
+  "commonVisualStyle": "warm premium crochet workshop; consistent 8-stage contact sheet",
+  "stages": [
+    {"id": "ring", "threshold": 0, "image": "stage-00.webp"},
+    {"id": "body-start", "threshold": 0.12, "image": "stage-01.webp"},
+    {"id": "body-complete", "threshold": 0.28, "image": "stage-02.webp"},
+    {"id": "head", "threshold": 0.44, "image": "stage-03.webp"},
+    {"id": "ears", "threshold": 0.60, "image": "stage-04.webp"},
+    {"id": "paws", "threshold": 0.73, "image": "stage-05.webp"},
+    {"id": "face", "threshold": 0.86, "image": "stage-06.webp"},
+    {"id": "ready", "threshold": 1, "image": "stage-07.webp"}
+  ],
+  "endScene": "meadow.webp",
+  "ambientBackground": "ambience.webp"
+}
