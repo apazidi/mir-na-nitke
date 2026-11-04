@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#e9dbc0">
+<title>Мир на ниточке · Живая полянка</title>
+<meta name="description" content="Первый интерактивный прототип живой полянки: кролик, смена освещения и маленькие события.">
+<link rel="preload" as="image" href="./assets/meadow-backdrop.webp">
+<link rel="preload" as="image" href="./assets/rabbit.webp">
+<link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+<div class="shell">
+  <header class="top">
+    <div class="brand"><span class="thread-mark">🧶</span><div><strong>Мир на ниточке</strong><small>Наш маленький живой мир</small></div></div>
+    <span class="prototype">v4 · прототип</span>
+  </header>
+  <nav class="tabs" aria-label="Разделы игры">
+    <span class="tab active" aria-current="page">🌼 Полянка</span>
+    <a class="tab" href="../v3.2/">🪝 Мастерская</a>
+  </nav>
+  <section class="intro">
+    <div><span class="eyebrow">ГЛАВА 01 · ПОСЛЕ ВЯЗАНИЯ</span><h1>Кроличья полянка</h1></div>
+    <button type="button" id="light-toggle" class="lighting" aria-label="Переключить время суток" title="День / вечер">🌤️ <span id="light-label">День</span></button>
+  </section>
+  <main>
+    <section class="meadow" id="meadow" aria-label="Твоя живая полянка">
+      <img class="landscape" src="./assets/meadow-backdrop.webp" alt="Вязаный сказочный сад и зелёная полянка" draggable="false">
+      <div class="night-overlay" aria-hidden="true"></div>
+      <div class="sparkle s1" aria-hidden="true">✦</div><div class="sparkle s2" aria-hidden="true">✧</div><div class="sparkle s3" aria-hidden="true">✦</div>
+      <div class="firefly f1" aria-hidden="true"></div><div class="firefly f2" aria-hidden="true"></div><div class="firefly f3" aria-hidden="true"></div>
+      <div class="butterfly" aria-hidden="true" id="butterfly">🦋</div>
+      <button type="button" class="rabbit-button" id="rabbit" aria-label="Погладить кролика">
+        <img src="./assets/rabbit.webp" alt="Вязаный кролик" draggable="false">
+      </button>
+      <div id="heart-layer" aria-hidden="true"></div>
+      <div class="speech" id="speech" role="status" aria-live="polite">Как хорошо, что ты заглянул! ♡</div>
+      <span class="scene-label">Твой первый житель · Кролик</span>
+    </section>
+    <section class="controls">
+      <button type="button" class="pet-button" id="pet">♡ Погладить кролика</button>
+      <div class="scene-hint">Коснись кролика — он отзовётся. А без тебя жизнь на полянке не останавливается.</div>
+    </section>
+    <section class="life-note" aria-label="Дневник полянки">
+      <div class="note-heading"><span>📖</span><strong>Дневник полянки</strong><span id="visit-count" class="visit-chip"></span></div>
+      <p id="event-text">У кролика сегодня спокойное утро.</p>
+      <span class="footnote">Небольшие события и реакции — первый тест будущего живого мира.</span>
+    </section>
+    <section class="future">
+      <div class="future-title">Впереди — новые истории</div>
+      <div class="future-tiles">
+        <div class="future-tile"><span>🌼</span><strong>Цветок</strong><small>Кролик сможет его понюхать</small></div>
+        <div class="future-tile"><span>🌳</span><strong>Дерево</strong><small>Под ним можно будет отдыхать</small></div>
+        <div class="future-tile"><span>🏠</span><strong>Домик</strong><small>Вечером в нём загорится свет</small></div>
+      </div>
+      <p>Это будущие проекты, пока без функции вязания и размещения.</p>
+    </section>
+  </main>
+  <footer class="footer"><a href="../v3.2/">← В мастерскую v3.2</a><span>Живая полянка · первый срез v4</span></footer>
+</div>
+<script type="module" src="./game.js"></script>
+</body>
+</html>
