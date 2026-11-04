@@ -1,0 +1,24 @@
+{
+  "version": "4.1",
+  "meadow": {
+    "background": "./assets/meadow-clean.webp",
+    "rabbit": "./assets/rabbit.webp",
+    "slots": [
+      {"id":"rabbit","status":"living","x":0.3,"y":0.62},
+      {"id":"flower","status":"available","x":0.75,"y":0.62,"sprite":"./assets/flower-meadow.webp"},
+      {"id":"tree","status":"locked","x":0.18,"y":0.16},
+      {"id":"house","status":"locked","x":0.75,"y":0.24},
+      {"id":"butterfly","status":"locked","x":0.77,"y":0.38}
+    ]
+  },
+  "flower": {
+    "totalWork": 1200,
+    "stages": [
+      {"at":0,"image":"./assets/flower-stage-00.webp","name":"Волшебное колечко"},
+      {"at":0.22,"image":"./assets/flower-stage-01.webp","name":"Стебель и листья"},
+      {"at":0.48,"image":"./assets/flower-stage-02.webp","name":"Серединка"},
+      {"at":0.72,"image":"./assets/flower-stage-03.webp","name":"Лепестки"},
+      {"at":1,"image":"./assets/flower-stage-04.webp","name":"Готовый цветок"}
+    ]
+  }
+}
