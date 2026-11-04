@@ -1,0 +1,1 @@
+{"name":"mir-na-nitke-v3-2","version":"3.2.0","private":true,"type":"module","scripts":{"test":"node --test tests/engine.test.mjs"}}

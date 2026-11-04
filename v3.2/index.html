@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#4f3026">
+  <meta name="description" content="Мир на ниточке — уютный idle-кликер про вязаного кролика. Художественный прототип v3.2.">
+  <title>Мир на ниточке · Кроличья полянка</title>
+  <link rel="preload" as="image" href="./assets/atelier-background.webp">
+  <link rel="preload" as="image" href="./assets/stage-00.webp">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+ <main class="page">
+  <section class="game-stage" aria-label="Мир на ниточке, Кроличья полянка">
+   <img class="atelier" src="./assets/atelier-background.webp" alt="" aria-hidden="true" draggable="false">
+   <a class="back-hotspot" href="../v3-stage/" aria-label="Открыть предыдущую версию игры" title="Предыдущая версия"></a>
+   <button class="settings-hotspot" type="button" id="settings-open" aria-label="Настройки и тестирование" title="Настройки"></button>
+   <h1 class="brand"><span>Мир</span><span>на ниточке</span></h1>
+   <div class="chapter-title">Глава: Кроличья полянка</div>
+   <div class="task-title" id="task-title">Вяжем кролика</div>
+   <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="progress-track" aria-label="Готовность кролика">
+     <div class="progress-fill" id="progress-fill"></div><b id="progress-percent">0%</b>
+   </div>
+   <div class="resource-text"><b id="coins">160</b><span> ниточек</span></div>
+   <div class="idle-text"><b id="idle-rate">3,0</b><span> очка/сек</span></div>
+   <div class="hero-art" id="hero-art" aria-label="Стадия вязания кролика">
+     <img id="stage-image" src="./assets/stage-00.webp" alt="Начальное кольцо для вязания" draggable="false">
+   </div>
+   <div class="stage-pill" id="stage-pill" aria-live="polite">Начальное кольцо</div>
+   <button type="button" class="knit-button" id="knit-button" aria-label="Вязать: получить очки прогресса">
+      <span class="knit-word">Вязать!</span>
+   </button>
+   <div class="click-detail" id="click-gain">+24 очка прогресса</div>
+   <button type="button" class="upgrade-card hook" id="upgrade-click" aria-label="Улучшить крючок">
+      <strong>Крючок</strong><span class="upgrade-desc" id="click-description">+12 к нажатию</span><span class="upgrade-price" id="click-price">160</span>
+   </button>
+   <button type="button" class="upgrade-card yarn" id="upgrade-idle" aria-label="Улучшить клубочек">
+      <strong>Клубочек</strong><span class="upgrade-desc" id="idle-description">+1,2 очка/сек</span><span class="upgrade-price" id="idle-price">220</span>
+   </button>
+   <div class="stage-toast" id="toast" role="status" aria-live="polite"></div>
+   <div id="sparkles" class="sparkles" aria-hidden="true"><span>✦</span><span>✧</span><span>✦</span><span>✧</span><span>✦</span></div>
+   <div class="completion" id="completion" hidden>
+      <strong>Кролик готов!</strong><span>Он поселился на твоей полянке ✿</span>
+      <button type="button" id="finish-close">Посмотреть полянку</button>
+   </div>
+  </section>
+  <p class="page-footnote">v3.2 · художественная игровая версия · <a href="../v3-stage/">Сравнить с v3.1</a></p>
+  <section id="demo-tools" class="demo-tools" hidden>
+    <div class="demo-head"><b>Демо: просмотр стадий</b><span id="stage-label">1 / 8</span></div>
+    <input id="stage-slider" type="range" min="0" max="7" value="0" step="1" aria-label="Выбрать стадию кролика">
+    <button id="reset-demo" type="button">Начать с начала</button>
+  </section>
+ </main>
+ <dialog id="settings-dialog">
+  <h2>Мастерская</h2>
+  <p>Твои ниточки и улучшения сохраняются на этом устройстве.</p>
+  <button id="restart" type="button" class="dialog-button">Начать заново</button>
+  <a class="dialog-link" href="?demo=1">Открыть деморежим</a>
+  <button id="settings-close" type="button" class="dialog-close">Закрыть</button>
+ </dialog>
+ <script type="module" src="./game.js"></script>
+</body>
+</html>
