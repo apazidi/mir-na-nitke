@@ -2,6 +2,15 @@
 
 This folder is the **new product**, developed without copying HTML/CSS from the historical PoCs. There is **no playable 1.0 app yet**. The initial milestone is a reproducible, parallel-friendly workflow for adding knitted items and five-project meadows.
 
+## Новый продуктовый цикл: мастерская ⇄ полянки
+
+Уточнили базовую экономику будущего продукта: в мастерской игрок тратит волшебную пряжу на проекты, а готовые персонажи и предметы на полянке производят ресурсы и дают бонусы за взаимодействия. **Оба экрана — idle + clicker**, без симуляции реальных петель.
+
+- [Ресурсная петля, экономика и PoC](architecture/RESOURCE-LOOP.md)
+- [Задача реализации #3](https://github.com/apazidi/mir-na-nitke/issues/3)
+
+Этот контракт **пока проектный**: в `product/app/` ещё нет рабочего движка, а новые поля `economy` / `reward` пока не внедрены в валидатор. Не выдавать документацию за готовую механику.
+
 ## Contents
 
 - `architecture/CONTENT-CONTRACT.md` — engine, skin and content ownership contracts; parallel agents and release gates.
