@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<!-- Import existing v4.1 engine/assets through a single stable base: layout-only preview. -->
+<base href="../v4.1/">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#725342">
+<meta name="description" content="Мир на ниточке: вяжи цветок в мастерской и посели его на живой полянке вместе с кроликом.">
+<title>Мир на ниточке · Живая полянка v4.1</title>
+<link rel="preload" as="image" href="./assets/meadow-clean.webp">
+<link rel="stylesheet" href="./styles.css">
+<link rel="stylesheet" href="../design-system/skin-v4.css">
+</head>
+<body>
+<div class="app-wrap design-v4">
+  <header class="app-header">
+    <div class="brand"><span class="brand-yarn" aria-hidden="true">🧶</span><span><strong>Мир на ниточке</strong><small>Свяжи свой живой мир</small></span></div>
+    <span class="version">✿ Живая полянка</span>
+  </header>
+
+  <main>
+    <section id="view-meadow" class="view" aria-label="Живая кроличья полянка">
+      <div id="meadow-scene" class="meadow-scene" aria-label="Сцена с кроликом и местами будущих проектов">
+        <img class="meadow-back" src="./assets/meadow-clean.webp" alt="Свободная мягкая поляна на фоне сказочного сада">
+        <img class="garden-borders" src="../design-system/assets/garden-borders.webp" alt="" aria-hidden="true">
+      <div class="section-title"><div><span class="eyebrow">ЛОСКУТ 01 · ПЕРВАЯ ИСТОРИЯ</span><h1>Кроличья полянка</h1></div><button id="toggle-light" type="button" class="tiny-pill" aria-label="Переключить день и вечер">🌤️ <span id="light-name">День</span></button></div>
+      <div class="story-summary"><span>🌸 <b id="meadow-count">1</b> из 5 проектов</span><span>История продолжится...</span></div>
+        <div class="night-veil" aria-hidden="true"></div><div class="ambience" aria-hidden="true"><i>✧</i><i>✦</i><i>✧</i></div>
+        <button class="meadow-object rabbit" type="button" id="rabbit" aria-label="Поздороваться с кроликом, проведите пальцем чтобы погладить"><img src="./assets/rabbit.webp" alt="Белый вязаный кролик"></button>
+        <button class="meadow-object flower-target" id="flower-slot" type="button" aria-label="Место для цветка"><span id="flower-empty"><b>✿</b><small id="flower-slot-label">Цветок</small></span><img id="flower-placed" hidden src="./assets/flower-meadow.webp" alt="Связанный белый цветок"></button>
+        <button class="meadow-slot slot-tree" data-locked="tree" type="button"><span>♣</span><small>Дерево</small><i>🔒</i></button>
+        <button class="meadow-slot slot-house" data-locked="house" type="button"><span>⌂</span><small>Домик</small><i>🔒</i></button>
+        <button class="meadow-slot slot-butterfly" data-locked="butterfly" type="button"><span>🦋</span><small>Бабочка</small><i>🔒</i></button>
+        <div class="bunny-bubble" id="bunny-bubble" role="status" aria-live="polite"></div>
+        <div class="little-hearts" id="hearts" aria-hidden="true"></div>
+        <div class="meadow-actions"><button id="primary-meadow" type="button" class="button primary">🌼 Связать цветок</button><button id="pet" type="button" class="button soft">♡ Погладить</button></div>
+        <nav class="tabs" aria-label="Основные разделы">
+    <button type="button" class="tab selected" data-view="meadow">🌿 Полянка</button>
+    <button type="button" class="tab" data-view="workshop">🪝 Мастерская</button>
+    <button type="button" class="tab" data-view="projects">🧶 Проекты</button>
+    <button type="button" class="tab" data-view="atlas">🗺️ Атлас</button>
+  </nav>
+      </div>
+      <div class="help-line" id="meadow-help">Нажми на кролика — он поздоровается. Проведи по нему пальцем, чтобы погладить.</div>
+      <div class="note"><div class="note-head"><strong>📖 Дневник полянки</strong><span id="visit-count">1-й визит</span></div><p id="diary">Кролик обживается на своей полянке. Интересно, что здесь появится?</p></div>
+    </section>
+
+    <section id="view-workshop" class="view" hidden aria-label="Мастерская вязания цветка">
+      <div class="section-title"><div><span class="eyebrow">МАСТЕРСКАЯ · ПРОЕКТ 02</span><h1>Вяжем цветок</h1></div><span id="work-stage-badge" class="tiny-pill">Этап 1 из 5</span></div>
+      <div class="atelier-frame" id="atelier-frame">
+        <img class="atelier-bg" src="./assets/atelier-background.webp" alt="Уютная рукодельная мастерская">
+        <span class="atelier-logo">Мир на ниточке</span>
+        <span class="atelier-chapter">Проект: Цветок для полянки</span>
+        <span class="atelier-label" id="work-stage-name">Волшебное колечко</span>
+        <div class="atelier-bar"><div class="atelier-fill" id="work-fill"></div><span id="work-progress">0%</span></div>
+        <div class="atelier-metrics"><span>🧶 <span id="work-coins">160</span></span><span>◷ <span id="work-idle">1,5</span>/сек</span></div>
+        <img class="flower-stage" id="flower-stage" src="./assets/flower-stage-00.webp" alt="Начало работы над цветком">
+        <button id="knit" class="atelier-knitting" type="button"><b>Вязать</b><span id="tap-value">+24 очка</span></button>
+        <button id="upgrade-click" class="upgrade-button click" type="button"><strong>Крючок <span id="click-level">ур. 0</span></strong><small id="click-cost">150 🧶</small></button>
+        <button id="upgrade-idle" class="upgrade-button idle" type="button"><strong>Клубочек <span id="idle-level">ур. 0</span></strong><small id="idle-cost">210 🧶</small></button>
+      </div>
+      <div class="work-note" id="work-note">Клики ускоряют создание цветка, а клубочек продолжает работу автоматически.</div>
+      <button class="button primary place-cta" id="work-finished" type="button" hidden>🌼 Цветок готов! На полянку</button>
+      <nav class="tabs" aria-label="Основные разделы">
+    <button type="button" class="tab selected" data-view="meadow">🌿 Полянка</button>
+    <button type="button" class="tab" data-view="workshop">🪝 Мастерская</button>
+    <button type="button" class="tab" data-view="projects">🧶 Проекты</button>
+    <button type="button" class="tab" data-view="atlas">🗺️ Атлас</button>
+  </nav>
+    </section>
+
+    <section id="view-projects" class="view" hidden aria-label="Проекты первой полянки">
+      <div class="section-title"><div><span class="eyebrow">ЧТО МЫ СОЗДАЁМ</span><h1>Пять проектов</h1></div><span class="tiny-pill"><span id="project-count">1</span> / 5</span></div>
+      <div class="project-list">
+        <article class="project-row done"><div class="project-symbol">🐰</div><div><strong>Кролик</strong><small>Первый житель полянки</small></div><span class="project-state">Готов ✓</span></article>
+        <article class="project-row highlight"><div class="project-symbol flower-symbol"><img src="./assets/flower-meadow.webp" alt=""></div><div><strong>Цветок</strong><small id="flower-status-desc">Свяжи в мастерской и посади на полянке</small></div><button id="project-flower" class="project-action" type="button">Начать</button></article>
+        <article class="project-row locked"><div class="project-symbol">🌳</div><div><strong>Дерево</strong><small>Даст тень и привлечёт птиц</small></div><span class="project-state">🔒 Позже</span></article>
+        <article class="project-row locked"><div class="project-symbol">🏠</div><div><strong>Домик</strong><small>Вечером в нём загорится свет</small></div><span class="project-state">🔒 Позже</span></article>
+        <article class="project-row locked"><div class="project-symbol">🦋</div><div><strong>Бабочка</strong><small>Поселится рядом с цветком</small></div><span class="project-state">🔒 Позже</span></article>
+      </div>
+      <p class="under-note">Закрытые проекты показаны для будущих версий. Пока можно создать цветок, а потом вернуться на полянку и увидеть, что изменилось.</p>
+      <nav class="tabs" aria-label="Основные разделы">
+    <button type="button" class="tab selected" data-view="meadow">🌿 Полянка</button>
+    <button type="button" class="tab" data-view="workshop">🪝 Мастерская</button>
+    <button type="button" class="tab" data-view="projects">🧶 Проекты</button>
+    <button type="button" class="tab" data-view="atlas">🗺️ Атлас</button>
+  </nav>
+    </section>
+
+    <section id="view-atlas" class="view" hidden aria-label="Карта лоскутной вселенной">
+      <div class="section-title"><div><span class="eyebrow">БОЛЬШОЙ МИР ИЗ МАЛЕНЬКИХ ИСТОРИЙ</span><h1>Лоскутная вселенная</h1></div></div>
+      <div class="atlas-grid">
+        <button id="atlas-first" class="atlas-tile open" type="button"><span class="atlas-icon">🐰</span><strong>Кроличья полянка</strong><small>Открыта · <b id="atlas-progress">1</b> / 5</small></button>
+        <button id="atlas-next" class="atlas-tile closed" type="button"><span class="atlas-icon">🧵</span><strong>Соседняя полянка</strong><small>Пока закрыта 🔒</small></button>
+      </div>
+      <div class="atlas-thread">〰〰〰 ✦ 〰〰〰</div>
+      <div class="note"><strong>Каждая полянка — отдельная история</strong><p>Пять созданных вещей превращаются в живую композицию. Следующие лоскуты соединятся тропинками — и персонажи смогут навещать друг друга.</p><p class="note-small">Соседняя полянка появится в следующем выпуске. Сейчас доступен первый набор из пяти проектов.</p></div>
+      <nav class="tabs" aria-label="Основные разделы">
+    <button type="button" class="tab selected" data-view="meadow">🌿 Полянка</button>
+    <button type="button" class="tab" data-view="workshop">🪝 Мастерская</button>
+    <button type="button" class="tab" data-view="projects">🧶 Проекты</button>
+    <button type="button" class="tab" data-view="atlas">🗺️ Атлас</button>
+  </nav>
+    </section>
+  </main>
+  <footer class="app-footer"><span>Маленькие истории, связанные вместе ♡</span><button id="demo-reset" hidden>↺ Начать демо заново</button></footer>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</div>
+<script type="module" src="./game.js"></script>
+</body>
+</html>
