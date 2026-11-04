@@ -58,8 +58,13 @@ def evaluate_geometry(page, width: int, height: int):
 def compare_snapshot(actual: bytes, baseline: Path) -> float:
     a=Image.open(io.BytesIO(actual)).convert('RGB')
     b=Image.open(baseline).convert('RGB')
-    if a.size != b.size:
+    # Full-page height can differ by a few pixels across OS/browser font metrics.
+    # Keep strong geometry checks for the actual world/UI and reject substantial drift.
+    if a.width != b.width or abs(a.height-b.height) > 8:
         raise AssertionError(f'Screenshot geometry changed: {a.size} vs baseline {b.size}')
+    common_height=min(a.height,b.height)
+    a=a.crop((0,0,a.width,common_height))
+    b=b.crop((0,0,b.width,common_height))
     a=a.resize((195, round(a.height*195/a.width))).filter(ImageFilter.GaussianBlur(.7))
     b=b.resize(a.size).filter(ImageFilter.GaussianBlur(.7))
     return sum(ImageStat.Stat(ImageChops.difference(a,b)).mean)/3/255
