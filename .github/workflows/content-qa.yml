@@ -1,0 +1,37 @@
+name: Content packages QA
+on:
+  pull_request:
+    paths:
+      - 'product/**'
+      - '.agents/skills/**'
+      - 'AGENTS.md'
+      - '.github/workflows/content-qa.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'product/**'
+      - '.agents/skills/**'
+      - 'AGENTS.md'
+      - '.github/workflows/content-qa.yml'
+  workflow_dispatch:
+
+jobs:
+  validate-content:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Unit tests
+        run: npm --prefix product test
+      - name: Validate content and references
+        run: npm --prefix product run validate
+      - name: Enforce single-package agent ownership
+        if: github.event_name == 'pull_request'
+        env:
+          AGENT_BRANCH: ${{ github.head_ref }}
+          TARGET_BRANCH: ${{ github.base_ref }}
+        run: node product/scripts/check-agent-scope.mjs

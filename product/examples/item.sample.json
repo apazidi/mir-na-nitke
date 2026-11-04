@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "kind": "item",
+  "id": "crochet-flower",
+  "status": "draft",
+  "displayName": "Вязаный цветок",
+  "description": "Уютный цветок для первой полянки",
+  "tags": ["decor", "flower"],
+  "workUnits": 1200,
+  "art": {
+    "styleId": "crochet-diorama-v1",
+    "logicalSize": [1024, 1820],
+    "stages": [
+      {"at": 0, "image": "art/stage-00.webp", "label": "Клубочек"},
+      {"at": 0.25, "image": "art/stage-01.webp", "label": "Основа"},
+      {"at": 0.5, "image": "art/stage-02.webp", "label": "Лепестки"},
+      {"at": 0.75, "image": "art/stage-03.webp", "label": "Сборка"},
+      {"at": 1, "image": "art/stage-04.webp", "label": "Цветок готов"}
+    ],
+    "finishedSprite": "art/reward.webp"
+  }
+}

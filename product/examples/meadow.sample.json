@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "kind": "meadow",
+  "id": "rabbit-meadow",
+  "status": "draft",
+  "displayName": "Кроличья полянка",
+  "description": "Первая история маленького вязаного мира",
+  "art": {
+    "styleId": "crochet-diorama-v1",
+    "logicalSize": [1024, 1820],
+    "backgroundDay": "art/meadow-day.webp",
+    "backgroundEvening": "art/meadow-evening.webp"
+  },
+  "slots": [
+    {"id": "rabbit", "itemId": "bunny", "x": 0.43, "y": 0.67, "scale": 1, "z": 4},
+    {"id": "flower", "itemId": "crochet-flower", "x": 0.74, "y": 0.74, "scale": 0.7, "z": 5},
+    {"id": "tree", "itemId": "knitted-tree", "x": 0.22, "y": 0.36, "scale": 1, "z": 2},
+    {"id": "house", "itemId": "tiny-house", "x": 0.77, "y": 0.43, "scale": 0.8, "z": 3},
+    {"id": "butterfly", "itemId": "butterfly", "x": 0.79, "y": 0.3, "scale": 0.65, "z": 6}
+  ],
+  "interactions": [
+    {"id": "pet-rabbit", "requires": ["rabbit"], "actorSlot": "rabbit", "action": "pet"},
+    {"id": "rabbit-sniffs-flower", "requires": ["rabbit", "flower"], "actorSlot": "rabbit", "action": "sniff"},
+    {"id": "house-glows", "requires": ["house"], "actorSlot": "house", "action": "glow"}
+  ],
+  "neighbors": [],
+  "plannedNeighbors": ["next-meadow"]
+}
