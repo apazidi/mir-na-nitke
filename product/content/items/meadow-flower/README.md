@@ -12,8 +12,11 @@ Exports: all five files are1024×1820 WebP with the same placement rectangle. Fi
 
 Review: contact-sheet.webp shows stages00→03 left to right on a checkerboard. alpha-dark.png (#18251c) and alpha-cream.png (#f8ecd4) show all four states composited at half original source resolution. The initial final/partial alpha diagnostic passed independent review before early edits. Phone360×800,390×844,430×932 previews show final art on neutral linen; these are art evidence, not gameplay screenshots. Early-stage source edits and actual meadow composition still require final independent acceptance.
 
-Rebuild: inside this item directory run `npm ci --ignore-scripts --no-audit --no-fund` then `npm run export`. Sharp0.35.5 is package-local and locked; both clean installation (parent) and normal export (writer) passed. node_modules is ignored. Sharp performs resize/padding/format export and diagnostic composition only; it does not fabricate or repaint stages.
+Rebuild from repository root: `npm ci --prefix product/scripts/art-export --ignore-scripts`, then `node product/scripts/art-export/export.cjs product/content/items/meadow-flower`. The shared exporter is maintained in the integration lane; this item contains only declarative source/export.json configuration and artwork. Sharp0.35.5 is pinned by the shared tool. Prior local clean installation and export passed; shared-tool verification belongs to integration. Export performs resize/padding/format conversion and diagnostic composition only; it does not fabricate or repaint stages.
 
 Validation: product validator0 errors/9 warnings, all9 for the pre-existing missing bunny draft art. Flower has no missing-asset warnings. All13 baseline tests passed through explicit PowerShell-expanded paths; shared npm test wildcard fix belongs to parent integration.
 
 Next gate: independently inspect the full progression and technical browser harness at the three phone sizes, compare in-world scale with rabbit and verify no completed future objects appear early. Keep DRAFT until this gate and the agreed artistic approval are complete. No further image-generation calls authorized in this bounded task.
+
+Final independent draft art review passed: full four-stage contact sheet, dark/cream composites and phone preview; stable construction sequence and no visible alpha matte. In-world placement review and owner artistic approval remain separate; this does not promote the package to ready.
+
