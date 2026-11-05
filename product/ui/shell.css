@@ -26,6 +26,7 @@ button:focus-visible{outline:3px solid #fff7d7;outline-offset:2px}
 .placed-object img{width:100%;height:100%;object-fit:contain;pointer-events:none;transform-origin:50% 75%}
 .placed-object:active img{transform:scale(.96)}
 .evening .placed-object{filter:brightness(.79) saturate(.8) drop-shadow(0 6px 5px #26243377)}
+.evening .placed-object.prelit{filter:none}
 .design-v4 #view-workshop .evening .meadow-back{filter:brightness(.73) saturate(.8) sepia(.08)}
 .action-dock{position:absolute;z-index:25;left:13%;right:13%;bottom:87px;display:flex;align-items:center;flex-direction:column;gap:8px}
 .action-dock .primary{min-height:50px;min-width:150px;padding:10px 22px;border-color:#a46768;background:linear-gradient(#e09aa8,#b9637e);color:#fff8e8;text-shadow:0 1px 2px #74434b;font-size:16px;font-weight:800;box-shadow:0 4px 7px #39251c66,inset 0 2px #ffe1cf99}
@@ -77,6 +78,8 @@ button:focus-visible{outline:3px solid #fff7d7;outline-offset:2px}
 .design-v4 .art-tabs .selected{filter:drop-shadow(0 0 3px #fff4a7)}
 .scene-v2 .action-dock{bottom:111px}
 .scene-v2 .action-dock .art-button{width:150px;height:50px}
+.scene-v2 .action-dock .art-navigation-action{width:112px;min-width:112px;height:84px}
+.scene-v2 .action-dock:has(.art-navigation-action) .action-hint{display:none}
 .scene-v2 .project-drawer{bottom:108px}
 .scene-v2 .drawer-shade{bottom:103px}
 .scene-v2 #view-workshop .scene-art{height:calc(100% - 36px)}
