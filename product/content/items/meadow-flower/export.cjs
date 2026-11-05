@@ -1,4 +1,4 @@
-const sharp=require('../../../../../art-rabbit/product/art-experiments/rabbit-v1/node_modules/sharp');
+const sharp=require('sharp');
 const fs=require('node:fs/promises');
 const path=require('node:path');
 const root=__dirname;
@@ -25,7 +25,16 @@ async function main(){
   const sprite=await sharp(path.join(root,'art/finished.webp')).resize(w,h,{fit:'contain',background:'#00000000'}).png().toBuffer();
   await blank(w,h,'#e8e2ca').composite([{input:sprite}]).webp({quality:92}).toFile(path.join(root,`review/phone-${w}x${h}.webp`));
  }
+ for(const [name,color] of [['dark','#18251c'],['cream','#f8ecd4']]){
+  const diagnostic=[];
+  for(const [i,src] of ['master-partial.png','master-final.png'].entries()){
+   const sprite=await sharp(path.join(root,'source',src)).resize(600,656).png().toBuffer();
+   diagnostic.push({input:sprite,left:600*i,top:0});
+  }
+  await blank(1200,656,color).composite(diagnostic).png().toFile(path.join(root,`review/alpha-${name}.png`));
+ }
  await fs.writeFile(path.join(root,'review/asset-report.json'),JSON.stringify(report,null,2)+'\n');
 }
 main().catch(e=>{console.error(e);process.exitCode=1});
+
 

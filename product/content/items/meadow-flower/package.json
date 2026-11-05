@@ -1,0 +1,1 @@
+{"name":"meadow-flower-art","version":"0.1.0","private":true,"scripts":{"export":"node export.cjs"},"engines":{"node":">=20.9"},"dependencies":{"sharp":"0.35.5"}}
