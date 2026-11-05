@@ -1,0 +1,806 @@
+[
+  {
+    "width": 360,
+    "height": 800,
+    "name": "workshop-day",
+    "worldHeight": 0.9475,
+    "worldWidth": 0.9777777777777777,
+    "worldTop": 38,
+    "overflow": false,
+    "pageHeight": 800,
+    "viewportHeight": 800,
+    "buttons": [
+      {
+        "label": "Вечер",
+        "width": 48,
+        "height": 44,
+        "bottom": 95,
+        "left": 292,
+        "right": 340,
+        "sprite": false
+      },
+      {
+        "label": "Завершить",
+        "width": 150,
+        "height": 50,
+        "bottom": 705,
+        "left": 105,
+        "right": 255,
+        "sprite": false
+      },
+      {
+        "label": "Мастерская",
+        "width": 100.65625,
+        "height": 52,
+        "bottom": 775,
+        "left": 25,
+        "right": 125.65625,
+        "sprite": false
+      },
+      {
+        "label": "Полянка",
+        "width": 100.671875,
+        "height": 52,
+        "bottom": 775,
+        "left": 129.65625,
+        "right": 230.328125,
+        "sprite": false
+      },
+      {
+        "label": "Проекты",
+        "width": 100.65625,
+        "height": 52,
+        "bottom": 775,
+        "left": 234.328125,
+        "right": 334.984375,
+        "sprite": false
+      }
+    ]
+  },
+  {
+    "width": 360,
+    "height": 800,
+    "name": "workshop-evening",
+    "worldHeight": 0.9475,
+    "worldWidth": 0.9777777777777777,
+    "worldTop": 38,
+    "overflow": false,
+    "pageHeight": 800,
+    "viewportHeight": 800,
+    "buttons": [
+      {
+        "label": "День",
+        "width": 48,
+        "height": 44,
+        "bottom": 95,
+        "left": 292,
+        "right": 340,
+        "sprite": false
+      },
+      {
+        "label": "Завершить",
+        "width": 150,
+        "height": 50,
+        "bottom": 705,
+        "left": 105,
+        "right": 255,
+        "sprite": false
+      },
+      {
+        "label": "Мастерская",
+        "width": 100.65625,
+        "height": 52,
+        "bottom": 775,
+        "left": 25,
+        "right": 125.65625,
+        "sprite": false
+      },
+      {
+        "label": "Полянка",
+        "width": 100.671875,
+        "height": 52,
+        "bottom": 775,
+        "left": 129.65625,
+        "right": 230.328125,
+        "sprite": false
+      },
+      {
+        "label": "Проекты",
+        "width": 100.65625,
+        "height": 52,
+        "bottom": 775,
+        "left": 234.328125,
+        "right": 334.984375,
+        "sprite": false
+      }
+    ]
+  },
+  {
+    "width": 360,
+    "height": 800,
+    "name": "meadow-day",
+    "worldHeight": 0.9475,
+    "worldWidth": 0.9777777777777777,
+    "worldTop": 38,
+    "overflow": false,
+    "pageHeight": 800,
+    "viewportHeight": 800,
+    "buttons": [
+      {
+        "label": "Вечер",
+        "width": 48,
+        "height": 44,
+        "bottom": 95,
+        "left": 292,
+        "right": 340,
+        "sprite": false
+      },
+      {
+        "label": "Кролик",
+        "width": 131.34375,
+        "height": 237.984375,
+        "bottom": 567.9140625,
+        "left": 62.546875,
+        "right": 193.890625,
+        "sprite": true
+      },
+      {
+        "label": "Цветок",
+        "width": 85.203125,
+        "height": 93.390625,
+        "bottom": 570.1796875,
+        "left": 217.0703125,
+        "right": 302.2734375,
+        "sprite": true
+      },
+      {
+        "label": "Погладить",
+        "width": 150,
+        "height": 50,
+        "bottom": 705,
+        "left": 105,
+        "right": 255,
+        "sprite": false
+      },
+      {
+        "label": "Мастерская",
+        "width": 100.65625,
+        "height": 52,
+        "bottom": 775,
+        "left": 25,
+        "right": 125.65625,
+        "sprite": false
+      },
+      {
+        "label": "Полянка",
+        "width": 100.671875,
+        "height": 52,
+        "bottom": 775,
+        "left": 129.65625,
+        "right": 230.328125,
+        "sprite": false
+      },
+      {
+        "label": "Проекты",
+        "width": 100.65625,
+        "height": 52,
+        "bottom": 775,
+        "left": 234.328125,
+        "right": 334.984375,
+        "sprite": false
+      }
+    ]
+  },
+  {
+    "width": 360,
+    "height": 800,
+    "name": "meadow-evening",
+    "worldHeight": 0.9475,
+    "worldWidth": 0.9777777777777777,
+    "worldTop": 38,
+    "overflow": false,
+    "pageHeight": 800,
+    "viewportHeight": 800,
+    "buttons": [
+      {
+        "label": "День",
+        "width": 48,
+        "height": 44,
+        "bottom": 95,
+        "left": 292,
+        "right": 340,
+        "sprite": false
+      },
+      {
+        "label": "Кролик",
+        "width": 131.34375,
+        "height": 237.984375,
+        "bottom": 567.9140625,
+        "left": 62.546875,
+        "right": 193.890625,
+        "sprite": true
+      },
+      {
+        "label": "Цветок",
+        "width": 85.203125,
+        "height": 93.390625,
+        "bottom": 570.1796875,
+        "left": 217.0703125,
+        "right": 302.2734375,
+        "sprite": true
+      },
+      {
+        "label": "Погладить",
+        "width": 150,
+        "height": 50,
+        "bottom": 705,
+        "left": 105,
+        "right": 255,
+        "sprite": false
+      },
+      {
+        "label": "Мастерская",
+        "width": 100.65625,
+        "height": 52,
+        "bottom": 775,
+        "left": 25,
+        "right": 125.65625,
+        "sprite": false
+      },
+      {
+        "label": "Полянка",
+        "width": 100.671875,
+        "height": 52,
+        "bottom": 775,
+        "left": 129.65625,
+        "right": 230.328125,
+        "sprite": false
+      },
+      {
+        "label": "Проекты",
+        "width": 100.65625,
+        "height": 52,
+        "bottom": 775,
+        "left": 234.328125,
+        "right": 334.984375,
+        "sprite": false
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "name": "workshop-day",
+    "worldHeight": 0.9502369668246445,
+    "worldWidth": 0.9794871794871794,
+    "worldTop": 38,
+    "overflow": false,
+    "pageHeight": 844,
+    "viewportHeight": 844,
+    "buttons": [
+      {
+        "label": "Вечер",
+        "width": 48,
+        "height": 44,
+        "bottom": 95,
+        "left": 322,
+        "right": 370,
+        "sprite": false
+      },
+      {
+        "label": "Завершить",
+        "width": 150,
+        "height": 50,
+        "bottom": 749,
+        "left": 120,
+        "right": 270,
+        "sprite": false
+      },
+      {
+        "label": "Мастерская",
+        "width": 110.65625,
+        "height": 52,
+        "bottom": 819,
+        "left": 25,
+        "right": 135.65625,
+        "sprite": false
+      },
+      {
+        "label": "Полянка",
+        "width": 110.671875,
+        "height": 52,
+        "bottom": 819,
+        "left": 139.65625,
+        "right": 250.328125,
+        "sprite": false
+      },
+      {
+        "label": "Проекты",
+        "width": 110.65625,
+        "height": 52,
+        "bottom": 819,
+        "left": 254.328125,
+        "right": 364.984375,
+        "sprite": false
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "name": "workshop-evening",
+    "worldHeight": 0.9502369668246445,
+    "worldWidth": 0.9794871794871794,
+    "worldTop": 38,
+    "overflow": false,
+    "pageHeight": 844,
+    "viewportHeight": 844,
+    "buttons": [
+      {
+        "label": "День",
+        "width": 48,
+        "height": 44,
+        "bottom": 95,
+        "left": 322,
+        "right": 370,
+        "sprite": false
+      },
+      {
+        "label": "Завершить",
+        "width": 150,
+        "height": 50,
+        "bottom": 749,
+        "left": 120,
+        "right": 270,
+        "sprite": false
+      },
+      {
+        "label": "Мастерская",
+        "width": 110.65625,
+        "height": 52,
+        "bottom": 819,
+        "left": 25,
+        "right": 135.65625,
+        "sprite": false
+      },
+      {
+        "label": "Полянка",
+        "width": 110.671875,
+        "height": 52,
+        "bottom": 819,
+        "left": 139.65625,
+        "right": 250.328125,
+        "sprite": false
+      },
+      {
+        "label": "Проекты",
+        "width": 110.65625,
+        "height": 52,
+        "bottom": 819,
+        "left": 254.328125,
+        "right": 364.984375,
+        "sprite": false
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "name": "meadow-day",
+    "worldHeight": 0.9502369668246445,
+    "worldWidth": 0.9794871794871794,
+    "worldTop": 38,
+    "overflow": false,
+    "pageHeight": 844,
+    "viewportHeight": 844,
+    "buttons": [
+      {
+        "label": "Вечер",
+        "width": 48,
+        "height": 44,
+        "bottom": 95,
+        "left": 322,
+        "right": 370,
+        "sprite": false
+      },
+      {
+        "label": "Кролик",
+        "width": 142.796875,
+        "height": 258.734375,
+        "bottom": 602.0078125,
+        "left": 67.3203125,
+        "right": 210.1171875,
+        "sprite": true
+      },
+      {
+        "label": "Цветок",
+        "width": 92.640625,
+        "height": 101.53125,
+        "bottom": 602.75,
+        "left": 235.3046875,
+        "right": 327.9453125,
+        "sprite": true
+      },
+      {
+        "label": "Погладить",
+        "width": 150,
+        "height": 50,
+        "bottom": 749,
+        "left": 120,
+        "right": 270,
+        "sprite": false
+      },
+      {
+        "label": "Мастерская",
+        "width": 110.65625,
+        "height": 52,
+        "bottom": 819,
+        "left": 25,
+        "right": 135.65625,
+        "sprite": false
+      },
+      {
+        "label": "Полянка",
+        "width": 110.671875,
+        "height": 52,
+        "bottom": 819,
+        "left": 139.65625,
+        "right": 250.328125,
+        "sprite": false
+      },
+      {
+        "label": "Проекты",
+        "width": 110.65625,
+        "height": 52,
+        "bottom": 819,
+        "left": 254.328125,
+        "right": 364.984375,
+        "sprite": false
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "name": "meadow-evening",
+    "worldHeight": 0.9502369668246445,
+    "worldWidth": 0.9794871794871794,
+    "worldTop": 38,
+    "overflow": false,
+    "pageHeight": 844,
+    "viewportHeight": 844,
+    "buttons": [
+      {
+        "label": "День",
+        "width": 48,
+        "height": 44,
+        "bottom": 95,
+        "left": 322,
+        "right": 370,
+        "sprite": false
+      },
+      {
+        "label": "Кролик",
+        "width": 142.796875,
+        "height": 258.734375,
+        "bottom": 602.0078125,
+        "left": 67.3203125,
+        "right": 210.1171875,
+        "sprite": true
+      },
+      {
+        "label": "Цветок",
+        "width": 92.640625,
+        "height": 101.53125,
+        "bottom": 602.75,
+        "left": 235.3046875,
+        "right": 327.9453125,
+        "sprite": true
+      },
+      {
+        "label": "Погладить",
+        "width": 150,
+        "height": 50,
+        "bottom": 749,
+        "left": 120,
+        "right": 270,
+        "sprite": false
+      },
+      {
+        "label": "Мастерская",
+        "width": 110.65625,
+        "height": 52,
+        "bottom": 819,
+        "left": 25,
+        "right": 135.65625,
+        "sprite": false
+      },
+      {
+        "label": "Полянка",
+        "width": 110.671875,
+        "height": 52,
+        "bottom": 819,
+        "left": 139.65625,
+        "right": 250.328125,
+        "sprite": false
+      },
+      {
+        "label": "Проекты",
+        "width": 110.65625,
+        "height": 52,
+        "bottom": 819,
+        "left": 254.328125,
+        "right": 364.984375,
+        "sprite": false
+      }
+    ]
+  },
+  {
+    "width": 430,
+    "height": 932,
+    "name": "workshop-day",
+    "worldHeight": 0.9549356223175965,
+    "worldWidth": 0.9813953488372092,
+    "worldTop": 38,
+    "overflow": false,
+    "pageHeight": 932,
+    "viewportHeight": 932,
+    "buttons": [
+      {
+        "label": "Вечер",
+        "width": 48,
+        "height": 44,
+        "bottom": 95,
+        "left": 362,
+        "right": 410,
+        "sprite": false
+      },
+      {
+        "label": "Завершить",
+        "width": 150,
+        "height": 50,
+        "bottom": 837,
+        "left": 140,
+        "right": 290,
+        "sprite": false
+      },
+      {
+        "label": "Мастерская",
+        "width": 124,
+        "height": 52,
+        "bottom": 907,
+        "left": 25,
+        "right": 149,
+        "sprite": false
+      },
+      {
+        "label": "Полянка",
+        "width": 124,
+        "height": 52,
+        "bottom": 907,
+        "left": 153,
+        "right": 277,
+        "sprite": false
+      },
+      {
+        "label": "Проекты",
+        "width": 124,
+        "height": 52,
+        "bottom": 907,
+        "left": 281,
+        "right": 405,
+        "sprite": false
+      }
+    ]
+  },
+  {
+    "width": 430,
+    "height": 932,
+    "name": "workshop-evening",
+    "worldHeight": 0.9549356223175965,
+    "worldWidth": 0.9813953488372092,
+    "worldTop": 38,
+    "overflow": false,
+    "pageHeight": 932,
+    "viewportHeight": 932,
+    "buttons": [
+      {
+        "label": "День",
+        "width": 48,
+        "height": 44,
+        "bottom": 95,
+        "left": 362,
+        "right": 410,
+        "sprite": false
+      },
+      {
+        "label": "Завершить",
+        "width": 150,
+        "height": 50,
+        "bottom": 837,
+        "left": 140,
+        "right": 290,
+        "sprite": false
+      },
+      {
+        "label": "Мастерская",
+        "width": 124,
+        "height": 52,
+        "bottom": 907,
+        "left": 25,
+        "right": 149,
+        "sprite": false
+      },
+      {
+        "label": "Полянка",
+        "width": 124,
+        "height": 52,
+        "bottom": 907,
+        "left": 153,
+        "right": 277,
+        "sprite": false
+      },
+      {
+        "label": "Проекты",
+        "width": 124,
+        "height": 52,
+        "bottom": 907,
+        "left": 281,
+        "right": 405,
+        "sprite": false
+      }
+    ]
+  },
+  {
+    "width": 430,
+    "height": 932,
+    "name": "meadow-day",
+    "worldHeight": 0.9549356223175965,
+    "worldWidth": 0.9813953488372092,
+    "worldTop": 38,
+    "overflow": false,
+    "pageHeight": 932,
+    "viewportHeight": 932,
+    "buttons": [
+      {
+        "label": "Вечер",
+        "width": 48,
+        "height": 44,
+        "bottom": 95,
+        "left": 362,
+        "right": 410,
+        "sprite": false
+      },
+      {
+        "label": "Кролик",
+        "width": 158.0625,
+        "height": 286.421875,
+        "bottom": 663.6015625,
+        "left": 73.65625,
+        "right": 231.71875,
+        "sprite": true
+      },
+      {
+        "label": "Цветок",
+        "width": 102.546875,
+        "height": 112.40625,
+        "bottom": 664.671875,
+        "left": 259.6171875,
+        "right": 362.1640625,
+        "sprite": true
+      },
+      {
+        "label": "Погладить",
+        "width": 150,
+        "height": 50,
+        "bottom": 837,
+        "left": 140,
+        "right": 290,
+        "sprite": false
+      },
+      {
+        "label": "Мастерская",
+        "width": 124,
+        "height": 52,
+        "bottom": 907,
+        "left": 25,
+        "right": 149,
+        "sprite": false
+      },
+      {
+        "label": "Полянка",
+        "width": 124,
+        "height": 52,
+        "bottom": 907,
+        "left": 153,
+        "right": 277,
+        "sprite": false
+      },
+      {
+        "label": "Проекты",
+        "width": 124,
+        "height": 52,
+        "bottom": 907,
+        "left": 281,
+        "right": 405,
+        "sprite": false
+      }
+    ]
+  },
+  {
+    "width": 430,
+    "height": 932,
+    "name": "meadow-evening",
+    "worldHeight": 0.9549356223175965,
+    "worldWidth": 0.9813953488372092,
+    "worldTop": 38,
+    "overflow": false,
+    "pageHeight": 932,
+    "viewportHeight": 932,
+    "buttons": [
+      {
+        "label": "День",
+        "width": 48,
+        "height": 44,
+        "bottom": 95,
+        "left": 362,
+        "right": 410,
+        "sprite": false
+      },
+      {
+        "label": "Кролик",
+        "width": 158.0625,
+        "height": 286.421875,
+        "bottom": 663.6015625,
+        "left": 73.65625,
+        "right": 231.71875,
+        "sprite": true
+      },
+      {
+        "label": "Цветок",
+        "width": 102.546875,
+        "height": 112.40625,
+        "bottom": 664.671875,
+        "left": 259.6171875,
+        "right": 362.1640625,
+        "sprite": true
+      },
+      {
+        "label": "Погладить",
+        "width": 150,
+        "height": 50,
+        "bottom": 837,
+        "left": 140,
+        "right": 290,
+        "sprite": false
+      },
+      {
+        "label": "Мастерская",
+        "width": 124,
+        "height": 52,
+        "bottom": 907,
+        "left": 25,
+        "right": 149,
+        "sprite": false
+      },
+      {
+        "label": "Полянка",
+        "width": 124,
+        "height": 52,
+        "bottom": 907,
+        "left": 153,
+        "right": 277,
+        "sprite": false
+      },
+      {
+        "label": "Проекты",
+        "width": 124,
+        "height": 52,
+        "bottom": 907,
+        "left": 281,
+        "right": 405,
+        "sprite": false
+      }
+    ]
+  }
+]

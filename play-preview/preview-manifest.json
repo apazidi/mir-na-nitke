@@ -2,17 +2,18 @@
   "schemaVersion": 1,
   "label": "TECHNICAL PREVIEW — ART NOT APPROVED",
   "productionContent": false,
+  "sceneReview": true,
   "saveKey": "mir-na-nitke-art-preview-v2",
-  "appSourceCommit": "22084008526dc6bbf9594ceea03ae97e2ae76d17",
+  "appSourceCommit": "31a8316b58f93947dbc708f62b01cd919167ed15",
   "sourceFiles": {
     "design-system/skin-v4.css": "e4f36c8097902532bbafde6589a5d916965f2b8881fd93a934d847b07d982b4c",
     "product/app/content/index.mjs": "00b9669ff7929c556b0b22b0dc1d54a8a717f80898af6668c6f674ae76033dff",
     "product/app/core/index.mjs": "8719548d829d22c499e06c21c3c363aa80020daa2881ea52c57f082b1dbade16",
     "product/app/ui/session.mjs": "b3bd6367312130aae5ab906577c3aae1fa9018ecd2bd37a623f15c430c6d555d",
-    "product/ui/dev-catalog.mjs": "fdd304771a2fcd89366f9efe58526f2aa02a0a5f6a46bcb23a6b83fc3133cf6a",
+    "product/ui/dev-catalog.mjs": "0cde75c784a37c47c3ea32a82c234b0aabfe38e5bc5029b1a2c7b84ee797c05b",
     "product/ui/index.html": "a0c11afe2326ccd9bc123d5fd75403be00a2943e3b328344958514a2c0542dc5",
-    "product/ui/main.mjs": "c896434d8b1d29b6e75cf69c7058725cbcfc3a0bbeda5c94af3b6ebec1d280b0",
-    "product/ui/shell.css": "57c880c945fe1cef1ab1436c189b6d9137769367d393a9c7c68a432849c7df24"
+    "product/ui/main.mjs": "0090b2c25fba8d299ae4cef831594d569480ff1e4befee8a8974496be1832bdd",
+    "product/ui/shell.css": "30c9a6d5e48947c8f11294a4cbab23e659276a1218745123a91cb08fc22750d3"
   },
   "artSources": [
     {
@@ -41,6 +42,60 @@
         "stage-03.webp",
         "finished.webp"
       ]
+    },
+    {
+      "commit": "18ce3b9dd0313e1896161f33179fd8d2c342369f",
+      "directory": "product/art-experiments/scene-v2/exports",
+      "files": [
+        "butterfly-finished.webp",
+        "butterfly-stage-00.webp",
+        "butterfly-stage-01.webp",
+        "butterfly-stage-02.webp",
+        "butterfly-stage-03.webp",
+        "house-finished-evening.webp",
+        "house-finished.webp",
+        "house-stage-00.webp",
+        "house-stage-01.webp",
+        "house-stage-02.webp",
+        "house-stage-03.webp",
+        "meadow-day.webp",
+        "meadow-evening.webp",
+        "tree-finished.webp",
+        "tree-stage-00.webp",
+        "tree-stage-01.webp",
+        "tree-stage-02.webp",
+        "tree-stage-03.webp"
+      ]
+    },
+    {
+      "commit": "18ce3b9dd0313e1896161f33179fd8d2c342369f",
+      "directory": "product/art-experiments/scene-v2/ui",
+      "files": [
+        "complete-disabled.webp",
+        "complete-pressed.webp",
+        "complete.webp",
+        "knit-disabled.webp",
+        "knit-pressed.webp",
+        "knit.webp",
+        "meadow-disabled.webp",
+        "meadow-pressed.webp",
+        "meadow.webp",
+        "pet-disabled.webp",
+        "pet-pressed.webp",
+        "pet.webp",
+        "place-disabled.webp",
+        "place-pressed.webp",
+        "place.webp",
+        "projects-disabled.webp",
+        "projects-pressed.webp",
+        "projects.webp",
+        "start-disabled.webp",
+        "start-pressed.webp",
+        "start.webp",
+        "workshop-disabled.webp",
+        "workshop-pressed.webp",
+        "workshop.webp"
+      ]
     }
   ],
   "files": [
@@ -51,8 +106,8 @@
     },
     {
       "path": "index.html",
-      "bytes": 575,
-      "sha256": "270fbaf99bf0a7b3ab693a700a3b6185a2c37d933058ad8b38feaf7c3d70468e"
+      "bytes": 597,
+      "sha256": "8e64ccae6151e7719c862886761b5c12bf01e7647ba488e5b55bf7ab373faf1a"
     },
     {
       "path": "product/app/content/catalog.json",
@@ -115,6 +170,216 @@
       "sha256": "4cdcfdce28d6ab47873942533bb046c939ed5d56a9bedaa36731e86dfdd37748"
     },
     {
+      "path": "product/art-experiments/scene-v2/exports/butterfly-finished.webp",
+      "bytes": 186074,
+      "sha256": "4036354348011447def467ef60afe4618d616dda4ded5129fed271fdee047d57"
+    },
+    {
+      "path": "product/art-experiments/scene-v2/exports/butterfly-stage-00.webp",
+      "bytes": 38658,
+      "sha256": "53e762e4452474052e65345c7e9fd7915b9962f5999022da883f816070264486"
+    },
+    {
+      "path": "product/art-experiments/scene-v2/exports/butterfly-stage-01.webp",
+      "bytes": 101274,
+      "sha256": "b990ca487944719a1520a1fd83b4d5a723b9fa8c0d75e934dd5fa9cb8a801a4e"
+    },
+    {
+      "path": "product/art-experiments/scene-v2/exports/butterfly-stage-02.webp",
+      "bytes": 143946,
+      "sha256": "f59e10895f45243159a9a08e6ad50707248c5e21ce93ce1221bb331eb23b8e19"
+    },
+    {
+      "path": "product/art-experiments/scene-v2/exports/butterfly-stage-03.webp",
+      "bytes": 186890,
+      "sha256": "597ddcac20941ea9a615dd78303e23976dc33331bd9c6c745336b58fd356674f"
+    },
+    {
+      "path": "product/art-experiments/scene-v2/exports/house-finished-evening.webp",
+      "bytes": 256808,
+      "sha256": "d980cd1e8cb28ce0b937787becffe8576caff6eb1001135b7124ceae786fef6d"
+    },
+    {
+      "path": "product/art-experiments/scene-v2/exports/house-finished.webp",
+      "bytes": 231990,
+      "sha256": "ef5fdca19af98e2fd479fda249e2a02a7ab65786185b233006d5ec5ae17c9451"
+    },
+    {
+      "path": "product/art-experiments/scene-v2/exports/house-stage-00.webp",
+      "bytes": 86310,
+      "sha256": "7c3715ca6bd75d94af32665d452745222500895bf3f290f9bbeffcb73ffdc9a4"
+    },
+    {
+      "path": "product/art-experiments/scene-v2/exports/house-stage-01.webp",
+      "bytes": 111966,
+      "sha256": "a2bc440ca471ed74b887b9e2c3b65e1d254bdff1be1fcfc2baa59df5c5799e5f"
+    },
+    {
+      "path": "product/art-experiments/scene-v2/exports/house-stage-02.webp",
+      "bytes": 164834,
+      "sha256": "96cefd8f2cb40b93fad4937affea561f87eeb63768c7d920245e7d86d64720aa"
+    },
+    {
+      "path": "product/art-experiments/scene-v2/exports/house-stage-03.webp",
+      "bytes": 228134,
+      "sha256": "afcc38dcd14b7eae4695b165305674e2265ddcb9fb3b4c4f50ee0793b30a12ff"
+    },
+    {
+      "path": "product/art-experiments/scene-v2/exports/meadow-day.webp",
+      "bytes": 594628,
+      "sha256": "5cf6c42c38cb273ece621d37896b408b82ea60dfb33fbe51e19671516e9582e3"
+    },
+    {
+      "path": "product/art-experiments/scene-v2/exports/meadow-evening.webp",
+      "bytes": 508388,
+      "sha256": "9ce3786118c91abce1ea0308b8fcf5c350de2aa942a8c2aa1ef67b5a9acafa78"
+    },
+    {
+      "path": "product/art-experiments/scene-v2/exports/tree-finished.webp",
+      "bytes": 158652,
+      "sha256": "7ff9081ae6b8bab63d761ce6b1ab7d1b3976c6dc2c35e3ae15c216ce51931c8d"
+    },
+    {
+      "path": "product/art-experiments/scene-v2/exports/tree-stage-00.webp",
+      "bytes": 49362,
+      "sha256": "7a01fa28e5c5a16de5abf77a40509e903f9a1c5a6eb8e6805ab6a2ed17d78ac0"
+    },
+    {
+      "path": "product/art-experiments/scene-v2/exports/tree-stage-01.webp",
+      "bytes": 103222,
+      "sha256": "49aaa0e0c8a16a9604864c4da513935b9931b64d05a01b80f4b3ccb9100dfcb3"
+    },
+    {
+      "path": "product/art-experiments/scene-v2/exports/tree-stage-02.webp",
+      "bytes": 145874,
+      "sha256": "768cebe3dbe43eb3d33a1831367c73bbce1f93b819ad6ffdbe3204b4f1daab98"
+    },
+    {
+      "path": "product/art-experiments/scene-v2/exports/tree-stage-03.webp",
+      "bytes": 166872,
+      "sha256": "e9a083b3979ad95f1f044dbc02cd5bc632c9732aa4ba071366e6e0cdda943d27"
+    },
+    {
+      "path": "product/art-experiments/scene-v2/ui/complete-disabled.webp",
+      "bytes": 80848,
+      "sha256": "88cd18225ccc65a5a5db299964730089e794ed084f88a2f76efe42111125e542"
+    },
+    {
+      "path": "product/art-experiments/scene-v2/ui/complete-pressed.webp",
+      "bytes": 84550,
+      "sha256": "13799092e8e5316d48f50e9cdb867fc24f2249971c09cd0c33da8e741f5a3d91"
+    },
+    {
+      "path": "product/art-experiments/scene-v2/ui/complete.webp",
+      "bytes": 89258,
+      "sha256": "9a58d168d494272bd01936d2261e6007b1d7184a15f9f2179b3def2c7d59c3f9"
+    },
+    {
+      "path": "product/art-experiments/scene-v2/ui/knit-disabled.webp",
+      "bytes": 79338,
+      "sha256": "74815dbe23619a4ec061ade854612e907620060b7e62520cdd137df1e4d49347"
+    },
+    {
+      "path": "product/art-experiments/scene-v2/ui/knit-pressed.webp",
+      "bytes": 85118,
+      "sha256": "bdf856c8601e3bd2b17887c1e903f5297cc2eb94680960635515f2a82f802901"
+    },
+    {
+      "path": "product/art-experiments/scene-v2/ui/knit.webp",
+      "bytes": 89786,
+      "sha256": "a7c9c10755d28cbdadc1c4831d0cb5c80db71fa36c25a6b237e817524c89ecbc"
+    },
+    {
+      "path": "product/art-experiments/scene-v2/ui/meadow-disabled.webp",
+      "bytes": 76636,
+      "sha256": "b683dad2bca8b1d84f91466ccef3c54b7e7cdfd9aa5ce8c4a2dd03be84637acf"
+    },
+    {
+      "path": "product/art-experiments/scene-v2/ui/meadow-pressed.webp",
+      "bytes": 85206,
+      "sha256": "e9e8d59281a3b6f455979cea81e75e72991dbb01feb30306ca0a80aafb425219"
+    },
+    {
+      "path": "product/art-experiments/scene-v2/ui/meadow.webp",
+      "bytes": 89066,
+      "sha256": "e09217059da9c6226cff0833832ca15b1252858c1f32d8f5a62b4e3d00141fd0"
+    },
+    {
+      "path": "product/art-experiments/scene-v2/ui/pet-disabled.webp",
+      "bytes": 77240,
+      "sha256": "2787530fc2c3f5a9eb55006f891569c139976dc5d8292df4f89b5a0bfddc2322"
+    },
+    {
+      "path": "product/art-experiments/scene-v2/ui/pet-pressed.webp",
+      "bytes": 82242,
+      "sha256": "aea340c736f6694fdae1a001092e4e9f1e4a4948454633c64e8ea0cd39e45f97"
+    },
+    {
+      "path": "product/art-experiments/scene-v2/ui/pet.webp",
+      "bytes": 86418,
+      "sha256": "0ae1fa8c6b71fc7be283cb662e78f5cf8e69a5140704695d89017322907788d7"
+    },
+    {
+      "path": "product/art-experiments/scene-v2/ui/place-disabled.webp",
+      "bytes": 83490,
+      "sha256": "0bf384c6930641ad9ed8af13a03d681fa4fd9672dcea557616e1089e79c3d7f2"
+    },
+    {
+      "path": "product/art-experiments/scene-v2/ui/place-pressed.webp",
+      "bytes": 89802,
+      "sha256": "4cf0ca202a533c955d07d8b7e36adbdc7d7ffd4ab882ec9373b74c1a0670e405"
+    },
+    {
+      "path": "product/art-experiments/scene-v2/ui/place.webp",
+      "bytes": 93648,
+      "sha256": "5698f1c390315ee176e35d64132f152d2ffc6f1f5a822156cd465395a3c8af4c"
+    },
+    {
+      "path": "product/art-experiments/scene-v2/ui/projects-disabled.webp",
+      "bytes": 74674,
+      "sha256": "46079337f175554535e11bf1187e2e71f814e827f94ad03cf99415c8a3abe12f"
+    },
+    {
+      "path": "product/art-experiments/scene-v2/ui/projects-pressed.webp",
+      "bytes": 84406,
+      "sha256": "e79749a33396001e5d82df3f23acbc3ee28f405a68524d858168a1b6b21cea60"
+    },
+    {
+      "path": "product/art-experiments/scene-v2/ui/projects.webp",
+      "bytes": 88642,
+      "sha256": "4ec56c51a2a20560948a6adb19cc4f33c075bfc1279c5fb93475735eda9b9fb6"
+    },
+    {
+      "path": "product/art-experiments/scene-v2/ui/start-disabled.webp",
+      "bytes": 83046,
+      "sha256": "330d3ffa0b591bcb5453b8698d468d14500a0e65808ac70be669b64cca830b17"
+    },
+    {
+      "path": "product/art-experiments/scene-v2/ui/start-pressed.webp",
+      "bytes": 89744,
+      "sha256": "17097ae59a97e2ce26fd029b334c22d5ae05dfb6688689c57893ede5e9400326"
+    },
+    {
+      "path": "product/art-experiments/scene-v2/ui/start.webp",
+      "bytes": 92582,
+      "sha256": "69fc0cb5dd181695408c49432a9318b92da5e547d7502998e2aa9430e1f42b75"
+    },
+    {
+      "path": "product/art-experiments/scene-v2/ui/workshop-disabled.webp",
+      "bytes": 78324,
+      "sha256": "8298473bcdc574dd16fb124eac996a08e00efb917808429ad1743cf5a2f9a486"
+    },
+    {
+      "path": "product/art-experiments/scene-v2/ui/workshop-pressed.webp",
+      "bytes": 87814,
+      "sha256": "e522011409840d3853d6b6856e2e566f1923fe6ca035b47bcffc959310793ede"
+    },
+    {
+      "path": "product/art-experiments/scene-v2/ui/workshop.webp",
+      "bytes": 91666,
+      "sha256": "bc561387f43731d4335dbaa402f53fbd586f21fc8e26a4231f065d89bd822352"
+    },
+    {
       "path": "product/content/items/meadow-flower/art/finished.webp",
       "bytes": 305534,
       "sha256": "22c67d96fc833401fb4220ba6c76d113a58287705c5eddd9a489f5ab45b0eda3"
@@ -141,8 +406,8 @@
     },
     {
       "path": "product/ui/dev-catalog.mjs",
-      "bytes": 2817,
-      "sha256": "fdd304771a2fcd89366f9efe58526f2aa02a0a5f6a46bcb23a6b83fc3133cf6a"
+      "bytes": 3955,
+      "sha256": "0cde75c784a37c47c3ea32a82c234b0aabfe38e5bc5029b1a2c7b84ee797c05b"
     },
     {
       "path": "product/ui/index.html",
@@ -151,13 +416,13 @@
     },
     {
       "path": "product/ui/main.mjs",
-      "bytes": 8739,
-      "sha256": "c896434d8b1d29b6e75cf69c7058725cbcfc3a0bbeda5c94af3b6ebec1d280b0"
+      "bytes": 22897,
+      "sha256": "0090b2c25fba8d299ae4cef831594d569480ff1e4befee8a8974496be1832bdd"
     },
     {
       "path": "product/ui/shell.css",
-      "bytes": 2630,
-      "sha256": "57c880c945fe1cef1ab1436c189b6d9137769367d393a9c7c68a432849c7df24"
+      "bytes": 11103,
+      "sha256": "30c9a6d5e48947c8f11294a4cbab23e659276a1218745123a91cb08fc22750d3"
     }
   ]
 }

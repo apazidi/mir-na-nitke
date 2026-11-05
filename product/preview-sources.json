@@ -6,13 +6,83 @@
       "pullRequest": 15,
       "commit": "56a748cc0de532b40a1b9a0927ff1d900406d85b",
       "directory": "product/art-experiments/rabbit-v1/exports",
-      "files": ["stage-000.webp", "stage-025.webp", "stage-050.webp", "stage-075.webp", "stage-100.webp", "finished-sprite.webp", "meadow-day.webp", "meadow-evening.webp"]
+      "files": [
+        "stage-000.webp",
+        "stage-025.webp",
+        "stage-050.webp",
+        "stage-075.webp",
+        "stage-100.webp",
+        "finished-sprite.webp",
+        "meadow-day.webp",
+        "meadow-evening.webp"
+      ]
     },
     {
       "pullRequest": 21,
       "commit": "0dbd5e2e2df90d54e6fe9cb45ff5da5e3955b7f4",
       "directory": "product/content/items/meadow-flower/art",
-      "files": ["stage-00.webp", "stage-01.webp", "stage-02.webp", "stage-03.webp", "finished.webp"]
+      "files": [
+        "stage-00.webp",
+        "stage-01.webp",
+        "stage-02.webp",
+        "stage-03.webp",
+        "finished.webp"
+      ]
+    },
+    {
+      "commit": "18ce3b9dd0313e1896161f33179fd8d2c342369f",
+      "directory": "product/art-experiments/scene-v2/exports",
+      "files": [
+        "butterfly-finished.webp",
+        "butterfly-stage-00.webp",
+        "butterfly-stage-01.webp",
+        "butterfly-stage-02.webp",
+        "butterfly-stage-03.webp",
+        "house-finished-evening.webp",
+        "house-finished.webp",
+        "house-stage-00.webp",
+        "house-stage-01.webp",
+        "house-stage-02.webp",
+        "house-stage-03.webp",
+        "meadow-day.webp",
+        "meadow-evening.webp",
+        "tree-finished.webp",
+        "tree-stage-00.webp",
+        "tree-stage-01.webp",
+        "tree-stage-02.webp",
+        "tree-stage-03.webp"
+      ]
+    },
+    {
+      "commit": "18ce3b9dd0313e1896161f33179fd8d2c342369f",
+      "directory": "product/art-experiments/scene-v2/ui",
+      "files": [
+        "complete-disabled.webp",
+        "complete-pressed.webp",
+        "complete.webp",
+        "knit-disabled.webp",
+        "knit-pressed.webp",
+        "knit.webp",
+        "meadow-disabled.webp",
+        "meadow-pressed.webp",
+        "meadow.webp",
+        "pet-disabled.webp",
+        "pet-pressed.webp",
+        "pet.webp",
+        "place-disabled.webp",
+        "place-pressed.webp",
+        "place.webp",
+        "projects-disabled.webp",
+        "projects-pressed.webp",
+        "projects.webp",
+        "start-disabled.webp",
+        "start-pressed.webp",
+        "start.webp",
+        "workshop-disabled.webp",
+        "workshop-pressed.webp",
+        "workshop.webp"
+      ]
     }
-  ]
+  ],
+  "sceneReview": true
 }

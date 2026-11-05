@@ -2,7 +2,7 @@
 import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
 import {createServer} from 'node:http';
-import {mkdir, readFile, realpath, stat} from 'node:fs/promises';
+import {mkdir, readFile, realpath, stat, writeFile} from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath, pathToFileURL} from 'node:url';
 
@@ -48,12 +48,19 @@ try {
     assert.equal(bytes.length, file.bytes, file.path);
     assert.equal(createHash('sha256').update(bytes).digest('hex'), file.sha256, file.path);
   }
+  let fullMeadowSave;
+  const verifiedAssets = new Set(manifest.files.map(file => new URL(file.path, base).href));
   for (const [width, height] of [[360, 800], [390, 844], [430, 932]]) {
     const context = await browser.newContext({viewport: {width, height}});
     const page = await context.newPage();
     const errors = [];
     page.on('pageerror', error => errors.push(error.message));
-    page.on('requestfailed', request => errors.push(request.url() + ': ' + request.failure()?.errorText));
+    page.on('requestfailed', request => {
+      // A pointer state may be replaced before its image request completes.
+      // Only ignore cancellation for an asset already fetched and hash-verified above.
+      if (request.failure()?.errorText === 'net::ERR_ABORTED' && verifiedAssets.has(request.url())) return;
+      errors.push(request.url() + ': ' + request.failure()?.errorText);
+    });
     page.on('response', response => { if (response.status() >= 400) errors.push(response.status() + ' ' + response.url()); });
     page.on('request', request => { if (/^https?:/.test(request.url()) && !request.url().startsWith(base.href)) errors.push('Outside bundle: ' + request.url()); });
     await context.addInitScript(() => {
@@ -67,6 +74,14 @@ try {
       await page.screenshot({path: path.join(evidence, `${name}-${width}.png`), fullPage: true});
     };
     const rowAction = async (item, action) => {
+      if (action === 'Разместить') {
+        const primary = page.locator('.action-dock').getByRole('button', {name: action, exact:true});
+        if (await primary.isVisible()) {
+          await shot(item + '-place');
+          await primary.click();
+          return;
+        }
+      }
       let row = page.locator('.project-row').filter({hasText: item});
       if (!await row.isVisible()) {
         const projects = page.getByRole('button', {name: 'Проекты', exact: true});
@@ -76,17 +91,23 @@ try {
     };
     const craft = async item => {
       await rowAction(item, 'Начать');
-      await shot(item === 'Кролик' ? 'rabbit-start' : 'flower-start');
+      await shot(item + '-start');
       for (let i = 0; i < 20; i++) {
         if (await page.getByRole('button', {name: 'Завершить', exact: true}).count()) break;
         await page.getByRole('button', {name: 'Вязать', exact: true}).click();
       }
+      await shot(item + '-finished');
       await page.getByRole('button', {name: 'Завершить', exact: true}).click();
     };
     await page.goto(base.href);
     await page.waitForURL(/mode=art-review/);
     assert.match(await page.locator('meta[name="robots"]').getAttribute('content'), /noindex/);
     await page.getByText('TECHNICAL PREVIEW — ART NOT APPROVED', {exact: false}).waitFor();
+    await shot('empty-workshop');
+    await page.getByRole('button', {name:'Полянка', exact:true}).click();
+    assert.equal(await page.locator('.placed-object').count(), 0);
+    await shot('empty-meadow');
+    await page.getByRole('button', {name:'Мастерская', exact:true}).click();
     await craft('Кролик');
     await page.getByRole('button', {name: 'Полянка', exact: true}).click();
     await rowAction('Кролик', 'Разместить');
@@ -112,13 +133,64 @@ try {
     assert.equal(await page.locator('.placed-object').count(), 2);
     assert.deepEqual((await readSave()).placements, after.placements);
     await shot('reload');
+    if (manifest.sceneReview && width === 390) {
+      // Earn the remaining projects through actual game actions and real idle time.
+      // The resulting save is reused only for responsive visual inspection below.
+      for (const [item, cost] of [['Дерево',11],['Домик',14],['Бабочка',17]]) {
+        const deadline = Date.now() + 120000;
+        while ((await readSave()).wallet.yarn < cost) {
+          assert.ok(Date.now() < deadline, 'The remaining meadow projects must be reachable without a resource dead end');
+          const pet = page.getByRole('button', {name:'Погладить', exact:true});
+          if (await pet.isEnabled()) await pet.click();
+          await page.waitForTimeout(1000);
+        }
+        await page.getByRole('button', {name:'Мастерская', exact:true}).click();
+        await craft(item);
+        await page.getByRole('button', {name:'Полянка', exact:true}).click();
+        await rowAction(item, 'Разместить');
+      }
+      assert.equal(await page.locator('.placed-object').count(), 5);
+      fullMeadowSave = await readSave();
+      assert.equal(fullMeadowSave.owned.length, 5);
+      await writeFile(path.join(evidence, 'earned-five-save.json'), JSON.stringify(fullMeadowSave, null, 2) + '\n');
+      await page.reload();
+      await page.getByRole('button', {name:'Полянка', exact:true}).click();
+      assert.equal(await page.locator('.placed-object').count(), 5);
+    }
     for (const key of ['mir-na-nitke-v1', 'mir-na-nitke-development-v1', 'mir-na-nitke-save']) {
       assert.equal(await page.evaluate(key => localStorage.getItem(key), key), 'unrelated-save-sentinel');
     }
     assert.deepEqual(errors, []);
     await context.close();
   }
-  console.log(`Static preview verified: ${base.href}; ${manifest.files.length} integrity checks; full rabbit → yarn → flower → idle bonus → reload loop at 360/390/430.`);
+  if (manifest.sceneReview) {
+    assert.ok(fullMeadowSave, 'Full meadow must be earned by the UI test');
+    for (const [width,height] of [[360,800],[390,844],[430,932]]) {
+      const context = await browser.newContext({viewport:{width,height}});
+      await context.addInitScript(({key,save})=>localStorage.setItem(key,JSON.stringify(save)),{key:manifest.saveKey,save:fullMeadowSave});
+      const page = await context.newPage();
+      const errors=[];
+      page.on('pageerror',error=>errors.push(error.message));
+      await page.goto(base.href);
+      await page.getByRole('button',{name:'Полянка',exact:true}).click();
+      await page.waitForFunction(() => !document.querySelector('button[aria-label="Погладить"]')?.disabled);
+      await page.waitForFunction(() => !document.querySelector('.feedback'));
+      for(const lighting of ['day','evening']) {
+        if(lighting==='evening')await page.getByRole('button',{name:'Вечер',exact:true}).click();
+        await page.locator('img').evaluateAll(images=>Promise.all(images.map(image=>image.decode())));
+        assert.equal(await page.locator('.placed-object').count(),5);
+        const cottage = page.getByRole('button',{name:'Домик',exact:true});
+        assert.ok((await cottage.locator('img').getAttribute('src')).endsWith(lighting==='evening'?'house-finished-evening.webp':'house-finished.webp'));
+        if(lighting==='evening')assert.equal(await cottage.evaluate(node=>getComputedStyle(node).filter),'none','Painted evening lighting must not be dimmed again');
+        assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
+        assert.equal(await page.evaluate(()=>document.documentElement.scrollHeight>innerHeight),false,'Full scene must fit one viewport');
+        await page.screenshot({path:path.join(evidence,`full-meadow-${lighting}-${width}.png`),fullPage:false});
+      }
+      assert.deepEqual(errors,[]);
+      await context.close();
+    }
+  }
+  console.log(`Static preview verified: ${base.href}; ${manifest.files.length} integrity checks; rabbit → yarn → flower → idle bonus → reload at 360/390/430.${manifest.sceneReview ? ' All five projects earned through real play; full day/evening scenes captured at all three sizes.' : ''}`);
 } finally {
   await browser.close();
   if (server) await new Promise(resolve => server.close(resolve));
