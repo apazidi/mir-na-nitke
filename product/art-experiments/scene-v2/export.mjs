@@ -1,14 +1,20 @@
 /** Deterministic export from single coherent atlases; no independent stage rescaling. */
 import sharp from 'sharp';
-import {readFile,writeFile,mkdir} from 'node:fs/promises';
+import {readFile,writeFile,mkdir,readdir} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import {fileURLToPath} from 'node:url';
 import path from 'node:path';
 const root=fileURLToPath(new URL('./',import.meta.url));
 const at=name=>path.join(root,name);
 const blank=(w,h,color='#00000000')=>sharp({create:{width:w,height:h,channels:4,background:color}});
-const report={schemaVersion:1,status:'draft',baselineApproved:false,tool:'built-in image_gen',alphaCleanup:'Values <=12 set to0; values >=248 set to255; other alpha preserved; RGB zeroed only when alpha=0.',items:{},controls:{},files:[]};
+const report={schemaVersion:1,status:'draft',baselineApproved:false,tool:'built-in image_gen',exportLibrary:sharp.versions,alphaCleanup:'Values <=12 set to0; values >=248 set to255; other alpha preserved; RGB zeroed only when alpha=0.',sources:[],backgrounds:[],items:{},controls:{},files:[]};
 await Promise.all(['exports','ui','review'].map(folder=>mkdir(at(folder),{recursive:true})));
+for(const lighting of ['day','evening']){
+ const source=`source/meadow-${lighting}-master.png`,name=`exports/meadow-${lighting}.webp`;
+ await sharp(at(source)).resize(1024,1820,{fit:'fill'}).webp({quality:90}).toFile(at(name));
+ const bytes=await readFile(at(name));
+ report.backgrounds.push({path:name,source,bytes:bytes.length,sha256:createHash('sha256').update(bytes).digest('hex'),width:1024,height:1820,resize:'fill',quality:90});
+}
 async function clean(input){
  const{data,info}=await sharp(input).ensureAlpha().raw().toBuffer({resolveWithObject:true});
  for(let i=0;i<data.length;i+=4){if(data[i+3]<=12){data[i]=data[i+1]=data[i+2]=data[i+3]=0;}else if(data[i+3]>=248)data[i+3]=255;}
@@ -65,6 +71,11 @@ for(const id of ['house','tree','butterfly']){
   contacts.push({input:panel,left:i*384,top:0});
  }
  await blank(1536,384).composite(contacts).png().toFile(at(`review/${id}-contact.png`));
+ for(const [width,height] of [[360,800],[390,844],[430,932]]){
+  const backdrop=await sharp(at('exports/meadow-day.webp')).resize(width,height,{fit:'cover'}).png().toBuffer();
+  const sprite=await sharp(at(`exports/${id}-finished.webp`)).resize(Math.round(width*.76),Math.round(width*.76)).png().toBuffer();
+  await sharp(backdrop).composite([{input:sprite,left:Math.round(width*.12),top:Math.round(height*.46)}]).png().toFile(at(`review/${id}-phone-${width}.png`));
+ }
  for(const [name,color] of [['dark','#162a1d'],['cream','#f4e3c4']]){
   const panels=[];
   for(let i=0;i<4;i++){
@@ -80,6 +91,11 @@ for(const [name,color] of [['dark','#162a1d'],['cream','#f4e3c4']]){
   panels.push({input,left:(i%3)*360,top:Math.floor(i/3)*270});
  }
  await blank(1080,540,color).composite(panels).png().toFile(at(`review/controls-alpha-${name}.png`));
+}
+for(const name of (await readdir(at('source'))).filter(name=>/\.(png|json)$/.test(name)).sort()){
+ let bytes=await readFile(at('source/'+name));
+ if(name.endsWith('.json'))bytes=Buffer.from(bytes.toString('utf8').replace(/\r\n/g,'\n'));
+ report.sources.push({path:'source/'+name,bytes:bytes.length,sha256:createHash('sha256').update(bytes).digest('hex'),...(name.endsWith('.png')?{metadata:await sharp(bytes).metadata()}:{textHashEncoding:'UTF-8, LF newlines'}),usedForExport:name!=='nav-atlas.png'});
 }
 await writeFile(at('review/asset-report.json'),JSON.stringify(report,null,2)+'\n');
 console.log(`Exported ${report.files.length} draft WebPs. ${report.files.reduce((sum,f)=>sum+f.bytes,0)} bytes. Alpha verified for every output.`);

@@ -3,7 +3,277 @@
   "status": "draft",
   "baselineApproved": false,
   "tool": "built-in image_gen",
+  "exportLibrary": {
+    "aom": "3.15.1",
+    "archive": "3.8.9",
+    "cairo": "1.18.6",
+    "cgif": "0.5.4",
+    "exif": "0.6.26",
+    "expat": "2.8.5",
+    "ffi": "3.8.0",
+    "fontconfig": "2.18.3",
+    "freetype": "2.14.3",
+    "fribidi": "1.0.17",
+    "glib": "2.90.0",
+    "harfbuzz": "14.5.0",
+    "heif": "1.23.5",
+    "highway": "1.4.0",
+    "imagequant": "2.4.1",
+    "lcms": "2.19.1",
+    "mozjpeg": "0826579",
+    "pango": "1.58.2",
+    "pixman": "0.46.4",
+    "png": "1.6.58",
+    "proxy-libintl": "0.5",
+    "rsvg": "2.63.2",
+    "tiff": "4.7.2",
+    "uhdr": "2.0.2",
+    "vips": "8.18.7",
+    "webp": "1.6.0",
+    "xml2": "2.15.4",
+    "zlib-ng": "2.3.3",
+    "sharp": "0.35.5"
+  },
   "alphaCleanup": "Values <=12 set to0; values >=248 set to255; other alpha preserved; RGB zeroed only when alpha=0.",
+  "sources": [
+    {
+      "path": "source/actions-atlas.png",
+      "bytes": 1377720,
+      "sha256": "4c72e2ced03c91ebf213d385a8d20889d188f66eb1d2973022382992cab4e80f",
+      "metadata": {
+        "format": "png",
+        "mediaType": "image/png",
+        "size": 1377720,
+        "width": 2172,
+        "height": 724,
+        "space": "srgb",
+        "channels": 4,
+        "depth": "uchar",
+        "density": 72,
+        "isProgressive": false,
+        "isPalette": false,
+        "bitsPerSample": 8,
+        "hasProfile": false,
+        "hasAlpha": true,
+        "autoOrient": {
+          "width": 2172,
+          "height": 724
+        }
+      },
+      "usedForExport": true
+    },
+    {
+      "path": "source/butterfly-atlas.png",
+      "bytes": 1231482,
+      "sha256": "9e9b94d5a43bcba617775da2049b6b9deefe452a634acdf756b653ba3263b442",
+      "metadata": {
+        "format": "png",
+        "mediaType": "image/png",
+        "size": 1231482,
+        "width": 1254,
+        "height": 1254,
+        "space": "srgb",
+        "channels": 4,
+        "depth": "uchar",
+        "density": 72,
+        "isProgressive": false,
+        "isPalette": false,
+        "bitsPerSample": 8,
+        "hasProfile": false,
+        "hasAlpha": true,
+        "autoOrient": {
+          "width": 1254,
+          "height": 1254
+        }
+      },
+      "usedForExport": true
+    },
+    {
+      "path": "source/house-atlas.png",
+      "bytes": 1617590,
+      "sha256": "e9ea78990dd55d91588d3e700534544c63d61ca5c04ae211ccf560e685552aa6",
+      "metadata": {
+        "format": "png",
+        "mediaType": "image/png",
+        "size": 1617590,
+        "width": 1254,
+        "height": 1254,
+        "space": "srgb",
+        "channels": 4,
+        "depth": "uchar",
+        "density": 72,
+        "isProgressive": false,
+        "isPalette": false,
+        "bitsPerSample": 8,
+        "hasProfile": false,
+        "hasAlpha": true,
+        "autoOrient": {
+          "width": 1254,
+          "height": 1254
+        }
+      },
+      "usedForExport": true
+    },
+    {
+      "path": "source/meadow-day-master.png",
+      "bytes": 3302655,
+      "sha256": "25b2fe2f09669536b70f395ffe30229f32b9f072a68e375756f458130fffc171",
+      "metadata": {
+        "format": "png",
+        "mediaType": "image/png",
+        "size": 3302655,
+        "width": 941,
+        "height": 1672,
+        "space": "srgb",
+        "channels": 3,
+        "depth": "uchar",
+        "density": 72,
+        "isProgressive": false,
+        "isPalette": false,
+        "bitsPerSample": 8,
+        "hasProfile": false,
+        "hasAlpha": false,
+        "autoOrient": {
+          "width": 941,
+          "height": 1672
+        }
+      },
+      "usedForExport": true
+    },
+    {
+      "path": "source/meadow-evening-master.png",
+      "bytes": 3115991,
+      "sha256": "a5d7595b87c3362d0ac644c6eee62aa81e45f900310cdbb87229133d86a202a6",
+      "metadata": {
+        "format": "png",
+        "mediaType": "image/png",
+        "size": 3115991,
+        "width": 941,
+        "height": 1672,
+        "space": "srgb",
+        "channels": 3,
+        "depth": "uchar",
+        "density": 72,
+        "isProgressive": false,
+        "isPalette": false,
+        "bitsPerSample": 8,
+        "hasProfile": false,
+        "hasAlpha": false,
+        "autoOrient": {
+          "width": 941,
+          "height": 1672
+        }
+      },
+      "usedForExport": true
+    },
+    {
+      "path": "source/nav-atlas-clean.png",
+      "bytes": 1882856,
+      "sha256": "e287193e81a5d6cf41a9acfbf22e84c1bf12e6a29fe8a6171021732b99f8c33f",
+      "metadata": {
+        "format": "png",
+        "mediaType": "image/png",
+        "size": 1882856,
+        "width": 2172,
+        "height": 724,
+        "space": "srgb",
+        "channels": 4,
+        "depth": "uchar",
+        "density": 72,
+        "isProgressive": false,
+        "isPalette": false,
+        "bitsPerSample": 8,
+        "hasProfile": false,
+        "hasAlpha": true,
+        "autoOrient": {
+          "width": 2172,
+          "height": 724
+        }
+      },
+      "usedForExport": true
+    },
+    {
+      "path": "source/nav-atlas.png",
+      "bytes": 3135520,
+      "sha256": "c3450359a2552c63bd8dc30118a2adf7f1363c9614b6e9163f60e21a337df4a5",
+      "metadata": {
+        "format": "png",
+        "mediaType": "image/png",
+        "size": 3135520,
+        "width": 2172,
+        "height": 724,
+        "space": "srgb",
+        "channels": 4,
+        "depth": "uchar",
+        "density": 72,
+        "isProgressive": false,
+        "isPalette": false,
+        "bitsPerSample": 8,
+        "hasProfile": false,
+        "hasAlpha": true,
+        "autoOrient": {
+          "width": 2172,
+          "height": 724
+        }
+      },
+      "usedForExport": false
+    },
+    {
+      "path": "source/prompts.json",
+      "bytes": 17464,
+      "sha256": "bf57895b8625d5ae90c56a52b8019ab6c99897f08c71d960acbd50ecdc61be8b",
+      "textHashEncoding": "UTF-8, LF newlines",
+      "usedForExport": true
+    },
+    {
+      "path": "source/tree-atlas.png",
+      "bytes": 1100949,
+      "sha256": "820b7fcf416d941dcac268851bbd5edc2c5fb65ddcb145b9b2c2ae325abe04fd",
+      "metadata": {
+        "format": "png",
+        "mediaType": "image/png",
+        "size": 1100949,
+        "width": 1254,
+        "height": 1254,
+        "space": "srgb",
+        "channels": 4,
+        "depth": "uchar",
+        "density": 72,
+        "isProgressive": false,
+        "isPalette": false,
+        "bitsPerSample": 8,
+        "hasProfile": false,
+        "hasAlpha": true,
+        "autoOrient": {
+          "width": 1254,
+          "height": 1254
+        }
+      },
+      "usedForExport": true
+    }
+  ],
+  "backgrounds": [
+    {
+      "path": "exports/meadow-day.webp",
+      "source": "source/meadow-day-master.png",
+      "bytes": 594628,
+      "sha256": "5cf6c42c38cb273ece621d37896b408b82ea60dfb33fbe51e19671516e9582e3",
+      "width": 1024,
+      "height": 1820,
+      "resize": "fill",
+      "quality": 90
+    },
+    {
+      "path": "exports/meadow-evening.webp",
+      "source": "source/meadow-evening-master.png",
+      "bytes": 508388,
+      "sha256": "9ce3786118c91abce1ea0308b8fcf5c350de2aa942a8c2aa1ef67b5a9acafa78",
+      "width": 1024,
+      "height": 1820,
+      "resize": "fill",
+      "quality": 90
+    }
+  ],
   "items": {
     "house": {
       "source": "source/house-atlas.png",
