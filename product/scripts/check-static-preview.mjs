@@ -49,12 +49,18 @@ try {
     assert.equal(createHash('sha256').update(bytes).digest('hex'), file.sha256, file.path);
   }
   let fullMeadowSave;
+  const verifiedAssets = new Set(manifest.files.map(file => new URL(file.path, base).href));
   for (const [width, height] of [[360, 800], [390, 844], [430, 932]]) {
     const context = await browser.newContext({viewport: {width, height}});
     const page = await context.newPage();
     const errors = [];
     page.on('pageerror', error => errors.push(error.message));
-    page.on('requestfailed', request => errors.push(request.url() + ': ' + request.failure()?.errorText));
+    page.on('requestfailed', request => {
+      // A pointer state may be replaced before its image request completes.
+      // Only ignore cancellation for an asset already fetched and hash-verified above.
+      if (request.failure()?.errorText === 'net::ERR_ABORTED' && verifiedAssets.has(request.url())) return;
+      errors.push(request.url() + ': ' + request.failure()?.errorText);
+    });
     page.on('response', response => { if (response.status() >= 400) errors.push(response.status() + ' ' + response.url()); });
     page.on('request', request => { if (/^https?:/.test(request.url()) && !request.url().startsWith(base.href)) errors.push('Outside bundle: ' + request.url()); });
     await context.addInitScript(() => {
@@ -77,7 +83,7 @@ try {
     };
     const craft = async item => {
       await rowAction(item, 'Начать');
-      await shot(item === 'Кролик' ? 'rabbit-start' : 'flower-start');
+      await shot(item + '-start');
       for (let i = 0; i < 20; i++) {
         if (await page.getByRole('button', {name: 'Завершить', exact: true}).count()) break;
         await page.getByRole('button', {name: 'Вязать', exact: true}).click();
@@ -89,6 +95,10 @@ try {
     await page.waitForURL(/mode=art-review/);
     assert.match(await page.locator('meta[name="robots"]').getAttribute('content'), /noindex/);
     await page.getByText('TECHNICAL PREVIEW — ART NOT APPROVED', {exact: false}).waitFor();
+    await page.getByRole('button', {name:'Полянка', exact:true}).click();
+    assert.equal(await page.locator('.placed-object').count(), 0);
+    await shot('empty-meadow');
+    await page.getByRole('button', {name:'Мастерская', exact:true}).click();
     await craft('Кролик');
     await page.getByRole('button', {name: 'Полянка', exact: true}).click();
     await rowAction('Кролик', 'Разместить');
@@ -153,6 +163,8 @@ try {
       page.on('pageerror',error=>errors.push(error.message));
       await page.goto(base.href);
       await page.getByRole('button',{name:'Полянка',exact:true}).click();
+      await page.waitForFunction(() => !document.querySelector('button[aria-label="Погладить"]')?.disabled);
+      await page.waitForFunction(() => !document.querySelector('.feedback'));
       for(const lighting of ['day','evening']) {
         if(lighting==='evening')await page.getByRole('button',{name:'Вечер',exact:true}).click();
         await page.locator('img').evaluateAll(images=>Promise.all(images.map(image=>image.decode())));
@@ -164,7 +176,7 @@ try {
       await context.close();
     }
   }
-  console.log(`Static preview verified: ${base.href}; ${manifest.files.length} integrity checks; full rabbit → yarn → flower → idle bonus → reload loop at 360/390/430.`);
+  console.log(`Static preview verified: ${base.href}; ${manifest.files.length} integrity checks; rabbit → yarn → flower → idle bonus → reload at 360/390/430.${manifest.sceneReview ? ' All five projects earned through real play; full day/evening scenes captured at all three sizes.' : ''}`);
 } finally {
   await browser.close();
   if (server) await new Promise(resolve => server.close(resolve));
