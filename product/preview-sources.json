@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "label": "TECHNICAL PREVIEW — ART NOT APPROVED",
+  "sources": [
+    {
+      "pullRequest": 15,
+      "commit": "56a748cc0de532b40a1b9a0927ff1d900406d85b",
+      "directory": "product/art-experiments/rabbit-v1/exports",
+      "files": ["stage-000.webp", "stage-025.webp", "stage-050.webp", "stage-075.webp", "stage-100.webp", "finished-sprite.webp", "meadow-day.webp", "meadow-evening.webp"]
+    },
+    {
+      "pullRequest": 21,
+      "commit": "0dbd5e2e2df90d54e6fe9cb45ff5da5e3955b7f4",
+      "directory": "product/content/items/meadow-flower/art",
+      "files": ["stage-00.webp", "stage-01.webp", "stage-02.webp", "stage-03.webp", "finished.webp"]
+    }
+  ]
+}
