@@ -14,14 +14,14 @@ try {
  if(!catalog.items.length||!catalog.meadows.length){app.replaceChildren(el('h1','Мир на ниточке'),el('p','Готовые полянки ещё проходят художественную приёмку.'),el('p','Игровая сборка не подменяет их черновыми пакетами.'));}
  else {
  let storage;try{storage=localStorage;}catch{notice='Хранилище браузера недоступно. Прогресс сохранится только в этой вкладке.';}
- const session=createSession(config,{storage,key:dev?'mir-na-nitke-development-v1':'mir-na-nitke-v1',onNotice:t=>{notice=t;}});
+ const session=createSession(config,{storage,key:mode==='art-review'?'mir-na-nitke-art-preview-v2':dev?'mir-na-nitke-development-v1':'mir-na-nitke-v1',onNotice:t=>{notice=t;}});
  function act(action){const ok=session.act(action);if(ok&&['pet','sniff'].includes(action.type)){feedback='Тёплая встреча · бонус пряжи';feedbackUntil=Date.now()+2800;}render();}
  function render(){
   const focused=document.activeElement?.dataset.focusKey;buttonSequence=0;
   const view=session.view,m=catalog.meadows[selectedMeadow],mv=view.meadows.find(x=>x.id===m.id);
   app.replaceChildren();
   const header=el('header',undefined,'app-header');header.append(el('strong','Мир на ниточке'),el('span',`${view.wallet.yarn.toFixed(1)} пряжи`));app.append(header);
-  app.append(el('p',dev?(mode==='art-review'?(params.get('flower')==='review'?'ART REVIEW · весь арт не утверждён · кролик + цветок · прочие фигуры тестовые':'ART REVIEW · весь арт не утверждён · кролик · прочие фигуры тестовые'):'ТЕХНИЧЕСКИЙ ПРОТОТИП · тестовые фигуры'):'Игровой прототип','build-label'));
+  app.append(el('p',mode==='art-review'?'TECHNICAL PREVIEW — ART NOT APPROVED · Черновик: арт и кнопки не утверждены':dev?'ТЕХНИЧЕСКИЙ ПРОТОТИП · тестовые фигуры':'Игровой прототип','build-label'));
   const section=el('section',undefined,'view');section.id='view-'+screen;
   const world=el('div',undefined,'meadow-scene');
   const project=view.project&&catalog.items.find(i=>i.id===view.project.itemId);
