@@ -12,9 +12,12 @@ export function startServer(port = Number(process.env.PORT ?? 4173)) {
     const url = new URL(request.url, 'http://localhost');
     const relative = decodeURIComponent(url.pathname).replace(/^\/+/, '');
     if (relative.split(/[\\/]/).some(part => part.startsWith('.'))) throw new Error('Hidden path');
-    const art = /^product\/art-experiments\/rabbit-v1\/exports\/([a-z0-9-]+\.webp)$/.exec(relative);
-    if (art && process.env.ART_REVIEW_ROOT) {
-      const artRoot = await realpath(process.env.ART_REVIEW_ROOT);
+    const rabbit = /^product\/art-experiments\/rabbit-v1\/exports\/([a-z0-9-]+\.webp)$/.exec(relative);
+    const flower = /^product\/content\/items\/meadow-flower\/art\/([a-z0-9-]+\.webp)$/.exec(relative);
+    const art = rabbit ?? flower;
+    const reviewRoot = rabbit ? process.env.ART_REVIEW_ROOT : flower ? process.env.FLOWER_REVIEW_ROOT : null;
+    if (art && reviewRoot) {
+      const artRoot = await realpath(reviewRoot);
       const asset = await realpath(path.join(artRoot, art[1]));
       if (path.dirname(asset) !== artRoot) throw new Error('Outside art review');
       response.writeHead(200, { 'Content-Type': 'image/webp', 'Cache-Control': 'no-store' });
