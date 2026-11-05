@@ -2,7 +2,7 @@
 import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
 import {createServer} from 'node:http';
-import {mkdir, readFile, realpath, stat} from 'node:fs/promises';
+import {mkdir, readFile, realpath, stat, writeFile} from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath, pathToFileURL} from 'node:url';
 
@@ -74,6 +74,14 @@ try {
       await page.screenshot({path: path.join(evidence, `${name}-${width}.png`), fullPage: true});
     };
     const rowAction = async (item, action) => {
+      if (action === 'Разместить') {
+        const primary = page.locator('.action-dock').getByRole('button', {name: action, exact:true});
+        if (await primary.isVisible()) {
+          await shot(item + '-place');
+          await primary.click();
+          return;
+        }
+      }
       let row = page.locator('.project-row').filter({hasText: item});
       if (!await row.isVisible()) {
         const projects = page.getByRole('button', {name: 'Проекты', exact: true});
@@ -95,6 +103,7 @@ try {
     await page.waitForURL(/mode=art-review/);
     assert.match(await page.locator('meta[name="robots"]').getAttribute('content'), /noindex/);
     await page.getByText('TECHNICAL PREVIEW — ART NOT APPROVED', {exact: false}).waitFor();
+    await shot('empty-workshop');
     await page.getByRole('button', {name:'Полянка', exact:true}).click();
     assert.equal(await page.locator('.placed-object').count(), 0);
     await shot('empty-meadow');
@@ -143,6 +152,7 @@ try {
       assert.equal(await page.locator('.placed-object').count(), 5);
       fullMeadowSave = await readSave();
       assert.equal(fullMeadowSave.owned.length, 5);
+      await writeFile(path.join(evidence, 'earned-five-save.json'), JSON.stringify(fullMeadowSave, null, 2) + '\n');
       await page.reload();
       await page.getByRole('button', {name:'Полянка', exact:true}).click();
       assert.equal(await page.locator('.placed-object').count(), 5);
@@ -169,7 +179,11 @@ try {
         if(lighting==='evening')await page.getByRole('button',{name:'Вечер',exact:true}).click();
         await page.locator('img').evaluateAll(images=>Promise.all(images.map(image=>image.decode())));
         assert.equal(await page.locator('.placed-object').count(),5);
+        const cottage = page.getByRole('button',{name:'Домик',exact:true});
+        assert.ok((await cottage.locator('img').getAttribute('src')).endsWith(lighting==='evening'?'house-finished-evening.webp':'house-finished.webp'));
+        if(lighting==='evening')assert.equal(await cottage.evaluate(node=>getComputedStyle(node).filter),'none','Painted evening lighting must not be dimmed again');
         assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
+        assert.equal(await page.evaluate(()=>document.documentElement.scrollHeight>innerHeight),false,'Full scene must fit one viewport');
         await page.screenshot({path:path.join(evidence,`full-meadow-${lighting}-${width}.png`),fullPage:false});
       }
       assert.deepEqual(errors,[]);

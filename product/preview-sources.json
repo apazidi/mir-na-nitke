@@ -30,7 +30,7 @@
       ]
     },
     {
-      "commit": "c88420d87617cf3d1bfb1d9f26a721b60728f6eb",
+      "commit": "18ce3b9dd0313e1896161f33179fd8d2c342369f",
       "directory": "product/art-experiments/scene-v2/exports",
       "files": [
         "butterfly-finished.webp",
@@ -38,6 +38,7 @@
         "butterfly-stage-01.webp",
         "butterfly-stage-02.webp",
         "butterfly-stage-03.webp",
+        "house-finished-evening.webp",
         "house-finished.webp",
         "house-stage-00.webp",
         "house-stage-01.webp",
@@ -53,7 +54,7 @@
       ]
     },
     {
-      "commit": "c88420d87617cf3d1bfb1d9f26a721b60728f6eb",
+      "commit": "18ce3b9dd0313e1896161f33179fd8d2c342369f",
       "directory": "product/art-experiments/scene-v2/ui",
       "files": [
         "complete-disabled.webp",
@@ -68,9 +69,15 @@
         "pet-disabled.webp",
         "pet-pressed.webp",
         "pet.webp",
+        "place-disabled.webp",
+        "place-pressed.webp",
+        "place.webp",
         "projects-disabled.webp",
         "projects-pressed.webp",
         "projects.webp",
+        "start-disabled.webp",
+        "start-pressed.webp",
+        "start.webp",
         "workshop-disabled.webp",
         "workshop-pressed.webp",
         "workshop.webp"
