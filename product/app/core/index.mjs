@@ -208,7 +208,7 @@ export function selectView(state, catalog) {
       ...slot, placed: has(state.placements[m.id] ?? {}, slot.id),
       canPlace: state.owned.includes(slot.itemId) && !Object.values(state.placements).some(p => Object.values(p).includes(slot.itemId))
     })), interactions: rules(m).map(r => ({ id: r.id, action: r.action, trigger: r.trigger,
-      available: active(state, m, r.requires) && state.lastTimestamp >= (state.cooldowns[ruleKey(m, r)] ?? Infinity),
+      available: r.trigger === 'manual' && active(state, m, r.requires) && state.lastTimestamp >= (state.cooldowns[ruleKey(m, r)] ?? Infinity),
       readyAt: state.cooldowns[ruleKey(m, r)] ?? null })) }))
   });
 }

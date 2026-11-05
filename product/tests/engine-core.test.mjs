@@ -18,6 +18,25 @@ const config = {
     ] }]
 };
 const action = (s, type, data = {}, now = s.lastTimestamp) => dispatch(s, { type, now, ...data }, config);
+test('read-model never exposes automatic interactions as manually available', () => {
+  let s = action(resident(), 'pet', { meadowId: 'garden', interactionId: 'pet-animal' });
+  s = action(s, 'startProject', { itemId: 'plant' });
+  s = action(action(s, 'click'), 'click');
+  s = action(s, 'completeCraft');
+  s = action(s, 'placeItem', { meadowId: 'garden', slotId: 'flower' });
+  const due = s.cooldowns['garden/smell'];
+  // Inspect before accrual, including exact and overdue timer boundaries.
+  for (const now of [due - 1, due, due + 1]) {
+    const interactions = selectView({ ...s, lastTimestamp: now }, config).meadows[0].interactions;
+    assert.equal(interactions.find(r => r.id === 'smell').available, false);
+    assert.equal(interactions.find(r => r.id === 'smell').readyAt, due);
+    assert.equal(interactions.find(r => r.id === 'pet-animal').available, true);
+  }
+  assert.equal(selectView(s, config).meadows[0].interactions[0].available, false);
+  const advanced = advanceTime(s, due, config);
+  assert.equal(advanced.wallet.yarn, 11.5);
+  assert.equal(selectView(advanced, config).meadows[0].interactions[1].available, false);
+});
 function resident() {
   let s = action(createInitialState(config, 0), 'startProject', { itemId: 'animal' });
   s = action(action(s, 'click'), 'click');

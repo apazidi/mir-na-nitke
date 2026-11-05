@@ -42,7 +42,9 @@ art requirements remain enforced by content validation, outside core.
 Read-model: wallet, owned IDs, project work/progress/stage index/canComplete,
 project affordability, upgrade prices/levels, meadow slots/placement capability,
 interaction availability and next timestamps. Stage index addresses the item's
-manifest stages array. Idle rules are informational; never award them manually.
+manifest stages array. Interaction available is true only for eligible manual
+rules. Idle rules always expose available=false; readyAt retains their automatic
+timer for informational display. Never award idle rules manually.
 
 ## Time and saves
 Backward timestamps are ignored. A tick consumes at most maxOfflineMs, then
