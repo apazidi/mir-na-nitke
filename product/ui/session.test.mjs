@@ -26,7 +26,7 @@ test('scene-v2 art and button assets stay behind the explicit art review opt-in'
  assert.ok(ordinary.catalog.items[2].art.finishedSprite.startsWith('data:'));
  assert.ok(rabbitOnly.catalog.items[2].art.finishedSprite.startsWith('data:'));
  const review=developmentCatalog(true,true,true);
- assert.equal(Object.keys(review.buttonArt).length,6);
+ assert.equal(Object.keys(review.buttonArt).length,8);
  for(const item of review.catalog.items.slice(2)){
   assert.equal(item.art.stages.length,4);assert.equal(item.art.stages[0].at,0);assert.equal(item.art.stages.at(-1).at,1);
   assert.ok(item.art.finishedSprite.startsWith('./art-experiments/scene-v2/'));assert.equal(item.status,undefined);

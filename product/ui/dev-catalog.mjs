@@ -18,6 +18,7 @@ export function developmentCatalog(artReview=false, flowerReview=false, sceneRev
   stages:[0,1/3,2/3,1].map((at,n)=>({at,image:sceneRoot+'exports/'+item.id+'-stage-0'+n+'.webp'})),
   finishedSprite:sceneRoot+'exports/'+item.id+'-finished.webp'
  };
+ if(useScene)items.find(item=>item.id==='house').art.finishedSpriteEvening=sceneRoot+'exports/house-finished-evening.webp';
  const meadowArt=useScene?sceneRoot+'exports/':artRoot;
  const meadow={id:'test-meadow',displayName:'Малая полянка · тест',art:{
   backgroundDay:artReview?meadowArt+'meadow-day.webp':blank,
@@ -30,7 +31,7 @@ export function developmentCatalog(artReview=false, flowerReview=false, sceneRev
   {id:'pet',requires:['rabbit'],actorSlot:'rabbit',action:'pet',trigger:'manual',amount:2,cooldownMs:5000},
   {id:'sniff',requires:['rabbit','flower'],actorSlot:'rabbit',action:'sniff',trigger:'idle',amount:3,cooldownMs:10000}
  ]};
- const buttonIds={'Мастерская':'workshop','Полянка':'meadow','Проекты':'projects','Вязать':'knit','Завершить':'complete','Погладить':'pet'};
+ const buttonIds={'Мастерская':'workshop','Полянка':'meadow','Проекты':'projects','Начать':'start','Вязать':'knit','Завершить':'complete','Разместить':'place','Погладить':'pet'};
  const buttonArt=useScene?Object.fromEntries(Object.entries(buttonIds).map(([label,id])=>[label,Object.fromEntries(['normal','pressed','disabled'].map(state=>[state,url(sceneRoot+'ui/'+id+(state==='normal'?'':'-'+state)+'.webp')]))])):null;
  return {buttonArt,workshopBackdrop:artReview?url(artRoot+'stage-000.webp'):null,catalog:{items,meadows:[meadow]},
   config:{items,meadows:[meadow],initialYarn:5,reserveYarnPerHour:12,clickWork:4,idleWorkPerSecond:1,maxOfflineMs:28800000,
