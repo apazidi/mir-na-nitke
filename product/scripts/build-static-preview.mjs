@@ -9,6 +9,7 @@ const root = fileURLToPath(new URL('../../', import.meta.url));
 const output = path.resolve(root, 'play-preview');
 const sha256 = bytes => createHash('sha256').update(bytes).digest('hex');
 const git = (...args) => execFileSync('git', args, {cwd: root, maxBuffer: 32 * 1024 * 1024});
+const appRef = git('rev-parse', 'HEAD').toString().trim();
 const sources = JSON.parse(await readFile(path.join(root, 'product/preview-sources.json'), 'utf8'));
 const files = new Map();
 const sourceFiles = new Map();
@@ -18,7 +19,9 @@ const put = (name, bytes) => {
 };
 async function copySource(name) {
   if (sourceFiles.has(name)) return;
-  const bytes = await readFile(path.join(root, name));
+  const bytes = git('show', `${appRef}:${name}`);
+  const working = Buffer.from((await readFile(path.join(root, name), 'utf8')).replace(/\r\n/g, '\n'));
+  if (!working.equals(bytes)) throw Error(`Commit browser source changes before building: ${name}`);
   sourceFiles.set(name, sha256(bytes));
   put(name, bytes);
   if (!name.endsWith('.mjs')) return;
