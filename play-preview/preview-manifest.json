@@ -3,16 +3,16 @@
   "label": "TECHNICAL PREVIEW — ART NOT APPROVED",
   "productionContent": false,
   "saveKey": "mir-na-nitke-art-preview-v2",
-  "appSourceCommit": "22084008526dc6bbf9594ceea03ae97e2ae76d17",
+  "appSourceCommit": "5c9a7db087bf17a65084b9cf23d13b7d6e0b7180",
   "sourceFiles": {
     "design-system/skin-v4.css": "e4f36c8097902532bbafde6589a5d916965f2b8881fd93a934d847b07d982b4c",
     "product/app/content/index.mjs": "00b9669ff7929c556b0b22b0dc1d54a8a717f80898af6668c6f674ae76033dff",
     "product/app/core/index.mjs": "8719548d829d22c499e06c21c3c363aa80020daa2881ea52c57f082b1dbade16",
     "product/app/ui/session.mjs": "b3bd6367312130aae5ab906577c3aae1fa9018ecd2bd37a623f15c430c6d555d",
-    "product/ui/dev-catalog.mjs": "fdd304771a2fcd89366f9efe58526f2aa02a0a5f6a46bcb23a6b83fc3133cf6a",
+    "product/ui/dev-catalog.mjs": "3d04ca092131519b965c216ce8ef2e1c7d23ff98c0b82810de077cffae7475fd",
     "product/ui/index.html": "a0c11afe2326ccd9bc123d5fd75403be00a2943e3b328344958514a2c0542dc5",
-    "product/ui/main.mjs": "c896434d8b1d29b6e75cf69c7058725cbcfc3a0bbeda5c94af3b6ebec1d280b0",
-    "product/ui/shell.css": "57c880c945fe1cef1ab1436c189b6d9137769367d393a9c7c68a432849c7df24"
+    "product/ui/main.mjs": "0a7cc1cb53ca6a0c25108766820632567658fbb18bfba4a6324b2a43f417d2e7",
+    "product/ui/shell.css": "1fdca966d051eccf815786319162a0957c8855bd44bb01545676923632cf48b5"
   },
   "artSources": [
     {
@@ -141,8 +141,8 @@
     },
     {
       "path": "product/ui/dev-catalog.mjs",
-      "bytes": 2817,
-      "sha256": "fdd304771a2fcd89366f9efe58526f2aa02a0a5f6a46bcb23a6b83fc3133cf6a"
+      "bytes": 2828,
+      "sha256": "3d04ca092131519b965c216ce8ef2e1c7d23ff98c0b82810de077cffae7475fd"
     },
     {
       "path": "product/ui/index.html",
@@ -151,13 +151,13 @@
     },
     {
       "path": "product/ui/main.mjs",
-      "bytes": 8739,
-      "sha256": "c896434d8b1d29b6e75cf69c7058725cbcfc3a0bbeda5c94af3b6ebec1d280b0"
+      "bytes": 18227,
+      "sha256": "0a7cc1cb53ca6a0c25108766820632567658fbb18bfba4a6324b2a43f417d2e7"
     },
     {
       "path": "product/ui/shell.css",
-      "bytes": 2630,
-      "sha256": "57c880c945fe1cef1ab1436c189b6d9137769367d393a9c7c68a432849c7df24"
+      "bytes": 9008,
+      "sha256": "1fdca966d051eccf815786319162a0957c8855bd44bb01545676923632cf48b5"
     }
   ]
 }
