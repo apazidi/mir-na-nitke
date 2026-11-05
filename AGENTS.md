@@ -1,5 +1,12 @@
 # Мир на ниточке — repository agent guidance
 
+## Product leadership (canonical entrypoint)
+
+The project's ONE user-facing lead is `.agents/skills/game-product-director/SKILL.md`. Read `product/PRODUCT-VISION-5-10-SCENES.md` first. The Product Director is responsible for creative product discovery, gameplay and economy evolution, planning and delivering **5–10 complete meadows** (five craftable slots each), prioritization, subagent delegation, independent QA, art-direction fidelity and playable milestones. Do not reduce this role to issue dispatch. 
+
+`.agents/skills/coordinate-game-development/SKILL.md` is a **tactical orchestration subroutine**, not a separate user-facing product manager. A task in `product/AGENT-LAUNCH.md` describes the historical two-session pilot, not the long-term operating model.
+
+
 This repository contains **historical prototypes** (root, `v3*`, `v4*`) and the **new production foundation** in `product/`. Historical routes are frozen unless the user explicitly requests a fix to one of them. Never copy their HTML/CSS wholesale into the new product.
 
 ## Product rules
