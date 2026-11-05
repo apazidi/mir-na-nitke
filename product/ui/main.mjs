@@ -9,8 +9,8 @@ let notice='',screen='workshop',evening=false,selectedMeadow=0,feedback='',feedb
 const button=(label,fn,disabled=false,cls='button soft')=>{const b=el('button',label,cls);b.type='button';b.dataset.focusKey=String(buttonSequence++);b.disabled=disabled;b.addEventListener('click',fn);return b;};
 const image=(src,alt,cls)=>{const e=el('img',undefined,cls);e.src=src;e.alt=alt;e.addEventListener('error',()=>{e.hidden=true;notice='Часть иллюстраций недоступна. Арт ещё не прошёл приёмку.';},{once:true});return e;};
 try {
- const runtime=dev?developmentCatalog(mode==='art-review'):await loadRuntimeCatalog(new URL('../app/content/catalog.json',import.meta.url));
- const {catalog,config,assetUrl}=runtime;
+ const runtime=dev?developmentCatalog(mode==='art-review',params.get('flower')==='review'):await loadRuntimeCatalog(new URL('../app/content/catalog.json',import.meta.url));
+ const {catalog,config,assetUrl,workshopBackdrop}=runtime;
  if(!catalog.items.length||!catalog.meadows.length){app.replaceChildren(el('h1','Мир на ниточке'),el('p','Готовые полянки ещё проходят художественную приёмку.'),el('p','Игровая сборка не подменяет их черновыми пакетами.'));}
  else {
  let storage;try{storage=localStorage;}catch{notice='Хранилище браузера недоступно. Прогресс сохранится только в этой вкладке.';}
@@ -21,12 +21,13 @@ try {
   const view=session.view,m=catalog.meadows[selectedMeadow],mv=view.meadows.find(x=>x.id===m.id);
   app.replaceChildren();
   const header=el('header',undefined,'app-header');header.append(el('strong','Мир на ниточке'),el('span',`${view.wallet.yarn.toFixed(1)} пряжи`));app.append(header);
-  app.append(el('p',dev?(mode==='art-review'?'ART REVIEW · кролик не утверждён, остальные фигуры тестовые':'ТЕХНИЧЕСКИЙ ПРОТОТИП · тестовые фигуры'):'Игровой прототип','build-label'));
+  app.append(el('p',dev?(mode==='art-review'?(params.get('flower')==='review'?'ART REVIEW · весь арт не утверждён · кролик + цветок · прочие фигуры тестовые':'ART REVIEW · весь арт не утверждён · кролик · прочие фигуры тестовые'):'ТЕХНИЧЕСКИЙ ПРОТОТИП · тестовые фигуры'):'Игровой прототип','build-label'));
   const section=el('section',undefined,'view');section.id='view-'+screen;
   const world=el('div',undefined,'meadow-scene');
   const project=view.project&&catalog.items.find(i=>i.id===view.project.itemId);
   const art=screen==='workshop'&&project?selectStage(project,view.project.progress)?.image:m.art[evening?'backgroundEvening':'backgroundDay'];
-  if(art)world.append(image(assetUrl(project&&screen==='workshop'?project:m,art),project?project.displayName:m.displayName,'meadow-back'));
+  if(screen==='workshop'&&workshopBackdrop)world.append(image(workshopBackdrop,'Мастерская · экспериментальный фон','meadow-back'));
+  if(art&&!(screen==='workshop'&&!project&&workshopBackdrop))world.append(image(assetUrl(project&&screen==='workshop'?project:m,art),project?project.displayName:m.displayName,'meadow-back'));
   const title=el('div',undefined,'section-title');title.append(el('h1',screen==='workshop'?'Мастерская':m.displayName));world.append(title);
   if(screen==='meadow'){
    for(const slot of placementLayout(m,session.state.placements[m.id]??{},catalog.items)){
