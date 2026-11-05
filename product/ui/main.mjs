@@ -91,7 +91,7 @@ try {
      const row = el('div', undefined, 'project-row' + (owned ? ' done' : ''));
      const name = el('span', undefined, 'row-copy');
      name.append(el('strong', item.displayName), el('small', owned ? 'Уже связан' : project.yarnCost + ' пряжи'));
-     if (item.id === 'flower' && !owned) name.append(el('small', 'Кролик нюхает цветок — вместе больше пряжи'));
+     if (item.id === 'flower' && !owned) name.append(el('small', 'Цветочек для друга — вместе больше пряжи'));
      row.append(name, button(owned ? 'Готово' : 'Начать', () => act({type: 'startProject', itemId: item.id}), !project.canStart, 'button soft', 'start-' + item.id));
      details.append(row);
     }
