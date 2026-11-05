@@ -1,0 +1,74 @@
+[
+  {
+    "file": "finished-sprite.png",
+    "width": 1024,
+    "height": 1820,
+    "bytes": 1373735,
+    "transparentSamples": 28632,
+    "sha256": "2016E19B3A28EC65006279FD7A2E08C088FA0C518181453EED8E965D493DA4D3"
+  },
+  {
+    "file": "golden-frame.png",
+    "width": 1024,
+    "height": 1820,
+    "bytes": 4711629,
+    "transparentSamples": 0,
+    "sha256": "4519BDF05B26D50C7B0699DCCFA1FD3E5E76A1DB7F670A1FF98C6EF1AB1C56BA"
+  },
+  {
+    "file": "meadow-day.png",
+    "width": 1024,
+    "height": 1820,
+    "bytes": 5007169,
+    "transparentSamples": 0,
+    "sha256": "C8727714DA2EE7936D58E2CE2C0AEF875E2897C50CAE02E4628E1D50F6D8E091"
+  },
+  {
+    "file": "meadow-evening.png",
+    "width": 1024,
+    "height": 1820,
+    "bytes": 4664625,
+    "transparentSamples": 0,
+    "sha256": "9A1AC846B03C694E30F64198C85E3B6C2D4E3ED6C90258616D5B41FE74F65814"
+  },
+  {
+    "file": "stage-000.png",
+    "width": 1024,
+    "height": 1820,
+    "bytes": 4196589,
+    "transparentSamples": 0,
+    "sha256": "F0B2363A62FFDA76BE45B88B138C86FD783A2D4CDED1AC65DD750215E37FFFB8"
+  },
+  {
+    "file": "stage-025.png",
+    "width": 1024,
+    "height": 1820,
+    "bytes": 4340661,
+    "transparentSamples": 0,
+    "sha256": "94D274BA371B8184FC4CC11F3EB3AE349439ADB5EB8C03C0E7B18D7F82270DD3"
+  },
+  {
+    "file": "stage-050.png",
+    "width": 1024,
+    "height": 1820,
+    "bytes": 4477949,
+    "transparentSamples": 0,
+    "sha256": "8D9AB56199DE86D3ED87ADEE20D01FA49525D8DCED55CC424FCDC96D32DE9179"
+  },
+  {
+    "file": "stage-075.png",
+    "width": 1024,
+    "height": 1820,
+    "bytes": 4582277,
+    "transparentSamples": 0,
+    "sha256": "389D6631C43797A8F87E7372D79879A64C628F889CD0A08DAF116A869372F9E5"
+  },
+  {
+    "file": "stage-100.png",
+    "width": 1024,
+    "height": 1820,
+    "bytes": 4711629,
+    "transparentSamples": 0,
+    "sha256": "4519BDF05B26D50C7B0699DCCFA1FD3E5E76A1DB7F670A1FF98C6EF1AB1C56BA"
+  }
+]

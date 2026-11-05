@@ -1,0 +1,139 @@
+{
+  "status": "draft",
+  "artboard": [
+    1024,
+    1820
+  ],
+  "parts": [
+    {
+      "id": "ears",
+      "crop": [
+        1024,
+        45,
+        512,
+        500
+      ],
+      "destination": [
+        260,
+        393,
+        504,
+        504
+      ]
+    },
+    {
+      "id": "body",
+      "crop": [
+        40,
+        55,
+        450,
+        485
+      ],
+      "destination": [
+        315,
+        897,
+        394,
+        425
+      ]
+    },
+    {
+      "id": "arms",
+      "crop": [
+        32,
+        600,
+        460,
+        355
+      ],
+      "destination": [
+        246,
+        1005,
+        533,
+        312
+      ]
+    },
+    {
+      "id": "head",
+      "crop": [
+        520,
+        70,
+        480,
+        460
+      ],
+      "destination": [
+        260,
+        729,
+        504,
+        482
+      ]
+    },
+    {
+      "id": "feet",
+      "crop": [
+        520,
+        605,
+        490,
+        350
+      ],
+      "destination": [
+        291,
+        1197,
+        442,
+        316
+      ]
+    },
+    {
+      "id": "bow",
+      "crop": [
+        1070,
+        620,
+        415,
+        325
+      ],
+      "destination": [
+        408,
+        1125,
+        209,
+        163
+      ]
+    }
+  ],
+  "stages": [
+    {
+      "progress": 0,
+      "parts": []
+    },
+    {
+      "progress": 25,
+      "parts": [
+        "body"
+      ]
+    },
+    {
+      "progress": 50,
+      "parts": [
+        "body",
+        "arms",
+        "feet"
+      ]
+    },
+    {
+      "progress": 75,
+      "parts": [
+        "body",
+        "arms",
+        "head",
+        "feet"
+      ]
+    },
+    {
+      "progress": 100,
+      "parts": [
+        "ears",
+        "body",
+        "arms",
+        "head",
+        "feet",
+        "bow"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+[
+  {
+    "file": "finished-sprite.webp",
+    "bytes": 169510,
+    "width": 1024,
+    "height": 1820,
+    "hasAlpha": true
+  },
+  {
+    "file": "golden-frame.webp",
+    "bytes": 313646,
+    "width": 1024,
+    "height": 1820,
+    "hasAlpha": true
+  },
+  {
+    "file": "meadow-day.webp",
+    "bytes": 306092,
+    "width": 1024,
+    "height": 1820,
+    "hasAlpha": true
+  },
+  {
+    "file": "meadow-evening.webp",
+    "bytes": 313038,
+    "width": 1024,
+    "height": 1820,
+    "hasAlpha": true
+  },
+  {
+    "file": "stage-000.webp",
+    "bytes": 231270,
+    "width": 1024,
+    "height": 1820,
+    "hasAlpha": true
+  },
+  {
+    "file": "stage-025.webp",
+    "bytes": 250650,
+    "width": 1024,
+    "height": 1820,
+    "hasAlpha": true
+  },
+  {
+    "file": "stage-050.webp",
+    "bytes": 265228,
+    "width": 1024,
+    "height": 1820,
+    "hasAlpha": true
+  },
+  {
+    "file": "stage-075.webp",
+    "bytes": 273732,
+    "width": 1024,
+    "height": 1820,
+    "hasAlpha": true
+  },
+  {
+    "file": "stage-100.webp",
+    "bytes": 313646,
+    "width": 1024,
+    "height": 1820,
+    "hasAlpha": true
+  }
+]
