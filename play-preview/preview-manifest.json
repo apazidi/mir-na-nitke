@@ -1,0 +1,163 @@
+{
+  "schemaVersion": 1,
+  "label": "TECHNICAL PREVIEW — ART NOT APPROVED",
+  "productionContent": false,
+  "saveKey": "mir-na-nitke-art-preview-v2",
+  "appSourceCommit": "22084008526dc6bbf9594ceea03ae97e2ae76d17",
+  "sourceFiles": {
+    "design-system/skin-v4.css": "b0fea456d64c4a512eb26014805a69a3c5a38a85a31db0e2dcb950a52108376e",
+    "product/app/content/index.mjs": "151406403226d815518ca445e1d71454d05bdef8bd9aaf55d66d3d0d2660f896",
+    "product/app/core/index.mjs": "ac8df90f7be44c27db10a84e6d3c9ff226b9e5e3c43baa093f8369c74ed87054",
+    "product/app/ui/session.mjs": "5412b10bfcd86425dd6bef42427c8a689ab0e1bde765f42733257bb0169d7747",
+    "product/ui/dev-catalog.mjs": "b1ba1cea1461446893b460b55e043820fbf46d3b3ab1a117b91e7fb2917d8813",
+    "product/ui/index.html": "7b29dc0f977087e73e96729e9518727e4c514495e9db010f88913e563ef32ff6",
+    "product/ui/main.mjs": "a262c2a6c2cf447fbeacbee22b2ddeecfbf05cf0cc4573dc9223cfd26d19b9dd",
+    "product/ui/shell.css": "c829e303b1109730ba92748343ed4be736421ea811a7dffc62b3a7087918df49"
+  },
+  "artSources": [
+    {
+      "pullRequest": 15,
+      "commit": "56a748cc0de532b40a1b9a0927ff1d900406d85b",
+      "directory": "product/art-experiments/rabbit-v1/exports",
+      "files": [
+        "stage-000.webp",
+        "stage-025.webp",
+        "stage-050.webp",
+        "stage-075.webp",
+        "stage-100.webp",
+        "finished-sprite.webp",
+        "meadow-day.webp",
+        "meadow-evening.webp"
+      ]
+    },
+    {
+      "pullRequest": 21,
+      "commit": "0dbd5e2e2df90d54e6fe9cb45ff5da5e3955b7f4",
+      "directory": "product/content/items/meadow-flower/art",
+      "files": [
+        "stage-00.webp",
+        "stage-01.webp",
+        "stage-02.webp",
+        "stage-03.webp",
+        "finished.webp"
+      ]
+    }
+  ],
+  "files": [
+    {
+      "path": "design-system/skin-v4.css",
+      "bytes": 8251,
+      "sha256": "b0fea456d64c4a512eb26014805a69a3c5a38a85a31db0e2dcb950a52108376e"
+    },
+    {
+      "path": "index.html",
+      "bytes": 575,
+      "sha256": "270fbaf99bf0a7b3ab693a700a3b6185a2c37d933058ad8b38feaf7c3d70468e"
+    },
+    {
+      "path": "product/app/content/catalog.json",
+      "bytes": 73,
+      "sha256": "1728e7cdcf6a1448edadfc9d912adc635f60cffd368c820b54aadb4dfdca64da"
+    },
+    {
+      "path": "product/app/content/index.mjs",
+      "bytes": 3768,
+      "sha256": "151406403226d815518ca445e1d71454d05bdef8bd9aaf55d66d3d0d2660f896"
+    },
+    {
+      "path": "product/app/core/index.mjs",
+      "bytes": 12113,
+      "sha256": "ac8df90f7be44c27db10a84e6d3c9ff226b9e5e3c43baa093f8369c74ed87054"
+    },
+    {
+      "path": "product/app/ui/session.mjs",
+      "bytes": 1376,
+      "sha256": "5412b10bfcd86425dd6bef42427c8a689ab0e1bde765f42733257bb0169d7747"
+    },
+    {
+      "path": "product/art-experiments/rabbit-v1/exports/finished-sprite.webp",
+      "bytes": 234578,
+      "sha256": "f2b16b65a25c73c0f7f9d45ef73a4e30429e731598c8a65188f81f9c9576aab6"
+    },
+    {
+      "path": "product/art-experiments/rabbit-v1/exports/meadow-day.webp",
+      "bytes": 302328,
+      "sha256": "36dec3c28772e51935ed5e90fa4a86659385ec9ca934f08a60bb1a41038d9e48"
+    },
+    {
+      "path": "product/art-experiments/rabbit-v1/exports/meadow-evening.webp",
+      "bytes": 317562,
+      "sha256": "aa419363a9bd8732e377d5f5b9eea8e9e68a225ef36bfbeb6fcc36a1b365be8e"
+    },
+    {
+      "path": "product/art-experiments/rabbit-v1/exports/stage-000.webp",
+      "bytes": 440466,
+      "sha256": "1781ecf439989d9984d0fc97979c5b7860a603eb22d045b2d9fb4c14687dec6d"
+    },
+    {
+      "path": "product/art-experiments/rabbit-v1/exports/stage-025.webp",
+      "bytes": 427618,
+      "sha256": "33f3b9ea9ccddb1b9e09b8a2c451d1ae8363d73bf59d615af1ad4181bf85ea30"
+    },
+    {
+      "path": "product/art-experiments/rabbit-v1/exports/stage-050.webp",
+      "bytes": 425206,
+      "sha256": "b428cccfc014660c40efccd6bb1b1e6e6be213376e649056692e0717541bde6e"
+    },
+    {
+      "path": "product/art-experiments/rabbit-v1/exports/stage-075.webp",
+      "bytes": 458508,
+      "sha256": "0984a154bc6618653fedf2dfd6d977b4d63a787a0f905ed7deab5f367de66f13"
+    },
+    {
+      "path": "product/art-experiments/rabbit-v1/exports/stage-100.webp",
+      "bytes": 477250,
+      "sha256": "4cdcfdce28d6ab47873942533bb046c939ed5d56a9bedaa36731e86dfdd37748"
+    },
+    {
+      "path": "product/content/items/meadow-flower/art/finished.webp",
+      "bytes": 305534,
+      "sha256": "22c67d96fc833401fb4220ba6c76d113a58287705c5eddd9a489f5ab45b0eda3"
+    },
+    {
+      "path": "product/content/items/meadow-flower/art/stage-00.webp",
+      "bytes": 48688,
+      "sha256": "1ee5bfad5f812751471ca6f318d19dceec6438a91cbb09c8a5c6b8effbbf0c0a"
+    },
+    {
+      "path": "product/content/items/meadow-flower/art/stage-01.webp",
+      "bytes": 145960,
+      "sha256": "c0b41ccbda730c561d081789c642d887aa2da841efe1daeb5f0a7fea748e7811"
+    },
+    {
+      "path": "product/content/items/meadow-flower/art/stage-02.webp",
+      "bytes": 176686,
+      "sha256": "6dfce439bcfe141d6627d68933128cad08151e44cefc6e329fc3272f87c905ba"
+    },
+    {
+      "path": "product/content/items/meadow-flower/art/stage-03.webp",
+      "bytes": 305534,
+      "sha256": "22c67d96fc833401fb4220ba6c76d113a58287705c5eddd9a489f5ab45b0eda3"
+    },
+    {
+      "path": "product/ui/dev-catalog.mjs",
+      "bytes": 2828,
+      "sha256": "b1ba1cea1461446893b460b55e043820fbf46d3b3ab1a117b91e7fb2917d8813"
+    },
+    {
+      "path": "product/ui/index.html",
+      "bytes": 510,
+      "sha256": "7b29dc0f977087e73e96729e9518727e4c514495e9db010f88913e563ef32ff6"
+    },
+    {
+      "path": "product/ui/main.mjs",
+      "bytes": 8804,
+      "sha256": "a262c2a6c2cf447fbeacbee22b2ddeecfbf05cf0cc4573dc9223cfd26d19b9dd"
+    },
+    {
+      "path": "product/ui/shell.css",
+      "bytes": 2631,
+      "sha256": "c829e303b1109730ba92748343ed4be736421ea811a7dffc62b3a7087918df49"
+    }
+  ]
+}
