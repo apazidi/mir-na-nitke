@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "kind": "item",
+  "id": "bunny",
+  "status": "draft",
+  "displayName": "Вязаный кролик",
+  "description": "Первый житель Кроличьей полянки. После завершения игрок сможет его погладить, а позже — наблюдать, как он нюхает цветок.",
+  "tags": [
+    "character",
+    "animal",
+    "starter",
+    "rabbit"
+  ],
+  "workUnits": 1000,
+  "art": {
+    "styleId": "crochet-diorama-v1",
+    "logicalSize": [
+      1024,
+      1820
+    ],
+    "stages": [
+      {
+        "at": 0,
+        "image": "art/stage-00.webp",
+        "label": "Начальное кольцо"
+      },
+      {
+        "at": 0.12,
+        "image": "art/stage-01.webp",
+        "label": "Начало туловища"
+      },
+      {
+        "at": 0.28,
+        "image": "art/stage-02.webp",
+        "label": "Туловище готово"
+      },
+      {
+        "at": 0.44,
+        "image": "art/stage-03.webp",
+        "label": "Голова"
+      },
+      {
+        "at": 0.6,
+        "image": "art/stage-04.webp",
+        "label": "Ушки"
+      },
+      {
+        "at": 0.73,
+        "image": "art/stage-05.webp",
+        "label": "Лапки и хвостик"
+      },
+      {
+        "at": 0.86,
+        "image": "art/stage-06.webp",
+        "label": "Сборка"
+      },
+      {
+        "at": 1,
+        "image": "art/stage-07.webp",
+        "label": "Кролик готов"
+      }
+    ],
+    "finishedSprite": "art/finished.webp"
+  }
+}
