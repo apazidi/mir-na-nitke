@@ -29,6 +29,8 @@ jobs:
         run: npm --prefix product test
       - name: Validate content and references
         run: npm --prefix product run validate
+      - name: Build ready-only browser catalog
+        run: npm --prefix product run build
       - name: Enforce single-package agent ownership
         if: github.event_name == 'pull_request'
         env:

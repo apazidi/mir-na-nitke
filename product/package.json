@@ -5,6 +5,7 @@
   "scripts": {
     "validate": "node scripts/validate-content.mjs",
     "test": "node scripts/run-tests.mjs",
-    "serve": "node scripts/serve-preview.mjs"
+    "serve": "node scripts/serve-preview.mjs",
+    "build": "node scripts/build-content-index.mjs"
   }
 }
