@@ -29,9 +29,34 @@ jobs:
         run: npm --prefix product test
       - name: Validate content and references
         run: npm --prefix product run validate
+      - name: Build ready-only browser catalog
+        run: npm --prefix product run build
       - name: Enforce single-package agent ownership
         if: github.event_name == 'pull_request'
         env:
           AGENT_BRANCH: ${{ github.head_ref }}
           TARGET_BRANCH: ${{ github.base_ref }}
         run: node product/scripts/check-agent-scope.mjs
+
+  browser-loop:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install pinned browser test runner
+        run: |
+          npm install --prefix "$RUNNER_TEMP/mir-browser" --no-save --package-lock=false playwright@1.62.1
+          node "$RUNNER_TEMP/mir-browser/node_modules/playwright/cli.js" install --with-deps chromium
+      - name: Build and exercise technical player loop
+        run: |
+          npm --prefix product run build
+          PLAYWRIGHT_MODULE="$RUNNER_TEMP/mir-browser/node_modules/playwright/index.mjs" node product/ui/browser-check.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: product-technical-mobile-preview
+          path: product/ui/review/*.png
+          retention-days: 15
