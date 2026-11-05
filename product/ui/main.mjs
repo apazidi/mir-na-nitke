@@ -61,6 +61,7 @@ try {
     } else if (action.type === 'completeCraft') {
      lastCrafted = beforeItem; react('complete', beforeItem.displayName + ' готов! Пора на полянку');
     } else if (action.type === 'placeItem') {
+     drawer = false;
      const slot = meadow.slots.find(item => item.id === action.slotId);
      react('place', itemById(slot.itemId).displayName + ' теперь на полянке', [slot.id]);
     } else if (action.type === 'startProject') {
@@ -179,7 +180,7 @@ try {
     const tab = button(text, () => navigate(id), false, 'tab ' + (!drawer && screen === id ? 'selected' : ''), 'tab-' + id);
     if (!drawer && screen === id) tab.setAttribute('aria-current', 'page'); nav.append(tab);
    }
-   const projects = button('Проекты', () => { drawer = !drawer; render(); }, false, 'tab ' + (drawer ? 'selected' : ''), 'tab-projects');
+   const projects = button('Проекты', () => { drawer = !drawer; render(); if(drawer) app.querySelector('[data-focus-key="close-drawer"]')?.focus({preventScroll:true}); }, false, 'tab ' + (drawer ? 'selected' : ''), 'tab-projects');
    projects.setAttribute('aria-expanded', String(drawer)); projects.setAttribute('aria-controls', 'projects-drawer'); nav.append(projects); world.append(nav);
    if (notice) { const status = el('p', notice, 'notice'); status.setAttribute('role', 'status'); world.append(status); }
    section.append(world); app.append(section);
