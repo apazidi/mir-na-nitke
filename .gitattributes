@@ -1,0 +1,2 @@
+# Generated preview is byte-addressed by preview-manifest.json; never rewrite it on checkout.
+play-preview/** -text
