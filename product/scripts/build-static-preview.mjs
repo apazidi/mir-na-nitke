@@ -52,16 +52,18 @@ for (const source of sources.sources) {
   }
 }
 put('product/app/content/catalog.json', JSON.stringify({schemaVersion: 1, items: [], meadows: [], assets: []}, null, 2) + '\n');
+const entryQuery = 'mode=art-review&flower=review' + (sources.sceneReview ? '&scene=v2' : '');
 put('index.html', `<!doctype html>
 <html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow"><title>Мир на ниточке — техническое превью</title></head>
 <body><h1>${sources.label}</h1><p>Техническая сборка. Арт не утверждён.</p>
-<a href="./product/ui/?mode=art-review&amp;flower=review">Открыть игру</a>
-<script>location.replace('./product/ui/?mode=art-review&flower=review');</script></body></html>\n`);
+<a href="./product/ui/?${entryQuery.replaceAll('&', '&amp;')}">Открыть игру</a>
+<script>location.replace('./product/ui/?${entryQuery}');</script></body></html>\n`);
 const manifest = {
   schemaVersion: 1,
   label: sources.label,
   productionContent: false,
+  sceneReview: sources.sceneReview === true,
   saveKey: 'mir-na-nitke-art-preview-v2',
   appSourceCommit: git('log', '-1', '--format=%H', '--', ...[...sourceFiles.keys()].sort()).toString().trim(),
   sourceFiles: Object.fromEntries([...sourceFiles].sort(([a], [b]) => a.localeCompare(b))),

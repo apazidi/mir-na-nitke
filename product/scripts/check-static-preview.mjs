@@ -48,6 +48,7 @@ try {
     assert.equal(bytes.length, file.bytes, file.path);
     assert.equal(createHash('sha256').update(bytes).digest('hex'), file.sha256, file.path);
   }
+  let fullMeadowSave;
   for (const [width, height] of [[360, 800], [390, 844], [430, 932]]) {
     const context = await browser.newContext({viewport: {width, height}});
     const page = await context.newPage();
@@ -81,6 +82,7 @@ try {
         if (await page.getByRole('button', {name: 'Завершить', exact: true}).count()) break;
         await page.getByRole('button', {name: 'Вязать', exact: true}).click();
       }
+      await shot(item + '-finished');
       await page.getByRole('button', {name: 'Завершить', exact: true}).click();
     };
     await page.goto(base.href);
@@ -112,11 +114,55 @@ try {
     assert.equal(await page.locator('.placed-object').count(), 2);
     assert.deepEqual((await readSave()).placements, after.placements);
     await shot('reload');
+    if (manifest.sceneReview && width === 390) {
+      // Earn the remaining projects through actual game actions and real idle time.
+      // The resulting save is reused only for responsive visual inspection below.
+      for (const [item, cost] of [['Дерево',11],['Домик',14],['Бабочка',17]]) {
+        const deadline = Date.now() + 120000;
+        while ((await readSave()).wallet.yarn < cost) {
+          assert.ok(Date.now() < deadline, 'The remaining meadow projects must be reachable without a resource dead end');
+          const pet = page.getByRole('button', {name:'Погладить', exact:true});
+          if (await pet.isEnabled()) await pet.click();
+          await page.waitForTimeout(1000);
+        }
+        await page.getByRole('button', {name:'Мастерская', exact:true}).click();
+        await craft(item);
+        await page.getByRole('button', {name:'Полянка', exact:true}).click();
+        await rowAction(item, 'Разместить');
+      }
+      assert.equal(await page.locator('.placed-object').count(), 5);
+      fullMeadowSave = await readSave();
+      assert.equal(fullMeadowSave.owned.length, 5);
+      await page.reload();
+      await page.getByRole('button', {name:'Полянка', exact:true}).click();
+      assert.equal(await page.locator('.placed-object').count(), 5);
+    }
     for (const key of ['mir-na-nitke-v1', 'mir-na-nitke-development-v1', 'mir-na-nitke-save']) {
       assert.equal(await page.evaluate(key => localStorage.getItem(key), key), 'unrelated-save-sentinel');
     }
     assert.deepEqual(errors, []);
     await context.close();
+  }
+  if (manifest.sceneReview) {
+    assert.ok(fullMeadowSave, 'Full meadow must be earned by the UI test');
+    for (const [width,height] of [[360,800],[390,844],[430,932]]) {
+      const context = await browser.newContext({viewport:{width,height}});
+      await context.addInitScript(({key,save})=>localStorage.setItem(key,JSON.stringify(save)),{key:manifest.saveKey,save:fullMeadowSave});
+      const page = await context.newPage();
+      const errors=[];
+      page.on('pageerror',error=>errors.push(error.message));
+      await page.goto(base.href);
+      await page.getByRole('button',{name:'Полянка',exact:true}).click();
+      for(const lighting of ['day','evening']) {
+        if(lighting==='evening')await page.getByRole('button',{name:'Вечер',exact:true}).click();
+        await page.locator('img').evaluateAll(images=>Promise.all(images.map(image=>image.decode())));
+        assert.equal(await page.locator('.placed-object').count(),5);
+        assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
+        await page.screenshot({path:path.join(evidence,`full-meadow-${lighting}-${width}.png`),fullPage:false});
+      }
+      assert.deepEqual(errors,[]);
+      await context.close();
+    }
   }
   console.log(`Static preview verified: ${base.href}; ${manifest.files.length} integrity checks; full rabbit → yarn → flower → idle bonus → reload loop at 360/390/430.`);
 } finally {
