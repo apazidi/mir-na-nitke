@@ -1,0 +1,1012 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "baselineApproved": false,
+  "tool": "built-in image_gen",
+  "alphaCleanup": "Values <=12 set to0; values >=248 set to255; other alpha preserved; RGB zeroed only when alpha=0.",
+  "items": {
+    "house": {
+      "source": "source/house-atlas.png",
+      "cellSize": 627,
+      "constructionAt": [
+        0,
+        0.35,
+        0.7,
+        1
+      ],
+      "workshop": {
+        "canvas": [
+          1024,
+          1820
+        ],
+        "cellPlacement": [
+          0,
+          440,
+          1024,
+          1024
+        ]
+      },
+      "finished": {
+        "canvas": [
+          1024,
+          1024
+        ],
+        "width": 1024,
+        "height": 1024,
+        "transparentPixels": 560462,
+        "opaquePixels": 466867,
+        "alphaBounds": {
+          "left": 72,
+          "top": 175,
+          "width": 865,
+          "height": 772
+        },
+        "normalizedBounds": [
+          0.0703125,
+          0.1708984375,
+          0.9150390625,
+          0.9248046875
+        ]
+      }
+    },
+    "tree": {
+      "source": "source/tree-atlas.png",
+      "cellSize": 627,
+      "constructionAt": [
+        0,
+        0.35,
+        0.7,
+        1
+      ],
+      "workshop": {
+        "canvas": [
+          1024,
+          1820
+        ],
+        "cellPlacement": [
+          0,
+          440,
+          1024,
+          1024
+        ]
+      },
+      "finished": {
+        "canvas": [
+          1024,
+          1024
+        ],
+        "width": 1024,
+        "height": 1024,
+        "transparentPixels": 692053,
+        "opaquePixels": 322363,
+        "alphaBounds": {
+          "left": 118,
+          "top": 88,
+          "width": 759,
+          "height": 822
+        },
+        "normalizedBounds": [
+          0.115234375,
+          0.0859375,
+          0.8564453125,
+          0.888671875
+        ]
+      }
+    },
+    "butterfly": {
+      "source": "source/butterfly-atlas.png",
+      "cellSize": 627,
+      "constructionAt": [
+        0,
+        0.35,
+        0.7,
+        1
+      ],
+      "workshop": {
+        "canvas": [
+          1024,
+          1820
+        ],
+        "cellPlacement": [
+          0,
+          440,
+          1024,
+          1024
+        ]
+      },
+      "finished": {
+        "canvas": [
+          1024,
+          1024
+        ],
+        "width": 1024,
+        "height": 1024,
+        "transparentPixels": 643423,
+        "opaquePixels": 362641,
+        "alphaBounds": {
+          "left": 79,
+          "top": 141,
+          "width": 859,
+          "height": 662
+        },
+        "normalizedBounds": [
+          0.0771484375,
+          0.1376953125,
+          0.916015625,
+          0.7841796875
+        ]
+      }
+    }
+  },
+  "controls": {
+    "workshop": {
+      "source": "nav-atlas-clean.png",
+      "crop": {
+        "left": 41,
+        "top": 111,
+        "width": 641,
+        "height": 493
+      },
+      "canvas": [
+        512,
+        384
+      ],
+      "width": 512,
+      "height": 384,
+      "transparentPixels": 36501,
+      "opaquePixels": 154522,
+      "alphaBounds": {
+        "left": 12,
+        "top": 14,
+        "width": 484,
+        "height": 363
+      },
+      "normalizedBounds": [
+        0.0234375,
+        0.036458333333333336,
+        0.96875,
+        0.9817708333333334
+      ]
+    },
+    "meadow": {
+      "source": "nav-atlas-clean.png",
+      "crop": {
+        "left": 41,
+        "top": 111,
+        "width": 641,
+        "height": 493
+      },
+      "canvas": [
+        512,
+        384
+      ],
+      "width": 512,
+      "height": 384,
+      "transparentPixels": 36036,
+      "opaquePixels": 154765,
+      "alphaBounds": {
+        "left": 12,
+        "top": 6,
+        "width": 485,
+        "height": 372
+      },
+      "normalizedBounds": [
+        0.0234375,
+        0.015625,
+        0.970703125,
+        0.984375
+      ]
+    },
+    "projects": {
+      "source": "nav-atlas-clean.png",
+      "crop": {
+        "left": 41,
+        "top": 111,
+        "width": 641,
+        "height": 493
+      },
+      "canvas": [
+        512,
+        384
+      ],
+      "width": 512,
+      "height": 384,
+      "transparentPixels": 36210,
+      "opaquePixels": 154612,
+      "alphaBounds": {
+        "left": 15,
+        "top": 14,
+        "width": 484,
+        "height": 363
+      },
+      "normalizedBounds": [
+        0.029296875,
+        0.036458333333333336,
+        0.974609375,
+        0.9817708333333334
+      ]
+    },
+    "knit": {
+      "source": "actions-atlas.png",
+      "crop": {
+        "left": 1,
+        "top": 242,
+        "width": 718,
+        "height": 265
+      },
+      "canvas": [
+        768,
+        256
+      ],
+      "width": 768,
+      "height": 256,
+      "transparentPixels": 42533,
+      "opaquePixels": 137427,
+      "alphaBounds": {
+        "left": 54,
+        "top": 8,
+        "width": 669,
+        "height": 240
+      },
+      "normalizedBounds": [
+        0.0703125,
+        0.03125,
+        0.94140625,
+        0.96875
+      ]
+    },
+    "complete": {
+      "source": "actions-atlas.png",
+      "crop": {
+        "left": 1,
+        "top": 242,
+        "width": 718,
+        "height": 265
+      },
+      "canvas": [
+        768,
+        256
+      ],
+      "width": 768,
+      "height": 256,
+      "transparentPixels": 42816,
+      "opaquePixels": 137408,
+      "alphaBounds": {
+        "left": 50,
+        "top": 8,
+        "width": 669,
+        "height": 240
+      },
+      "normalizedBounds": [
+        0.06510416666666667,
+        0.03125,
+        0.9361979166666666,
+        0.96875
+      ]
+    },
+    "pet": {
+      "source": "actions-atlas.png",
+      "crop": {
+        "left": 1,
+        "top": 242,
+        "width": 718,
+        "height": 265
+      },
+      "canvas": [
+        768,
+        256
+      ],
+      "width": 768,
+      "height": 256,
+      "transparentPixels": 41237,
+      "opaquePixels": 138415,
+      "alphaBounds": {
+        "left": 45,
+        "top": 8,
+        "width": 673,
+        "height": 240
+      },
+      "normalizedBounds": [
+        0.05859375,
+        0.03125,
+        0.9348958333333334,
+        0.96875
+      ]
+    }
+  },
+  "files": [
+    {
+      "path": "ui/workshop.webp",
+      "bytes": 91666,
+      "sha256": "bc561387f43731d4335dbaa402f53fbd586f21fc8e26a4231f065d89bd822352",
+      "width": 512,
+      "height": 384,
+      "transparentPixels": 36501,
+      "opaquePixels": 154522,
+      "alphaBounds": {
+        "left": 12,
+        "top": 14,
+        "width": 484,
+        "height": 363
+      },
+      "normalizedBounds": [
+        0.0234375,
+        0.036458333333333336,
+        0.96875,
+        0.9817708333333334
+      ]
+    },
+    {
+      "path": "ui/workshop-pressed.webp",
+      "bytes": 87814,
+      "sha256": "e522011409840d3853d6b6856e2e566f1923fe6ca035b47bcffc959310793ede",
+      "width": 512,
+      "height": 384,
+      "transparentPixels": 36501,
+      "opaquePixels": 154522,
+      "alphaBounds": {
+        "left": 12,
+        "top": 14,
+        "width": 484,
+        "height": 363
+      },
+      "normalizedBounds": [
+        0.0234375,
+        0.036458333333333336,
+        0.96875,
+        0.9817708333333334
+      ]
+    },
+    {
+      "path": "ui/workshop-disabled.webp",
+      "bytes": 78324,
+      "sha256": "8298473bcdc574dd16fb124eac996a08e00efb917808429ad1743cf5a2f9a486",
+      "width": 512,
+      "height": 384,
+      "transparentPixels": 36501,
+      "opaquePixels": 154522,
+      "alphaBounds": {
+        "left": 12,
+        "top": 14,
+        "width": 484,
+        "height": 363
+      },
+      "normalizedBounds": [
+        0.0234375,
+        0.036458333333333336,
+        0.96875,
+        0.9817708333333334
+      ]
+    },
+    {
+      "path": "ui/meadow.webp",
+      "bytes": 89066,
+      "sha256": "e09217059da9c6226cff0833832ca15b1252858c1f32d8f5a62b4e3d00141fd0",
+      "width": 512,
+      "height": 384,
+      "transparentPixels": 36036,
+      "opaquePixels": 154765,
+      "alphaBounds": {
+        "left": 12,
+        "top": 6,
+        "width": 485,
+        "height": 372
+      },
+      "normalizedBounds": [
+        0.0234375,
+        0.015625,
+        0.970703125,
+        0.984375
+      ]
+    },
+    {
+      "path": "ui/meadow-pressed.webp",
+      "bytes": 85206,
+      "sha256": "e9e8d59281a3b6f455979cea81e75e72991dbb01feb30306ca0a80aafb425219",
+      "width": 512,
+      "height": 384,
+      "transparentPixels": 36036,
+      "opaquePixels": 154765,
+      "alphaBounds": {
+        "left": 12,
+        "top": 6,
+        "width": 485,
+        "height": 372
+      },
+      "normalizedBounds": [
+        0.0234375,
+        0.015625,
+        0.970703125,
+        0.984375
+      ]
+    },
+    {
+      "path": "ui/meadow-disabled.webp",
+      "bytes": 76636,
+      "sha256": "b683dad2bca8b1d84f91466ccef3c54b7e7cdfd9aa5ce8c4a2dd03be84637acf",
+      "width": 512,
+      "height": 384,
+      "transparentPixels": 36036,
+      "opaquePixels": 154765,
+      "alphaBounds": {
+        "left": 12,
+        "top": 6,
+        "width": 485,
+        "height": 372
+      },
+      "normalizedBounds": [
+        0.0234375,
+        0.015625,
+        0.970703125,
+        0.984375
+      ]
+    },
+    {
+      "path": "ui/projects.webp",
+      "bytes": 88642,
+      "sha256": "4ec56c51a2a20560948a6adb19cc4f33c075bfc1279c5fb93475735eda9b9fb6",
+      "width": 512,
+      "height": 384,
+      "transparentPixels": 36210,
+      "opaquePixels": 154612,
+      "alphaBounds": {
+        "left": 15,
+        "top": 14,
+        "width": 484,
+        "height": 363
+      },
+      "normalizedBounds": [
+        0.029296875,
+        0.036458333333333336,
+        0.974609375,
+        0.9817708333333334
+      ]
+    },
+    {
+      "path": "ui/projects-pressed.webp",
+      "bytes": 84406,
+      "sha256": "e79749a33396001e5d82df3f23acbc3ee28f405a68524d858168a1b6b21cea60",
+      "width": 512,
+      "height": 384,
+      "transparentPixels": 36210,
+      "opaquePixels": 154612,
+      "alphaBounds": {
+        "left": 15,
+        "top": 14,
+        "width": 484,
+        "height": 363
+      },
+      "normalizedBounds": [
+        0.029296875,
+        0.036458333333333336,
+        0.974609375,
+        0.9817708333333334
+      ]
+    },
+    {
+      "path": "ui/projects-disabled.webp",
+      "bytes": 74674,
+      "sha256": "46079337f175554535e11bf1187e2e71f814e827f94ad03cf99415c8a3abe12f",
+      "width": 512,
+      "height": 384,
+      "transparentPixels": 36210,
+      "opaquePixels": 154612,
+      "alphaBounds": {
+        "left": 15,
+        "top": 14,
+        "width": 484,
+        "height": 363
+      },
+      "normalizedBounds": [
+        0.029296875,
+        0.036458333333333336,
+        0.974609375,
+        0.9817708333333334
+      ]
+    },
+    {
+      "path": "ui/knit.webp",
+      "bytes": 89786,
+      "sha256": "a7c9c10755d28cbdadc1c4831d0cb5c80db71fa36c25a6b237e817524c89ecbc",
+      "width": 768,
+      "height": 256,
+      "transparentPixels": 42533,
+      "opaquePixels": 137427,
+      "alphaBounds": {
+        "left": 54,
+        "top": 8,
+        "width": 669,
+        "height": 240
+      },
+      "normalizedBounds": [
+        0.0703125,
+        0.03125,
+        0.94140625,
+        0.96875
+      ]
+    },
+    {
+      "path": "ui/knit-pressed.webp",
+      "bytes": 85118,
+      "sha256": "bdf856c8601e3bd2b17887c1e903f5297cc2eb94680960635515f2a82f802901",
+      "width": 768,
+      "height": 256,
+      "transparentPixels": 42533,
+      "opaquePixels": 137427,
+      "alphaBounds": {
+        "left": 54,
+        "top": 8,
+        "width": 669,
+        "height": 240
+      },
+      "normalizedBounds": [
+        0.0703125,
+        0.03125,
+        0.94140625,
+        0.96875
+      ]
+    },
+    {
+      "path": "ui/knit-disabled.webp",
+      "bytes": 79338,
+      "sha256": "74815dbe23619a4ec061ade854612e907620060b7e62520cdd137df1e4d49347",
+      "width": 768,
+      "height": 256,
+      "transparentPixels": 42533,
+      "opaquePixels": 137427,
+      "alphaBounds": {
+        "left": 54,
+        "top": 8,
+        "width": 669,
+        "height": 240
+      },
+      "normalizedBounds": [
+        0.0703125,
+        0.03125,
+        0.94140625,
+        0.96875
+      ]
+    },
+    {
+      "path": "ui/complete.webp",
+      "bytes": 89258,
+      "sha256": "9a58d168d494272bd01936d2261e6007b1d7184a15f9f2179b3def2c7d59c3f9",
+      "width": 768,
+      "height": 256,
+      "transparentPixels": 42816,
+      "opaquePixels": 137408,
+      "alphaBounds": {
+        "left": 50,
+        "top": 8,
+        "width": 669,
+        "height": 240
+      },
+      "normalizedBounds": [
+        0.06510416666666667,
+        0.03125,
+        0.9361979166666666,
+        0.96875
+      ]
+    },
+    {
+      "path": "ui/complete-pressed.webp",
+      "bytes": 84550,
+      "sha256": "13799092e8e5316d48f50e9cdb867fc24f2249971c09cd0c33da8e741f5a3d91",
+      "width": 768,
+      "height": 256,
+      "transparentPixels": 42816,
+      "opaquePixels": 137408,
+      "alphaBounds": {
+        "left": 50,
+        "top": 8,
+        "width": 669,
+        "height": 240
+      },
+      "normalizedBounds": [
+        0.06510416666666667,
+        0.03125,
+        0.9361979166666666,
+        0.96875
+      ]
+    },
+    {
+      "path": "ui/complete-disabled.webp",
+      "bytes": 80848,
+      "sha256": "88cd18225ccc65a5a5db299964730089e794ed084f88a2f76efe42111125e542",
+      "width": 768,
+      "height": 256,
+      "transparentPixels": 42816,
+      "opaquePixels": 137408,
+      "alphaBounds": {
+        "left": 50,
+        "top": 8,
+        "width": 669,
+        "height": 240
+      },
+      "normalizedBounds": [
+        0.06510416666666667,
+        0.03125,
+        0.9361979166666666,
+        0.96875
+      ]
+    },
+    {
+      "path": "ui/pet.webp",
+      "bytes": 86418,
+      "sha256": "0ae1fa8c6b71fc7be283cb662e78f5cf8e69a5140704695d89017322907788d7",
+      "width": 768,
+      "height": 256,
+      "transparentPixels": 41237,
+      "opaquePixels": 138415,
+      "alphaBounds": {
+        "left": 45,
+        "top": 8,
+        "width": 673,
+        "height": 240
+      },
+      "normalizedBounds": [
+        0.05859375,
+        0.03125,
+        0.9348958333333334,
+        0.96875
+      ]
+    },
+    {
+      "path": "ui/pet-pressed.webp",
+      "bytes": 82242,
+      "sha256": "aea340c736f6694fdae1a001092e4e9f1e4a4948454633c64e8ea0cd39e45f97",
+      "width": 768,
+      "height": 256,
+      "transparentPixels": 41237,
+      "opaquePixels": 138415,
+      "alphaBounds": {
+        "left": 45,
+        "top": 8,
+        "width": 673,
+        "height": 240
+      },
+      "normalizedBounds": [
+        0.05859375,
+        0.03125,
+        0.9348958333333334,
+        0.96875
+      ]
+    },
+    {
+      "path": "ui/pet-disabled.webp",
+      "bytes": 77240,
+      "sha256": "2787530fc2c3f5a9eb55006f891569c139976dc5d8292df4f89b5a0bfddc2322",
+      "width": 768,
+      "height": 256,
+      "transparentPixels": 41237,
+      "opaquePixels": 138415,
+      "alphaBounds": {
+        "left": 45,
+        "top": 8,
+        "width": 673,
+        "height": 240
+      },
+      "normalizedBounds": [
+        0.05859375,
+        0.03125,
+        0.9348958333333334,
+        0.96875
+      ]
+    },
+    {
+      "path": "exports/house-stage-00.webp",
+      "bytes": 86310,
+      "sha256": "7c3715ca6bd75d94af32665d452745222500895bf3f290f9bbeffcb73ffdc9a4",
+      "width": 1024,
+      "height": 1820,
+      "transparentPixels": 1620054,
+      "opaquePixels": 225053,
+      "alphaBounds": {
+        "left": 159,
+        "top": 988,
+        "width": 795,
+        "height": 401
+      },
+      "normalizedBounds": [
+        0.1552734375,
+        0.5428571428571428,
+        0.931640625,
+        0.7631868131868131
+      ]
+    },
+    {
+      "path": "exports/house-stage-01.webp",
+      "bytes": 111966,
+      "sha256": "a2bc440ca471ed74b887b9e2c3b65e1d254bdff1be1fcfc2baa59df5c5799e5f",
+      "width": 1024,
+      "height": 1820,
+      "transparentPixels": 1505563,
+      "opaquePixels": 341562,
+      "alphaBounds": {
+        "left": 118,
+        "top": 825,
+        "width": 746,
+        "height": 525
+      },
+      "normalizedBounds": [
+        0.115234375,
+        0.4532967032967033,
+        0.84375,
+        0.7417582417582418
+      ]
+    },
+    {
+      "path": "exports/house-stage-02.webp",
+      "bytes": 164834,
+      "sha256": "96cefd8f2cb40b93fad4937affea561f87eeb63768c7d920245e7d86d64720aa",
+      "width": 1024,
+      "height": 1820,
+      "transparentPixels": 1426655,
+      "opaquePixels": 413548,
+      "alphaBounds": {
+        "left": 99,
+        "top": 690,
+        "width": 845,
+        "height": 697
+      },
+      "normalizedBounds": [
+        0.0966796875,
+        0.3791208791208791,
+        0.921875,
+        0.762087912087912
+      ]
+    },
+    {
+      "path": "exports/house-stage-03.webp",
+      "bytes": 182930,
+      "sha256": "7cd21402e190059601fc203e4c6554e4a448fd01f35acbf90cf0a7feff97259b",
+      "width": 1024,
+      "height": 1820,
+      "transparentPixels": 1375566,
+      "opaquePixels": 466867,
+      "alphaBounds": {
+        "left": 72,
+        "top": 615,
+        "width": 865,
+        "height": 772
+      },
+      "normalizedBounds": [
+        0.0703125,
+        0.33791208791208793,
+        0.9150390625,
+        0.762087912087912
+      ]
+    },
+    {
+      "path": "exports/house-finished.webp",
+      "bytes": 183722,
+      "sha256": "c1e59a3225584ccd06e1ed5eb45fda94eef256f16bf8fc926e6297689983b4a6",
+      "width": 1024,
+      "height": 1024,
+      "transparentPixels": 560462,
+      "opaquePixels": 466867,
+      "alphaBounds": {
+        "left": 72,
+        "top": 175,
+        "width": 865,
+        "height": 772
+      },
+      "normalizedBounds": [
+        0.0703125,
+        0.1708984375,
+        0.9150390625,
+        0.9248046875
+      ]
+    },
+    {
+      "path": "exports/tree-stage-00.webp",
+      "bytes": 49362,
+      "sha256": "7a01fa28e5c5a16de5abf77a40509e903f9a1c5a6eb8e6805ab6a2ed17d78ac0",
+      "width": 1024,
+      "height": 1820,
+      "transparentPixels": 1790642,
+      "opaquePixels": 51707,
+      "alphaBounds": {
+        "left": 337,
+        "top": 1048,
+        "width": 552,
+        "height": 300
+      },
+      "normalizedBounds": [
+        0.3291015625,
+        0.5758241758241758,
+        0.8681640625,
+        0.7406593406593407
+      ]
+    },
+    {
+      "path": "exports/tree-stage-01.webp",
+      "bytes": 103222,
+      "sha256": "49aaa0e0c8a16a9604864c4da513935b9931b64d05a01b80f4b3ccb9100dfcb3",
+      "width": 1024,
+      "height": 1820,
+      "transparentPixels": 1700841,
+      "opaquePixels": 130295,
+      "alphaBounds": {
+        "left": 208,
+        "top": 634,
+        "width": 600,
+        "height": 716
+      },
+      "normalizedBounds": [
+        0.203125,
+        0.34835164835164834,
+        0.7890625,
+        0.7417582417582418
+      ]
+    },
+    {
+      "path": "exports/tree-stage-02.webp",
+      "bytes": 145874,
+      "sha256": "768cebe3dbe43eb3d33a1831367c73bbce1f93b819ad6ffdbe3204b4f1daab98",
+      "width": 1024,
+      "height": 1820,
+      "transparentPixels": 1584705,
+      "opaquePixels": 239434,
+      "alphaBounds": {
+        "left": 162,
+        "top": 529,
+        "width": 670,
+        "height": 821
+      },
+      "normalizedBounds": [
+        0.158203125,
+        0.2906593406593407,
+        0.8125,
+        0.7417582417582418
+      ]
+    },
+    {
+      "path": "exports/tree-stage-03.webp",
+      "bytes": 166872,
+      "sha256": "e9a083b3979ad95f1f044dbc02cd5bc632c9732aa4ba071366e6e0cdda943d27",
+      "width": 1024,
+      "height": 1820,
+      "transparentPixels": 1507157,
+      "opaquePixels": 322363,
+      "alphaBounds": {
+        "left": 118,
+        "top": 528,
+        "width": 759,
+        "height": 822
+      },
+      "normalizedBounds": [
+        0.115234375,
+        0.29010989010989013,
+        0.8564453125,
+        0.7417582417582418
+      ]
+    },
+    {
+      "path": "exports/tree-finished.webp",
+      "bytes": 158652,
+      "sha256": "7ff9081ae6b8bab63d761ce6b1ab7d1b3976c6dc2c35e3ae15c216ce51931c8d",
+      "width": 1024,
+      "height": 1024,
+      "transparentPixels": 692053,
+      "opaquePixels": 322363,
+      "alphaBounds": {
+        "left": 118,
+        "top": 88,
+        "width": 759,
+        "height": 822
+      },
+      "normalizedBounds": [
+        0.115234375,
+        0.0859375,
+        0.8564453125,
+        0.888671875
+      ]
+    },
+    {
+      "path": "exports/butterfly-stage-00.webp",
+      "bytes": 38658,
+      "sha256": "53e762e4452474052e65345c7e9fd7915b9962f5999022da883f816070264486",
+      "width": 1024,
+      "height": 1820,
+      "transparentPixels": 1810243,
+      "opaquePixels": 39477,
+      "alphaBounds": {
+        "left": 437,
+        "top": 834,
+        "width": 308,
+        "height": 386
+      },
+      "normalizedBounds": [
+        0.4267578125,
+        0.4582417582417582,
+        0.7275390625,
+        0.6703296703296703
+      ]
+    },
+    {
+      "path": "exports/butterfly-stage-01.webp",
+      "bytes": 101274,
+      "sha256": "b990ca487944719a1520a1fd83b4d5a723b9fa8c0d75e934dd5fa9cb8a801a4e",
+      "width": 1024,
+      "height": 1820,
+      "transparentPixels": 1641934,
+      "opaquePixels": 199426,
+      "alphaBounds": {
+        "left": 119,
+        "top": 657,
+        "width": 776,
+        "height": 540
+      },
+      "normalizedBounds": [
+        0.1162109375,
+        0.360989010989011,
+        0.8740234375,
+        0.6576923076923077
+      ]
+    },
+    {
+      "path": "exports/butterfly-stage-02.webp",
+      "bytes": 143946,
+      "sha256": "f59e10895f45243159a9a08e6ad50707248c5e21ce93ce1221bb331eb23b8e19",
+      "width": 1024,
+      "height": 1820,
+      "transparentPixels": 1512354,
+      "opaquePixels": 323240,
+      "alphaBounds": {
+        "left": 99,
+        "top": 643,
+        "width": 818,
+        "height": 590
+      },
+      "normalizedBounds": [
+        0.0966796875,
+        0.3532967032967033,
+        0.8955078125,
+        0.6774725274725275
+      ]
+    },
+    {
+      "path": "exports/butterfly-stage-03.webp",
+      "bytes": 186890,
+      "sha256": "597ddcac20941ea9a615dd78303e23976dc33331bd9c6c745336b58fd356674f",
+      "width": 1024,
+      "height": 1820,
+      "transparentPixels": 1458527,
+      "opaquePixels": 362641,
+      "alphaBounds": {
+        "left": 79,
+        "top": 581,
+        "width": 859,
+        "height": 662
+      },
+      "normalizedBounds": [
+        0.0771484375,
+        0.3192307692307692,
+        0.916015625,
+        0.682967032967033
+      ]
+    },
+    {
+      "path": "exports/butterfly-finished.webp",
+      "bytes": 186074,
+      "sha256": "4036354348011447def467ef60afe4618d616dda4ded5129fed271fdee047d57",
+      "width": 1024,
+      "height": 1024,
+      "transparentPixels": 643423,
+      "opaquePixels": 362641,
+      "alphaBounds": {
+        "left": 79,
+        "top": 141,
+        "width": 859,
+        "height": 662
+      },
+      "normalizedBounds": [
+        0.0771484375,
+        0.1376953125,
+        0.916015625,
+        0.7841796875
+      ]
+    }
+  ]
+}
