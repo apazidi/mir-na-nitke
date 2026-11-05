@@ -63,6 +63,32 @@
       "usedForExport": true
     },
     {
+      "path": "source/additional-actions-atlas.png",
+      "bytes": 1256854,
+      "sha256": "9693607b0f7babe42a5601532f38db19e6442e4717e675660a1674a1251c4b13",
+      "metadata": {
+        "format": "png",
+        "mediaType": "image/png",
+        "size": 1256854,
+        "width": 1774,
+        "height": 887,
+        "space": "srgb",
+        "channels": 4,
+        "depth": "uchar",
+        "density": 72,
+        "isProgressive": false,
+        "isPalette": false,
+        "bitsPerSample": 8,
+        "hasProfile": false,
+        "hasAlpha": true,
+        "autoOrient": {
+          "width": 1774,
+          "height": 887
+        }
+      },
+      "usedForExport": true
+    },
+    {
       "path": "source/butterfly-atlas.png",
       "bytes": 1231482,
       "sha256": "9e9b94d5a43bcba617775da2049b6b9deefe452a634acdf756b653ba3263b442",
@@ -112,6 +138,115 @@
           "height": 1254
         }
       },
+      "usedForExport": true
+    },
+    {
+      "path": "source/house-before-grounding.webp",
+      "bytes": 183722,
+      "sha256": "c1e59a3225584ccd06e1ed5eb45fda94eef256f16bf8fc926e6297689983b4a6",
+      "metadata": {
+        "format": "webp",
+        "mediaType": "image/webp",
+        "size": 183722,
+        "width": 1024,
+        "height": 1024,
+        "space": "srgb",
+        "channels": 4,
+        "depth": "uchar",
+        "isProgressive": false,
+        "isPalette": false,
+        "hasProfile": false,
+        "hasAlpha": true,
+        "autoOrient": {
+          "width": 1024,
+          "height": 1024
+        }
+      },
+      "usedForExport": false
+    },
+    {
+      "path": "source/house-evening-light-reference.png",
+      "bytes": 673630,
+      "sha256": "137784fd11dd06c610cd9c80bbc46bd9846c22b6165288712508d444d849af0b",
+      "metadata": {
+        "format": "png",
+        "mediaType": "image/png",
+        "size": 673630,
+        "width": 390,
+        "height": 844,
+        "space": "srgb",
+        "channels": 3,
+        "depth": "uchar",
+        "density": 72,
+        "isProgressive": false,
+        "isPalette": false,
+        "bitsPerSample": 8,
+        "hasProfile": false,
+        "hasAlpha": false,
+        "autoOrient": {
+          "width": 390,
+          "height": 844
+        }
+      },
+      "usedForExport": false
+    },
+    {
+      "path": "source/house-grounded-day-master.png",
+      "bytes": 1713499,
+      "sha256": "1f16820ebd3ce6380853889f000fae026ca9d631f611528514ff824ea468d9d8",
+      "metadata": {
+        "format": "png",
+        "mediaType": "image/png",
+        "size": 1713499,
+        "width": 1254,
+        "height": 1254,
+        "space": "srgb",
+        "channels": 4,
+        "depth": "uchar",
+        "density": 72,
+        "isProgressive": false,
+        "isPalette": false,
+        "bitsPerSample": 8,
+        "hasProfile": false,
+        "hasAlpha": true,
+        "autoOrient": {
+          "width": 1254,
+          "height": 1254
+        }
+      },
+      "usedForExport": true
+    },
+    {
+      "path": "source/house-grounded-evening-master.png",
+      "bytes": 1791113,
+      "sha256": "09c4f90bfccadeb39a1ae1bb73271d0bfaa4a6054cde96817354f9fbc25e2833",
+      "metadata": {
+        "format": "png",
+        "mediaType": "image/png",
+        "size": 1791113,
+        "width": 1254,
+        "height": 1254,
+        "space": "srgb",
+        "channels": 4,
+        "depth": "uchar",
+        "density": 72,
+        "isProgressive": false,
+        "isPalette": false,
+        "bitsPerSample": 8,
+        "hasProfile": false,
+        "hasAlpha": true,
+        "autoOrient": {
+          "width": 1254,
+          "height": 1254
+        }
+      },
+      "usedForExport": true
+    },
+    {
+      "path": "source/house-repair-prompts.json",
+      "bytes": 6795,
+      "sha256": "b3de93460780949097e36d84feb3c83a401e823cd3cc447df58bf747ab921694",
+      "textHashEncoding": "UTF-8, LF newlines",
       "usedForExport": true
     },
     {
@@ -303,19 +438,19 @@
         ],
         "width": 1024,
         "height": 1024,
-        "transparentPixels": 560462,
-        "opaquePixels": 466867,
+        "transparentPixels": 546138,
+        "opaquePixels": 476408,
         "alphaBounds": {
-          "left": 72,
+          "left": 73,
           "top": 175,
           "width": 865,
-          "height": 772
+          "height": 779
         },
         "normalizedBounds": [
-          0.0703125,
+          0.0712890625,
           0.1708984375,
-          0.9150390625,
-          0.9248046875
+          0.916015625,
+          0.931640625
         ]
       }
     },
@@ -581,6 +716,64 @@
         0.03125,
         0.9348958333333334,
         0.96875
+      ]
+    },
+    "start": {
+      "source": "additional-actions-atlas.png",
+      "crop": {
+        "left": 11,
+        "top": 301,
+        "width": 864,
+        "height": 314
+      },
+      "canvas": [
+        768,
+        256
+      ],
+      "width": 768,
+      "height": 256,
+      "transparentPixels": 35414,
+      "opaquePixels": 145886,
+      "alphaBounds": {
+        "left": 38,
+        "top": 7,
+        "width": 691,
+        "height": 243
+      },
+      "normalizedBounds": [
+        0.049479166666666664,
+        0.02734375,
+        0.94921875,
+        0.9765625
+      ]
+    },
+    "place": {
+      "source": "additional-actions-atlas.png",
+      "crop": {
+        "left": 11,
+        "top": 301,
+        "width": 864,
+        "height": 314
+      },
+      "canvas": [
+        768,
+        256
+      ],
+      "width": 768,
+      "height": 256,
+      "transparentPixels": 35736,
+      "opaquePixels": 145973,
+      "alphaBounds": {
+        "left": 39,
+        "top": 7,
+        "width": 691,
+        "height": 242
+      },
+      "normalizedBounds": [
+        0.05078125,
+        0.02734375,
+        0.9505208333333334,
+        0.97265625
       ]
     }
   },
@@ -964,6 +1157,132 @@
       ]
     },
     {
+      "path": "ui/start.webp",
+      "bytes": 92582,
+      "sha256": "69fc0cb5dd181695408c49432a9318b92da5e547d7502998e2aa9430e1f42b75",
+      "width": 768,
+      "height": 256,
+      "transparentPixels": 35414,
+      "opaquePixels": 145886,
+      "alphaBounds": {
+        "left": 38,
+        "top": 7,
+        "width": 691,
+        "height": 243
+      },
+      "normalizedBounds": [
+        0.049479166666666664,
+        0.02734375,
+        0.94921875,
+        0.9765625
+      ]
+    },
+    {
+      "path": "ui/start-pressed.webp",
+      "bytes": 89744,
+      "sha256": "17097ae59a97e2ce26fd029b334c22d5ae05dfb6688689c57893ede5e9400326",
+      "width": 768,
+      "height": 256,
+      "transparentPixels": 35414,
+      "opaquePixels": 145886,
+      "alphaBounds": {
+        "left": 38,
+        "top": 7,
+        "width": 691,
+        "height": 243
+      },
+      "normalizedBounds": [
+        0.049479166666666664,
+        0.02734375,
+        0.94921875,
+        0.9765625
+      ]
+    },
+    {
+      "path": "ui/start-disabled.webp",
+      "bytes": 83046,
+      "sha256": "330d3ffa0b591bcb5453b8698d468d14500a0e65808ac70be669b64cca830b17",
+      "width": 768,
+      "height": 256,
+      "transparentPixels": 35414,
+      "opaquePixels": 145886,
+      "alphaBounds": {
+        "left": 38,
+        "top": 7,
+        "width": 691,
+        "height": 243
+      },
+      "normalizedBounds": [
+        0.049479166666666664,
+        0.02734375,
+        0.94921875,
+        0.9765625
+      ]
+    },
+    {
+      "path": "ui/place.webp",
+      "bytes": 93648,
+      "sha256": "5698f1c390315ee176e35d64132f152d2ffc6f1f5a822156cd465395a3c8af4c",
+      "width": 768,
+      "height": 256,
+      "transparentPixels": 35736,
+      "opaquePixels": 145973,
+      "alphaBounds": {
+        "left": 39,
+        "top": 7,
+        "width": 691,
+        "height": 242
+      },
+      "normalizedBounds": [
+        0.05078125,
+        0.02734375,
+        0.9505208333333334,
+        0.97265625
+      ]
+    },
+    {
+      "path": "ui/place-pressed.webp",
+      "bytes": 89802,
+      "sha256": "4cf0ca202a533c955d07d8b7e36adbdc7d7ffd4ab882ec9373b74c1a0670e405",
+      "width": 768,
+      "height": 256,
+      "transparentPixels": 35736,
+      "opaquePixels": 145973,
+      "alphaBounds": {
+        "left": 39,
+        "top": 7,
+        "width": 691,
+        "height": 242
+      },
+      "normalizedBounds": [
+        0.05078125,
+        0.02734375,
+        0.9505208333333334,
+        0.97265625
+      ]
+    },
+    {
+      "path": "ui/place-disabled.webp",
+      "bytes": 83490,
+      "sha256": "0bf384c6930641ad9ed8af13a03d681fa4fd9672dcea557616e1089e79c3d7f2",
+      "width": 768,
+      "height": 256,
+      "transparentPixels": 35736,
+      "opaquePixels": 145973,
+      "alphaBounds": {
+        "left": 39,
+        "top": 7,
+        "width": 691,
+        "height": 242
+      },
+      "normalizedBounds": [
+        0.05078125,
+        0.02734375,
+        0.9505208333333334,
+        0.97265625
+      ]
+    },
+    {
       "path": "exports/house-stage-00.webp",
       "bytes": 86310,
       "sha256": "7c3715ca6bd75d94af32665d452745222500895bf3f290f9bbeffcb73ffdc9a4",
@@ -1027,45 +1346,66 @@
       ]
     },
     {
-      "path": "exports/house-stage-03.webp",
-      "bytes": 182930,
-      "sha256": "7cd21402e190059601fc203e4c6554e4a448fd01f35acbf90cf0a7feff97259b",
+      "path": "exports/house-finished-evening.webp",
+      "bytes": 256808,
+      "sha256": "d980cd1e8cb28ce0b937787becffe8576caff6eb1001135b7124ceae786fef6d",
       "width": 1024,
-      "height": 1820,
-      "transparentPixels": 1375566,
-      "opaquePixels": 466867,
+      "height": 1024,
+      "transparentPixels": 541710,
+      "opaquePixels": 484432,
       "alphaBounds": {
-        "left": 72,
-        "top": 615,
-        "width": 865,
-        "height": 772
+        "left": 70,
+        "top": 172,
+        "width": 872,
+        "height": 785
       },
       "normalizedBounds": [
-        0.0703125,
+        0.068359375,
+        0.16796875,
+        0.919921875,
+        0.9345703125
+      ]
+    },
+    {
+      "path": "exports/house-stage-03.webp",
+      "bytes": 228134,
+      "sha256": "afcc38dcd14b7eae4695b165305674e2265ddcb9fb3b4c4f50ee0793b30a12ff",
+      "width": 1024,
+      "height": 1820,
+      "transparentPixels": 1361242,
+      "opaquePixels": 476408,
+      "alphaBounds": {
+        "left": 73,
+        "top": 615,
+        "width": 865,
+        "height": 779
+      },
+      "normalizedBounds": [
+        0.0712890625,
         0.33791208791208793,
-        0.9150390625,
-        0.762087912087912
+        0.916015625,
+        0.765934065934066
       ]
     },
     {
       "path": "exports/house-finished.webp",
-      "bytes": 183722,
-      "sha256": "c1e59a3225584ccd06e1ed5eb45fda94eef256f16bf8fc926e6297689983b4a6",
+      "bytes": 231990,
+      "sha256": "ef5fdca19af98e2fd479fda249e2a02a7ab65786185b233006d5ec5ae17c9451",
       "width": 1024,
       "height": 1024,
-      "transparentPixels": 560462,
-      "opaquePixels": 466867,
+      "transparentPixels": 546138,
+      "opaquePixels": 476408,
       "alphaBounds": {
-        "left": 72,
+        "left": 73,
         "top": 175,
         "width": 865,
-        "height": 772
+        "height": 779
       },
       "normalizedBounds": [
-        0.0703125,
+        0.0712890625,
         0.1708984375,
-        0.9150390625,
-        0.9248046875
+        0.916015625,
+        0.931640625
       ]
     },
     {
@@ -1278,5 +1618,84 @@
         0.7841796875
       ]
     }
-  ]
+  ],
+  "houseGroundingRepair": {
+    "daySource": "source/house-grounded-day-master.png",
+    "eveningSource": "source/house-grounded-evening-master.png",
+    "transform": "Whole square canvas to1024×1024, contain, no trimming or per-silhouette fit",
+    "before": {
+      "width": 1024,
+      "height": 1024,
+      "transparentPixels": 560462,
+      "opaquePixels": 466867,
+      "alphaBounds": {
+        "left": 72,
+        "top": 175,
+        "width": 865,
+        "height": 772
+      },
+      "normalizedBounds": [
+        0.0703125,
+        0.1708984375,
+        0.9150390625,
+        0.9248046875
+      ]
+    },
+    "day": {
+      "width": 1024,
+      "height": 1024,
+      "transparentPixels": 546138,
+      "opaquePixels": 476408,
+      "alphaBounds": {
+        "left": 73,
+        "top": 175,
+        "width": 865,
+        "height": 779
+      },
+      "normalizedBounds": [
+        0.0712890625,
+        0.1708984375,
+        0.916015625,
+        0.931640625
+      ]
+    },
+    "evening": {
+      "width": 1024,
+      "height": 1024,
+      "transparentPixels": 541710,
+      "opaquePixels": 484432,
+      "alphaBounds": {
+        "left": 70,
+        "top": 172,
+        "width": 872,
+        "height": 785
+      },
+      "normalizedBounds": [
+        0.068359375,
+        0.16796875,
+        0.919921875,
+        0.9345703125
+      ]
+    },
+    "opaqueBounds": {
+      "before": {
+        "left": 75,
+        "top": 178,
+        "width": 859,
+        "height": 767
+      },
+      "day": {
+        "left": 74,
+        "top": 176,
+        "width": 862,
+        "height": 771
+      },
+      "evening": {
+        "left": 71,
+        "top": 173,
+        "width": 870,
+        "height": 778
+      }
+    }
+  }
 }
