@@ -31,7 +31,9 @@ This repository contains **historical prototypes** (root, `v3*`, `v4*`) and the 
 
 ## Codex session coordination
 
-- For first-run multi-session launch and PR handoff, read `product/AGENT-LAUNCH.md`.
-- Start with independent Engine (#8) and Art (#11) sessions. Do not start UI (#9) or runtime adapter (#10) by inventing incompatible shared APIs; read the engine PR contract first.
-- No Codex session is started or scheduled by a skill file: these are repository instructions. The owner launches individual coding sessions explicitly.
-- Keep the initial art experiment for #11 under `product/art-experiments/rabbit-v1/**`; do not modify finished shared artwork without review.
+- **Current start document:** `product/START-PRODUCT-DIRECTOR.md`, not the historical two-session pilot in `product/AGENT-LAUNCH.md`.
+- Current GitHub state changes: Engine #14 merged; Art #15, integration #19 and flower #21 are draft candidates. **P0 #22** requires a persistent, owner-accessible HTTPS technical demo; do not present `localhost` or `127.0.0.1` URLs as delivered outcomes.
+- Product Director may independently publish conspicuously labelled technical/art-review builds on existing authorized free hosting and merge safe technical PRs after required green CI and independent review. Never replace approved art/release or silently promote draft assets.
+- User approval is a **final visual milestone gate**, not an excuse to stop intermediate art improvements, coding, preview delivery or proposing new scenes. Raise a concrete design comparison and a recommendation rather than asking to approve a rough isolated draft.
+- The skill file cannot run or schedule new Codex sessions by itself. Any unattended runner or new spending requires explicit authorization.
+- Keep the initial art experiment for #11 under `product/art-experiments/rabbit-v1/**` until approved; do not modify finished shared artwork without review.

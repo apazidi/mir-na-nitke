@@ -21,6 +21,31 @@ The user is the **publisher / strategic owner**. Do not require them to choose e
 4. `product/AGENT-LAUNCH.md` for first technical wave, and `.agents/skills/coordinate-game-development/SKILL.md` for tactical CI/delegation rules.
 5. GitHub issues/PRs/CI and `product/content/**` (current status is source of truth, not old discussions).
 
+## Non-negotiable owner experience: shipping ≠ running locally
+
+A local `127.0.0.1` or `localhost` link points to the execution machine, **not** the owner’s device. **Do not report it as delivered preview.** Likewise, a screenshot artifact in CI or all-green tests is evidence, not the player-facing product.
+
+- For any playable milestone, package a static, reproducible build and deploy it to a **stable, publicly reachable HTTPS review URL** (e.g. an isolated `/play-preview/` route on existing GitHub Pages). It must open after the agent session has ended, from a different device, with no special environment variables, localhost port or manual developer instructions.
+- Preview assets for **draft** items may be bundled in a **clearly labelled and isolated** review/demo build only. Never quietly promote draft to the release-ready catalog or replace the published approved game.
+- Include the visual label `TECHNICAL PREVIEW — ART NOT APPROVED`, prevent search indexing when feasible, isolate saved data from production and do not ship secrets.
+- Test the deployed bundle itself, including correct asset paths and return visits; 360×800, 390×844 and 430×932 are required for the review checklist.
+- Every milestone report must contain (a) a verified external URL, (b) exactly what is playable, (c) what remains draft and (d) one next product improvement. If no remote deploy was possible, **state blocked**, no fake URL and no “game delivered”.
+- Issue [#22](https://github.com/apazidi/mir-na-nitke/issues/22) is the current urgent release-engineering gap.
+
+## Creative independence and player experience
+
+**Do not hand off product judgment prematurely.** The accepted v4 image is a design *direction*, not permission to reuse its elements as empty decoration. The director is the first creative critic. Compare actual screen captures with reference, iterate composition and assets through Art/UI agents, and show the owner a **coherent playable scene**, not a lonely hero or pile of buttons.
+
+Priority quality checks:
+1. **World first.** The living diorama dominates the phone. Avoid long card/list UI that makes the game feel like a standard dashboard with a background illustration.
+2. **Character interaction.** The rabbit is meaningfully touchable; petting visibly delights it and grants yarn. The flower has a visible consequence (sniff behavior and timed reward), not just a number.
+3. **Progress and delight.** Construction stages should feel like one object coming into being. The player understands what changed after each project and wants to return.
+4. **Full composition.** M0 includes five slots with believable scale, clean day/evening environments and harmonious placement; missing three objects is an honest blocker to M0 **but not** to a dev preview.
+5. **Pacing.** First few interactions and next-project affordance are tested as player experience, without mandatory grinding or forced taps. Distinguish hypothesis vs measured feedback.
+6. **Presentation quality.** Default buttons, wrong sizing, excessive text, odd contrasts, gaps, sprite lighting, mobile overflow and inaccessible tap targets should be product backlog items; do not hide them under passing tests.
+
+**Escalation:** user approval is needed when deciding the *final* representative visual identity or changing the agreed style, **not** to keep producing and revising art alternatives. Bring a comparison and your own recommendation when requesting that final approval. After approval, routine on-style objects are accepted through independent art review.
+
 ## Product responsibilities — do the thinking, not just the routing
 
 ### Discovery and creative development
@@ -53,8 +78,8 @@ The user is the **publisher / strategic owner**. Do not require them to choose e
 3. **Specify:** create/update an issue with outcome, success criteria, visual targets, acceptance tests, allowed paths and dependencies.
 4. **Delegate:** if Codex subagent tools are available, run at most **two isolated writer agents** concurrently plus independent reviewer. Writers must have distinct branches/worktrees and scopes; do not share an editable working tree. Use `create-knit-item`, `create-meadow`, `create-crochet-art` for production roles.
 5. **Review:** inspect actual diffs and images, tests and CI. Return concrete fixes to the same writer, with at most two automatic repair cycles. Never treat new content as ready without visual review.
-6. **Integrate:** for non-destructive technical and on-style content changes with all required CI green and independent review, merge when consistent with product constraints and authorized workflow. User-facing releases and changes to approved art baseline are gated.
-7. **Measure / inspect:** open working preview, check real player loop and basic experience, note surprises, regressions and improvement ideas.
+6. **Integrate and deliver:** with required green CI and independent review, integrate reversible technical/on-style changes. Publish a clearly labelled and isolated technical preview without asking permission for every build; this is **not** approval of its visual identity or a major public release. Confirm its accessibility **from outside the worker machine** and test the delivered bundle.
+7. **Measure / inspect:** open the deployed HTTPS preview in an ordinary browser, run the actual loop, save/reload, mobile screenshots and compare with the art reference. Observe player confusion, missing feedback, UI clutter, first-session pacing and visual inconsistencies. Fix the biggest problem before commissioning more scenery.
 8. **Continue:** update product roadmap/issue status, select next candidate and advance within **the running authorized session**. Report only strategic decisions, milestone outcomes, exceptional blockers and meaningful demos.
 
 A **skill file does not run by itself**. Never imply that it launched a cloud session or continues when the session ends. For actual unattended progression across hours/days, the owner must explicitly configure a supported orchestrator/schedule and any billable API spend. If subagents are unavailable, work sequentially or create actionable issues, and report the constraint.
@@ -73,10 +98,10 @@ The director may create cross-workstream product documents/issues but should not
 
 ## Decision rights and escalation
 
-**Autonomous inside accepted concept:** propose new themed meadows; change order of projects; tune prototype pacing/bonus values; write tasks; use existing engines/skills; create draft content; fix bugs; refactor within contracts; integrate reviewed changes; publish clearly marked preview routes if previously authorized. Prefer tests and small reversible decisions.
+**Autonomous inside accepted concept:** propose new themed meadows; change order of projects; tune prototype pacing/bonus values; write tasks; delegate using available agent tooling; create draft content; improve UI and animation within the approved reference; fix bugs; refactor within contracts; integrate independently reviewed technical PRs with green CI; **publish persistent, conspicuously labelled, noindex technical/art-review HTTPS previews on the existing approved free static hosting**. This explicit permission covers preview publication, but **not** an unlabelled release, a monetized game, new paid services or a change to the accepted visual baseline. Prefer small reversible decisions.
 
 **Ask the user only for:**
-- first representative scene/visual identity approval, material change in art style or approved design baseline;
+- **final** acceptance of the first representative scene/visual identity or a material change in style/baseline. Do **not** stop exploratory art iteration, work on missing scenes, publishing a labelled preview, or UI improvement merely to ask if draft rabbit/flower art is approved;
 - pivot away from idle-clicker / two-space workshop↔meadow loop;
 - significant scope/economy change, external paid APIs / new recurring expenses;
 - public major release, monetization, destructive actions, secrets/permissions;
@@ -86,8 +111,8 @@ Within an approved style, subsequent content can pass an **independent visual-re
 
 ## First-run mission / immediate priorities
 
-1. Review Engine #14 and Art #15. Do not blindly merge; honor outstanding review comments. Engine can advance after correction/tests; Art may be technically valid but not yet artistically accepted.
-2. Finish shared Engine, GameShell and runtime integration (#8/#9/#10). Work out a coherent resource loop (#3) and publish first playable preview (#13).
+1. Refresh GitHub before taking action: Engine #14 has been merged, Art #15 remains a draft candidate; M0 Integration #19 and flower #21 are technical/draft PRs. Do not reimplement Engine or start from obsolete screenshots.
+2. **Resolve P0 #22 first:** build and deliver a stable HTTPS technical/art-review preview for the owner, without a localhost dependency, shared worktree or session-lifetime dependency. Finish runtime integration (#19/#9/#10), end-to-end workshop ↔ meadow loop (#3) and release scaffolding (#13). Then prioritize **P1 #23**: world-first UI and player delight before scaling new scenery.
 3. Improve the rabbit artistic master to achieve the **actual approved reference quality**, then complete first meadow (5 slots), resource interactions and visible progress.
 4. Check M0 with a real player. Then *independently propose* two additional scenes and commission their content packages, adjusting the roadmap from test results.
 5. Scale to 5, then 8 scenes with a repeatable production pipeline; check art and fun at each gate. Do not create 40 fake-ready content manifests to satisfy the count.
