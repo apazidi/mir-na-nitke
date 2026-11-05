@@ -44,7 +44,7 @@ try {
   if(screen==='workshop')actions.append(button(view.project?.canComplete?'Завершить':'Вязать',()=>act({type:view.project?.canComplete?'completeCraft':'click'}),!project,'button primary'));
   else {for(const rule of mv.interactions.filter(r=>r.trigger==='manual'))actions.append(button('Погладить',()=>act({type:rule.action,meadowId:m.id,interactionId:rule.id}),!rule.available));}
   actions.append(button(evening?'День':'Вечер',()=>{evening=!evening;render();}));world.append(actions);
-  const nav=el('nav',undefined,'tabs');for(const [id,label]of [['workshop','Мастерская'],['meadow','Полянка']])nav.append(button(label,()=>{screen=id;render();},false,'tab '+(screen===id?'selected':'')));world.append(nav);section.append(world);app.append(section);
+  const nav=el('nav',undefined,'tabs');for(const [id,label]of [['workshop','Мастерская'],['meadow','Полянка']])nav.append(button(label,()=>{screen=id;feedbackUntil=0;render();},false,'tab '+(screen===id?'selected':'')));world.append(nav);section.append(world);app.append(section);
   const details=el('section',undefined,'project-list');
   if(screen==='workshop'){
    for(const p of view.projects){const item=catalog.items.find(i=>i.id===p.itemId);const row=el('div',undefined,'project-row');row.append(el('span',`${item.displayName} · ${p.yarnCost} пряжи`),button(view.owned.includes(item.id)?'Готово':'Начать',()=>act({type:'startProject',itemId:item.id}),!p.canStart));details.append(row);}
