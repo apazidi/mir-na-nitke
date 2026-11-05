@@ -4,18 +4,24 @@
     1820
   ],
   "productionStatus": "draft",
-  "missingStages": [
-    "stage-00",
-    "stage-01"
-  ],
+  "missingStages": [],
   "sources": [
     {
-      "file": "master-final.png",
+      "file": "master-00.png",
       "width": 1199,
       "height": 1312,
       "hasAlpha": true,
-      "transparentPixels": 669839,
-      "opaquePixels": 14,
+      "transparentPixels": 1449793,
+      "opaquePixels": 1,
+      "totalPixels": 1573088
+    },
+    {
+      "file": "master-01.png",
+      "width": 1199,
+      "height": 1312,
+      "hasAlpha": true,
+      "transparentPixels": 1139494,
+      "opaquePixels": 99,
       "totalPixels": 1573088
     },
     {
@@ -25,6 +31,15 @@
       "hasAlpha": true,
       "transparentPixels": 1054609,
       "opaquePixels": 20,
+      "totalPixels": 1573088
+    },
+    {
+      "file": "master-final.png",
+      "width": 1199,
+      "height": 1312,
+      "hasAlpha": true,
+      "transparentPixels": 669839,
+      "opaquePixels": 14,
       "totalPixels": 1573088
     }
   ]
