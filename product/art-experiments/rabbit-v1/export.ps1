@@ -1,8 +1,9 @@
 param([string]$Root = $PSScriptRoot)
 $ErrorActionPreference = 'Stop'
 Add-Type -AssemblyName System.Drawing
-$out = Join-Path $Root 'exports'
-$review = Join-Path $Root 'review'
+# Archived v1 experiment only. Current exports use export.cjs on every platform.
+$out = Join-Path $Root 'legacy-v1/exports'
+$review = Join-Path $Root 'legacy-v1/review'
 [void][IO.Directory]::CreateDirectory($out)
 [void][IO.Directory]::CreateDirectory($review)
 function Canvas([int]$w,[int]$h) { return [Drawing.Bitmap]::new($w,$h,[Drawing.Imaging.PixelFormat]::Format32bppArgb) }
@@ -14,7 +15,7 @@ function Graphics($im) {
 }
 function Save($im,$path) { $im.Save($path,[Drawing.Imaging.ImageFormat]::Png) }
 function Draw($g,$im,$x,$y,$w,$h) { $g.DrawImage($im,[Drawing.Rectangle]::new($x,$y,$w,$h)) }
-$layout = Get-Content (Join-Path $Root 'source/master.json') -Raw | ConvertFrom-Json
+$layout = Get-Content (Join-Path $Root 'source/master-v1.json') -Raw | ConvertFrom-Json
 $atlas = [Drawing.Bitmap]::new((Join-Path $Root 'source/parts.png'))
 $parts = @{}
 foreach ($p in $layout.parts) {

@@ -1,59 +1,74 @@
-# Rabbit v1 — issue #11 art review
+# Rabbit art — revision 2 for #11
 
-**Status: DRAFT / awaiting human art approval.** No runtime content is registered, no approved baseline changed. This is an isolated art experiment, not the GameShell or a playable release. Related issue: https://github.com/apazidi/mir-na-nitke/issues/11 (do not close on technical checks alone).
+**DRAFT. Awaiting human artistic approval.** [PR #15](https://github.com/apazidi/mir-na-nitke/pull/15), [review request](https://github.com/apazidi/mir-na-nitke/pull/15#issuecomment-6665983785). No ready package, shared UI change, approved baseline update or playable release.
 
-## Review first
+## Visual evidence
 
-- [Contact sheet: 0/25/50/75/100% + alpha](review/contact-sheet.png)
-- [Approved reference vs browser capture at 390×844](review/reference-comparison-390.png)
-- [Sprite composited over day and evening](review/meadow-alpha-proof.png)
-- Browser captures: `review/phone-{360x800,390x844,430x932}-{000,025,050,075,100}.png`.
-- Five-frame mobile comparisons: `review/stages-{360x800,390x844,430x932}.png` (raster art previews; the `phone-*` files are actual Chromium screenshots).
-- Open `review.html` locally for an art-only preview; `?stage=025` selects a stage. There are no game controls or simulated prices.
+- [0/25/50/75/100% and alpha contact sheet](review/contact-sheet.png)
+- [Approved reference vs actual 390×844 browser capture](review/reference-comparison-390.png)
+- [Final in-world day/evening placement with contact shadow](review/meadow-alpha-proof.png)
+- `review/phone-{360x800,390x844,430x932}-{000,025,050,075,100}.png`: 15 actual Chromium screenshots.
+- `review/stages-{360x800,390x844,430x932}.png`: five-frame raster comparisons at device sizes.
+- `review.html?stage=025`: art-only local browser preview. No simulated UI or prices.
 
-## Controllable master and production method
+## Changes requested → revision 2
 
-`source/master.json` is the editable layer assembly: fixed source crop rectangles, destination rectangles, z order and stage membership, on a 1024×1820 artboard. `source/parts.png` is the immutable generated RGBA component atlas. `source/workshop.png` is the fixed scene; `source/meadow-day.png` and `source/meadow-evening.png` are empty environment sources.
+1. **Character coherence / pose:** replaced the separately stacked component atlas with a newly painted **single complete ¾ hero**. Small bead eyes, cream planted paws without pink pads, attached limbs, occlusion at the neck and shoulders, visible tail and a perspective muzzle. The finished sprite comes directly from this coherent painting.
+2. **Stage anchor:** edited early states show a connected open belly cup, then a connected open-neck torso. Every nonempty state uses exactly the same transform and source pixels below y=1220 (feet and lower contact area). No detached future parts lie on the table. The full head appears at 75%, ears complete at 100%. Percentages are abstract crafting milestones, not an amigurumi pattern.
+3. **Composition / grounding:** a richer fixed workshop plate adds a woven work mat, foreground linen, deeper window/cubby layers and a working strand. Two soft contact-shadow lobes ground the toy on that mat. The meadow proof uses a smaller explicit placement and a separate ground shadow; no unlocked toy is baked into either empty meadow background.
+4. **Reproduction / CI:** `export.cjs` replaces Windows/System.Drawing in the active path. One master descriptor, retained raster sources, exact dependency versions and a lockfile are sufficient to export on Node/Sharp without a browser, image service or Windows. Browser screenshots are a separate optional command. The original PowerShell spike remains as a reference, writing only to ignored `legacy-v1/` so it cannot overwrite revision 2.
 
-All five stages are deterministically exported from the **same pixels**, not five independent AI renders. Ears render behind the head, arms behind the head and feet, bow on top. The sequence is empty worktable → body → body/limbs → head → ears/bow. These percentages are abstract work checkpoints, not a crochet pattern. Components appear only once crafted; no loose future parts are laid out on the table. Shadows are exported separately from the transparent sprite and stay on the table. Stage 25 has its own contact height because the body has no feet yet.
+## One documented master
 
-Image generation used the built-in `image_gen` tool, with the approved reference as a style input. See [prompt record](source/PROMPTS.md). Generated pixels themselves are retained as the source of truth: rerunning stochastic image generation is **not** claimed to reproduce the same image. Exporting the retained atlas and layout is reproducible on the documented Windows/runtime stack (cross-version encoders can differ in bytes).
+`source/master.json` owns all source paths, artboard, source canvas, stage sequence, transform, head silhouette mask, preserved contact region and meadow placement. Raster sources:
 
-## Rebuild
+- `hero-v2.png`: coherent ¾ completed toy, 1024×1536 RGBA.
+- `body-v2.png`: anchored edit of hero with open neck and no head/ribbon.
+- `cup-v2.png`: anchored edit of that body, shallow connected open crochet belly.
+- `workshop-v2.png`: fixed richly layered empty workshop plate.
+- `meadow-day.png`, `meadow-evening.png`: retained empty environmental backgrounds.
 
-Requires Windows PowerShell with `System.Drawing`, Node.js, `sharp` 0.34-compatible API and Playwright (Chromium or installed Chrome). No API key or generation service is needed to reproduce exports.
+This is a retained layered raster master, not a 3D scene. Early source images were edited **from the hero**, then reviewed against it; they are not independent character prompts. To prevent subtle generative drift at the table, the exporter restores original hero RGBA pixels below y=1220 in both edited states. Stage 75 is the hero with a documented silhouette mask hiding ears; it is not a separately rendered character. Source pixels, stage masks and transform are all reviewable. The alpha sprite contains neither table nor ground shadow. SVG is used only for masking, shadow falloff and review labels; the character and scenery are real generated raster artwork.
 
-```powershell
-./product/art-experiments/rabbit-v1/export.ps1
-# If modules are not installed locally, set NODE_PATH to your runtime node_modules.
-$env:CHROME_PATH = 'C:/Program Files/Google/Chrome/Application/chrome.exe'
-node product/art-experiments/rabbit-v1/pack-and-capture.cjs
+Generation used built-in `image_gen` with the approved reference. See [revision 2 prompt record](source/PROMPTS-v2.md). Source hashes and the hash of the shared contact patch are in `review/asset-report.json`. Retained masters make export reproducible; stochastic generation itself is not claimed to be reproducible. `source/master-v1.json`, `source/parts.png`, `source/workshop.png`, `source/PROMPTS.md` and `export.ps1` preserve the superseded spike, not inputs to the active exporter.
+
+## Export locally or in CI
+
+Node >=20.9, npm, and the checked-in lockfile. From repository root, identical commands in PowerShell or a Linux/macOS CI shell:
+
+```sh
+npm ci --prefix product/art-experiments/rabbit-v1
+npm --prefix product/art-experiments/rabbit-v1 run export
 ```
 
-`export.ps1` exports full resolution PNG intermediates, the finished RGBA PNG, contact sheet and scaled previews; it checks 1024×1820 dimensions, real transparency, a 12 MiB PNG ceiling, and records SHA-256/byte sizes in `review/asset-report.json`. Intermediate PNG frames are ignored by Git to avoid duplicating the WebP deliverables. `pack-and-capture.cjs` exports quality-90 WebP (alpha quality 100), checks dimensions/alpha and 1.5 MB per-file budget, writes `review/webp-report.json`, captures all 15 browser screenshots and compares the golden frame with the approved reference. A failed browser launch is an error, not a passing capture.
+This active path requires **no System.Drawing, PowerShell, browser, API key or image-generation service**. It validates required sources/canvas sizes, stage order, export names, real nonempty alpha, 1024×1820 dimensions, shared contact pixels, and a 1.5 MB WebP limit per file. It writes nine WebP files, the full-artboard RGBA PNG sprite, contact sheet, three mobile raster sheets, and source/asset hash reports. PNG stage intermediates are no longer needed or consumed.
 
-## Files / weight
+For actual browser evidence:
 
-- `exports/stage-{000,025,050,075,100}.webp`: five actual stage frames, about 231–314 KB each; total ~1.33 MB.
-- `exports/golden-frame.webp`: same completed scene as stage 100, ~314 KB, deliberate review alias.
-- `exports/finished-sprite.png`: RGBA master export ~1.37 MB; `.webp` ~170 KB, same full artboard/pivot as the stages.
-- `exports/meadow-{day,evening}.webp`: empty environmental backgrounds, ~306/313 KB. No houses, rabbits, bridges, flowers or unlockable props.
-- Runtime-sized stage set + sprite + two backgrounds: ~2.12 MB, excluding the duplicate golden alias and review/source images. Sources and browser captures are review assets, not runtime downloads.
+```sh
+npx --prefix product/art-experiments/rabbit-v1 playwright install --with-deps chromium
+npm --prefix product/art-experiments/rabbit-v1 run capture
+```
 
-## Visual assessment and limitations
+Alternatively set `CHROME_PATH` to an installed Chrome executable. `npm --prefix product/art-experiments/rabbit-v1 run review` runs both export and capture. `NODE_PATH` may point to a preinstalled bundled runtime, but is not needed after `npm ci`. Capture never recompresses/replaces artwork. Export is independent of capture. A failed browser launch fails capture. Geometry and the 15 viewports are recorded in `review/capture-report.json`.
 
-Inspected the approved reference and candidate side by side, the contact sheet, mobile browser captures, and day/evening alpha proof. Common traits: cream crochet fiber loops, warm upper-left light, rose details, rounded toy volume and readable dark bead eyes. All stages share identical framing, materials and reused components. The sprite has genuine transparency and no tabletop rectangle.
+The scripts and lockfile are contained within this art task; no shared GitHub Actions workflow is changed. Linux CI can run the above export command; this revision was executed on Windows/Node and clean-installed from the lockfile. A Linux runner has not been executed in this session. Pixel/byte equality across libvips/platform/font versions is not promised; the report records exact runtime versions and hashes. Raster asset generation does not depend on font availability; only contact-sheet labels do.
 
-The candidate changes the reference's three-quarter sitting rabbit to a frontal seated pose, larger eyes, stronger pink paw pads and a more symmetrical face. The workshop is a new environment rather than the reference's outdoor screen. These are **art proposals requiring owner acceptance**, not reference parity. Assembly seams and the head/torso overlap need close artistic review; the system is layered raster assembly, not a deformable 3D crochet model. Evening is a reference-based lighting edit and may have small texture drift relative to day; it is not a physically relit shared 3D scene. The meadow proof checks alpha and legibility, not final five-slot layout or pet animation.
+## Weights and checks
 
-Previews contain only art, with `object-fit: contain` to preserve the whole artboard and safe margins. No global UI, navigation or dynamic labels are designed or validated here. The art fills the viewport width; letterboxing is visible on tall devices. Final UI safe areas and meadow sprite scale require integration review in their separate tasks. No content manifest has been promoted to `ready`.
+- Five WebP stage scenes: **~2.23 MB total**, ~425–477 KB each.
+- Finished transparent WebP: **~235 KB**; lossless RGBA PNG is also retained.
+- Empty day/evening WebP: **~302/318 KB**.
+- Runtime art set (five stages + sprite + two backgrounds): **~3.08 MB**. Duplicate golden-frame review alias adds ~477 KB. Review screenshots and source masters are not runtime downloads. Exact bytes: `review/webp-report.json`.
+- Export + browser capture pass. No horizontal overflow at 360×800, 390×844, 430×932. The complete logical artboard uses `object-fit:contain`; tall-device letterboxing is deliberate.
+- `npm --prefix product test` still fails because this Windows Node does not expand the repository's test glob; the equivalent explicit file invocation passes **13/13**. Shared test configuration is outside this art task.
+- `npm --prefix product run validate`: **0 errors, 9 existing warnings** for missing art in draft `items/bunny`. This experiment does not modify or register that package.
+- `git diff --check` passes. Historical UI visual guard does not exercise this art-only route; prototypes and visual baselines remain unchanged.
 
-## Validation
+## Artistic review still required
 
-- `npm --prefix product test`: fails on this Windows Node version because the literal `tests/*.test.mjs` is not expanded.
-- Equivalent explicit test file invocation: `node --test @(Get-ChildItem product/tests/*.test.mjs | ForEach-Object FullName)` — **13 passed, 0 failed**.
-- `npm --prefix product run validate` — **0 errors, 9 warnings** for missing artwork in the pre-existing draft `items/bunny` package. This experiment intentionally does not modify that package.
-- Both export scripts pass; dimensions, actual sprite alpha, asset budgets and 15 device screenshots checked. `git diff --check` passes.
-- Historical UI visual guard is not applicable to this art-only route; existing prototypes and their baselines are untouched.
+Inspected the updated contact sheet, three phone widths, approved-reference comparison and day/evening placement proof. The pose, small eyes, cream paws and integrated volume are closer to the reference, with a richer workshop and a stable grounded stage anchor. This is a new proposed master, **not an art-director-approved scene**.
 
-Before promotion: owner reviews the images against the reference and approves the master/pose/stage sequence. Then a separate content task can import approved exports into an item package. Do not merge or close #11 before artistic acceptance.
+Review points: identity and yarn scale relative to the original reference; the head-mask contour at 75%; subtle seams where edited upper bodies meet the preserved lower region; whether cup → torso → head → ears is the desired abstract sequence; shadow density and contact point on the woven mat; final sprite scale/lighting on the meadow. The workshop remains a different environment from the outdoor reference. Evening is still a reference-based image edit, not a physically relit 3D world. In-world images demonstrate placement and alpha, not final five-slot layout, interactions or pet animation. Final shared UI safe areas require their separate integration review.
+
+Do not merge, promote to `ready`, or close #11 before human visual approval.
