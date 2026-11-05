@@ -19,3 +19,17 @@ test('draft flower art requires explicit art-review opt-in and remains fixture-o
  const defaultArt=developmentCatalog(true);assert.ok(defaultArt.catalog.items[1].art.finishedSprite.startsWith('data:'));
  const review=developmentCatalog(true,true);assert.deepEqual(review.catalog.items[1].art.stages.map(s=>s.at),[0,.3,.6,1]);assert.match(review.catalog.items[1].art.finishedSprite,/meadow-flower\/art\/finished.webp$/);assert.equal(review.catalog.items[1].id,'flower');assert.equal(review.catalog.items[1].status,undefined);
 });
+
+test('scene-v2 art and button assets stay behind the explicit art review opt-in',()=>{
+ const ordinary=developmentCatalog(false,true,true), rabbitOnly=developmentCatalog(true,true);
+ assert.equal(ordinary.buttonArt,null);assert.equal(rabbitOnly.buttonArt,null);
+ assert.ok(ordinary.catalog.items[2].art.finishedSprite.startsWith('data:'));
+ assert.ok(rabbitOnly.catalog.items[2].art.finishedSprite.startsWith('data:'));
+ const review=developmentCatalog(true,true,true);
+ assert.equal(Object.keys(review.buttonArt).length,6);
+ for(const item of review.catalog.items.slice(2)){
+  assert.equal(item.art.stages.length,4);assert.equal(item.art.stages[0].at,0);assert.equal(item.art.stages.at(-1).at,1);
+  assert.ok(item.art.finishedSprite.startsWith('./art-experiments/scene-v2/'));assert.equal(item.status,undefined);
+ }
+ assert.equal(createSession(review.config,{now:()=>0}).view.meadows[0].slots.filter(slot=>slot.placed).length,0);
+});

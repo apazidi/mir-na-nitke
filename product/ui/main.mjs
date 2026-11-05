@@ -12,7 +12,7 @@ const el = (tag, text, cls) => {
  return node;
 };
 let notice = '', screen = 'workshop', evening = false, selectedMeadow = 0;
-let drawer = false, reaction = null, lastCrafted = null, sequence = 0;
+let drawer = false, reaction = null, lastCrafted = null, sequence = 0, buttonArt = null;
 const announcer = el('p', '', 'sr-only');
 announcer.setAttribute('role', 'status');
 announcer.setAttribute('aria-live', 'polite');
@@ -21,6 +21,18 @@ const button = (label, fn, disabled = false, cls = 'button soft', key) => {
  const node = el('button', label, cls);
  node.type = 'button'; node.dataset.focusKey = key ?? label + '-' + sequence++;
  node.disabled = disabled; node.addEventListener('click', fn);
+ const art = buttonArt?.[label];
+ if (art) {
+  node.classList.add('art-button'); node.setAttribute('aria-label', label);
+  const visual = image(disabled ? art.disabled : art.normal, '', 'button-art');
+  node.replaceChildren(visual);
+  const rest = () => { if (!disabled) visual.src = art.normal; };
+  node.addEventListener('pointerdown', () => { if (!disabled) visual.src = art.pressed; });
+  for (const event of ['pointerup', 'pointercancel', 'pointerleave', 'blur']) node.addEventListener(event, rest);
+  node.addEventListener('keydown', event => { if (!disabled && [' ', 'Enter'].includes(event.key)) visual.src = art.pressed; });
+  node.addEventListener('keyup', rest);
+  visual.addEventListener('error', () => { node.classList.remove('art-button'); node.textContent = label; }, {once:true});
+ }
  return node;
 };
 const image = (src, alt, cls) => {
@@ -31,15 +43,49 @@ const image = (src, alt, cls) => {
  }, {once: true});
  return node;
 };
+
+const spriteBounds = new Map();
+function fitSpriteHitArea(target, visual, slot, world) {
+ if (!visual.complete || !visual.naturalWidth) return;
+ let bounds = spriteBounds.get(visual.src);
+ if (!bounds) {
+  const canvas = document.createElement('canvas');
+  canvas.width = visual.naturalWidth; canvas.height = visual.naturalHeight;
+  const context = canvas.getContext('2d', {willReadFrequently:true});
+  try {
+   context.drawImage(visual, 0, 0);
+   const pixels = context.getImageData(0,0,canvas.width,canvas.height).data;
+   let left=canvas.width, top=canvas.height, right=-1, bottom=-1;
+   for(let y=0;y<canvas.height;y++)for(let x=0;x<canvas.width;x++)if(pixels[(y*canvas.width+x)*4+3]>=16){
+    left=Math.min(left,x);top=Math.min(top,y);right=Math.max(right,x);bottom=Math.max(bottom,y);
+   }
+   bounds = right>=left ? {left,top,right:right+1,bottom:bottom+1} : {left:0,top:0,right:canvas.width,bottom:canvas.height};
+  } catch {
+   bounds = {left:0,top:0,right:canvas.width,bottom:canvas.height};
+  }
+  spriteBounds.set(visual.src,bounds);
+ }
+ const width=world.clientWidth*.5*slot.scale, height=width*1.25;
+ const scale=Math.min(width/visual.naturalWidth,height/visual.naturalHeight);
+ const paintWidth=visual.naturalWidth*scale, paintHeight=visual.naturalHeight*scale;
+ const offsetX=(width-paintWidth)/2+(bounds.left+bounds.right)*scale/2-width/2;
+ const offsetY=(height-paintHeight)/2+(bounds.top+bounds.bottom)*scale/2-height/2;
+ const hitWidth=Math.max(44,(bounds.right-bounds.left)*scale);
+ const hitHeight=Math.max(44,(bounds.bottom-bounds.top)*scale);
+ Object.assign(target.style,{left:(slot.x*world.clientWidth+offsetX)+'px',top:(slot.y*world.clientHeight+offsetY)+'px',width:hitWidth+'px',height:hitHeight+'px',aspectRatio:'auto'});
+ Object.assign(visual.style,{position:'absolute',width:width+'px',height:height+'px',left:((hitWidth-width)/2-offsetX)+'px',top:((hitHeight-height)/2-offsetY)+'px'});
+}
+
 const react = (kind, text, slots = []) => {
  reaction = {kind, text, slots, start: Date.now(), duration: 3400};
  announcer.textContent = text;
 };
 
 try {
- const runtime = dev ? developmentCatalog(mode === 'art-review', params.get('flower') === 'review')
+ const runtime = dev ? developmentCatalog(mode === 'art-review', params.get('flower') === 'review', params.get('scene') === 'v2')
   : await loadRuntimeCatalog(new URL('../app/content/catalog.json', import.meta.url));
  const {catalog, config, assetUrl, workshopBackdrop} = runtime;
+ buttonArt = runtime.buttonArt ?? null; app.classList.toggle('scene-v2', Boolean(buttonArt));
  if (!catalog.items.length || !catalog.meadows.length) {
   app.replaceChildren(el('h1', 'Мир на ниточке'), el('p', 'Готовые полянки ещё проходят художественную приёмку.'), el('p', 'Игровая сборка не подменяет их черновыми пакетами.'));
  } else {
@@ -76,13 +122,17 @@ try {
    render();
   }
   const navigate = id => { screen = id; drawer = false; render(); };
+  function setDrawer(open) {
+   drawer=open; render();
+   app.querySelector(open?'[data-focus-key="close-drawer"]':'[data-focus-key="tab-projects"]')?.focus({preventScroll:true});
+  }
   function renderDrawer(world, view, meadow, meadowView) {
-   const shade = button('Закрыть проекты', () => { drawer = false; render(); }, false, 'drawer-shade', 'shade');
+   const shade = button('Закрыть проекты', () => setDrawer(false), false, 'drawer-shade', 'shade');
    shade.tabIndex = -1; world.append(shade);
    const panel = el('section', undefined, 'project-drawer');
-   panel.id = 'projects-drawer'; panel.setAttribute('aria-label', 'Проекты и улучшения');
+   panel.id = 'projects-drawer'; panel.setAttribute('aria-label', 'Проекты и улучшения'); panel.setAttribute('role','dialog'); panel.setAttribute('aria-modal','true');
    const heading = el('div', undefined, 'drawer-heading');
-   heading.append(el('h2', screen === 'workshop' ? 'Корзинка проектов' : 'Жители полянки'), button('Закрыть', () => { drawer = false; render(); }, false, 'button soft', 'close-drawer'));
+   heading.append(el('h2', screen === 'workshop' ? 'Корзинка проектов' : 'Жители полянки'), button('Закрыть', () => setDrawer(false), false, 'button soft', 'close-drawer'));
    panel.append(heading);
    const details = el('div', undefined, 'project-list');
    if (screen === 'workshop') {
@@ -130,10 +180,10 @@ try {
    const art = screen === 'workshop' && artwork ? selectStage(artwork, project ? view.project.progress : 1)?.image : meadow.art[evening ? 'backgroundEvening' : 'backgroundDay'];
    if (art && !(screen === 'workshop' && !artwork && workshopBackdrop)) world.append(image(assetUrl(screen === 'workshop' && artwork ? artwork : meadow, art), screen === 'workshop' && artwork ? artwork.displayName : meadow.displayName, 'meadow-back scene-art'));
    const header = el('header', undefined, 'app-header');
-   header.append(el('strong', 'Мир на ниточке'), el('span', view.wallet.yarn.toFixed(1) + ' пряжи', 'yarn-wallet')); world.append(header);
-   const title = el('div', undefined, 'section-title');
-   title.append(el('h1', screen === 'workshop' ? 'Мастерская' : dev ? 'Малая полянка' : meadow.displayName));
-   world.append(title, button(evening ? 'День' : 'Вечер', () => { evening = !evening; render(); }, false, 'button lighting', 'lighting'));
+   header.append(el('h1', screen === 'workshop' ? 'Мастерская' : dev ? 'Малая полянка' : meadow.displayName),
+    el('span', view.wallet.yarn.toFixed(1) + ' пряжи', 'yarn-wallet'),
+    button(evening ? 'День' : 'Вечер', () => { evening = !evening; render(); }, false, 'button lighting', 'lighting'));
+   world.append(header);
    if (screen === 'meadow') {
     for (const slot of placementLayout(meadow, session.state.placements[meadow.id] ?? {}, catalog.items)) {
      const target = button(slot.item.displayName, () => {
@@ -141,7 +191,10 @@ try {
       if (rule) act({type: rule.action, meadowId: meadow.id, interactionId: rule.id});
       else { react('hello', slot.item.id === 'flower' ? 'Цветочек качнулся вам навстречу' : slot.item.displayName + ' рад вам', [slot.id]); render(); }
      }, false, 'placed-object', 'object-' + slot.id);
-     target.replaceChildren(image(assetUrl(slot.item, slot.item.art.finishedSprite), slot.item.displayName)); target.dataset.slot = slot.id;
+     const visual = image(assetUrl(slot.item, slot.item.art.finishedSprite), slot.item.displayName);
+     target.replaceChildren(visual); target.dataset.slot = slot.id;
+     visual.addEventListener('load',()=>fitSpriteHitArea(target,visual,slot,world));
+     requestAnimationFrame(()=>fitSpriteHitArea(target,visual,slot,world));
      target.style.left = slot.x * 100 + '%'; target.style.top = slot.y * 100 + '%'; target.style.width = 50 * slot.scale + '%'; target.style.zIndex = String(6 + slot.z);
      if (activeReaction?.slots.includes(slot.id)) target.classList.add('reacting'); world.append(target);
     }
@@ -175,14 +228,15 @@ try {
     }
     world.append(dock);
    } else renderDrawer(world, view, meadow, meadowView);
-   const nav = el('nav', undefined, 'tabs'); nav.setAttribute('aria-label', 'Места и проекты');
+   const nav = el('nav', undefined, 'tabs' + (buttonArt ? ' art-tabs' : '')); nav.setAttribute('aria-label', 'Места и проекты');
    for (const [id, text] of [['workshop', 'Мастерская'], ['meadow', 'Полянка']]) {
     const tab = button(text, () => navigate(id), false, 'tab ' + (!drawer && screen === id ? 'selected' : ''), 'tab-' + id);
     if (!drawer && screen === id) tab.setAttribute('aria-current', 'page'); nav.append(tab);
    }
-   const projects = button('Проекты', () => { drawer = !drawer; render(); if(drawer) app.querySelector('[data-focus-key="close-drawer"]')?.focus({preventScroll:true}); }, false, 'tab ' + (drawer ? 'selected' : ''), 'tab-projects');
+   const projects = button('Проекты', () => setDrawer(!drawer), false, 'tab ' + (drawer ? 'selected' : ''), 'tab-projects');
    projects.setAttribute('aria-expanded', String(drawer)); projects.setAttribute('aria-controls', 'projects-drawer'); nav.append(projects); world.append(nav);
    if (notice) { const status = el('p', notice, 'notice'); status.setAttribute('role', 'status'); world.append(status); }
+   if(drawer)for(const child of world.children)if(!child.classList.contains('project-drawer')&&!child.classList.contains('drawer-shade'))child.inert=true;
    section.append(world); app.append(section);
    if (drawer) app.querySelector('.project-drawer').scrollTop = scrollTop;
    if (focusKey !== undefined) [...app.querySelectorAll('[data-focus-key]')].find(node => node.dataset.focusKey === focusKey)?.focus({preventScroll: true});
@@ -207,7 +261,16 @@ try {
    }
    render();
   }, 1000);
-  document.addEventListener('keydown', event => { if (event.key === 'Escape' && drawer) { drawer = false; render(); app.querySelector('[data-focus-key="tab-projects"]')?.focus(); } });
+  document.addEventListener('keydown', event => {
+   if(!drawer)return;
+   if(event.key==='Escape'){event.preventDefault();setDrawer(false);return;}
+   if(event.key==='Tab'){
+    const controls=[...app.querySelectorAll('.project-drawer button:not(:disabled)')];
+    const first=controls[0],last=controls.at(-1),active=document.activeElement;
+    if(event.shiftKey&&active===first){event.preventDefault();last?.focus();}
+    else if(!event.shiftKey&&active===last){event.preventDefault();first?.focus();}
+   }
+  });
   document.addEventListener('visibilitychange', () => { session.tick(); render(); }); window.addEventListener('pagehide', () => session.tick());
  }
 } catch (error) {

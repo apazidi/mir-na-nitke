@@ -26,3 +26,11 @@ The legacy tests/visual_guard.py targets unchanged v4.1-design rather than this 
 ## Artistic status
 
 TECHNICAL PREVIEW — ART NOT APPROVED. Stable buttons still use live draft labels because no approved image library exists. Rabbit/flower assets are from the existing unapproved experiments. This UI iteration improves scale, composition and legibility; it does **not** establish parity with design-system/reference-v4.webp. The meadow still lacks the reference's layered natural detail, foreground framing and integrated button artwork. Those remain independent art-direction review gates. The demo economy is deliberately accelerated and is not final balance.
+
+## Scene-v2 artwork adapter (integration opt-in)
+
+Add &scene=v2 to the explicit art-review URL only after the scene-v2 asset pack is included in the preview bundle. This swaps the day/evening backgrounds and the three remaining fixture items to scene-v2/exports. Four stage images use thresholds 0, 1/3, 2/3 and 1; all existing item IDs, costs and interactions stay unchanged. The ordinary technical preview remains on its existing assets until this opt-in is enabled.
+
+Six stable controls load scene-v2/ui/{workshop,meadow,projects,knit,complete,pet}.webp and their -pressed/-disabled variants. Russian accessible names stay on the actual HTML buttons; visible lettering belongs to the raster artwork. Nav images render in approximately112×84px, actions150×50px. Missing draft button art falls back to its accessible live label and displays the existing art warning.
+
+The top HUD contains only current place, yarn and lighting. Sprite input targets follow cached alpha bounds while maintaining the original world anchor and at least44px targets; transparent flower padding can no longer intercept the rabbit's face. The project drawer is modal for keyboard and assistive technology, traps Tab and returns focus to Проекты on Close, Escape and backdrop click.
