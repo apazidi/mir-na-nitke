@@ -3,6 +3,8 @@ name: coordinate-game-development
 description: Use as the one coordinator for Мир на ниточке development. Read GitHub issues/PRs, delegate bounded independent work to Codex subagents when supported, review their output, update tasks, and recommend the next integration step. Do not bypass CI or human art approval.
 ---
 
+> **Scope note:** This is a tactical orchestration helper, **not** the lead product role. Start game development via `.agents/skills/game-product-director/SKILL.md`, which owns the 5–10 meadow vision, creative discovery and release roadmap. Use this skill only for delegation/CI/PR mechanics.
+
 # Coordinate game development — Мир на ниточке
 
 ## Mission
