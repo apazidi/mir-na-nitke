@@ -1,20 +1,28 @@
-# GameShell development preview
+# World-first GameShell preview
 
-Run from repository root after engine + runtime dependencies are integrated:
+The UI shares the v4 textile tokens and skin, with local draft layout overrides. The viewport is the play area: wallet and lighting at the top, craft progress/actions and navigation at the bottom. Projects, placement and upgrades open in the **Проекты** drawer. No item cards are appended below the game.
 
-```
-node product/scripts/build-content-index.mjs
-node product/scripts/serve-preview.mjs
-```
+Open /product/ui/?mode=development for synthetic fixtures. Use /product/ui/?mode=art-review&flower=review for draft rabbit and flower art. Ready-only /product/ui/ still displays the content gate while no approved meadow exists. Art review now uses its own mir-na-nitke-art-preview-v2 save key; old development and production saves are untouched. All fixture asset URLs resolve beneath the deployment prefix.
 
-Open `/product/ui/` for ready-only production loading. There are currently no ready meadows, so this route deliberately displays the content gate.
+For separate art worktrees, set ART_REVIEW_ROOT to the rabbit experiment exports folder and FLOWER_REVIEW_ROOT to the meadow-flower art folder before running node product/scripts/serve-preview.mjs.
 
-Open `/product/ui/?mode=development` for a playable technical fixture (five slots, rabbit/flower crafting, placement, pet reward, automatic sniff, upgrades, reload). The figures are explicit synthetic test assets, not content packages. Use `/product/ui/?mode=art-review` for the same test economy with the unapproved rabbit art experiment. Set `ART_REVIEW_ROOT` to the experiment's `exports` directory when starting the local server if it is not integrated locally. All other objects remain test figures; no flower art has passed review. The art review route never promotes draft content or uses the production save key.
+## Player feedback
 
-Run `node --test product/ui/session.test.mjs`. For browser geometry and interaction checks, install Playwright or set `PLAYWRIGHT_MODULE` to its absolute `index.mjs` path, optionally set `CHROME_PATH` and `ART_REVIEW_ROOT`, then run `node product/ui/browser-check.mjs`. It writes mobile evidence under `product/ui/review/`. The script uses the explicit art-review route; screenshots are development evidence, not an approved visual baseline.
+- A single contextual action starts the next project, crafts, completes, or places the finished object.
+- Clicking the rabbit pets it if the existing manual action is available. Cooldown clicks still give a gentle visual greeting without extra yarn.
+- Clicking a placed flower sways it without granting an unearned bonus.
+- The existing automatic sniff event leans the rabbit toward the flower, sways both sprites, draws a brief scent trail and names the actual reward.
+- Stage changes and completion show brief feedback. CSS animations use the original event time as a negative delay, so the one-second render does not restart them. Reduced-motion users receive text feedback without movement.
+- Only placed items become visible in the meadow. Locked future items remain secondary text entries in the drawer.
 
-UI reuses `design-system/skin-v4.css`. Fixed button image assets are absent from the approved skin library; current controls use temporary live text and are a known art acceptance gap. No final visual-quality claim is made. Storage failures keep the current tab playable and show a notice; incompatible saved data is preserved without silent overwrite. The fixture save is separate from production.
+## Verification
 
-Optional second art increment: `/product/ui/?mode=art-review&flower=review` uses the draft meadow-flower stages (0 / 0.3 / 0.6 / 1) and transparent finished sprite. This requires the explicit flower query as well as art-review mode; ordinary development and default rabbit art review keep synthetic flower art. Set `FLOWER_REVIEW_ROOT` to the separate meadow-flower package directory for the shared preview server. Both rabbit and flower remain unapproved and other figures remain synthetic. `browser-check.mjs` with both art roots captures the real-art combined loop and four flower stages at 390 into separately named `flower-review-*` evidence, leaving previous evidence intact.
+Run npm --prefix product test and npm --prefix product run validate. For browser verification set PLAYWRIGHT_MODULE to an installed Playwright index.mjs and optionally CHROME_PATH, then run node product/ui/browser-check.mjs with both art roots.
 
-Development economy hypothesis: initial yarn 5 → rabbit costs 5 → pet grants 2 → flower costs 2. Tests assert the second project is unavailable before the first pet and affordable afterward. This demonstrates the resource loop without mandatory waiting; it is not final balance. Art-review workshop composition uses an optional development-only blank stage-000 underlay from the rabbit experiment; this is not a content manifest extension.
+The browser check exercises the real two-project loop, direct sprite clicks, cooldown reward, automatic sniff, save/reload, Escape drawer close, reduced motion and missing-art/console errors. It records exact viewport screenshots (not full-page captures) for workshop and meadow, day and evening, at 360×800, 390×844 and 430×932. It checks one-screen page height, 65% scene height, 94% scene width, 44px targets and visible control bounds. Evidence is under review/world-first-*.png and review/world-first-geometry.json. Previous screenshots and the approved baseline are not overwritten.
+
+The legacy tests/visual_guard.py targets unchanged v4.1-design rather than this product UI; the product browser check is the relevant geometry check here.
+
+## Artistic status
+
+TECHNICAL PREVIEW — ART NOT APPROVED. Stable buttons still use live draft labels because no approved image library exists. Rabbit/flower assets are from the existing unapproved experiments. This UI iteration improves scale, composition and legibility; it does **not** establish parity with design-system/reference-v4.webp. The meadow still lacks the reference's layered natural detail, foreground framing and integrated button artwork. Those remain independent art-direction review gates. The demo economy is deliberately accelerated and is not final balance.
