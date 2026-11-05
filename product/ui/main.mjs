@@ -44,6 +44,8 @@ const image = (src, alt, cls) => {
  return node;
 };
 
+// Retain decoded state images so the first press never waits for an artwork fetch.
+const buttonImageCache = new Map();
 const spriteBounds = new Map();
 function fitSpriteHitArea(target, visual, slot, world) {
  if (!visual.complete || !visual.naturalWidth) return;
@@ -86,6 +88,10 @@ try {
   : await loadRuntimeCatalog(new URL('../app/content/catalog.json', import.meta.url));
  const {catalog, config, assetUrl, workshopBackdrop} = runtime;
  buttonArt = runtime.buttonArt ?? null; app.classList.toggle('scene-v2', Boolean(buttonArt));
+ if(buttonArt)await Promise.all([...new Set(Object.values(buttonArt).flatMap(states=>Object.values(states)))].map(async src=>{
+  const visual=new Image();buttonImageCache.set(src,visual);visual.src=src;
+  try{await visual.decode();}catch{notice='Часть иллюстраций кнопок недоступна. Арт ещё не прошёл приёмку.';}
+ }));
  if (!catalog.items.length || !catalog.meadows.length) {
   app.replaceChildren(el('h1', 'Мир на ниточке'), el('p', 'Готовые полянки ещё проходят художественную приёмку.'), el('p', 'Игровая сборка не подменяет их черновыми пакетами.'));
  } else {

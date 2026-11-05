@@ -24,8 +24,8 @@ export function developmentCatalog(artReview=false, flowerReview=false, sceneRev
   backgroundEvening:artReview?meadowArt+'meadow-evening.webp':blank
  },slots:items.map((item,n)=>({id:item.id,itemId:item.id,
   x:(useScene?[.36,.64,.20,.77,.70]:[.36,.73,.2,.75,.75])[n],
-  y:(useScene?[.55,.59,.35,.37,.23]:[.55,.63,.35,.42,.28])[n],
-  scale:(useScene?[1.85,1.05,1.4,1.1,.40]:[1.85,1.05,.55,.55,.55])[n],z:n
+  y:(useScene?[.55,.59,.33,.31,.23]:[.55,.63,.35,.42,.28])[n],
+  scale:(useScene?[1.85,1.05,1.4,1.0,.40]:[1.85,1.05,.55,.55,.55])[n],z:useScene?[3,4,1,0,5][n]:n
  })),passive:[{id:'rabbit-income',requires:['rabbit'],ratePerHour:30}],interactions:[
   {id:'pet',requires:['rabbit'],actorSlot:'rabbit',action:'pet',trigger:'manual',amount:2,cooldownMs:5000},
   {id:'sniff',requires:['rabbit','flower'],actorSlot:'rabbit',action:'sniff',trigger:'idle',amount:3,cooldownMs:10000}
