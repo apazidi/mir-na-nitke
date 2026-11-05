@@ -1,5 +1,16 @@
 # Мир на ниточке 1.0 — content pipeline foundation
 
+
+## AI Game Product Director — основная модель развития
+
+**Сейчас проект ведётся через одного продуктового агента, а не через ручное переключение между Engine/Art/UI сессиями.** Его задача — самостоятельно развить игру от первого рабочего цикла до **5–10 полноценных полянок** с качественным визуалом, хорошей idle/clicker-экономикой и игровыми взаимодействиями.
+
+- [Одна точка запуска Codex](START-PRODUCT-DIRECTOR.md)
+- [Product vision + кандидаты первых восьми полянок](PRODUCT-VISION-5-10-SCENES.md)
+- [Product Director skill](../.agents/skills/game-product-director/SKILL.md)
+- [Epic #17 — roadmap 5–10 полянок](https://github.com/apazidi/mir-na-nitke/issues/17)
+
+**Статус:** это роль и roadmap, а не уже работающий автономный сервис. Для постоянной работы между сессиями нужен отдельный агентный рантайм, согласование бюджета/прав и запуск.
 This folder is the **new product**, developed without copying HTML/CSS from the historical PoCs. There is **no playable 1.0 app yet**. The initial milestone is a reproducible, parallel-friendly workflow for adding knitted items and five-project meadows.
 
 ## Новый продуктовый цикл: мастерская ⇄ полянки
