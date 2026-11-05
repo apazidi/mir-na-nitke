@@ -4,16 +4,16 @@
   "productionContent": false,
   "sceneReview": true,
   "saveKey": "mir-na-nitke-art-preview-v2",
-  "appSourceCommit": "0a82268c69142e15f587424b0ff612f5290d0e8a",
+  "appSourceCommit": "31a8316b58f93947dbc708f62b01cd919167ed15",
   "sourceFiles": {
     "design-system/skin-v4.css": "e4f36c8097902532bbafde6589a5d916965f2b8881fd93a934d847b07d982b4c",
     "product/app/content/index.mjs": "00b9669ff7929c556b0b22b0dc1d54a8a717f80898af6668c6f674ae76033dff",
     "product/app/core/index.mjs": "8719548d829d22c499e06c21c3c363aa80020daa2881ea52c57f082b1dbade16",
     "product/app/ui/session.mjs": "b3bd6367312130aae5ab906577c3aae1fa9018ecd2bd37a623f15c430c6d555d",
-    "product/ui/dev-catalog.mjs": "ac567fc74a3acdac8d10ff5766016e7952770e9086ca5d3d5d2ae2a9b3e8e2d3",
+    "product/ui/dev-catalog.mjs": "0cde75c784a37c47c3ea32a82c234b0aabfe38e5bc5029b1a2c7b84ee797c05b",
     "product/ui/index.html": "a0c11afe2326ccd9bc123d5fd75403be00a2943e3b328344958514a2c0542dc5",
-    "product/ui/main.mjs": "c23974e76dac95148722650c65cefc5613f43658b5c2d580e8753618ec3e3596",
-    "product/ui/shell.css": "7768a42d9c54f7256179097ad855cf56a58951a63f539b116cb57144d9f6c0be"
+    "product/ui/main.mjs": "0090b2c25fba8d299ae4cef831594d569480ff1e4befee8a8974496be1832bdd",
+    "product/ui/shell.css": "30c9a6d5e48947c8f11294a4cbab23e659276a1218745123a91cb08fc22750d3"
   },
   "artSources": [
     {
@@ -44,7 +44,7 @@
       ]
     },
     {
-      "commit": "c88420d87617cf3d1bfb1d9f26a721b60728f6eb",
+      "commit": "18ce3b9dd0313e1896161f33179fd8d2c342369f",
       "directory": "product/art-experiments/scene-v2/exports",
       "files": [
         "butterfly-finished.webp",
@@ -52,6 +52,7 @@
         "butterfly-stage-01.webp",
         "butterfly-stage-02.webp",
         "butterfly-stage-03.webp",
+        "house-finished-evening.webp",
         "house-finished.webp",
         "house-stage-00.webp",
         "house-stage-01.webp",
@@ -67,7 +68,7 @@
       ]
     },
     {
-      "commit": "c88420d87617cf3d1bfb1d9f26a721b60728f6eb",
+      "commit": "18ce3b9dd0313e1896161f33179fd8d2c342369f",
       "directory": "product/art-experiments/scene-v2/ui",
       "files": [
         "complete-disabled.webp",
@@ -82,9 +83,15 @@
         "pet-disabled.webp",
         "pet-pressed.webp",
         "pet.webp",
+        "place-disabled.webp",
+        "place-pressed.webp",
+        "place.webp",
         "projects-disabled.webp",
         "projects-pressed.webp",
         "projects.webp",
+        "start-disabled.webp",
+        "start-pressed.webp",
+        "start.webp",
         "workshop-disabled.webp",
         "workshop-pressed.webp",
         "workshop.webp"
@@ -188,9 +195,14 @@
       "sha256": "597ddcac20941ea9a615dd78303e23976dc33331bd9c6c745336b58fd356674f"
     },
     {
+      "path": "product/art-experiments/scene-v2/exports/house-finished-evening.webp",
+      "bytes": 256808,
+      "sha256": "d980cd1e8cb28ce0b937787becffe8576caff6eb1001135b7124ceae786fef6d"
+    },
+    {
       "path": "product/art-experiments/scene-v2/exports/house-finished.webp",
-      "bytes": 183722,
-      "sha256": "c1e59a3225584ccd06e1ed5eb45fda94eef256f16bf8fc926e6297689983b4a6"
+      "bytes": 231990,
+      "sha256": "ef5fdca19af98e2fd479fda249e2a02a7ab65786185b233006d5ec5ae17c9451"
     },
     {
       "path": "product/art-experiments/scene-v2/exports/house-stage-00.webp",
@@ -209,8 +221,8 @@
     },
     {
       "path": "product/art-experiments/scene-v2/exports/house-stage-03.webp",
-      "bytes": 182930,
-      "sha256": "7cd21402e190059601fc203e4c6554e4a448fd01f35acbf90cf0a7feff97259b"
+      "bytes": 228134,
+      "sha256": "afcc38dcd14b7eae4695b165305674e2265ddcb9fb3b4c4f50ee0793b30a12ff"
     },
     {
       "path": "product/art-experiments/scene-v2/exports/meadow-day.webp",
@@ -308,6 +320,21 @@
       "sha256": "0ae1fa8c6b71fc7be283cb662e78f5cf8e69a5140704695d89017322907788d7"
     },
     {
+      "path": "product/art-experiments/scene-v2/ui/place-disabled.webp",
+      "bytes": 83490,
+      "sha256": "0bf384c6930641ad9ed8af13a03d681fa4fd9672dcea557616e1089e79c3d7f2"
+    },
+    {
+      "path": "product/art-experiments/scene-v2/ui/place-pressed.webp",
+      "bytes": 89802,
+      "sha256": "4cf0ca202a533c955d07d8b7e36adbdc7d7ffd4ab882ec9373b74c1a0670e405"
+    },
+    {
+      "path": "product/art-experiments/scene-v2/ui/place.webp",
+      "bytes": 93648,
+      "sha256": "5698f1c390315ee176e35d64132f152d2ffc6f1f5a822156cd465395a3c8af4c"
+    },
+    {
       "path": "product/art-experiments/scene-v2/ui/projects-disabled.webp",
       "bytes": 74674,
       "sha256": "46079337f175554535e11bf1187e2e71f814e827f94ad03cf99415c8a3abe12f"
@@ -321,6 +348,21 @@
       "path": "product/art-experiments/scene-v2/ui/projects.webp",
       "bytes": 88642,
       "sha256": "4ec56c51a2a20560948a6adb19cc4f33c075bfc1279c5fb93475735eda9b9fb6"
+    },
+    {
+      "path": "product/art-experiments/scene-v2/ui/start-disabled.webp",
+      "bytes": 83046,
+      "sha256": "330d3ffa0b591bcb5453b8698d468d14500a0e65808ac70be669b64cca830b17"
+    },
+    {
+      "path": "product/art-experiments/scene-v2/ui/start-pressed.webp",
+      "bytes": 89744,
+      "sha256": "17097ae59a97e2ce26fd029b334c22d5ae05dfb6688689c57893ede5e9400326"
+    },
+    {
+      "path": "product/art-experiments/scene-v2/ui/start.webp",
+      "bytes": 92582,
+      "sha256": "69fc0cb5dd181695408c49432a9318b92da5e547d7502998e2aa9430e1f42b75"
     },
     {
       "path": "product/art-experiments/scene-v2/ui/workshop-disabled.webp",
@@ -364,8 +406,8 @@
     },
     {
       "path": "product/ui/dev-catalog.mjs",
-      "bytes": 3777,
-      "sha256": "ac567fc74a3acdac8d10ff5766016e7952770e9086ca5d3d5d2ae2a9b3e8e2d3"
+      "bytes": 3955,
+      "sha256": "0cde75c784a37c47c3ea32a82c234b0aabfe38e5bc5029b1a2c7b84ee797c05b"
     },
     {
       "path": "product/ui/index.html",
@@ -374,13 +416,13 @@
     },
     {
       "path": "product/ui/main.mjs",
-      "bytes": 22286,
-      "sha256": "c23974e76dac95148722650c65cefc5613f43658b5c2d580e8753618ec3e3596"
+      "bytes": 22897,
+      "sha256": "0090b2c25fba8d299ae4cef831594d569480ff1e4befee8a8974496be1832bdd"
     },
     {
       "path": "product/ui/shell.css",
-      "bytes": 10894,
-      "sha256": "7768a42d9c54f7256179097ad855cf56a58951a63f539b116cb57144d9f6c0be"
+      "bytes": 11103,
+      "sha256": "30c9a6d5e48947c8f11294a4cbab23e659276a1218745123a91cb08fc22750d3"
     }
   ]
 }

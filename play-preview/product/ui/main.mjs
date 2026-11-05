@@ -21,9 +21,11 @@ const button = (label, fn, disabled = false, cls = 'button soft', key) => {
  const node = el('button', label, cls);
  node.type = 'button'; node.dataset.focusKey = key ?? label + '-' + sequence++;
  node.disabled = disabled; node.addEventListener('click', fn);
- const art = buttonArt?.[label];
+ const navigationLabel = {'В мастерскую':'Мастерская', 'На полянку':'Полянка'}[label];
+ const art = node.classList.contains('primary') || node.classList.contains('tab') ? buttonArt?.[navigationLabel ?? label] : null;
  if (art) {
-  node.classList.add('art-button'); node.setAttribute('aria-label', label);
+  node.classList.add('art-button'); node.setAttribute('aria-label', navigationLabel ? navigationLabel + ' — перейти' : label);
+  if (navigationLabel) node.classList.add('art-navigation-action');
   const visual = image(disabled ? art.disabled : art.normal, '', 'button-art');
   node.replaceChildren(visual);
   const rest = () => { if (!disabled) visual.src = art.normal; };
@@ -31,7 +33,7 @@ const button = (label, fn, disabled = false, cls = 'button soft', key) => {
   for (const event of ['pointerup', 'pointercancel', 'pointerleave', 'blur']) node.addEventListener(event, rest);
   node.addEventListener('keydown', event => { if (!disabled && [' ', 'Enter'].includes(event.key)) visual.src = art.pressed; });
   node.addEventListener('keyup', rest);
-  visual.addEventListener('error', () => { node.classList.remove('art-button'); node.textContent = label; }, {once:true});
+  visual.addEventListener('error', () => { node.classList.remove('art-button', 'art-navigation-action'); node.removeAttribute('aria-label'); node.textContent = label; }, {once:true});
  }
  return node;
 };
@@ -197,7 +199,10 @@ try {
       if (rule) act({type: rule.action, meadowId: meadow.id, interactionId: rule.id});
       else { react('hello', slot.item.id === 'flower' ? 'Цветочек качнулся вам навстречу' : slot.item.displayName + ' рад вам', [slot.id]); render(); }
      }, false, 'placed-object', 'object-' + slot.id);
-     const visual = image(assetUrl(slot.item, slot.item.art.finishedSprite), slot.item.displayName);
+     const prelit = evening && Boolean(slot.item.art.finishedSpriteEvening);
+     const sprite = prelit ? slot.item.art.finishedSpriteEvening : slot.item.art.finishedSprite;
+     if (prelit) target.classList.add('prelit');
+     const visual = image(assetUrl(slot.item, sprite), slot.item.displayName);
      target.replaceChildren(visual); target.dataset.slot = slot.id;
      visual.addEventListener('load',()=>fitSpriteHitArea(target,visual,slot,world));
      requestAnimationFrame(()=>fitSpriteHitArea(target,visual,slot,world));
