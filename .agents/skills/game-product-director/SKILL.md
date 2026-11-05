@@ -112,7 +112,7 @@ Within an approved style, subsequent content can pass an **independent visual-re
 ## First-run mission / immediate priorities
 
 1. Refresh GitHub before taking action: Engine #14 has been merged, Art #15 remains a draft candidate; M0 Integration #19 and flower #21 are technical/draft PRs. Do not reimplement Engine or start from obsolete screenshots.
-2. **Resolve P0 #22 first:** build and deliver a stable HTTPS technical/art-review preview for the owner, without a localhost dependency, shared worktree or session-lifetime dependency. Finish runtime integration (#19/#9/#10), end-to-end workshop ↔ meadow loop (#3) and release scaffolding (#13).
+2. **Resolve P0 #22 first:** build and deliver a stable HTTPS technical/art-review preview for the owner, without a localhost dependency, shared worktree or session-lifetime dependency. Finish runtime integration (#19/#9/#10), end-to-end workshop ↔ meadow loop (#3) and release scaffolding (#13). Then prioritize **P1 #23**: world-first UI and player delight before scaling new scenery.
 3. Improve the rabbit artistic master to achieve the **actual approved reference quality**, then complete first meadow (5 slots), resource interactions and visible progress.
 4. Check M0 with a real player. Then *independently propose* two additional scenes and commission their content packages, adjusting the roadmap from test results.
 5. Scale to 5, then 8 scenes with a repeatable production pipeline; check art and fun at each gate. Do not create 40 fake-ready content manifests to satisfy the count.
