@@ -25,7 +25,7 @@ The legacy tests/visual_guard.py targets unchanged v4.1-design rather than this 
 
 ## Artistic status
 
-TECHNICAL PREVIEW — ART NOT APPROVED. Stable buttons still use live draft labels because no approved image library exists. Rabbit/flower assets are from the existing unapproved experiments. This UI iteration improves scale, composition and legibility; it does **not** establish parity with design-system/reference-v4.webp. The meadow still lacks the reference's layered natural detail, foreground framing and integrated button artwork. Those remain independent art-direction review gates. The demo economy is deliberately accelerated and is not final balance.
+TECHNICAL PREVIEW — ART NOT APPROVED. The scene-v2 candidate now combines layered day/evening background art, five independently revealed knitted objects and six tactile controls with baked Russian labels. The complete scene is earned through the existing rabbit → pet → flower → sniff economy; no production package is promoted. Smaller ancillary controls and dynamic values remain live text. The comparison with design-system/reference-v4.webp remains an independent art-direction gate; this implementation does not declare final reference parity or replace the approved baseline. The demo economy is deliberately accelerated and is not final balance.
 
 ## Scene-v2 artwork adapter (integration opt-in)
 
@@ -34,3 +34,6 @@ Add &scene=v2 to the explicit art-review URL only after the scene-v2 asset pack 
 Six stable controls load scene-v2/ui/{workshop,meadow,projects,knit,complete,pet}.webp and their -pressed/-disabled variants. Russian accessible names stay on the actual HTML buttons; visible lettering belongs to the raster artwork. Nav images render in approximately112×84px, actions150×50px. Missing draft button art falls back to its accessible live label and displays the existing art warning.
 
 The top HUD contains only current place, yarn and lighting. Sprite input targets follow cached alpha bounds while maintaining the original world anchor and at least44px targets; transparent flower padding can no longer intercept the rabbit's face. The project drawer is modal for keyboard and assistive technology, traps Tab and returns focus to Проекты on Close, Escape and backdrop click.
+
+
+Actual scene-v2 assets can be checked locally with node product/ui/art-layout-check.mjs, setting SCENE_REVIEW_ROOT as well as both earlier art roots. This check earns and places all five objects, verifies normal/pressed/disabled image controls and captures exact390×844 day/evening evidence. All18 button-state images are decoded and retained before interaction. Scene depth puts the cottage/tree behind the rabbit and the butterfly above the scene.
