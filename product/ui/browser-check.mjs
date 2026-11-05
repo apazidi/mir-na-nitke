@@ -72,6 +72,12 @@ try{
   assert.equal(await page.locator('[data-feedback-kind="hello"]').count(),1);
   await page.waitForTimeout(3600);
   await shot('meadow-day');await geometry('meadow-day');
+  if(width===390){
+   for(const point of [[190,470],[200,500],[195,570]])assert.equal(await page.evaluate(([x,y])=>document.elementFromPoint(x,y)?.closest('button')?.dataset.slot,point),'rabbit','Visible rabbit pixels must not be intercepted by transparent flower padding');
+   const beforeCheek=await readSave();await page.mouse.click(190,470);
+   assert.equal(await page.locator('[data-feedback-kind="pet"]').count(),1);
+   assert.ok((await readSave()).wallet.yarn>=beforeCheek.wallet.yarn+2);
+  }
   const beforeSniff=await readSave();
   await page.locator('[data-feedback-kind="sniff"]').waitFor({timeout:14000});
   assert.equal(await page.locator('.flower-scent').count(),1);
@@ -83,6 +89,15 @@ try{
   await shot('meadow-evening');await geometry('meadow-evening');
   await page.getByRole('button',{name:'Проекты',exact:true}).click();
   if(width===390)await shot('projects');
+  assert.equal(await page.evaluate(()=>document.activeElement?.dataset.focusKey),'close-drawer');
+  await page.keyboard.press('Shift+Tab');
+  assert.equal(await page.evaluate(()=>Boolean(document.activeElement?.closest('.project-drawer'))),true);
+  await page.getByRole('button',{name:'Закрыть',exact:true}).click();
+  assert.equal(await page.evaluate(()=>document.activeElement?.dataset.focusKey),'tab-projects');
+  await page.getByRole('button',{name:'Проекты',exact:true}).click();
+  await page.mouse.click(40,180);
+  assert.equal(await page.evaluate(()=>document.activeElement?.dataset.focusKey),'tab-projects');
+  await page.getByRole('button',{name:'Проекты',exact:true}).click();
   await page.keyboard.press('Escape');
   assert.equal(await page.locator('.project-drawer').count(),0);
   await page.reload();await page.getByRole('button',{name:'Полянка',exact:true}).click();
