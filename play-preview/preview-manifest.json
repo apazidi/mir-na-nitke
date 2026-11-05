@@ -5,14 +5,14 @@
   "saveKey": "mir-na-nitke-art-preview-v2",
   "appSourceCommit": "22084008526dc6bbf9594ceea03ae97e2ae76d17",
   "sourceFiles": {
-    "design-system/skin-v4.css": "b0fea456d64c4a512eb26014805a69a3c5a38a85a31db0e2dcb950a52108376e",
-    "product/app/content/index.mjs": "151406403226d815518ca445e1d71454d05bdef8bd9aaf55d66d3d0d2660f896",
-    "product/app/core/index.mjs": "ac8df90f7be44c27db10a84e6d3c9ff226b9e5e3c43baa093f8369c74ed87054",
-    "product/app/ui/session.mjs": "5412b10bfcd86425dd6bef42427c8a689ab0e1bde765f42733257bb0169d7747",
-    "product/ui/dev-catalog.mjs": "b1ba1cea1461446893b460b55e043820fbf46d3b3ab1a117b91e7fb2917d8813",
-    "product/ui/index.html": "7b29dc0f977087e73e96729e9518727e4c514495e9db010f88913e563ef32ff6",
-    "product/ui/main.mjs": "a262c2a6c2cf447fbeacbee22b2ddeecfbf05cf0cc4573dc9223cfd26d19b9dd",
-    "product/ui/shell.css": "c829e303b1109730ba92748343ed4be736421ea811a7dffc62b3a7087918df49"
+    "design-system/skin-v4.css": "e4f36c8097902532bbafde6589a5d916965f2b8881fd93a934d847b07d982b4c",
+    "product/app/content/index.mjs": "00b9669ff7929c556b0b22b0dc1d54a8a717f80898af6668c6f674ae76033dff",
+    "product/app/core/index.mjs": "8719548d829d22c499e06c21c3c363aa80020daa2881ea52c57f082b1dbade16",
+    "product/app/ui/session.mjs": "b3bd6367312130aae5ab906577c3aae1fa9018ecd2bd37a623f15c430c6d555d",
+    "product/ui/dev-catalog.mjs": "fdd304771a2fcd89366f9efe58526f2aa02a0a5f6a46bcb23a6b83fc3133cf6a",
+    "product/ui/index.html": "a0c11afe2326ccd9bc123d5fd75403be00a2943e3b328344958514a2c0542dc5",
+    "product/ui/main.mjs": "c896434d8b1d29b6e75cf69c7058725cbcfc3a0bbeda5c94af3b6ebec1d280b0",
+    "product/ui/shell.css": "57c880c945fe1cef1ab1436c189b6d9137769367d393a9c7c68a432849c7df24"
   },
   "artSources": [
     {
@@ -46,8 +46,8 @@
   "files": [
     {
       "path": "design-system/skin-v4.css",
-      "bytes": 8251,
-      "sha256": "b0fea456d64c4a512eb26014805a69a3c5a38a85a31db0e2dcb950a52108376e"
+      "bytes": 8213,
+      "sha256": "e4f36c8097902532bbafde6589a5d916965f2b8881fd93a934d847b07d982b4c"
     },
     {
       "path": "index.html",
@@ -61,18 +61,18 @@
     },
     {
       "path": "product/app/content/index.mjs",
-      "bytes": 3768,
-      "sha256": "151406403226d815518ca445e1d71454d05bdef8bd9aaf55d66d3d0d2660f896"
+      "bytes": 3721,
+      "sha256": "00b9669ff7929c556b0b22b0dc1d54a8a717f80898af6668c6f674ae76033dff"
     },
     {
       "path": "product/app/core/index.mjs",
-      "bytes": 12113,
-      "sha256": "ac8df90f7be44c27db10a84e6d3c9ff226b9e5e3c43baa093f8369c74ed87054"
+      "bytes": 11861,
+      "sha256": "8719548d829d22c499e06c21c3c363aa80020daa2881ea52c57f082b1dbade16"
     },
     {
       "path": "product/app/ui/session.mjs",
-      "bytes": 1376,
-      "sha256": "5412b10bfcd86425dd6bef42427c8a689ab0e1bde765f42733257bb0169d7747"
+      "bytes": 1362,
+      "sha256": "b3bd6367312130aae5ab906577c3aae1fa9018ecd2bd37a623f15c430c6d555d"
     },
     {
       "path": "product/art-experiments/rabbit-v1/exports/finished-sprite.webp",
@@ -141,23 +141,23 @@
     },
     {
       "path": "product/ui/dev-catalog.mjs",
-      "bytes": 2828,
-      "sha256": "b1ba1cea1461446893b460b55e043820fbf46d3b3ab1a117b91e7fb2917d8813"
+      "bytes": 2817,
+      "sha256": "fdd304771a2fcd89366f9efe58526f2aa02a0a5f6a46bcb23a6b83fc3133cf6a"
     },
     {
       "path": "product/ui/index.html",
-      "bytes": 510,
-      "sha256": "7b29dc0f977087e73e96729e9518727e4c514495e9db010f88913e563ef32ff6"
+      "bytes": 509,
+      "sha256": "a0c11afe2326ccd9bc123d5fd75403be00a2943e3b328344958514a2c0542dc5"
     },
     {
       "path": "product/ui/main.mjs",
-      "bytes": 8804,
-      "sha256": "a262c2a6c2cf447fbeacbee22b2ddeecfbf05cf0cc4573dc9223cfd26d19b9dd"
+      "bytes": 8739,
+      "sha256": "c896434d8b1d29b6e75cf69c7058725cbcfc3a0bbeda5c94af3b6ebec1d280b0"
     },
     {
       "path": "product/ui/shell.css",
-      "bytes": 2631,
-      "sha256": "c829e303b1109730ba92748343ed4be736421ea811a7dffc62b3a7087918df49"
+      "bytes": 2630,
+      "sha256": "57c880c945fe1cef1ab1436c189b6d9137769367d393a9c7c68a432849c7df24"
     }
   ]
 }
