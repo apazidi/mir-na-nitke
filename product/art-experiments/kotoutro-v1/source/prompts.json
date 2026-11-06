@@ -1,0 +1,176 @@
+{
+  "status": "draft",
+  "tool": "built-in image_gen",
+  "externalPaidApi": false,
+  "referenceRole": "WB photos are inspiration/identity references supplied for adaptation, not UI/catalog assets. No WB text or marks are exported.",
+  "references": [
+    {
+      "path": "references/kot-cat-wb-373108430.webp",
+      "productId": 373108430,
+      "url": "https://basket-22.wbbasket.ru/vol3731/part373108/373108430/images/c516x688/1.webp"
+    },
+    {
+      "path": "references/kot-duck-wb-912360683.webp",
+      "productId": 912360683,
+      "url": "https://basket-39.wbbasket.ru/vol9123/part912360/912360683/images/c516x688/1.webp"
+    },
+    {
+      "path": "references/reference-v4.webp",
+      "repoPath": "design-system/reference-v4.webp",
+      "commit": "bea0c608d18cf0705c8d7cc317a82c68094ffa62"
+    },
+    {
+      "path": "references/scene-v2-live-day-390.png",
+      "source": "Actual HTTPS game screenshot from PR25 deployment, saved by release smoke"
+    },
+    {
+      "path": "references/guest-rabbit.webp",
+      "repoPath": "product/art-experiments/rabbit-v1/exports/finished-sprite.webp",
+      "commit": "56a748cc0de532b40a1b9a0927ff1d900406d85b",
+      "role": "Composition-only existing guest, no new unlockable"
+    }
+  ],
+  "generations": [
+    {
+      "id": "kot_cat_master",
+      "output": "kot-cat-master.png",
+      "inputs": [
+        "references/kot-cat-wb-373108430.webp",
+        "references/reference-v4.webp"
+      ],
+      "prompt": "Use case: stylized-concept. Asset type: transparent finished game character master for the premium crochet-diorama game Мир на ниточке. Input1 is a real handmade product IDENTITY reference: preserve this orange sleepy cat's recognizable turquoise sleep mask raised on forehead, half-lidded large green glassy eyes, dark small nose and embroidered whiskers, plump upright orange crocheted body, soft triangular ears, curved orange tail, and two ivory rabbit-shaped slippers on its feet. Input2 is STYLE/QUALITY and camera reference only: tactile rich fine yarn fibers, rounded hand-crocheted volumes, warm golden directional upper-left light, soft grounding, intimate macro miniature photography. Create an adapted in-game cat, more lovingly sculpted and premium than the product catalog photograph, still unmistakably that sleepy character. Cat is standing cozily with relaxed arms at its belly, hands empty: REMOVE the coffee cup because cup+table are a separate unlockable project. Slight three-quarter turn toward viewer-right but both eyes/slippers clear; charming gentle sleepy mood, not sad or angry. Full body centered within a 1024x1024 square canvas, useful silhouette occupying x220..810 y100..935, ears and slippers uncropped, fixed floor at y930. Camera a little above eye level, consistent with reference game and other finished sprites. Real RGBA TRANSPARENT background. Add only a very tight soft translucent contact shadow beneath slippers, no ground platform/disc, no scene, no chair, no table, no coffee, no text or branding/catalog graphics. Keep mask solid turquoise crochet and slippers clean ivory bunny faces/ears, do not accidentally add separate rabbits. This is a controllable final master later used to derive aligned unfinished crafting stages.",
+      "toolOutput": "Generated images are saved to C:\\Users\\Apazidi\\.codex\\generated_images\\01a1ad77-e51b-7d11-a8bc-d35a57434f81 as C:\\Users\\Apazidi\\.codex\\generated_images\\01a1ad77-e51b-7d11-a8bc-d35a57434f81\\exec-4789ead3-cd4f-46e0-8846-970f32796ba0.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+    },
+    {
+      "id": "kot_bg_day",
+      "output": "meadow-day-master.png",
+      "inputs": [
+        "references/reference-v4.webp",
+        "references/scene-v2-live-day-390.png"
+      ],
+      "prompt": "Use case: stylized-concept. Asset type: actual portrait game BACKGROUND, 1024x1820 logical artboard. Create a new premium handmade crochet-diorama environment called Котоутро у пруда: a cozy morning garden veranda beside a small calm pond. Input1 is the approved visual style and quality reference; input2 is the existing game's actual successful interactive scene quality, not a composition to duplicate. Match or exceed rich physical wool fibers, tiny visible crochet loops, sculpted layered foliage, warm directional sun from upper-left, soft macro-lens depth and detailed charming miniature. NO lettering, HUD, buttons, border. Camera matches a slightly elevated three-quarter view of a miniature garden, foreground large and intimate. Scene: weathered honey-brown knitted veranda planks fill the lower-left/middle foreground and meet a lush moss bank; small shimmering yarn-blue pond curves through the RIGHT middle and lower edge with lily pads and reed tufts, rounded moss stones. Overhead leafy flowering vine/pergola edges and a bit of soft woven porch post at far-left frame a sunlit distant garden. Morning dew, gold beams, ivory daisies and soft lavender flowers framing edges, saturated tender greenery. Compose depth and physical yarn relief equal to reference, NOT an empty flat lawn. Keep CLEAR, physically grounded placement areas for FIVE separate unlockable sprites: hero cat on veranda at normalized(.35,.62); small coffee table at(.64,.65); duck on bank near(.75,.48); cozy chair on veranda farther back at(.24,.37); small leaf-shaped shelter on far bank at(.76,.30). These zones must have appropriate open flat support with readable texture, no objects already there; middle-to-foreground clear enough for large cat. Upper8% visually quiet for compact wallet and bottom16% calm textured floor/grass for floating navigation. IMPORTANT no cats, no ducks/birds/animals, no slippers, no coffee/cups/tables, no chairs/sofas, no leaf-house/shelter or cottage. Background only: porch structure/floor, natural plants, pond, stones, distant garden. Do not fake future earned objects. No plastic, no flat illustration, no photo furniture, no huge blank gradients. All environment rendered as handcrafted wool/textile miniature, cohesive with existing game but a distinct relaxing pond/veranda identity.",
+      "toolOutput": "Generated images are saved to C:\\Users\\Apazidi\\.codex\\generated_images\\01a1ad77-e51b-7d11-a8bc-d35a57434f81 as C:\\Users\\Apazidi\\.codex\\generated_images\\01a1ad77-e51b-7d11-a8bc-d35a57434f81\\exec-a033cff4-e81c-4737-99ec-3c136933db5a.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+    },
+    {
+      "id": "kot_bg_evening",
+      "output": "meadow-evening-master.png",
+      "inputs": [
+        "meadow-day-master.png"
+      ],
+      "prompt": "Use case: lighting-weather. Edit this exact premium crochet garden-veranda/pond background into its warm early-evening version for the SAME interactive game. Preserve EVERY plank, porch post, railing, vine, flower, stone, lily pad, reed, pond edge, distant garden shape, composition, camera, lens and crop. Only change illumination: soft lavender-blue ambient shadows, last gentle peach-gold light from upper-left, warm reflected highlights on the pond, subtle distant firefly-like bokeh allowed. Preserve dimensional yarn fibers and readable tactile detail on a phone; do not crush blacks or apply a uniform purple filter. Keep the same five empty placement zones. Do not add any cats, ducks, other animals, cups/coffee, tables, chairs, leaf shelters, houses, UI, text, lamps, props or borders. It remains a clean standalone environment, no fake unlocked objects. Exact same portrait composition/aspect/dimensions as input.",
+      "toolOutput": "Generated images are saved to C:\\Users\\Apazidi\\.codex\\generated_images\\01a1ad77-e51b-7d11-a8bc-d35a57434f81 as C:\\Users\\Apazidi\\.codex\\generated_images\\01a1ad77-e51b-7d11-a8bc-d35a57434f81\\exec-71a1a1af-f938-4e1a-a3b3-d44695a4d0ee.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+    },
+    {
+      "id": "kot_cat_atlas",
+      "output": "kot-cat-atlas.png",
+      "inputs": [
+        "kot-cat-master.png"
+      ],
+      "prompt": "Use case: precise-object-edit. Asset type: a SINGLE coherent four-stage crafting atlas derived from the supplied finished cat master. Preserve this exact cat identity, yarn, orange hue, mask/slippers/face design, camera, lighting and proportions. Output a square 1536x1536 RGBA transparent image divided into an invisible 2x2 grid of four equal768x768 cells. No grid lines or text. Every cell uses the SAME coordinate frame: identical center x384, feet baseline y704, final head top abouty64; finished cat fits within x150..615. Fixed scale, no per-stage zoom/recenter. Stages are truly different physical construction states of this one handmade cat, not fading, masks, covers or painted percentages. TOP LEFT stage0: a small open orange crochet body foundation at the same final lower-body location, two little developing ivory slipper soles at the fixed floor, short attached loose yarn end, no head/face/arms/mask/tail. TOP RIGHT stage1: orange plump lower body and two plain ivory slipper forms joined, unfinished open head/body upper rim with visible soft ivory stuffing; ears/arms/face/tail/mask not yet attached. BOTTOM LEFT stage2: nearly complete exact cat body/head/ears/tail and sleepy green eyes/whiskers, arms attached; turquoise forehead mask only partially crocheted, ivory bunny slippers mostly formed but one still missing face embroidery/ears, short working yarn end. BOTTOM RIGHT stage3: EXACT supplied finished cat, fully complete with turquoise forehead mask, sleepy green eyes, dark nose/whiskers, relaxed empty hands, orange tail and two ivory bunny slippers. Same beautiful directional golden upper-left light and soft tight translucent ground shadow. This is a premium crochet-diorama asset, tiny real fibers and rounded stitch depth comparable to reference. Keep transparent background genuinely empty, no environment/table/coffee, no tools, no extra yarn ball, no labels, no boxes, no opaque matte or halos. No crop across cells. Stage3 is the placement sprite source; stage0..3 will be deterministically cropped using equal cells without individual fitting.",
+      "toolOutput": "Generated images are saved to C:\\Users\\Apazidi\\.codex\\generated_images\\01a1ad77-e51b-7d11-a8bc-d35a57434f81 as C:\\Users\\Apazidi\\.codex\\generated_images\\01a1ad77-e51b-7d11-a8bc-d35a57434f81\\exec-a4660d33-9243-4443-87e1-8fd746725385.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+    },
+    {
+      "id": "kot_duck_master",
+      "output": "kot-duck-master.png",
+      "inputs": [
+        "references/kot-duck-wb-912360683.webp",
+        "references/reference-v4.webp"
+      ],
+      "prompt": "Use case: stylized-concept. Asset type: transparent finished game character master. Input1 is the real handmade Happy Duckling product identity reference, not its catalog design. Preserve the actual recognizable duckling: tiny plump pear-shaped ivory-to-pale-grey FLUFFY brushed-yarn body, round downy head, small shiny black bead eyes, long soft dark-grey crocheted bill, two broad dark-grey webbed feet, tiny fluffy wing nubs; gentle curious baby pose. No bright yellow duck, no adult goose, no clothing. Input2 is the exact game's visual quality/camera reference: premium physical handmade wool miniature with rich fibers, rounded textile volume, warm directional upper-left golden light and subtle contact shadow. Adapt the product into a beautiful small independent interactive pond companion, shown three-quarter facing slightly left toward the future orange cat; both webbed feet and bill clearly readable. Full body in a1024x1024 square canvas, with clear transparent margins, no clipping. Framing centered x512 with feet near y910 and head near y190; consistent slightly elevated camera like the game. Soft clean transparent alpha around its fine fluff, no pale matte/halo/box. Only a tiny diffuse contact shadow below feet, no ground disc. NO leaf shelter (separate unlockable), no scene, plant, chair, table, cat, pond, text, WB/logo/catalog graphics. Retain the innocent calm recognizable handmade duckling character. Output one isolated true-RGBA-transparent finished master, later used to derive construction stages.",
+      "toolOutput": "Generated images are saved to C:\\Users\\Apazidi\\.codex\\generated_images\\01a1ad77-e51b-7d11-a8bc-d35a57434f81 as C:\\Users\\Apazidi\\.codex\\generated_images\\01a1ad77-e51b-7d11-a8bc-d35a57434f81\\exec-1ae0733c-ea5e-4bd5-9605-769c22cb24bd.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+    },
+    {
+      "id": "kot_duck_atlas",
+      "output": "kot-duck-atlas.png",
+      "inputs": [
+        "kot-duck-master.png"
+      ],
+      "prompt": "Use case: precise-object-edit. Derive a SINGLE coherent four-stage crochet crafting atlas from this exact finished fluffy ivory-grey duckling master. Square1536x1536 RGBA TRANSPARENT image, invisible2x2grid of equal768x768cells; no text, labels or dividers. Identical camera, upper-left golden light, yarn color/texture, centered x384 and feet floor y690 in ALL cells; fixed scale, final head top aroundy80, finished body fits x180..590. Do not independently enlarge small stages. TOP LEFT stage0: small unfinished open ivory crochet lower-body bowl at the duckling's final belly-bottom position, two little dark-grey webbed-foot foundations at the fixed floor, short loose working yarn end; no head, bill, eyes or wings. TOP RIGHT stage1: plump unfinished oval body attached to completed dark-grey webbed feet, open upper rim with soft visible stuffing; crochet-loop texture not yet fully brushed/fluffed, no separate head/eyes/bill/wings. BOTTOM LEFT stage2: exact near-finished duckling with round head joined and dark-grey bill/black bead eyes, body partially brushed into soft down and one wing still unfinished with small working yarn end; correct same silhouette and fixed location. BOTTOM RIGHT stage3: EXACT supplied finished baby duckling, all fluffy ivory-to-lightgrey down, two black bead eyes, long charcoal-grey crocheted bill, two matching webbed feet, small wings, same three-quarter left-facing pose. Real meaningful construction stages, never faded/covered copies of final. Beautiful tactile tiny fibers, physically rounded wool miniature. Keep faint clean translucent contact shadow immediately below feet; no opaque ground disc, no background, no leaf-shelter, no plants/scene/othercharacters. Each cell fully isolated with generous alpha gutters and no cross-cell overlap. This atlas is the master for equal-cell crop exports, including finished sprite from bottom-right.",
+      "toolOutput": "Generated images are saved to C:\\Users\\Apazidi\\.codex\\generated_images\\01a1ad77-e51b-7d11-a8bc-d35a57434f81 as C:\\Users\\Apazidi\\.codex\\generated_images\\01a1ad77-e51b-7d11-a8bc-d35a57434f81\\exec-eb39bc3f-4b0d-451f-a019-b38533dd45ad.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+    },
+    {
+      "id": "kot_coffee_master",
+      "output": "kot-coffee-master.png",
+      "inputs": [
+        "meadow-day-master.png",
+        "kot-cat-master.png"
+      ],
+      "prompt": "Use case: stylized-concept. Asset type: isolated transparent finished object master for a premium crochet-diorama game. References are STYLE/CAMERA/LIGHT/material guides only, do not reproduce their scene or cat. Make one small cozy ROUND COFFEE TABLE with a single WHITE COFFEE CUP as ONE craftable object. The table is entirely crocheted textile miniature: honey-walnut yarn round braided rim, visibly layered stitched top with concentric loops, three short sturdy braided yarn legs, softly rounded forms. A chunky ivory-white crochet mug with one handle and dark coffee visible inside sits naturally on the tabletop; tiny delicate cotton-wisp steam optional but subtle. No extra food, vase or decor. Slightly elevated three-quarter camera shows top surface and supportive legs, match veranda perspective; warm golden upper-left light, rich physical wool fibers, premium sculpted yarn volume. Full object centered in1024x1024 square with transparent margins, tabletop roughlyx190..840, cup begins aroundy190, legs grounded at y900. Real clean RGBA transparency, only a tight natural translucent contact shadow below legs, no ground disk/platform, no environment, cat, chair, labels, branding or text. This retained final master will generate four aligned construction states later. Readable small on a phone; cup silhouette clear against honey table.",
+      "toolOutput": "Generated images are saved to C:\\Users\\Apazidi\\.codex\\generated_images\\01a1ad77-e51b-7d11-a8bc-d35a57434f81 as C:\\Users\\Apazidi\\.codex\\generated_images\\01a1ad77-e51b-7d11-a8bc-d35a57434f81\\exec-924f5267-1513-4a1b-af61-9f8b1fa8f610.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+    },
+    {
+      "id": "kot_chair_master",
+      "output": "kot-chair-master.png",
+      "inputs": [
+        "meadow-day-master.png",
+        "kot-cat-master.png"
+      ],
+      "prompt": "Use case: stylized-concept. Asset type: isolated transparent finished furniture master for premium crochet-diorama game. References are STYLE/CAMERA/LIGHT/material guides only; do not include their cat or environment. Create one cozy plump CROCHET ARMCHAIR, miniature softly rounded dusty-rose/soft warm terracotta woven upholstery, creamy braided piping around padded arms and high rounded back, clearly textured crochet stitches and fibers. One ivory soft knitted seat cushion and small folded warm-cream blanket over one arm are integrated components of this one chair, not separate scene objects. Four short honey-brown crocheted legs visible enough to ground it. Three-quarter perspective facing slightly viewer-right toward future cat, subtly elevated camera like reference game; high back and seat distinctly readable. Directional warm golden upper-left sun, dimensional wool light response, subtle shadows within seat/arms. Full chair centered within1024x1024 square, top aroundy140, feet baseliney910, x170..860, transparent margins. Real clean RGBA alpha, tiny flat translucent floor-contact shadows only under legs, no pedestal/disc or environment. No cat, duck, table, cup, plants, text, logos or UI. Premium handcrafted miniature fidelity, not flat cartoon/plastic. This master will be used to derive real unfinished craft stages.",
+      "toolOutput": "Generated images are saved to C:\\Users\\Apazidi\\.codex\\generated_images\\01a1ad77-e51b-7d11-a8bc-d35a57434f81 as C:\\Users\\Apazidi\\.codex\\generated_images\\01a1ad77-e51b-7d11-a8bc-d35a57434f81\\exec-aefa1274-fb43-49f2-baf8-6f919f46abb9.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+    },
+    {
+      "id": "kot_leaf_house_master",
+      "output": "kot-leaf-house-master.png",
+      "inputs": [
+        "references/kot-duck-wb-912360683.webp",
+        "meadow-day-master.png"
+      ],
+      "prompt": "Use case: stylized-concept. Asset type: transparent finished object master for premium crochet-diorama game. Input1's small green leaf cradle/shelter is the product inspiration; retain its leaf identity but adapt it into a cozy clear independent miniature LEAF-SHAPED DUCK SHELTER. Other reference is the exact new veranda/pond scene's material, camera and golden morning light. Create one large folded knitted leaf with sculpted raised central rib and branching stitched veins: deep sage/olive green outside with lighter moss highlights, softly curled pointed leaf tip forming an arch roof, leaf sides curl upward into a snug nest/shelter. Low rounded open entrance faces slightly viewer-left, warm cream knitted lining just visible within; tiny rolled leaf stem at rear. It is unmistakably one crafted leaf-house, NOT a timber cottage or cactus, no door/window/roof tiles. Keep pleasant organically asymmetric leaf silhouette, exquisite real crochet loops/fibers, rounded physical thickness and natural green variation. NO DUCK inside or outside: duck is a separate unlockable. No plants/flowers/props around it. Grounding is a tiny irregular integrated moss fringe and flat soft translucent contact shadow hugging base, never a large terrain island or opaque disc. Slightly elevated three-quarter camera with interior visible, golden upper-left daylight consistent with game. Centered full object in1024x1024 square, clear transparent margins (x130..900,y210..900); preserve room above pointed leaf tip. Real RGBA alpha, no background/haze/box, no text, labels or branding. This retained finished master will generate four real construction stages.",
+      "toolOutput": "Generated images are saved to C:\\Users\\Apazidi\\.codex\\generated_images\\01a1ad77-e51b-7d11-a8bc-d35a57434f81 as C:\\Users\\Apazidi\\.codex\\generated_images\\01a1ad77-e51b-7d11-a8bc-d35a57434f81\\exec-6ed59c97-d3b8-4026-9817-a08470ade6a8.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+    },
+    {
+      "id": "kot_leaf_house_alpha",
+      "output": "kot-leaf-house-clean-master.png",
+      "inputs": [
+        "kot-leaf-house-master.png"
+      ],
+      "prompt": "Use case: precise-object-edit. Edit ONLY the ground contact pixels below this exact crochet leaf shelter. Preserve ALL of the leaf-house itself exactly: canvas/camera/position/scale/leaf silhouette/ribs/veins/cream interior/moss fringe/color/light/stitch detail. There is an undesirable pale beige/grey oval GLOW/MATTE under and around its base. REMOVE that pale oval completely to actual RGBA transparency. Replace with only a very thin tight DARK olive-brown translucent contact shadow directly under the moss footprint, fading to fully transparent within a few pixels. Shadow may darken a background but must NEVER lighten it; no light-colored halo, no floor/ground disc/platform. Keep tiny existing moss fringe as part of object. Do not add terrain or enlarge/move the object. The whole background remains true transparent alpha. No other edits. Same exact square canvas and object alignment.",
+      "toolOutput": "Generated images are saved to C:\\Users\\Apazidi\\.codex\\generated_images\\01a1ad77-e51b-7d11-a8bc-d35a57434f81 as C:\\Users\\Apazidi\\.codex\\generated_images\\01a1ad77-e51b-7d11-a8bc-d35a57434f81\\exec-695bab98-531e-4618-bbc3-47d56cae41c1.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+    },
+    {
+      "id": "kot_coffee_atlas",
+      "output": "kot-coffee-atlas.png",
+      "inputs": [
+        "kot-coffee-master.png"
+      ],
+      "prompt": "Use case: precise-object-edit. Derive one coherent four-stage crafting atlas from the exact supplied crochet coffee-table-and-white-mug master. Square1536x1536 transparentRGBA, invisible2x2grid of four equal768x768cells. Same perspective, golden upper-left light, scale, x384 center and leg baseliney700 in every cell. Full final item including its tiny steam wisp fits x65..700,y45..710, no clipped steam. TOP LEFT stage0: three partially crocheted short honey-yarn table legs and a little lower support foundation at their final floor locations, attached loose working yarn, no tabletop or mug yet. TOP RIGHT stage1: same three full legs with partly woven round tabletop (roughly half the disc/rim completed, open crocheted edge), no mug. BOTTOM LEFT stage2: table fully completed exactly like master, a half-made open ivory mug cylinder sitting at its final place on tabletop, handle and coffee not yet present, short white working yarn end. BOTTOM RIGHT stage3: exact fully finished table and single white coffee mug with dark coffee and one tiny subtle steam wisp, preserve master's geometry, stitches and colors. Meaningfully unfinished physical components, never faded/covered final copies. Keep true empty alpha gutters and margins, no text/grid/frame/tools/extra props. Contact shadows must be tight DARK brown translucent shadows under feet, no opaque grey/beige discs or light halo. No environment, no platform, no cat or chair. This single atlas provides fixed equal-cell stage crops and the final placed sprite.",
+      "toolOutput": "Generated images are saved to C:\\Users\\Apazidi\\.codex\\generated_images\\01a1ad77-e51b-7d11-a8bc-d35a57434f81 as C:\\Users\\Apazidi\\.codex\\generated_images\\01a1ad77-e51b-7d11-a8bc-d35a57434f81\\exec-68aae84d-03ef-4d29-87fb-f428affab5c8.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+    },
+    {
+      "id": "kot_chair_atlas",
+      "output": "kot-chair-atlas.png",
+      "inputs": [
+        "kot-chair-master.png"
+      ],
+      "prompt": "Use case: precise-object-edit. Create one consistent four-stage crafting atlas derived from this exact finished dusty-rose crochet armchair master. Preserve its geometry, proportions, warm rose color, cream piping/cushion/blanket, leg positions, camera and upper-left golden light. Square1536x1536 realRGBA transparency, invisible2x2grid of equal768x768cells, no text/dividers. All cells identical framing: x384 center, feet baseliney704, final back top near y70; final chair withinx80..690. No individual fitting or rescaling stages. TOP LEFT stage0: only the unfinished low rose seat foundation and four short honey-brown legs in their eventual floor positions, open crochet edge and short working yarn tail, no back, arms, cushion, blanket or piping. TOP RIGHT stage1: completed seat base and legs with half-height unfinished rose back rising from it and partly formed arms, open stitched rim, no cushion or blanket. BOTTOM LEFT stage2: exact full rose chair body/back/arms/legs, ivory seat cushion mostly crocheted but one small unfinished edge with working yarn; cream border partly attached, no blanket yet. BOTTOM RIGHT stage3: exact complete supplied armchair, cream braided piping, finished ivory cushion and folded cream blanket on one arm, all proportions and perspective preserved. True physical crafting progress, not faded or covered finished copies. Detailed real wool fibers and sculpted stitch volume. Tight DARK translucent contact shadows directly under legs, no light halo or grey/beige floor discs. Empty transparent background, no scene, props, characters, table, cup, label, UI or grid. Stages will be equal-cell cropped at fixed scale.",
+      "toolOutput": "Generated images are saved to C:\\Users\\Apazidi\\.codex\\generated_images\\01a1ad77-e51b-7d11-a8bc-d35a57434f81 as C:\\Users\\Apazidi\\.codex\\generated_images\\01a1ad77-e51b-7d11-a8bc-d35a57434f81\\exec-87c6a1a7-2122-4ed6-8801-9f99ea8d8f25.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+    },
+    {
+      "id": "kot_leaf_house_atlas",
+      "output": "kot-leaf-house-atlas.png",
+      "inputs": [
+        "kot-leaf-house-clean-master.png"
+      ],
+      "prompt": "Use case: precise-object-edit. Create one coherent four-stage crafting atlas from this exact clean transparent green leaf-house master. Preserve leaf silhouette, opening, rib/veins, cream lining, moss foot, camera, scale, material and golden upper-left light. Square1536x1536 RGBA transparent with invisible2x2grid of four equal768x768cells, no text/grid lines. Same x384center and baseliney680 in ALL cells; final pointed tip topnear y110; full item fitsx95..690. Fixed coordinate frame, no per-stage scale/zoom. TOP LEFT stage0: only a small half-crocheted green oval leaf-base with developing cream floor lining at its final ground location, low open crochet edge and short green working yarn. TOP RIGHT stage1: completed base/cream floor with low half-height green leaf sidewalls, partial stitched central rib beginning to rise at rear, roof not formed, no canopy. BOTTOM LEFT stage2: almost complete leaf shelter with arched roof leaf partially finished: one half of green canopy is crocheted, other edge visibly still open/unfinished with short yarn end; cream lining and base finished, main veins partly missing. BOTTOM RIGHT stage3: exact complete supplied folded leaf shelter with sculpted curled pointed tip, raised vein network, open cream-lined interior and tiny moss at base. Absolutely NO duck inside any stage. True physical unfinished stages, not transparent/faded/covered copies. Keep same supporting base and perspective throughout. Only a very thin DARK olive-brown translucent contact shadow directly under footprint; NEVER pale grey/beige glows, opaque ground discs, terrain islands or platform. Empty actual alpha around each cell, no scene/plants/otherprops, no label or UI. Final bottom-right is the finished-sprite source; all states will crop using equal cells.",
+      "toolOutput": "Generated images are saved to C:\\Users\\Apazidi\\.codex\\generated_images\\01a1ad77-e51b-7d11-a8bc-d35a57434f81 as C:\\Users\\Apazidi\\.codex\\generated_images\\01a1ad77-e51b-7d11-a8bc-d35a57434f81\\exec-09154ffc-a2b9-4ed3-aabb-1f1f4b0bea6a.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+    },
+    {
+      "id": "kot_duck_alpha",
+      "output": "kot-duck-atlas-clean.png",
+      "inputs": [
+        "kot-duck-atlas.png"
+      ],
+      "prompt": "Use case: precise-object-edit. This exact four-cell transparent duckling crafting atlas has a small undesirable pale grey/light oval matte BELOW THE FEET in each cell. Repair ONLY those ground-contact pixels: erase every light-grey/beige halo or floor patch beneath the webbed feet to true transparent alpha, retaining only a thin tight DARK brown-grey translucent shadow immediately under each foot. The shadow must darken a background and never lighten it. Preserve ALL four duckling stages pixel-for-pixel as much as possible: their exact cell crop, canvas1536square/aspect, positions, scale, pose, white fluffy edge strands, grey bill/feet, eyes, construction progress, yarn/stitch geometry, color, warm light. Do not remove or trim actual white fluffy body fibers. Do not move/resize anything. No other changes, no new floor/platform/scene/labels. Keep true RGBA transparency everywhere else. Focused alpha/grounding repair only, not regeneration.",
+      "toolOutput": "Generated images are saved to C:\\Users\\Apazidi\\.codex\\generated_images\\01a1ad77-e51b-7d11-a8bc-d35a57434f81 as C:\\Users\\Apazidi\\.codex\\generated_images\\01a1ad77-e51b-7d11-a8bc-d35a57434f81\\exec-6a63d492-850c-4250-9a20-8f16cf2b4050.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+    },
+    {
+      "id": "kot_cat_alpha",
+      "output": "kot-cat-atlas-clean.png",
+      "inputs": [
+        "kot-cat-atlas.png"
+      ],
+      "prompt": "Use case: precise-object-edit. Focused alpha/ground-contact repair ONLY on this exact four-cell orange-cat crafting atlas. In all four cells remove the pale beige/grey oval matte beneath slippers/feet and the little light haze between feet: replace with genuine transparency and only a very thin tight DARK brown translucent contact shadow immediately under each sole. The shadow must darken any backdrop, never lighten it. Preserve all actual orange yarn, ivory slippers, eyes/mask/whiskers/tail/ears/unfinished parts and fine fibers exactly; preserve whole square canvas, equal2x2cell structure, every stage's location, scale, camera, perspective, colors and golden upper-left light. Do not modify stage progression. No zoom/recenter/crop. No ground platform/disc or environment. Background stays realRGBA transparent. This is not a redesign, only removing pale shadow matting to make the same sprites composite naturally on dark forest and cream backgrounds.",
+      "toolOutput": "Generated images are saved to C:\\Users\\Apazidi\\.codex\\generated_images\\01a1ad77-e51b-7d11-a8bc-d35a57434f81 as C:\\Users\\Apazidi\\.codex\\generated_images\\01a1ad77-e51b-7d11-a8bc-d35a57434f81\\exec-c13ceab4-1705-4f7c-bbc9-2fc0fedb4b3f.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+    }
+  ]
+}

@@ -3,17 +3,22 @@
   "label": "TECHNICAL PREVIEW — ART NOT APPROVED",
   "productionContent": false,
   "sceneReview": true,
-  "saveKey": "mir-na-nitke-art-preview-v2",
-  "appSourceCommit": "31a8316b58f93947dbc708f62b01cd919167ed15",
+  "gameplayReview": true,
+  "saveKey": "mir-na-nitke-gameplay-preview-v3",
+  "appSourceCommit": "e67637a28ab8695cd14a8e6fd6f6078dd05b9c30",
   "sourceFiles": {
     "design-system/skin-v4.css": "e4f36c8097902532bbafde6589a5d916965f2b8881fd93a934d847b07d982b4c",
     "product/app/content/index.mjs": "00b9669ff7929c556b0b22b0dc1d54a8a717f80898af6668c6f674ae76033dff",
-    "product/app/core/index.mjs": "8719548d829d22c499e06c21c3c363aa80020daa2881ea52c57f082b1dbade16",
-    "product/app/ui/session.mjs": "b3bd6367312130aae5ab906577c3aae1fa9018ecd2bd37a623f15c430c6d555d",
+    "product/app/core/index.mjs": "6d795249d0d9c4631760244a05178ecff15f9437dd144e4820d6c1c39b8c9dd6",
+    "product/app/ui/session.mjs": "ecda8b028b5aaa34ac59b6045846878f2e551bb955a058745fedf29883131c0b",
     "product/ui/dev-catalog.mjs": "0cde75c784a37c47c3ea32a82c234b0aabfe38e5bc5029b1a2c7b84ee797c05b",
+    "product/ui/gameplay-catalog.mjs": "3582a4f3bb2d442a0b4a70f646ad39beb0d189abf1b416c0fe1cb1208921657a",
+    "product/ui/gameplay.mjs": "7314775b2824adcf124d0ddb002dbbe42887e78488c07c131be5819fa9135134",
     "product/ui/index.html": "a0c11afe2326ccd9bc123d5fd75403be00a2943e3b328344958514a2c0542dc5",
-    "product/ui/main.mjs": "0090b2c25fba8d299ae4cef831594d569480ff1e4befee8a8974496be1832bdd",
-    "product/ui/shell.css": "30c9a6d5e48947c8f11294a4cbab23e659276a1218745123a91cb08fc22750d3"
+    "product/ui/main.mjs": "4f34ffe453649b616674b1f40ffd11f9c0c61267183dbb51b67803ed202b1ece",
+    "product/ui/shell.css": "b3ffa7b37e3334e7dd96fc5b78735feae40c95dc1c842e07745688e7c2a18095",
+    "product/ui/sprite-hit.mjs": "882dd3bcf6de10ddcff144f823f0c8978179890197fc5cf8f3d279ad41d97099",
+    "product/ui/view-tools.mjs": "508a6adde7d94c068717753c2dd7be8860a19edad7b7de73b1dcdb8ae451b980"
   },
   "artSources": [
     {
@@ -96,6 +101,72 @@
         "workshop-pressed.webp",
         "workshop.webp"
       ]
+    },
+    {
+      "commit": "b4e0639bacb504c62ec21dfcccafe5f162fdc35b",
+      "directory": "product/art-experiments/kotoutro-v1/exports",
+      "files": [
+        "kot-cat-finished.webp",
+        "kot-cat-stage-00.webp",
+        "kot-cat-stage-01.webp",
+        "kot-cat-stage-02.webp",
+        "kot-cat-stage-03.webp",
+        "kot-chair-finished.webp",
+        "kot-chair-stage-00.webp",
+        "kot-chair-stage-01.webp",
+        "kot-chair-stage-02.webp",
+        "kot-chair-stage-03.webp",
+        "kot-coffee-finished.webp",
+        "kot-coffee-stage-00.webp",
+        "kot-coffee-stage-01.webp",
+        "kot-coffee-stage-02.webp",
+        "kot-coffee-stage-03.webp",
+        "kot-duck-finished.webp",
+        "kot-duck-stage-00.webp",
+        "kot-duck-stage-01.webp",
+        "kot-duck-stage-02.webp",
+        "kot-duck-stage-03.webp",
+        "kot-leaf-house-finished.webp",
+        "kot-leaf-house-stage-00.webp",
+        "kot-leaf-house-stage-01.webp",
+        "kot-leaf-house-stage-02.webp",
+        "kot-leaf-house-stage-03.webp",
+        "meadow-day.webp",
+        "meadow-evening.webp"
+      ]
+    },
+    {
+      "commit": "2a17736006161f96a4debaf3320f650c0100f7f3",
+      "directory": "product/art-experiments/kotoutro-v1/ui",
+      "files": [
+        "brew-disabled.webp",
+        "brew-pressed.webp",
+        "brew.webp",
+        "feed-disabled.webp",
+        "feed-pressed.webp",
+        "feed.webp",
+        "greet-disabled.webp",
+        "greet-pressed.webp",
+        "greet.webp",
+        "knock-disabled.webp",
+        "knock-pressed.webp",
+        "knock.webp",
+        "land-disabled.webp",
+        "land-pressed.webp",
+        "land.webp",
+        "rock-disabled.webp",
+        "rock-pressed.webp",
+        "rock.webp",
+        "shelter-disabled.webp",
+        "shelter-pressed.webp",
+        "shelter.webp",
+        "sway-disabled.webp",
+        "sway-pressed.webp",
+        "sway.webp",
+        "water-disabled.webp",
+        "water-pressed.webp",
+        "water.webp"
+      ]
     }
   ],
   "files": [
@@ -106,8 +177,8 @@
     },
     {
       "path": "index.html",
-      "bytes": 597,
-      "sha256": "8e64ccae6151e7719c862886761b5c12bf01e7647ba488e5b55bf7ab373faf1a"
+      "bytes": 625,
+      "sha256": "b30da2aa0221ae1d269f7b86086358fc9449b63dfaaa7cdfd91cd22fc18fc87f"
     },
     {
       "path": "product/app/content/catalog.json",
@@ -121,13 +192,283 @@
     },
     {
       "path": "product/app/core/index.mjs",
-      "bytes": 11861,
-      "sha256": "8719548d829d22c499e06c21c3c363aa80020daa2881ea52c57f082b1dbade16"
+      "bytes": 19379,
+      "sha256": "6d795249d0d9c4631760244a05178ecff15f9437dd144e4820d6c1c39b8c9dd6"
     },
     {
       "path": "product/app/ui/session.mjs",
-      "bytes": 1362,
-      "sha256": "b3bd6367312130aae5ab906577c3aae1fa9018ecd2bd37a623f15c430c6d555d"
+      "bytes": 3332,
+      "sha256": "ecda8b028b5aaa34ac59b6045846878f2e551bb955a058745fedf29883131c0b"
+    },
+    {
+      "path": "product/art-experiments/kotoutro-v1/exports/kot-cat-finished.webp",
+      "bytes": 177978,
+      "sha256": "7ce4277ae3131d44f79efe63357c528865813898475cc8bcce544da0db7d9775"
+    },
+    {
+      "path": "product/art-experiments/kotoutro-v1/exports/kot-cat-stage-00.webp",
+      "bytes": 80958,
+      "sha256": "e7083f40556f473a096c5af267c91e711ac3ab5b0625c9c6abaf64d3844cdd03"
+    },
+    {
+      "path": "product/art-experiments/kotoutro-v1/exports/kot-cat-stage-01.webp",
+      "bytes": 120692,
+      "sha256": "80226274ff86cea9a446df1ed7b7f596db7e021021cf6a75c1f5ae3198e5f369"
+    },
+    {
+      "path": "product/art-experiments/kotoutro-v1/exports/kot-cat-stage-02.webp",
+      "bytes": 181466,
+      "sha256": "6368a61acb71c3f7dd206dbb376971df82b6c10dcda77ce80088cd5cc29a397e"
+    },
+    {
+      "path": "product/art-experiments/kotoutro-v1/exports/kot-cat-stage-03.webp",
+      "bytes": 184026,
+      "sha256": "94bbc5a865a44e64abb958be7b41d6180c6b8ac7736581a61929ac04609efe7d"
+    },
+    {
+      "path": "product/art-experiments/kotoutro-v1/exports/kot-chair-finished.webp",
+      "bytes": 249460,
+      "sha256": "3f5625b558fb664ef1c5e2bc851a1480c821f88648732abc5905a231c4587ca4"
+    },
+    {
+      "path": "product/art-experiments/kotoutro-v1/exports/kot-chair-stage-00.webp",
+      "bytes": 119664,
+      "sha256": "de986671e6ff3bde1ff4a1fae6f88ba1954555337cae28b571f542140e2b1adb"
+    },
+    {
+      "path": "product/art-experiments/kotoutro-v1/exports/kot-chair-stage-01.webp",
+      "bytes": 227090,
+      "sha256": "287ffe9e59fd3c713f3c9118278ee2fcebb8f0e598e6bfaedebc08a5cc1d86e4"
+    },
+    {
+      "path": "product/art-experiments/kotoutro-v1/exports/kot-chair-stage-02.webp",
+      "bytes": 245940,
+      "sha256": "ace0c029bc1035b599cfb237be08e87034b6752b9c6598b96c6e1574fc47eb16"
+    },
+    {
+      "path": "product/art-experiments/kotoutro-v1/exports/kot-chair-stage-03.webp",
+      "bytes": 252754,
+      "sha256": "5558f5fc20c243278bf54c39548bcdabf42969f0cbc65f6a271b7ecc2797c7bf"
+    },
+    {
+      "path": "product/art-experiments/kotoutro-v1/exports/kot-coffee-finished.webp",
+      "bytes": 185458,
+      "sha256": "9bef062afdab599d44ea6e82761144212ff177e5cea828b2a75116915b939846"
+    },
+    {
+      "path": "product/art-experiments/kotoutro-v1/exports/kot-coffee-stage-00.webp",
+      "bytes": 112002,
+      "sha256": "e27cdec3988b73cf43d12a188eef20b1b6f31e5f463c79a9d2e10ca4807f3c97"
+    },
+    {
+      "path": "product/art-experiments/kotoutro-v1/exports/kot-coffee-stage-01.webp",
+      "bytes": 179080,
+      "sha256": "c371ed539df7de7c5c4017497225fcaedf4557c587ee4189257757c0507cdb62"
+    },
+    {
+      "path": "product/art-experiments/kotoutro-v1/exports/kot-coffee-stage-02.webp",
+      "bytes": 191742,
+      "sha256": "919c8018354c850444d2225cfae996be80abaaca67c3d91768aebceb6de3e7ea"
+    },
+    {
+      "path": "product/art-experiments/kotoutro-v1/exports/kot-coffee-stage-03.webp",
+      "bytes": 195214,
+      "sha256": "797e976d3aeb7f9f74b17b398647e04e2695d002f562a431684daa54c878b8c4"
+    },
+    {
+      "path": "product/art-experiments/kotoutro-v1/exports/kot-duck-finished.webp",
+      "bytes": 127276,
+      "sha256": "53d6ea13d19714be67f9cbe328125650b4fec8808816f13e5aa4c58067b54981"
+    },
+    {
+      "path": "product/art-experiments/kotoutro-v1/exports/kot-duck-stage-00.webp",
+      "bytes": 54750,
+      "sha256": "8e7b3c3c9c8f203a35a7ab08540898988b37409eda31d275c14c50660db121a4"
+    },
+    {
+      "path": "product/art-experiments/kotoutro-v1/exports/kot-duck-stage-01.webp",
+      "bytes": 82100,
+      "sha256": "5169654051a4032bf17bea14feb02587a83196d6542dd40658e0d82f90291a53"
+    },
+    {
+      "path": "product/art-experiments/kotoutro-v1/exports/kot-duck-stage-02.webp",
+      "bytes": 126616,
+      "sha256": "bdaaafc842ad30fc03faba665ff0a750e599b9117bed12d006175bc71a1c0405"
+    },
+    {
+      "path": "product/art-experiments/kotoutro-v1/exports/kot-duck-stage-03.webp",
+      "bytes": 129334,
+      "sha256": "863ab6362f7c16b3172e54f07205c9313bc1f0c7d4455773f06d8bb9c59d563f"
+    },
+    {
+      "path": "product/art-experiments/kotoutro-v1/exports/kot-leaf-house-finished.webp",
+      "bytes": 159114,
+      "sha256": "e17e33aed19040d3ee0c81959fd9a7d79681d6863903a74d73914d18eb5980a0"
+    },
+    {
+      "path": "product/art-experiments/kotoutro-v1/exports/kot-leaf-house-stage-00.webp",
+      "bytes": 70452,
+      "sha256": "f54def08e77c007fbdfdcf0b655ac377cfb052e53c15b353519c1a9adb1ee04c"
+    },
+    {
+      "path": "product/art-experiments/kotoutro-v1/exports/kot-leaf-house-stage-01.webp",
+      "bytes": 111156,
+      "sha256": "85692544d3db621fe922807db8fc67854cf117d9d46292e91038f8439c22c03e"
+    },
+    {
+      "path": "product/art-experiments/kotoutro-v1/exports/kot-leaf-house-stage-02.webp",
+      "bytes": 154404,
+      "sha256": "c1782b8cfb2a1fcc999c8a68adc03d99f36d797fbb403f0d50fa4c0e65f48b1a"
+    },
+    {
+      "path": "product/art-experiments/kotoutro-v1/exports/kot-leaf-house-stage-03.webp",
+      "bytes": 163992,
+      "sha256": "8b9cf642c2f9f4325b454c02aac9842f4157f9bce5f014afa5da4f6c60337977"
+    },
+    {
+      "path": "product/art-experiments/kotoutro-v1/exports/meadow-day.webp",
+      "bytes": 774112,
+      "sha256": "4dd42cdc8d6a1897b502089de820862351872ab71f3aa0a842a3d0da6385c9dc"
+    },
+    {
+      "path": "product/art-experiments/kotoutro-v1/exports/meadow-evening.webp",
+      "bytes": 806812,
+      "sha256": "62fa8b6f2143a6a91916644feddb0e1e122f5a948b339221acf66c959101e991"
+    },
+    {
+      "path": "product/art-experiments/kotoutro-v1/ui/brew-disabled.webp",
+      "bytes": 49086,
+      "sha256": "e253f8c12a4e3fb36244309f1f4eeb8d025f9b453b268b6b92bb49af4e8faade"
+    },
+    {
+      "path": "product/art-experiments/kotoutro-v1/ui/brew-pressed.webp",
+      "bytes": 54682,
+      "sha256": "5a11637d878a45f9cfb813c6aabe0d7f118ce1dc00e8da5b39c46c8e10db7084"
+    },
+    {
+      "path": "product/art-experiments/kotoutro-v1/ui/brew.webp",
+      "bytes": 58058,
+      "sha256": "e1a71b8ccb47be1dcc49913f7a6863b6eb2e37d4ce3038cee5f293d60a09f391"
+    },
+    {
+      "path": "product/art-experiments/kotoutro-v1/ui/feed-disabled.webp",
+      "bytes": 47722,
+      "sha256": "eec9d2fe5ab7199881a6b0c82d7434801ec56dfe8c9bb66fc8534038c8de950f"
+    },
+    {
+      "path": "product/art-experiments/kotoutro-v1/ui/feed-pressed.webp",
+      "bytes": 52978,
+      "sha256": "f8d898e644134503785739fa209cc223f8fe45c57a5355ae8b83d7e91f63ff33"
+    },
+    {
+      "path": "product/art-experiments/kotoutro-v1/ui/feed.webp",
+      "bytes": 57076,
+      "sha256": "220ca88df0e4ecd1edac9f3ba191ed1709fdeaa49b268321e3a778a51c2ce9ee"
+    },
+    {
+      "path": "product/art-experiments/kotoutro-v1/ui/greet-disabled.webp",
+      "bytes": 49844,
+      "sha256": "c71244d87790baa4ace422cf5104e55b838951568e676b7035f0caf2a68eeeee"
+    },
+    {
+      "path": "product/art-experiments/kotoutro-v1/ui/greet-pressed.webp",
+      "bytes": 55262,
+      "sha256": "77c374db04750059a4d27455d339dca31db959251d6512483d359ed9933bcb6f"
+    },
+    {
+      "path": "product/art-experiments/kotoutro-v1/ui/greet.webp",
+      "bytes": 58768,
+      "sha256": "33c1e0ec459d7d673f90c02c21929cc31dc4c9abb7b7e4da1276e4dce14cf931"
+    },
+    {
+      "path": "product/art-experiments/kotoutro-v1/ui/knock-disabled.webp",
+      "bytes": 48170,
+      "sha256": "50502c2cd25b7c428f658af38df31865e6046c8308422c2e8e2960c1d8c9d9e3"
+    },
+    {
+      "path": "product/art-experiments/kotoutro-v1/ui/knock-pressed.webp",
+      "bytes": 53792,
+      "sha256": "783fbd5b56486a6808afc7d56460a7003445526c3eefb6969df86e1c1cdc5e84"
+    },
+    {
+      "path": "product/art-experiments/kotoutro-v1/ui/knock.webp",
+      "bytes": 56504,
+      "sha256": "3279e1e776b20725225cf32e63d2d6b25c7320d3a5ea8b70f19ce89b64b1ca5a"
+    },
+    {
+      "path": "product/art-experiments/kotoutro-v1/ui/land-disabled.webp",
+      "bytes": 49240,
+      "sha256": "09d7ae1821ae0a5fba23bd608c49dfdfdf8e185cda302d3b0b76c505a1d05ccc"
+    },
+    {
+      "path": "product/art-experiments/kotoutro-v1/ui/land-pressed.webp",
+      "bytes": 54616,
+      "sha256": "992506444ada9e2800f849f93e054cfa55bb2f9091d2106282a6dd51a277738a"
+    },
+    {
+      "path": "product/art-experiments/kotoutro-v1/ui/land.webp",
+      "bytes": 57700,
+      "sha256": "0dad331ce1a470b3817a7e67b3505572a820e2e0d065615d3f0486a6af00e7e2"
+    },
+    {
+      "path": "product/art-experiments/kotoutro-v1/ui/rock-disabled.webp",
+      "bytes": 47028,
+      "sha256": "48fae4e1e6445c8e4f19d58dd037361d1730e4cc982b4ce9ad99739572de9274"
+    },
+    {
+      "path": "product/art-experiments/kotoutro-v1/ui/rock-pressed.webp",
+      "bytes": 53514,
+      "sha256": "46d80f7ce654a448f4be213bd53260df7e04abd4db6634ac0a0a2fc72415a688"
+    },
+    {
+      "path": "product/art-experiments/kotoutro-v1/ui/rock.webp",
+      "bytes": 56572,
+      "sha256": "391af3293c7c1bfa0d9ca3efa820775d8f1590f760f1ad20a576c9fdf591fa36"
+    },
+    {
+      "path": "product/art-experiments/kotoutro-v1/ui/shelter-disabled.webp",
+      "bytes": 47492,
+      "sha256": "155f02c6673c7d0e8a69b658e934d11ae580d22c1e3c8db8f0d5c7ae18482b5c"
+    },
+    {
+      "path": "product/art-experiments/kotoutro-v1/ui/shelter-pressed.webp",
+      "bytes": 55084,
+      "sha256": "2813a49d9efd59705763be29ba0e469c4ffd697b6101a0b0e89e2b1b5983ad9c"
+    },
+    {
+      "path": "product/art-experiments/kotoutro-v1/ui/shelter.webp",
+      "bytes": 56616,
+      "sha256": "34b4cbadc7e5d9d01c62f09cfde32b66f5e051343a787728271147795bcb2d17"
+    },
+    {
+      "path": "product/art-experiments/kotoutro-v1/ui/sway-disabled.webp",
+      "bytes": 48446,
+      "sha256": "f7db19b3a0625c5bb3c1f4d95d0b147bf831244f0f2145b8dcf4b2c2c6be0917"
+    },
+    {
+      "path": "product/art-experiments/kotoutro-v1/ui/sway-pressed.webp",
+      "bytes": 53858,
+      "sha256": "26dbdd35f8188b6a9809e0418cd80a7cc06ed620500e5b36bfbc187aa9a0e5d1"
+    },
+    {
+      "path": "product/art-experiments/kotoutro-v1/ui/sway.webp",
+      "bytes": 57312,
+      "sha256": "5ffbe3ed9fa21d6582ffe6f18f5b10ffd9ca590e909408a602c25ae59fcb3e4e"
+    },
+    {
+      "path": "product/art-experiments/kotoutro-v1/ui/water-disabled.webp",
+      "bytes": 46884,
+      "sha256": "a85ff82a18dac6f8dc61cdde11cb666ccb9c57562b6ebda1b4baa995329bca04"
+    },
+    {
+      "path": "product/art-experiments/kotoutro-v1/ui/water-pressed.webp",
+      "bytes": 52898,
+      "sha256": "e960e6afaa06bb4e223c4b7e402950952c9c078ddd580c50bbd0b88e543091c9"
+    },
+    {
+      "path": "product/art-experiments/kotoutro-v1/ui/water.webp",
+      "bytes": 56936,
+      "sha256": "28ad3638b18b4081a39e0ab95d73b84fe05ea64e0e6df52c129e6300ef1c0e02"
     },
     {
       "path": "product/art-experiments/rabbit-v1/exports/finished-sprite.webp",
@@ -410,19 +751,39 @@
       "sha256": "0cde75c784a37c47c3ea32a82c234b0aabfe38e5bc5029b1a2c7b84ee797c05b"
     },
     {
+      "path": "product/ui/gameplay-catalog.mjs",
+      "bytes": 8103,
+      "sha256": "3582a4f3bb2d442a0b4a70f646ad39beb0d189abf1b416c0fe1cb1208921657a"
+    },
+    {
+      "path": "product/ui/gameplay.mjs",
+      "bytes": 27219,
+      "sha256": "7314775b2824adcf124d0ddb002dbbe42887e78488c07c131be5819fa9135134"
+    },
+    {
       "path": "product/ui/index.html",
       "bytes": 509,
       "sha256": "a0c11afe2326ccd9bc123d5fd75403be00a2943e3b328344958514a2c0542dc5"
     },
     {
       "path": "product/ui/main.mjs",
-      "bytes": 22897,
-      "sha256": "0090b2c25fba8d299ae4cef831594d569480ff1e4befee8a8974496be1832bdd"
+      "bytes": 23045,
+      "sha256": "4f34ffe453649b616674b1f40ffd11f9c0c61267183dbb51b67803ed202b1ece"
     },
     {
       "path": "product/ui/shell.css",
-      "bytes": 11103,
-      "sha256": "30c9a6d5e48947c8f11294a4cbab23e659276a1218745123a91cb08fc22750d3"
+      "bytes": 18633,
+      "sha256": "b3ffa7b37e3334e7dd96fc5b78735feae40c95dc1c842e07745688e7c2a18095"
+    },
+    {
+      "path": "product/ui/sprite-hit.mjs",
+      "bytes": 1925,
+      "sha256": "882dd3bcf6de10ddcff144f823f0c8978179890197fc5cf8f3d279ad41d97099"
+    },
+    {
+      "path": "product/ui/view-tools.mjs",
+      "bytes": 1988,
+      "sha256": "508a6adde7d94c068717753c2dd7be8860a19edad7b7de73b1dcdb8ae451b980"
     }
   ]
 }

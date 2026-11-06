@@ -1,0 +1,8 @@
+{
+  "name": "mir-kotoutro-v1-experimental-art",
+  "private": true,
+  "type": "module",
+  "scripts": {"export": "node export-all.mjs", "export:scene": "node export.mjs", "export:ui": "node export-ui.mjs"},
+  "engines": {"node": ">=20.9"},
+  "dependencies": {"sharp": "0.35.5"}
+}

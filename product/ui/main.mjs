@@ -1,6 +1,11 @@
 import {createSession} from '../app/ui/session.mjs';
 import {loadRuntimeCatalog, selectStage, placementLayout} from '../app/content/index.mjs';
 import {developmentCatalog} from './dev-catalog.mjs';
+import {startGameplay} from './gameplay.mjs';
+
+if(new URLSearchParams(location.search).get('gameplay')==='v3') {
+ await startGameplay();
+} else {
 
 const app = document.querySelector('#app');
 const params = new URLSearchParams(location.search), mode = params.get('mode');
@@ -286,4 +291,5 @@ try {
  }
 } catch (error) {
  app.replaceChildren(el('h1', 'Не удалось открыть игру'), el('p', 'Проверьте сборку каталога и доступ к файлам. Ваше сохранение не изменено.'), el('pre', error.message));
+}
 }

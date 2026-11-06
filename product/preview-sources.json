@@ -82,7 +82,74 @@
         "workshop-pressed.webp",
         "workshop.webp"
       ]
+    },
+    {
+      "commit": "b4e0639bacb504c62ec21dfcccafe5f162fdc35b",
+      "directory": "product/art-experiments/kotoutro-v1/exports",
+      "files": [
+        "kot-cat-finished.webp",
+        "kot-cat-stage-00.webp",
+        "kot-cat-stage-01.webp",
+        "kot-cat-stage-02.webp",
+        "kot-cat-stage-03.webp",
+        "kot-chair-finished.webp",
+        "kot-chair-stage-00.webp",
+        "kot-chair-stage-01.webp",
+        "kot-chair-stage-02.webp",
+        "kot-chair-stage-03.webp",
+        "kot-coffee-finished.webp",
+        "kot-coffee-stage-00.webp",
+        "kot-coffee-stage-01.webp",
+        "kot-coffee-stage-02.webp",
+        "kot-coffee-stage-03.webp",
+        "kot-duck-finished.webp",
+        "kot-duck-stage-00.webp",
+        "kot-duck-stage-01.webp",
+        "kot-duck-stage-02.webp",
+        "kot-duck-stage-03.webp",
+        "kot-leaf-house-finished.webp",
+        "kot-leaf-house-stage-00.webp",
+        "kot-leaf-house-stage-01.webp",
+        "kot-leaf-house-stage-02.webp",
+        "kot-leaf-house-stage-03.webp",
+        "meadow-day.webp",
+        "meadow-evening.webp"
+      ]
+    },
+    {
+      "commit": "2a17736006161f96a4debaf3320f650c0100f7f3",
+      "directory": "product/art-experiments/kotoutro-v1/ui",
+      "files": [
+        "brew-disabled.webp",
+        "brew-pressed.webp",
+        "brew.webp",
+        "feed-disabled.webp",
+        "feed-pressed.webp",
+        "feed.webp",
+        "greet-disabled.webp",
+        "greet-pressed.webp",
+        "greet.webp",
+        "knock-disabled.webp",
+        "knock-pressed.webp",
+        "knock.webp",
+        "land-disabled.webp",
+        "land-pressed.webp",
+        "land.webp",
+        "rock-disabled.webp",
+        "rock-pressed.webp",
+        "rock.webp",
+        "shelter-disabled.webp",
+        "shelter-pressed.webp",
+        "shelter.webp",
+        "sway-disabled.webp",
+        "sway-pressed.webp",
+        "sway.webp",
+        "water-disabled.webp",
+        "water-pressed.webp",
+        "water.webp"
+      ]
     }
   ],
-  "sceneReview": true
+  "sceneReview": true,
+  "gameplayReview": true
 }
