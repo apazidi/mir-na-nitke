@@ -6,6 +6,8 @@ The project's ONE user-facing lead is `.agents/skills/game-product-director/SKIL
 
 `.agents/skills/coordinate-game-development/SKILL.md` is a **tactical orchestration subroutine**, not a separate user-facing product manager. A task in `product/AGENT-LAUNCH.md` describes the historical two-session pilot, not the long-term operating model.
 
+**Current priority (2026-11-06):** the owner rejected both the two-meadow gameplay and the flower craft study as unenjoyable. Pleasure of making for adult craft hobbyists comes before further scene production; retain the approved visual direction. Follow [Product Critic](product/roles/PRODUCT-CRITIC.md): an independent `product_critic` must challenge substantial gameplay ideas before implementation and review the actual experience before owner presentation. Prototype permission is not proof of fun. See [mechanics research](product/research/MECHANICS-RESEARCH-2026-11-06.md) and open issue #32.
+
 
 This repository contains **historical prototypes** (root, `v3*`, `v4*`) and the **new production foundation** in `product/`. Historical routes are frozen unless the user explicitly requests a fix to one of them. Never copy their HTML/CSS wholesale into the new product.
 
@@ -32,7 +34,7 @@ This repository contains **historical prototypes** (root, `v3*`, `v4*`) and the 
 ## Codex session coordination
 
 - **Current start document:** `product/START-PRODUCT-DIRECTOR.md`, not the historical two-session pilot in `product/AGENT-LAUNCH.md`.
-- Current GitHub state changes: Engine #14 merged; Art #15, integration #19 and flower #21 are draft candidates. **P0 #22** requires a persistent, owner-accessible HTTPS technical demo; do not present `localhost` or `127.0.0.1` URLs as delivered outcomes.
+- Refresh live GitHub state: Engine #14, integration #19, HTTPS #24, visual #25, two-meadow #30 and craft-study #33 were merged. Delivery #22 is resolved; **P0 #32 remains open** after the owner rejected the flower study. Existing previews and technical PASS do not imply enjoyment or approved artwork.
 - Product Director may independently publish conspicuously labelled technical/art-review builds on existing authorized free hosting and merge safe technical PRs after required green CI and independent review. Never replace approved art/release or silently promote draft assets.
 - User approval is a **final visual milestone gate**, not an excuse to stop intermediate art improvements, coding, preview delivery or proposing new scenes. Raise a concrete design comparison and a recommendation rather than asking to approve a rough isolated draft.
 - The skill file cannot run or schedule new Codex sessions by itself. Any unattended runner or new spending requires explicit authorization.

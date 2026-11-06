@@ -43,7 +43,8 @@ jobs:
         run: node product/scripts/check-agent-scope.mjs
 
   browser-loop:
-    runs-on: ubuntu-latest
+    # Match the visual job; avoid implicit OS migrations in browser dependencies.
+    runs-on: ubuntu-24.04
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
