@@ -1,0 +1,24 @@
+{
+  "bladeSweptY": {
+    "top": -0.8034386001800126,
+    "bottom": -0.6365613998199874
+  },
+  "entireStrandsAboveSweep": 1,
+  "examples": [
+    {
+      "id": 1601,
+      "root": {
+        "x": -0.09038611889890556,
+        "y": -0.807125674990622,
+        "z": 0.020594167757630916
+      },
+      "length": 1,
+      "tip": {
+        "x": -0.1112153311014506,
+        "y": -1.061404031764654,
+        "z": 0.027535457673797465
+      }
+    }
+  ],
+  "note": "Read-only model analysis of actual UI-generated state; no pose/state is injected into browser."
+}

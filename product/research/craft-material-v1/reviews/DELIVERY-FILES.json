@@ -1,0 +1,47 @@
+{
+  "runtimeCommit": "67626a1dbdd355041fc27248b412ddbb9dd3e211",
+  "manifestSHA256": "e02966ea8796b6c9f0a5cc8483c1c984794d82902f3ac31d943f2eede0c8a93a",
+  "files": [
+    {
+      "path": "product/research/craft-material-v1/prototype/model.mjs",
+      "sha256LF": "730f98462902b6401238294cf612f96157d9fc1eec7f57946747f3774e22e206"
+    },
+    {
+      "path": "product/research/craft-material-v1/prototype/app.mjs",
+      "sha256LF": "422dec511f2597868cfb7febf8bbc2e12d7d470efa4e08c6b2d32e7e1bfdf4e5"
+    },
+    {
+      "path": "product/research/craft-material-v1/prototype/index.html",
+      "sha256LF": "67c0a9fc01d9a666550302df7654249c07b29241a9fa35b4e3541e69e10e7b6a"
+    },
+    {
+      "path": "product/research/craft-material-v1/prototype/style.css",
+      "sha256LF": "4f6fe42a602562ac575bb87c8bbc43ea5290f90b32ee2fa0533914b7dc1b76f4"
+    },
+    {
+      "path": "product/research/craft-material-v1/model.test.mjs",
+      "sha256LF": "af619631aef3a973d2f3b41595b13c025b916f3d262ece75a358c99156390f8b"
+    },
+    {
+      "path": "product/research/craft-material-v1/build.mjs",
+      "sha256LF": "fd822e7a9d6b4918e7110b8a41cdeb60c4c4ebb208c663b52b5bb412c8dda3e2"
+    },
+    {
+      "path": "product/research/craft-material-v1/check-delivered.mjs",
+      "sha256LF": "0de4b0cc93afc8046de3eebfe300d7f9b075af01ca7b3decb933f230b247169a"
+    },
+    {
+      "path": "product/research/craft-material-v1/check.mjs",
+      "sha256LF": "3ab1ed8eb19a0977878ec20df5bcffdc38ecd9291c023b3104add29c41b5acc1"
+    },
+    {
+      "path": "product/research/craft-material-v1/browser.mjs",
+      "sha256LF": "95970a2f69cd30a438aa8bd83d655ba0966f57f100ee2d497a32dc5c8d6158c2"
+    },
+    {
+      "path": ".github/workflows/content-qa.yml",
+      "sha256LF": "85de3124d8a680b61c52c1ba806685b00e16f70ba626d805e1935c9fc504d7ea"
+    }
+  ],
+  "limits": "Reviewed content hashes, normalized to LF; integration commit and CI/HTTPS result to be recorded by the director."
+}

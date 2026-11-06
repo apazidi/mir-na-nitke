@@ -5,6 +5,7 @@ on:
       - 'product/**'
       - 'play-preview/**'
       - 'craft-study/**'
+      - 'material-study/**'
       - '.agents/skills/**'
       - 'AGENTS.md'
       - '.github/workflows/content-qa.yml'
@@ -14,6 +15,7 @@ on:
       - 'product/**'
       - 'play-preview/**'
       - 'craft-study/**'
+      - 'material-study/**'
       - '.agents/skills/**'
       - 'AGENTS.md'
       - '.github/workflows/content-qa.yml'
@@ -31,6 +33,8 @@ jobs:
           node-version: '22'
       - name: Unit tests
         run: npm --prefix product test
+      - name: Material shaping model regressions
+        run: node --test product/research/craft-material-v1/model.test.mjs
       - name: Validate content and references
         run: npm --prefix product run validate
       - name: Build ready-only browser catalog
@@ -72,6 +76,18 @@ jobs:
           test -z "$(git ls-files --others --exclude-standard play-preview)"
       - name: Exercise the isolated craft-feel study
         run: PLAYWRIGHT_MODULE="$RUNNER_TEMP/mir-browser/node_modules/playwright/index.mjs" node product/research/craft-feel-v1/check.mjs
+      - name: Build and exercise the material shaping study
+        run: |
+          node product/research/craft-material-v1/build.mjs
+          PLAYWRIGHT_MODULE="$RUNNER_TEMP/mir-browser/node_modules/playwright/index.mjs" LOCAL_PREVIEW_PATH=/material-study/ node product/research/craft-material-v1/check.mjs
+          git diff --exit-code -- material-study
+          test -z "$(git ls-files --others --exclude-standard material-study)"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: material-study-mobile-evidence
+          path: product/research/craft-material-v1/evidence/qa-*/
+          retention-days: 15
       - uses: actions/upload-artifact@v4
         if: always()
         with:

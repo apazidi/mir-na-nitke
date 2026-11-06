@@ -1,0 +1,71 @@
+{
+  "checks": {
+    "deepRepeatExact": true,
+    "undoToShallow": true,
+    "topRepeatExact": true,
+    "finishExact": true,
+    "reloadExact": true,
+    "heldStillExact": true,
+    "releaseExact": true,
+    "touchUndoToFresh": true
+  },
+  "errors": [],
+  "events": [
+    {
+      "name": "ready",
+      "seconds": 0.20033350002765654
+    },
+    {
+      "name": "01-shallow-start",
+      "seconds": 1.2501229000091554
+    },
+    {
+      "name": "01-shallow-end",
+      "seconds": 4.200240500032902
+    },
+    {
+      "name": "02-deep-start",
+      "seconds": 5.428459500014782
+    },
+    {
+      "name": "02-deep-end",
+      "seconds": 9.045385000050068
+    },
+    {
+      "name": "03-deep-repeat-start",
+      "seconds": 10.24326390004158
+    },
+    {
+      "name": "03-deep-repeat-end",
+      "seconds": 12.868987200021744
+    },
+    {
+      "name": "undo-deep",
+      "seconds": 14.37418790000677
+    },
+    {
+      "name": "05-top-start",
+      "seconds": 14.377088600039482
+    },
+    {
+      "name": "05-top-end",
+      "seconds": 17.536600600004196
+    },
+    {
+      "name": "06-top-repeat-start",
+      "seconds": 18.717886000037193
+    },
+    {
+      "name": "06-top-repeat-end",
+      "seconds": 21.35292610001564
+    },
+    {
+      "name": "touch-start",
+      "seconds": 23.43365000003576
+    },
+    {
+      "name": "touch-end",
+      "seconds": 28.11355560004711
+    }
+  ]
+}

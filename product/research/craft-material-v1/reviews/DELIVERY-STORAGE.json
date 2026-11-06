@@ -1,0 +1,36 @@
+{
+  "runtime": "67626a1dbdd355041fc27248b412ddbb9dd3e211",
+  "reports": [
+    {
+      "mode": "denied",
+      "initial": "Форма доступна только пока открыта страница: сохранение недоступно.",
+      "finished": "Форма доступна только пока открыта страница: сохранение недоступно.",
+      "recoveryClearsWarning": true,
+      "materialUnchangedByFinish": true,
+      "oldKeysUntouched": true,
+      "externalRequests": [],
+      "errors": []
+    },
+    {
+      "mode": "write-denied",
+      "initial": "Подравнивайте край понемногу. Последний проход можно отменить.",
+      "finished": "Форма доступна только пока открыта страница: сохранение недоступно.",
+      "recoveryClearsWarning": true,
+      "materialUnchangedByFinish": true,
+      "oldKeysUntouched": true,
+      "externalRequests": [],
+      "errors": []
+    },
+    {
+      "mode": "corrupt",
+      "initial": "Сохранение не прочиталось. Открыта новая заготовка.",
+      "finished": "Сохранена ваша форма. Её можно поправить.",
+      "recoveryClearsWarning": true,
+      "materialUnchangedByFinish": true,
+      "oldKeysUntouched": true,
+      "externalRequests": [],
+      "errors": []
+    }
+  ],
+  "limits": "Independent technical browser checks with simulated storage faults; not a human playtest or real-device performance measure."
+}

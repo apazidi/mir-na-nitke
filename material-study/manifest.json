@@ -1,0 +1,27 @@
+{
+  "study": "craft-material-v1",
+  "modelVersion": 2,
+  "saveKey": "mir-craft-material-pompom-v2",
+  "files": [
+    {
+      "name": "index.html",
+      "bytes": 1873,
+      "sha256": "67c0a9fc01d9a666550302df7654249c07b29241a9fa35b4e3541e69e10e7b6a"
+    },
+    {
+      "name": "style.css",
+      "bytes": 2845,
+      "sha256": "4f6fe42a602562ac575bb87c8bbc43ea5290f90b32ee2fa0533914b7dc1b76f4"
+    },
+    {
+      "name": "model.mjs",
+      "bytes": 7842,
+      "sha256": "730f98462902b6401238294cf612f96157d9fc1eec7f57946747f3774e22e206"
+    },
+    {
+      "name": "app.mjs",
+      "bytes": 14118,
+      "sha256": "422dec511f2597868cfb7febf8bbc2e12d7d470efa4e08c6b2d32e7e1bfdf4e5"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "viewport": [390, 844],
+  "runtime": "Local headless Google Chrome, Windows; Playwright real mouse events",
+  "gesture": "24-step left-edge drag, cutting-line x=center-88 px, y=center-55 through center+55; pointer offset to scissors grip",
+  "beforeMilliseconds": 2696,
+  "afterMilliseconds": 585,
+  "changedFibers": 288,
+  "undoDepth": 1,
+  "cachedVsReloadCanvas": {
+    "finished": true,
+    "scissorsAndParticles": "hidden",
+    "pixelsDifferingByMoreThanTwoChannelLevels": 1,
+    "maximumChannelDifference": 4,
+    "meanMaximumChannelDifference": 0.004142197986577181,
+    "channelRange": 255
+  },
+  "limits": "One local machine, one measured gesture. Not human enjoyment, mobile frame-rate, or visual approval."
+}
