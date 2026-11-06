@@ -1,0 +1,59 @@
+{
+  "errors": [],
+  "reports": [
+    {
+      "label": "shallow",
+      "dragMs": 1343,
+      "profileBounds": {
+        "left": -0.7965613433782293,
+        "right": 1.109562731613794,
+        "top": -1.1623248394030612,
+        "bottom": 1.1174403333480258
+      },
+      "changedFibers": 242,
+      "undoDepth": 1,
+      "exactReload": true,
+      "rgba": {
+        "pixelsOver2": 0,
+        "max": 2,
+        "mean": 0.005269505033557047
+      }
+    },
+    {
+      "label": "deep",
+      "dragMs": 2198,
+      "profileBounds": {
+        "left": -0.386561354681036,
+        "right": 1.109562731613794,
+        "top": -1.1623248394030612,
+        "bottom": 1.1174403333480258
+      },
+      "changedFibers": 1038,
+      "undoDepth": 2,
+      "exactReload": true,
+      "rgba": {
+        "pixelsOver2": 1,
+        "max": 4,
+        "mean": 0.006270099272930649
+      }
+    },
+    {
+      "label": "top",
+      "dragMs": 1580,
+      "profileBounds": {
+        "left": -0.386561354681036,
+        "right": 1.109562731613794,
+        "top": -0.6365614790119096,
+        "bottom": 1.1174403333480258
+      },
+      "changedFibers": 1495,
+      "undoDepth": 3,
+      "exactReload": true,
+      "rgba": {
+        "pixelsOver2": 2,
+        "max": 5,
+        "mean": 0.0026478607382550336
+      }
+    }
+  ]
+}
