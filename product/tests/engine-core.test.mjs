@@ -117,7 +117,7 @@ test('config and save reject invalid economics, versions, IDs, duplicated items,
     assert.throws(() => validateConfig(bad));
   const s = resident();
   for (const mutate of [
-    x => x.version = 2, x => x.wallet.yarn = -1, x => x.owned.push('animal'),
+    x => x.version = 99, x => x.wallet.yarn = -1, x => x.owned.push('animal'),
     x => x.owned.push('unknown'), x => x.cooldowns = {}, x => x.upgrades.hook = 4
   ]) {
     const bad = structuredClone(s); mutate(bad);
