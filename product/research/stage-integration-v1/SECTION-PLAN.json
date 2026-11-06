@@ -1,0 +1,347 @@
+{
+  "version": 1,
+  "status": "DRAFT_CONTOURS_REQUIRES_STATIC_CONTACT",
+  "date": "2026-11-06",
+  "purpose": "Design proposal for four-item staged-sparks integration. No raster artwork or runtime modified.",
+  "contract": {
+    "coordinateSpace": "Original source pixels; do not trim-fit or rescale individual sections.",
+    "partition": "Resolve explicit masks in ownershipPriority order: each owns mask minus all previously owned pixels. Remainder owns the rest of the original source alpha. Every source pixel must have exactly one owner; cumulative final must reconstruct the same source.",
+    "opacity": "Animate current section only. Finished sections opaque. First green reveal uses approved early visibility curve; other sections start from approved p^.65. Costs depend on semantic area; do not force six equal durations.",
+    "fx": "Contour uses source alpha>=128 intersect owned mask; remove tiny disconnected components from FX sampling only. Do not threshold original raster alpha.",
+    "fit": {
+      "maxVisibleWidthCss": 170,
+      "maxVisibleHeightCss": 230,
+      "boundsThreshold": 64,
+      "note": "Fit once from full final visible bounds. Rabbit effective width is about126px at230pxheight; cat about155px. No zoom between parts."
+    },
+    "review": "These are preliminary curves, not approved masks. Render six cumulative frames without FX before UI animation. Reject internal transparent holes, clipped eyes/bows, cut loops, isolated future pixels, duplicated feet, geometry swaps."
+  },
+  "items": [
+    {
+      "id": "rabbit",
+      "source": "play-preview/product/art-experiments/rabbit-v1/exports/finished-sprite.webp",
+      "size": [
+        1024,
+        1820
+      ],
+      "visibleBounds64": [
+        198,
+        341,
+        793,
+        1428
+      ],
+      "ownershipPriority": [
+        "left-ear",
+        "right-ear",
+        "left-foot",
+        "right-foot",
+        "head",
+        "body"
+      ],
+      "sequence": [
+        "body",
+        "head",
+        "left-ear",
+        "right-ear",
+        "left-foot",
+        "right-foot"
+      ],
+      "sections": [
+        {
+          "id": "body",
+          "label": "Корпус, передние лапки, хвост и бант",
+          "mask": {
+            "type": "remainder"
+          },
+          "anchor": [
+            528,
+            1210
+          ],
+          "note": "Lower paws are explicitly excluded. Do not reveal bow separately; there is no hidden fabric under it."
+        },
+        {
+          "id": "head",
+          "label": "Голова с лицом",
+          "mask": {
+            "type": "path",
+            "d": "M0 0 L1024 0 L1024 1000 L721 1000 C700 1003 681 1008 667 1016 C647 1005 625 1017 611 1028 C580 1010 548 1010 528 1021 C504 1026 492 1041 487 1048 C446 1044 415 1040 392 1028 L0 1028 Z"
+          },
+          "anchor": [
+            537,
+            858
+          ],
+          "note": "Ears are assigned first. Lower edge drafts the chin above the bow; inspect neck/bow on contact and adjust locally."
+        },
+        {
+          "id": "left-ear",
+          "label": "Левое длинное ухо",
+          "mask": {
+            "type": "path",
+            "d": "M0 0 L487 0 L487 650 C465 680 430 696 395 716 L355 746 L0 746 Z"
+          },
+          "anchor": [
+            316,
+            520
+          ]
+        },
+        {
+          "id": "right-ear",
+          "label": "Правое длинное ухо",
+          "mask": {
+            "type": "path",
+            "d": "M487 0 L1024 0 L1024 725 L655 700 C600 674 551 661 493 663 Z"
+          },
+          "anchor": [
+            616,
+            500
+          ]
+        },
+        {
+          "id": "left-foot",
+          "label": "Левая нижняя лапа",
+          "mask": {
+            "type": "path",
+            "d": "M482 1272 C541 1263 585 1289 578 1358 C573 1418 543 1435 479 1429 C422 1432 382 1400 382 1353 C383 1315 414 1280 446 1276 Z"
+          },
+          "anchor": [
+            480,
+            1360
+          ]
+        },
+        {
+          "id": "right-foot",
+          "label": "Правая нижняя лапа",
+          "mask": {
+            "type": "path",
+            "d": "M705 1254 C751 1253 790 1283 796 1325 C807 1374 772 1408 720 1411 C667 1415 622 1391 615 1352 C611 1303 650 1261 705 1254 Z"
+          },
+          "anchor": [
+            708,
+            1345
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tree",
+      "source": "product/art-experiments/scene-v2/exports/tree-finished.webp",
+      "size": [
+        1024,
+        1024
+      ],
+      "visibleBounds64": [
+        118,
+        88,
+        876,
+        909
+      ],
+      "ownershipPriority": [
+        "central-crown",
+        "upper-left-crown",
+        "lower-left-crown",
+        "upper-right-crown",
+        "lower-right-crown",
+        "trunk"
+      ],
+      "sequence": [
+        "trunk",
+        "central-crown",
+        "upper-left-crown",
+        "lower-left-crown",
+        "upper-right-crown",
+        "lower-right-crown"
+      ],
+      "sections": [
+        {
+          "id": "trunk",
+          "label": "Корни, ствол и основания ветвей",
+          "mask": {
+            "type": "remainder"
+          },
+          "anchor": [
+            489,
+            743
+          ]
+        },
+        {
+          "id": "central-crown",
+          "label": "Верхняя и средняя цветущая крона",
+          "mask": {
+            "type": "path",
+            "d": "M382 0 L640 0 L640 220 C622 265 624 305 644 340 L610 418 C571 443 553 482 530 511 C492 524 463 500 441 476 C417 440 389 400 370 368 L360 285 L386 240 Z"
+          },
+          "anchor": [
+            523,
+            275
+          ]
+        },
+        {
+          "id": "upper-left-crown",
+          "label": "Левая верхняя цветущая ветвь",
+          "mask": {
+            "type": "path",
+            "d": "M0 0 L382 0 L386 240 L360 285 L370 368 C332 353 283 356 235 365 L0 365 Z"
+          },
+          "anchor": [
+            300,
+            278
+          ]
+        },
+        {
+          "id": "lower-left-crown",
+          "label": "Левая нижняя цветущая ветвь",
+          "mask": {
+            "type": "path",
+            "d": "M0 365 L235 365 C283 356 332 353 370 368 C389 400 417 440 441 476 C463 500 492 524 530 511 L500 583 C447 593 387 597 354 624 C302 636 249 636 196 608 L0 660 Z"
+          },
+          "anchor": [
+            265,
+            459
+          ]
+        },
+        {
+          "id": "upper-right-crown",
+          "label": "Правая верхняя цветущая ветвь",
+          "mask": {
+            "type": "path",
+            "d": "M640 0 L1024 0 L1024 412 L800 412 C745 416 685 410 644 340 C624 305 622 265 640 220 Z"
+          },
+          "anchor": [
+            741,
+            321
+          ]
+        },
+        {
+          "id": "lower-right-crown",
+          "label": "Правая нижняя цветущая ветвь",
+          "mask": {
+            "type": "path",
+            "d": "M644 340 C685 410 745 416 800 412 L1024 412 L1024 660 L773 620 C720 622 674 604 640 580 C590 571 556 547 530 511 C553 482 571 443 610 418 Z"
+          },
+          "anchor": [
+            732,
+            501
+          ]
+        }
+      ],
+      "note": "Keep each daisy and its surrounding leaves in one crown group. Do not extract flowers from final and leave holes in foliage. Draft seams must follow valleys between leaf clusters, never cut a flower. Contact may require moving shared crown boundaries."
+    },
+    {
+      "id": "kot-cat",
+      "source": "product/art-experiments/kotoutro-v1/exports/kot-cat-finished.webp",
+      "size": [
+        1024,
+        1024
+      ],
+      "visibleBounds64": [
+        208,
+        33,
+        845,
+        977
+      ],
+      "ownershipPriority": [
+        "slippers",
+        "left-ear",
+        "right-ear",
+        "tail",
+        "head",
+        "body"
+      ],
+      "sequence": [
+        "slippers",
+        "body",
+        "head",
+        "tail",
+        "left-ear",
+        "right-ear"
+      ],
+      "sections": [
+        {
+          "id": "slippers",
+          "label": "Пара зайчат-тапочек",
+          "mask": {
+            "type": "path",
+            "d": "M0 801 C150 801 208 803 236 799 C261 789 294 786 318 801 C345 814 351 820 364 815 C408 791 442 817 468 841 C480 850 489 865 491 881 C496 850 518 823 542 815 C572 801 590 797 615 808 C633 816 641 813 657 809 C685 799 718 804 743 828 C759 841 771 868 776 900 L1024 1024 L0 1024 Z"
+          },
+          "anchor": [
+            488,
+            896
+          ],
+          "note": "Both slippers are one short meaningful stage; do not separate their faces."
+        },
+        {
+          "id": "body",
+          "label": "Корпус с передними лапами",
+          "mask": {
+            "type": "remainder"
+          },
+          "anchor": [
+            486,
+            632
+          ]
+        },
+        {
+          "id": "head",
+          "label": "Голова с лицом и маской для сна",
+          "mask": {
+            "type": "path",
+            "d": "M0 0 L1024 0 L1024 440 C790 448 752 440 717 429 C675 446 638 453 600 457 C537 473 465 475 400 463 C347 457 303 444 276 421 L0 421 Z"
+          },
+          "anchor": [
+            502,
+            320
+          ],
+          "note": "Do not remove eyes, whiskers or sleeping mask as separate stages; no underpainting exists. Neck seam is draft and must be checked against crochet rows."
+        },
+        {
+          "id": "tail",
+          "label": "Загнутый хвост",
+          "mask": {
+            "type": "path",
+            "d": "M716 560 C762 536 806 550 833 592 C859 634 859 685 842 726 C819 766 778 797 735 808 L675 801 C702 767 718 721 723 679 C731 638 731 596 716 560 Z"
+          },
+          "anchor": [
+            785,
+            672
+          ]
+        },
+        {
+          "id": "left-ear",
+          "label": "Левое ухо",
+          "mask": {
+            "type": "path",
+            "d": "M0 0 L420 0 L420 82 C365 93 329 126 309 177 C287 211 274 238 269 265 L0 265 Z"
+          },
+          "anchor": [
+            272,
+            151
+          ]
+        },
+        {
+          "id": "right-ear",
+          "label": "Правое ухо",
+          "mask": {
+            "type": "path",
+            "d": "M560 0 L1024 0 L1024 225 L748 225 C734 188 710 157 680 137 C647 116 615 96 600 87 Z"
+          },
+          "anchor": [
+            687,
+            88
+          ]
+        }
+      ],
+      "note": "Ear/head boundaries follow the visible edge behind the sleeping mask. If these draft curves steal teal mask pixels, repair the boundary before animation. Faces stay intact."
+    }
+  ],
+  "flower": {
+    "sourceContract": "Reuse stage-study semantic renderer and exact approved six-part composite unchanged.",
+    "sourceBase": "craft-study/assets/flower-base.webp",
+    "sourceFinal": "craft-study/assets/flower.webp"
+  },
+  "backgrounds": {
+    "first": "craft-study/assets/meadow.webp",
+    "second": "product/art-experiments/stage-integration-v1/exports/pond-day-v1.webp",
+    "secondStatus": "Viewed after generation by parent; suitable for placement test, not final composition approval.",
+    "slotNotes": "Preserve IDs. On new pond, old chair(.25,.405), cat(.42,.61), coffee(.72,.61) are on dry ground. House(.74,.30) lies near pond rim: use foot-ground check, likely move anchor to (.74,.275) if needed. Duck(.73,.46) sits on grass below pond; if future intent is water, adjust its y deliberately, not via asset scaling."
+  }
+}
