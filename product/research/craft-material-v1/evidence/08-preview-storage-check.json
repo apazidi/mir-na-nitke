@@ -1,0 +1,71 @@
+{
+  "viewports": [
+    {
+      "width": 360,
+      "height": 800,
+      "headerHeight": 84,
+      "canvas": {
+        "width": 354,
+        "height": 552
+      },
+      "eyebrow": "TECHNICAL PREVIEW — ART NOT APPROVED",
+      "eyebrowInsideHeader": true,
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "headerHeight": 84,
+      "canvas": {
+        "width": 384,
+        "height": 596
+      },
+      "eyebrow": "TECHNICAL PREVIEW — ART NOT APPROVED",
+      "eyebrowInsideHeader": true,
+      "overflow": false
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "headerHeight": 84,
+      "canvas": {
+        "width": 424,
+        "height": 684
+      },
+      "eyebrow": "TECHNICAL PREVIEW — ART NOT APPROVED",
+      "eyebrowInsideHeader": true,
+      "overflow": false
+    }
+  ],
+  "storage": [
+    {
+      "mode": "denied",
+      "initial": "Форма доступна только пока открыта страница: сохранение недоступно.",
+      "finished": "Форма доступна только пока открыта страница: сохранение недоступно.",
+      "storageAvailable": false
+    },
+    {
+      "mode": "write-denied",
+      "initial": "Подравнивайте край понемногу. Последний проход можно отменить.",
+      "finished": "Форма доступна только пока открыта страница: сохранение недоступно.",
+      "storageAvailable": false
+    },
+    {
+      "mode": "corrupt",
+      "initial": "Сохранение не прочиталось. Открыта новая заготовка.",
+      "finished": "Сохранена ваша форма. Её можно поправить.",
+      "storageAvailable": true
+    }
+  ],
+  "emptyOwnSave": {
+    "warningSurvivesInitialSync": true,
+    "successfulSaveClearsWarning": true
+  },
+  "v2Gesture": {
+    "steps": 24,
+    "milliseconds": 818,
+    "changedFibers": 309,
+    "version": 2,
+    "limits": "Local headless Chrome automation on one Windows machine; not mobile FPS."
+  }
+}

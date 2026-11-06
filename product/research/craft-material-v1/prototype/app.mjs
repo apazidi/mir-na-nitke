@@ -3,8 +3,9 @@ const KEY='mir-craft-material-pompom-v2';
 const canvas=document.querySelector('#scene'),ctx=canvas.getContext('2d'),undoButton=document.querySelector('#undo'),finishButton=document.querySelector('#finish'),status=document.querySelector('#status');
 const materialCache=document.createElement('canvas'),materialContext=materialCache.getContext('2d');
 let paintedLengths=null,paintedWidth=0,paintedHeight=0,dirtyBounds=null;
-let state=model.createState(),storageAvailable=true;
-try{const saved=localStorage.getItem(KEY);if(saved){const restored=model.load(saved);if(restored)state=restored;else status.textContent='Сохранение не прочиталось; открыта новая заготовка.';}}catch{storageAvailable=false;}
+const storageFailure='Форма доступна только пока открыта страница: сохранение недоступно.';
+let state=model.createState(),storageAvailable=true,storageWarning='';
+try{const saved=localStorage.getItem(KEY);if(saved!==null){const restored=model.load(saved);if(restored)state=restored;else storageWarning='Сохранение не прочиталось. Открыта новая заготовка.';}}catch{storageAvailable=false;storageWarning=storageFailure;}
 let fibers=model.makeFibers(state.seed),width=390,height=590,scale=106,center={x:195,y:280},drag=null,particles=[],closedAt=-1000,framePending=false;
 const tool={x:1.05,y:-.36,angle:Math.PI/4,visible:true};
 const gripDistance=.40;
@@ -13,8 +14,8 @@ const reduced=matchMedia('(prefers-reduced-motion: reduce)');
 const screen=p=>({x:center.x+p.x*scale,y:center.y+p.y*scale});
 const world=p=>({x:(p.x-center.x)/scale,y:(p.y-center.y)/scale});
 const local=e=>{const r=canvas.getBoundingClientRect();return{x:e.clientX-r.left,y:e.clientY-r.top};};
-function persist(){try{localStorage.setItem(KEY,model.save(state));}catch{storageAvailable=false;status.textContent='Можно работать; браузер сейчас не сохраняет результат.';}}
-function sync(){undoButton.disabled=!state.history.length;finishButton.textContent=state.finished?'Продолжить подрезку':'Оставить эту форму';canvas.dataset.finished=String(state.finished);canvas.dataset.changed=String(state.lengths.filter(n=>n<1).length);if(state.finished)status.textContent='Сохранена ваша форма. Её можно поправить.';else if(storageAvailable)status.textContent='Подравнивайте край понемногу. Последний проход можно отменить.';}
+function persist(){try{localStorage.setItem(KEY,model.save(state));storageAvailable=true;storageWarning='';}catch{storageAvailable=false;storageWarning=storageFailure;status.textContent=storageWarning;}}
+function sync(){undoButton.disabled=!state.history.length;finishButton.textContent=state.finished?'Продолжить подрезку':'Оставить эту форму';canvas.dataset.finished=String(state.finished);canvas.dataset.changed=String(state.lengths.filter(n=>n<1).length);if(storageWarning)status.textContent=storageWarning;else if(state.finished)status.textContent='Сохранена ваша форма. Её можно поправить.';else status.textContent='Подравнивайте край понемногу. Последний проход можно отменить.';}
 function requestDraw(){if(!framePending){framePending=true;requestAnimationFrame(draw);}}
 function resize(){document.documentElement.dataset.ready='false';const box=canvas.getBoundingClientRect();width=box.width;height=box.height;const dpr=Math.min(devicePixelRatio||1,2);canvas.width=Math.round(width*dpr);canvas.height=Math.round(height*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);scale=Math.min(108,width*.282,height*.265);center={x:width*.5,y:height*.48};requestDraw();}
 function trace(points){if(!points.length)return;ctx.moveTo(points[0].x,points[0].y);for(let i=1;i<points.length-1;i+=3){const p=points[i],q=points[Math.min(points.length-1,i+3)];ctx.quadraticCurveTo(p.x,p.y,(p.x+q.x)/2,(p.y+q.y)/2);}if(points.length>1)ctx.lineTo(points.at(-1).x,points.at(-1).y);}

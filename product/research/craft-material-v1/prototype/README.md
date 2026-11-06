@@ -48,3 +48,11 @@ Regression evidence: `../evidence/07-model-regression.mjs` tests the full physic
 The author inspected `07-central-roots-{initial,shallow,deep,top}.png`. Cached-vs-full-reload RGBA checks were repeated for all three cuts, not only the shallow one: maximum channel differences 2/4/5 out of 255, pixels differing by more than 2 levels 0/1/2, mean differences below .007/255. Lengths reloaded exactly; browser errors were zero. Measurements are in `07-central-roots-measurements.json`. These checks address the model defect; they do not approve the remaining material/gesture quality.
 
 The first 430px resize capture landed after canvas clearing but before the next paint. That failed capture is retained as `07-central-roots-resize-before-paint-430.png`; the corrected `07-central-roots-initial-430.png` was taken after two animation frames and readiness. Resize now clears the ready flag until its replacement frame is painted. The failed frame is not presented as evidence of a finished material render.
+
+## Preview label and storage messages
+
+The existing eyebrow now says `TECHNICAL PREVIEW — ART NOT APPROVED`. Header height remains 84px and the canvas retains its previous dimensions at 360×800, 390×844 and 430×932; no overflow was observed. No model or cutting gesture changed in this correction.
+
+A denied storage read/write or denied write remains visibly reported even after Finish: the form is available only while the page is open. An unreadable own v2 save also keeps its warning through initial UI synchronization, including an empty stored value. A successful new save clears the old warning. Tests used browser initialization to deny Storage methods or supply invalid saved JSON, not to set crafting progress. Selected captures and results: `08-preview-390.png`, `08-storage-denied-finished.png`, `08-preview-storage-check.json`.
+
+An updated V2 measurement of the same 24-step, 110px left-edge mouse drag took 818ms and changed 309 strands. The earlier 585ms figure belongs to V1 geometry. Both are local headless Chrome automation observations on one Windows machine, not mobile FPS or a guarantee of perceived responsiveness.
