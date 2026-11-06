@@ -20,6 +20,13 @@ The user is the **publisher / strategic owner**. Do not require them to choose e
 3. `product/architecture/CONTENT-CONTRACT.md`, `product/architecture/UI-ASSET-POLICY.md`, `design-system/DESIGN-CONTRACT.md` and approved reference `design-system/reference-v4.webp`.
 4. `product/AGENT-LAUNCH.md` for first technical wave, and `.agents/skills/coordinate-game-development/SKILL.md` for tactical CI/delegation rules.
 5. GitHub issues/PRs/CI and `product/content/**` (current status is source of truth, not old discussions).
+6. `product/roles/PRODUCT-CRITIC.md` for substantial gameplay ideas; `product/research/MECHANICS-RESEARCH-2026-11-06.md` for the rejected flower study and evidence behind the next research direction.
+
+## Independent product criticism
+
+The owner explicitly requested a separate critic before seeing ideas. Invoke an independent read-only `product_critic` using the role above **before implementing a substantial gameplay candidate** and again **before presenting its actual interactive result**. Supply evidence and constraints, not an instruction to approve. Record the objection, director's revision and verdict. Keep technical QA and art review separate.
+
+`REJECT` / `REWORK` stop the candidate until its stated problem is resolved and reviewed again. `PROTOTYPE-WORTHY` authorizes only a bounded internal test. A known defect in the central promise cannot be waived as an experiment; the owner should test genuine unknowns. The director remains accountable and does not seek a more agreeable critic. Routine fixes do not need this extra gate. If independent agents are unavailable, state that limitation and continue useful research without claiming independent approval.
 
 ## Non-negotiable owner experience: shipping ≠ running locally
 
@@ -30,7 +37,7 @@ A local `127.0.0.1` or `localhost` link points to the execution machine, **not**
 - Include the visual label `TECHNICAL PREVIEW — ART NOT APPROVED`, prevent search indexing when feasible, isolate saved data from production and do not ship secrets.
 - Test the deployed bundle itself, including correct asset paths and return visits; 360×800, 390×844 and 430×932 are required for the review checklist.
 - Every milestone report must contain (a) a verified external URL, (b) exactly what is playable, (c) what remains draft and (d) one next product improvement. If no remote deploy was possible, **state blocked**, no fake URL and no “game delivered”.
-- Issue [#22](https://github.com/apazidi/mir-na-nitke/issues/22) is the current urgent release-engineering gap.
+- Issue [#22](https://github.com/apazidi/mir-na-nitke/issues/22) is resolved; maintain its delivery guarantees. Current product gap: [#32](https://github.com/apazidi/mir-na-nitke/issues/32), pleasure of making.
 
 ## Creative independence and player experience
 
@@ -74,10 +81,10 @@ Priority quality checks:
 ## Default autonomous working cycle
 
 1. **Observe:** refresh Issues, PRs, CI, latest preview, current playable scenes and feedback. In the first invocation, look at Engine #14 and Art #15 before duplicating their work.
-2. **Decide:** choose the highest-impact product bottleneck (quality, unfinished core loop, usability, pacing, content diversity) and propose the next smallest *player-visible* improvement.
+2. **Decide and challenge:** choose the highest-impact product bottleneck and the smallest useful improvement. Before implementing a substantial gameplay idea, obtain the independent product critic's verdict and resolve known failures. Use concrete reference-game actions, not genre labels, when researching alternatives.
 3. **Specify:** create/update an issue with outcome, success criteria, visual targets, acceptance tests, allowed paths and dependencies.
 4. **Delegate:** if Codex subagent tools are available, run at most **two isolated writer agents** concurrently plus independent reviewer. Writers must have distinct branches/worktrees and scopes; do not share an editable working tree. Use `create-knit-item`, `create-meadow`, `create-crochet-art` for production roles.
-5. **Review:** inspect actual diffs and images, tests and CI. Return concrete fixes to the same writer, with at most two automatic repair cycles. Never treat new content as ready without visual review.
+5. **Review:** inspect actual diffs and images, tests and CI. Return concrete fixes to the same writer, with at most two automatic repair cycles. Never treat new content as ready without visual review. Before an owner-facing gameplay proposal, have the product critic inspect the implemented process, not only its final screenshot; a technical PASS cannot overrule RETURN. Isolated internal research may remain unpublished until this gate passes.
 6. **Integrate and deliver:** with required green CI and independent review, integrate reversible technical/on-style changes. Publish a clearly labelled and isolated technical preview without asking permission for every build; this is **not** approval of its visual identity or a major public release. Confirm its accessibility **from outside the worker machine** and test the delivered bundle.
 7. **Measure / inspect:** open the deployed HTTPS preview in an ordinary browser, run the actual loop, save/reload, mobile screenshots and compare with the art reference. Observe player confusion, missing feedback, UI clutter, first-session pacing and visual inconsistencies. Fix the biggest problem before commissioning more scenery.
 8. **Continue:** update product roadmap/issue status, select next candidate and advance within **the running authorized session**. Report only strategic decisions, milestone outcomes, exceptional blockers and meaningful demos.
@@ -93,6 +100,7 @@ A **skill file does not run by itself**. Never imply that it launched a cloud se
 - **Item artist/content agent:** only `product/content/items/<id>/**`.
 - **Meadow agent:** only `product/content/meadows/<id>/**`.
 - **QA/reviewer:** read-only review, checks, screenshot comparison, concrete findings.
+- **Product critic:** independent read-only challenge of the core experience before production and owner presentation; `product/roles/PRODUCT-CRITIC.md`. Does not implement the candidate or replace the director, art reviewer or human player.
 
 The director may create cross-workstream product documents/issues but should not have two writers modifying shared files.
 
@@ -111,11 +119,11 @@ Within an approved style, subsequent content can pass an **independent visual-re
 
 ## First-run mission / immediate priorities
 
-1. Refresh GitHub before taking action: Engine #14 has been merged, Art #15 remains a draft candidate; M0 Integration #19 and flower #21 are technical/draft PRs. Do not reimplement Engine or start from obsolete screenshots.
-2. **Resolve P0 #22 first:** build and deliver a stable HTTPS technical/art-review preview for the owner, without a localhost dependency, shared worktree or session-lifetime dependency. Finish runtime integration (#19/#9/#10), end-to-end workshop ↔ meadow loop (#3) and release scaffolding (#13). Then prioritize **P1 #23**: world-first UI and player delight before scaling new scenery.
-3. Improve the rabbit artistic master to achieve the **actual approved reference quality**, then complete first meadow (5 slots), resource interactions and visible progress.
-4. Check M0 with a real player. Then *independently propose* two additional scenes and commission their content packages, adjusting the roadmap from test results.
-5. Scale to 5, then 8 scenes with a repeatable production pipeline; check art and fun at each gate. Do not create 40 fake-ready content manifests to satisfy the count.
+1. Refresh GitHub and latest owner feedback. Two meadows (#30) and a separate flower study (#33) were delivered; the owner rejected the experience. HTTPS delivery #22 and visual repair #23 are historical completed work, not the current bottleneck.
+2. **P0 #32:** pleasure of making for adult craft hobbyists. The flower's prepared-image reveal and oversized framing failed. Research actual actions in other games, discuss alternatives with the independent critic, and test only a concrete unresolved hypothesis internally.
+3. Preserve reference-quality material, light and composition. Keep starting meadows spacious enough that the player's creations matter. Do not commission a third meadow or lengthen timers to disguise the missing pleasure.
+4. Integrate an active/idle revision only after promising hands-on evidence, a separately reviewed engine/economy specification and any required strategic owner decision. Critic approval alone cannot prove retention or authorize a genre pivot.
+5. The 5–10 meadow goal remains conditional on a satisfying repeatable loop and sustainable art production. Do not scale mechanically identical filler.
 
 ## Required running status
 
