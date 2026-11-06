@@ -138,14 +138,17 @@ button:focus-visible{outline:3px solid #fff7d7;outline-offset:2px}
 @media(prefers-reduced-motion:reduce){.gameplay-v3 .yarn-glint,.gameplay-v3 .new-stitch{animation:none!important}}
 /* Bounded v4 staged appearance; v3 retains its existing workshop. */
 .gameplay-v4 .staged-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:10;pointer-events:none}
-.gameplay-v4 .evening .staged-canvas{filter:brightness(.84) saturate(.9)}
-.design-v4.gameplay-v4 .evening .meadow-back{filter:brightness(.78) saturate(.88)}
+.gameplay-v4 .evening .staged-canvas{filter:brightness(.79) saturate(.8)}
+.design-v4.gameplay-v4 .evening .meadow-back,.design-v4.gameplay-v4 #view-workshop .evening .meadow-back{filter:brightness(.78) saturate(.88)}
 .design-v4.gameplay-v4 .craft-target{left:20%;right:20%;top:32%;height:34%;z-index:12}
 .design-v4.gameplay-v4 .action-dock{bottom:105px;left:14%;right:14%;gap:5px}
 .gameplay-v4 .action-dock .progress-panel{padding:7px 11px;gap:4px}
 .gameplay-v4 .staged-auto,.gameplay-v4 .staged-cancel{font-size:11px;min-height:44px;padding:5px 14px}
 .gameplay-v4 .staged-auto[aria-pressed=true]{background:#e4e9b8}
-.gameplay-v4 .staged-cancel{position:absolute;right:-45px;bottom:0;max-width:90px;font-size:10px}
+.gameplay-v4 .staged-controls{display:flex;align-items:center;justify-content:center;gap:7px;width:100%}
+.gameplay-v4 .staged-controls .primary{min-width:140px}
+.gameplay-v4 .staged-auto{flex-shrink:0}
+.gameplay-v4 .staged-cancel{position:absolute;left:12px;top:66px;z-index:23;max-width:110px;font-size:10px}
 .gameplay-v4 .workshop-item{object-fit:contain!important;left:calc(50% - 85px)!important;top:calc(65% - 230px)!important;width:170px!important;height:230px!important}
 .gameplay-v4 .recipe-label{top:44%;max-width:230px;margin:auto}
 .gameplay-v4 .staged-project-actions{display:grid;gap:4px;max-width:45%;flex-shrink:0}

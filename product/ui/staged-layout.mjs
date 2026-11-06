@@ -1,9 +1,9 @@
 // Visible-material anchors, separate from legacy transparent-artboard slots.
 // The same fit is used while crafting and after placement; saves keep slot IDs.
 export const STAGED_LAYOUT=Object.freeze({
- rabbit:{x:.30,foot:.69,maxWidth:130,maxHeight:230},
+ rabbit:{x:.38,foot:.69,maxWidth:130,maxHeight:230},
  flower:{x:.73,foot:.70,maxWidth:150,maxHeight:170},
- tree:{x:.27,foot:.47,maxWidth:150,maxHeight:175},
+ tree:{x:.25,foot:.47,maxWidth:150,maxHeight:175},
  'kot-cat':{x:.43,foot:.70,maxWidth:155,maxHeight:230},
 });
 export function stagedFit(id,art,width,height){

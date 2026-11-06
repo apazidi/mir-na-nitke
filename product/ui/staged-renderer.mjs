@@ -31,7 +31,7 @@ export function createStagedRenderer(onError=()=>{}){
  new ResizeObserver(()=>{fit();wake();}).observe(canvas);reduced.addEventListener('change',wake);
  return {
   refresh(){wake();},
-  mount(world,next,nextWork,isAuto,z=10){const changed=item?.id!==next.id;item=next;auto=isAuto;canvas.style.zIndex=String(z);
+  mount(world,next,nextWork,isAuto,z=10){const changed=item?.id!==next.id;ready=false;document.documentElement.dataset.stageReady='false';item=next;auto=isAuto;canvas.style.zIndex=String(z);
    if(changed){art=null;ready=false;error=null;glints=[];flights=[];shownIndex=-1;work=nextWork;document.documentElement.dataset.stageReady='false';const id=next.id;loadStagedArt(next).then(a=>{if(item?.id!==id)return;art=a;native.width=a.width;native.height=a.height;width=0;wake();}).catch(e=>{error=e.message;onError('Не удалось загрузить изделие. Попробуйте обновить страницу.');});}
    else{const before=sectionAt(next.id,work),after=sectionAt(next.id,nextWork);for(let i=before.index;i<after.index;i++)accent(i,performance.now()+160,reduced.matches?2:6);if(before.index<6&&after.index===6)for(let i=0;i<6;i++)accent(i,performance.now()+280+i*25,1);work=nextWork;}
    world.append(canvas);wake();
