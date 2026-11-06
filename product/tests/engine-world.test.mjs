@@ -54,10 +54,10 @@ test('time partition gives identical wallet, work, timers, memories and sequence
  const recipe=act(core.advanceTime(initial,20000,c),'startRecipe',{recipeId:'picnic'});
  assert.deepEqual(core.advanceTime(core.advanceTime(recipe,20123,c),22555,c),core.advanceTime(recipe,22555,c));
 });
-test('offline cap bounds world events and preserves remaining waiting time; rollback never reapplies',()=>{
+test('offline cap bounds production while expired visits remain memories; rollback never reapplies',()=>{
  const capped={...c,maxOfflineMs:10000};let s=core.advanceTime(all(),20000,capped);
  assert.equal(s.lastTimestamp,20000);assert.equal(s.memories['visit-rabbit'].lastAt,5000);assert.equal(s.memories['visit-duck'].lastAt,8000);
- assert.equal(s.events['visit-rabbit'].dueAt,22000);assert.equal(s.events['visit-duck'].dueAt,24000);
+ assert.equal(s.events['visit-rabbit'].phase,'done');assert.equal(s.events['visit-duck'].phase,'done');assert.equal(core.selectView(s,capped).visitors.length,0);
  assert.deepEqual(core.advanceTime(s,0,capped),s);assert.deepEqual(core.advanceTime(core.deserializeState(core.serializeState(s),capped),20000,capped),s);
  s=core.advanceTime(s,22000,capped);assert.equal(s.events['visit-rabbit'].phase,'done');assert.equal(s.memories['visit-rabbit'].count,1);
 });

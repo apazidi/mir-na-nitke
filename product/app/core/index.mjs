@@ -109,7 +109,7 @@ function settleEvents(s,c,end){
  }
 }
 /** Same elapsed interval has identical economics/work/event state regardless of tick partition.
- * A single resume consumes at most maxOfflineMs; excess time is discarded for every timer. */
+ * Production consumes at most maxOfflineMs; finite visits follow actual wall time. */
 export function advanceTime(state,now,c){
  number(now,'Timestamp');const s=copy(state);if(now<=s.lastTimestamp)return s;
  const elapsed=Math.min(now-s.lastTimestamp,c.maxOfflineMs),end=s.lastTimestamp+elapsed,discarded=now-end;
@@ -119,8 +119,9 @@ export function advanceTime(state,now,c){
   if(due<=end){const count=Math.floor((end-due)/r.cooldownMs)+1;s.accrual.automatic[id]=(s.accrual.automatic[id]??0)+count;s.cooldowns[id]=due+count*r.cooldownMs;if(r.amount)s.transactionSequence+=count;}
   if(discarded)s.cooldowns[id]+=discarded;
  }
- settleEvents(s,c,end);
- if(discarded)for(const saved of Object.values(s.events))if(saved.dueAt!==null)saved.dueAt+=discarded;
+ // A visit that finished while away remains a memory, never a frozen live visitor.
+ // Automatic events are once-only; repeatable visits require a new paid manual recipe.
+ settleEvents(s,c,now);
  const yarn=accruedYarn(s,c);
  number(yarn,'Wallet overflow');s.wallet.yarn=yarn;
  if(s.project)s.project.work=Math.min(projectDefinition(s,c).workUnits,s.accrual.baseWork+s.accrual.elapsedMs/1000*rate(s,c,'idle'));
