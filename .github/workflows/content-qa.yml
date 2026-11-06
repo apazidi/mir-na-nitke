@@ -6,6 +6,7 @@ on:
       - 'play-preview/**'
       - 'craft-study/**'
       - 'material-study/**'
+      - 'stage-study/**'
       - '.agents/skills/**'
       - 'AGENTS.md'
       - '.github/workflows/content-qa.yml'
@@ -16,6 +17,7 @@ on:
       - 'play-preview/**'
       - 'craft-study/**'
       - 'material-study/**'
+      - 'stage-study/**'
       - '.agents/skills/**'
       - 'AGENTS.md'
       - '.github/workflows/content-qa.yml'
@@ -35,6 +37,8 @@ jobs:
         run: npm --prefix product test
       - name: Material shaping model regressions
         run: node --test product/research/craft-material-v1/model.test.mjs
+      - name: Stage appearance timing and persistence regressions
+        run: node --test product/research/stage-magic-v1/model.test.mjs
       - name: Validate content and references
         run: npm --prefix product run validate
       - name: Build ready-only browser catalog
@@ -82,6 +86,18 @@ jobs:
           PLAYWRIGHT_MODULE="$RUNNER_TEMP/mir-browser/node_modules/playwright/index.mjs" LOCAL_PREVIEW_PATH=/material-study/ node product/research/craft-material-v1/check.mjs
           git diff --exit-code -- material-study
           test -z "$(git ls-files --others --exclude-standard material-study)"
+      - name: Build and exercise the staged appearance study
+        run: |
+          node product/research/stage-magic-v1/build.mjs
+          PLAYWRIGHT_MODULE="$RUNNER_TEMP/mir-browser/node_modules/playwright/index.mjs" LOCAL_PREVIEW_PATH=/stage-study/ node product/research/stage-magic-v1/check.mjs
+          git diff --exit-code -- stage-study
+          test -z "$(git ls-files --others --exclude-standard stage-study)"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: stage-study-mobile-evidence
+          path: product/research/stage-magic-v1/evidence/qa-*/
+          retention-days: 15
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -106,3 +122,28 @@ jobs:
           name: product-static-pages-preview
           path: product/preview-evidence/*.png
           retention-days: 15
+
+  public-stage-preview:
+    if: github.event_name == 'push'
+    needs: [validate-content, browser-loop]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify exact public bundle from a GitHub-hosted runner
+        env:
+          REVIEWED_SHA: ${{ github.sha }}
+          PREVIEW_URL: https://apazidi.github.io/mir-na-nitke/stage-study/
+          WAIT_FOR_DEPLOY: '1'
+        run: node product/research/stage-magic-v1/verify-public.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: stage-study-https-receipt
+          path: product/research/stage-magic-v1/evidence/https-receipt.json
+          retention-days: 90

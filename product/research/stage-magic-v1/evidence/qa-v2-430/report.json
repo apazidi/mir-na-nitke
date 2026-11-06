@@ -1,0 +1,14 @@
+{
+  "width": 430,
+  "height": 932,
+  "firstAndThreeClicks": true,
+  "explicitStart": true,
+  "autoPause": true,
+  "returnSettlesOnce": true,
+  "completionPersists": true,
+  "oldSavesUntouched": true,
+  "controlsVisible": true,
+  "noOverflow": true,
+  "errors": [],
+  "limits": "Automated browser; no claim of physical-phone performance, human enjoyment or art approval."
+}
