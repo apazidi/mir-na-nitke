@@ -39,6 +39,8 @@ try {
   const manifestResponse = await fetch(new URL('preview-manifest.json', base));
   assert.equal(manifestResponse.status, 200);
   const manifest = await manifestResponse.json();
+  const expectedManifest = JSON.parse(await readFile(path.join(root, 'preview-manifest.json'), 'utf8'));
+  assert.deepEqual(manifest, expectedManifest, 'The served manifest must match the exact locally reviewed bundle; an older self-consistent deployment is not accepted');
   assert.equal(manifest.productionContent, false);
   assert.equal(manifest.saveKey, manifest.gameplayReview ? 'mir-na-nitke-gameplay-preview-v3' : 'mir-na-nitke-art-preview-v2');
   for (const file of manifest.files) {
