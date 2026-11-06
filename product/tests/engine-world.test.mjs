@@ -86,3 +86,117 @@ test('save rejects replayed one-shot project events, terminal repeats and a bloc
  working.events.gift={phase:'waiting',dueAt:working.lastTimestamp+2000,count:0};
  assert.throws(()=>core.deserializeState(core.serializeState(working),once),/Active recipe/);
 });
+
+test('craft-auto defaults stay compatible, and invalid choices and recraft declarations fail closed',()=>{
+ const fresh={...c,defaultCraftAuto:false,recraftableIds:['rabbit','flower']};
+ assert.equal(core.createInitialState(c,0).craftAuto,true);
+ assert.equal(core.createInitialState(fresh,0).craftAuto,false);
+ const old=core.createInitialState(c,0);delete old.craftAuto;
+ assert.equal(core.deserializeState(core.serializeState(old),fresh).craftAuto,true,'old saves retain their former automatic behavior');
+ for(const bad of [null,0,'false']){
+  assert.throws(()=>core.validateConfig({...c,defaultCraftAuto:bad}));
+  assert.throws(()=>core.deserializeState(core.serializeState({...old,craftAuto:bad}),c));
+  assert.throws(()=>act(core.createInitialState(c,0),'setCraftAuto',{enabled:bad}));
+ }
+ for(const ids of ['rabbit',['missing'],['rabbit','rabbit']])assert.throws(()=>core.validateConfig({...c,recraftableIds:ids}));
+});
+
+test('craft pause preserves world income, visitors and clocks; resuming accrues only enabled time',()=>{
+ const config={...c,recraftableIds:['rabbit']};
+ const world=all();let s=act(world,'startRecraft',{itemId:'rabbit'},config);
+ s=core.dispatch(s,{type:'setCraftAuto',enabled:false,now:1000},config);
+ assert.equal(s.project.work,.7,'pause first commits the preceding enabled second');
+ const view=core.selectView(s,config);assert.equal(view.craftAuto,false);assert.equal(view.rates.idle,.7);assert.equal(view.project.etaSeconds,null);
+ const once=core.advanceTime(s,40000,config);let sliced=s;
+ for(const now of [1123,4999,5000,8000,15001,40000])sliced=core.advanceTime(sliced,now,config);
+ assert.deepEqual(sliced,once);assert.equal(once.project.work,.7);
+ const worldOnly=core.advanceTime(world,40000,config);
+ for(const key of ['wallet','owned','placements','cooldowns','events','memories','transactionSequence'])assert.deepEqual(once[key],worldOnly[key],key);
+ const loaded=core.deserializeState(core.serializeState(once),config);
+ assert.deepEqual(core.advanceTime(loaded,1000,config),once);
+ assert.deepEqual(core.advanceTime(loaded,40000,config),once);
+ s=act(loaded,'click',{},config);assert.equal(s.project.work,10.7,'manual contribution still works while auto is paused');
+ s=act(s,'setCraftAuto',{enabled:true},config);s=core.advanceTime(s,41000,config);
+ assert.ok(Math.abs(s.project.work-11.4)<1e-12);assert.equal(core.selectView(s,config).project.etaSeconds,(20-s.project.work)/.7);
+ assert.deepEqual(core.deserializeState(core.serializeState(s),config),s);
+});
+
+test('fresh explicit auto and offline cap never apply paused or discarded work later',()=>{
+ const config={...c,defaultCraftAuto:false,maxOfflineMs:1000};
+ let s=act(core.createInitialState(config,0),'startProject',{itemId:'rabbit'},config);
+ s=core.advanceTime(s,10000,config);assert.equal(s.project.work,0);assert.equal(s.lastTimestamp,10000);
+ s=act(s,'setCraftAuto',{enabled:true},config);s=core.advanceTime(s,20000,config);assert.equal(s.project.work,.7);
+ s=core.dispatch(s,{type:'setCraftAuto',enabled:false,now:21000},config);assert.equal(s.project.work,1.4);
+ s=core.advanceTime(core.deserializeState(core.serializeState(s),config),50000,config);assert.equal(s.project.work,1.4);
+ s=act(s,'setCraftAuto',{enabled:true},config);assert.ok(Math.abs(core.advanceTime(s,51000,config).project.work-2.1)<1e-12);
+});
+
+test('owned recraft can finish or cancel without spending, duplicating placements or generating rewards',()=>{
+ const config={...c,recraftableIds:['rabbit','flower']};const initial=all();
+ assert.equal(core.selectView(initial,config).projects.find(p=>p.itemId==='rabbit').canRecraft,true);
+ assert.equal(core.selectView(initial,config).projects.find(p=>p.itemId==='cat').canRecraft,false);
+ let s=act(initial,'startRecraft',{itemId:'rabbit'},config);
+ assert.deepEqual(s.project,{itemId:'rabbit',work:0,recraft:true});
+ assert.equal(core.selectView(s,config).projects.some(p=>p.canRecraft),false);
+ assert.deepEqual(s.placements,initial.placements);assert.equal(s.wallet.yarn,initial.wallet.yarn);
+ assert.throws(()=>act(s,'startProject',{itemId:'cat'},config));assert.throws(()=>act(s,'startRecraft',{itemId:'flower'},config));
+ s=act(core.deserializeState(core.serializeState(s),config),'click',{},config);
+ s=act(act(s,'click',{},config),'completeCraft',{},config);
+ assert.deepEqual(s,initial,'same-time repeat has no world/economic outcome');
+ s=act(act(initial,'startRecraft',{itemId:'rabbit'},config),'click',{},config);
+ s=core.dispatch(s,{type:'cancelRecraft',now:20000},config);
+ const elapsed=core.advanceTime(initial,20000,config);
+ for(const key of ['wallet','owned','placements','cooldowns','events','memories','transactionSequence'])assert.deepEqual(s[key],elapsed[key],key);
+ assert.equal(s.project,null);assert.deepEqual(core.deserializeState(core.serializeState(s),config),s);
+ assert.throws(()=>act(initial,'cancelRecraft',{},config));
+ assert.throws(()=>act(initial,'startRecraft',{itemId:'cat'},config));
+ assert.throws(()=>act(core.createInitialState(config,0),'startRecraft',{itemId:'rabbit'},config));
+ const paid=act(core.createInitialState(config,0),'startProject',{itemId:'rabbit'},config),before=core.serializeState(paid);
+ assert.throws(()=>act(paid,'startRecraft',{itemId:'rabbit'},config));assert.throws(()=>act(paid,'cancelRecraft',{},config));
+ assert.equal(core.serializeState(paid),before,'rejected repeat commands do not replace paid work');
+});
+
+test('recraft save validation rejects unowned, unsupported, recipe and disguised duplicate work',()=>{
+ const config={...c,recraftableIds:['rabbit']};
+ const repeat=act(all(),'startRecraft',{itemId:'rabbit'},config);
+ for(const change of [s=>delete s.project.recraft,s=>s.project.recraft=false,s=>s.project.recraft='true',s=>s.project.itemId='cat']){
+  const bad=structuredClone(repeat);change(bad);assert.throws(()=>core.deserializeState(core.serializeState(bad),config));
+ }
+ const paid=act(core.createInitialState(config,0),'startProject',{itemId:'rabbit'},config);paid.project.recraft=true;
+ assert.throws(()=>core.deserializeState(core.serializeState(paid),config));
+ const recipe=act(core.advanceTime(all(),20000,c),'startRecipe',{recipeId:'picnic'});recipe.project.recraft=true;
+ assert.throws(()=>core.deserializeState(core.serializeState(recipe),config));
+});
+
+test('config migration retains a paid unselected item fraction and rejects inconsistent source accrual',()=>{
+ let source=craft(core.createInitialState(c,0),'rabbit');source=act(source,'startProject',{itemId:'flower'});source=act(source,'click');
+ delete source.craftAuto;const raw=core.serializeState(source);
+ const target=structuredClone(c);target.defaultCraftAuto=false;target.recraftableIds=['rabbit'];target.items.find(i=>i.id==='flower').workUnits=144.2;target.idleWorkPerSecond=1;
+ const migrated=core.migrateConfigState(source,c,target,4000),settled=core.advanceTime(source,4000,c);
+ assert.equal(migrated.project.work,settled.project.work/20*144.2);
+ assert.equal(migrated.craftAuto,true);assert.equal(migrated.wallet.yarn,settled.wallet.yarn);
+ assert.deepEqual(migrated.accrual,{baseYarn:settled.wallet.yarn,baseWork:migrated.project.work,elapsedMs:0,automatic:{},events:{}});
+ assert.equal(core.serializeState(source),raw);assert.deepEqual(core.advanceTime(core.deserializeState(core.serializeState(migrated),target),4000,target),migrated);
+ assert.equal(core.advanceTime(migrated,5000,target).project.work,migrated.project.work+1);
+ const bad=structuredClone(source);bad.accrual.baseWork+=1;
+ assert.throws(()=>core.migrateConfigState(bad,c,target,4000));
+ const noItem=structuredClone(target);noItem.items=noItem.items.filter(i=>i.id!=='flower');assert.throws(()=>core.migrateConfigState(source,c,noItem,4000));
+});
+
+test('rich config migration preserves recipe, wallet, upgrades, events, memories and cooldowns at old rates',()=>{
+ const oldConfig=structuredClone(c);oldConfig.recipes[0].workUnits=100;
+ let source=core.advanceTime(all(),20000,oldConfig);source=act(source,'buyUpgrade',{upgradeId:'hook'},oldConfig);
+ source=act(source,'startRecipe',{recipeId:'picnic'},oldConfig);source=act(source,'click',{},oldConfig);
+ const raw=core.serializeState(source),target=structuredClone(oldConfig);
+ target.initialYarn=999;target.defaultCraftAuto=false;target.recraftableIds=['rabbit'];target.reserveYarnPerHour=100;target.idleWorkPerSecond=1;
+ target.recipes[0].workUnits=300;target.upgrades[0].amount=.35;
+ const settled=core.advanceTime(source,35000,oldConfig),migrated=core.migrateConfigState(source,oldConfig,target,35000);
+ for(const key of ['wallet','owned','placements','upgrades','cooldowns','events','memories','transactionSequence','craftAuto','lastTimestamp'])assert.deepEqual(migrated[key],settled[key],key);
+ assert.equal(migrated.project.recipeId,'picnic');assert.equal(migrated.project.work,settled.project.work/100*300);
+ assert.equal(migrated.accrual.elapsedMs,0);assert.equal(core.serializeState(source),raw);
+ assert.deepEqual(core.deserializeState(core.serializeState(migrated),target),migrated);
+ const next=core.advanceTime(migrated,36000,target);
+ assert.ok(Math.abs(next.wallet.yarn-(migrated.wallet.yarn+(100+60+90)/3600+.3))<1e-12,'target passive rate plus preserved sniff timer due at 36000');
+ const paused=act(source,'setCraftAuto',{enabled:false},oldConfig);
+ assert.equal(core.migrateConfigState(paused,oldConfig,target,35000).craftAuto,false);
+});
