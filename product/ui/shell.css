@@ -83,3 +83,56 @@ button:focus-visible{outline:3px solid #fff7d7;outline-offset:2px}
 .scene-v2 .project-drawer{bottom:108px}
 .scene-v2 .drawer-shade{bottom:103px}
 .scene-v2 #view-workshop .scene-art{height:calc(100% - 36px)}
+
+/* Two-meadow gameplay candidate: the shared world and tactile library stay primary. */
+.gameplay-v3 .place-title{min-height:44px;max-width:100%;margin:0;padding:7px 10px;border:1px solid #c49a6b;border-radius:18px;background:#f8e8cfed;box-shadow:0 2px 5px #38271b44;font:700 14px/1.12 Georgia,serif;color:var(--textile-ink);text-align:left}
+.gameplay-v3 .workshop-tools,.gameplay-v3 .memory-tools{position:absolute;z-index:24;top:65px;right:12px;min-height:44px;padding:5px 12px;font-size:11px;background:#f5e4caed;border-width:1px;border-bottom-width:3px}
+.gameplay-v3 .compact-message{font-size:15px;padding:10px 14px}
+.gameplay-v3 #view-workshop .workshop-item{height:calc(100% - 85px)}
+.gameplay-v3 #view-workshop .transparent-stage{top:26%;height:50%;object-fit:contain;object-position:center bottom}
+.gameplay-v3 .craft-target{position:absolute;z-index:12;left:9%;right:9%;top:19%;height:54%;padding:0;border:0;background:transparent;border-radius:40%;cursor:pointer}
+.gameplay-v3 .craft-target:focus-visible{outline-offset:-5px}
+.gameplay-v3 .progress-panel{gap:3px;font-size:10px;padding:5px 10px}
+.gameplay-v3 .progress-panel small{font-size:10px;font-weight:500;white-space:nowrap}
+.gameplay-v3 .action-dock{left:10%;right:10%;gap:6px}
+.gameplay-v3 .action-hint{font-size:10px;line-height:1.35;padding:5px 10px}
+.gameplay-v3 .income-hint{padding:3px 8px;border-radius:10px;color:#513a24;background:#f7e7d2e8;font-size:10px;text-align:center}
+.gameplay-v3 .action-dock .contextual-action:not(.art-button){width:auto;min-width:170px;max-width:100%;height:50px;padding:6px 16px;border:2px solid #a77d49;border-bottom-width:4px;border-radius:21px;background:linear-gradient(#f9eacb,#e5c28c);box-shadow:0 3px 5px #38271b55,inset 0 0 0 2px #fff1c8;color:#65432d;text-shadow:0 1px #fff2d9;font:700 15px/1.15 Georgia,serif}
+.gameplay-v3 .action-dock .compact-nav-action{width:112px;min-width:112px;height:84px}
+.gameplay-v3 .story-note,.gameplay-v3 .home-absence{position:absolute;z-index:23;top:120px;left:14px;right:14px;margin:0;padding:8px 11px;border:1px dashed #bb946b;border-radius:16px;background:#f7e7d2ed;color:#654632;font-size:11px;line-height:1.3;text-align:center;box-shadow:0 2px 5px #38271b33;pointer-events:none}
+.gameplay-v3 .memory-note{display:flex;align-items:center;gap:8px;pointer-events:auto}
+.gameplay-v3 .memory-note span{flex:1}.gameplay-v3 .memory-note button{font-size:10px;padding:5px 8px}
+.gameplay-v3 .feedback,.gameplay-v3 #view-workshop .feedback{top:120px;left:14px;right:14px;font-size:11px;pointer-events:none}
+.gameplay-v3 .recipe-label{position:absolute;top:34%;left:14%;right:14%;padding:12px;border-radius:20px;background:#f7e7d2e8;color:#63442e;text-align:center;font:700 15px/1.4 Georgia,serif;pointer-events:none}
+.gameplay-v3 .stitch-pulse{position:absolute;z-index:26;min-width:32px;padding:5px;border:1px solid #d3a157;border-radius:50%;background:#fff4d7;color:#935c33;font-size:12px;font-weight:800;box-shadow:0 0 15px #ffecb3;pointer-events:none;animation:stitch-rise 650ms both}
+.gameplay-v3 .object-effect{position:absolute;left:50%;top:15%;z-index:1;color:#fff0c4;font:bold 26px Georgia;pointer-events:none;text-shadow:0 1px 5px #855d38;animation:object-effect 2200ms both;animation-delay:var(--reaction-delay,0ms)}
+.gameplay-v3 .effect-water{top:0;color:#b7e7f0;letter-spacing:4px}.gameplay-v3 .effect-feed{top:74%;font-size:40px;color:#e5eeb9}.gameplay-v3 .effect-brew{top:5%;color:#fff1d6}.gameplay-v3 .effect-knock,.gameplay-v3 .effect-shelter{left:60%;top:58%;text-shadow:0 0 12px #ffc75f,0 0 23px #ffd672}.gameplay-v3 .effect-sniff{left:70%;top:40%;font-size:22px}
+.gameplay-v3 .object-reacting[data-action=pet] img{animation:friend-hop 1400ms ease both;animation-delay:var(--reaction-delay,0ms)}
+.gameplay-v3 .object-reacting[data-action=greet] img{transform-origin:50% 90%;animation:cat-stretch 2600ms ease-in-out both;animation-delay:var(--reaction-delay,0ms)}
+.gameplay-v3 .object-reacting[data-action=feed] img{transform-origin:65% 85%;animation:duck-feed 2400ms ease both;animation-delay:var(--reaction-delay,0ms)}
+.gameplay-v3 .object-reacting[data-action=sway] img{transform-origin:50% 95%;animation:branch-sway 2500ms ease-in-out both;animation-delay:var(--reaction-delay,0ms)}
+.gameplay-v3 .object-reacting[data-action=rock] img{transform-origin:50% 90%;animation:chair-rock 2400ms ease both;animation-delay:var(--reaction-delay,0ms)}
+.gameplay-v3 .object-reacting[data-action=land] img{animation:butterfly-land 2500ms ease both;animation-delay:var(--reaction-delay,0ms)}
+.gameplay-v3 .object-reacting[data-action=sniff] img{animation:sniff 2600ms ease-in-out both;animation-delay:var(--reaction-delay,0ms)}
+.gameplay-v3 .memory-visitor{opacity:.82}.gameplay-v3 .visitor::after{content:'В гостях';position:absolute;left:0;right:0;bottom:-10px;color:#654632;background:#f8e9d3e8;border-radius:12px;padding:3px;font-size:9px;text-align:center;pointer-events:none}.gameplay-v3 .memory-visitor::after{content:'Воспоминание'}
+.gameplay-v3 .project-drawer>.button{font-size:11px;margin-bottom:8px}.gameplay-v3 .return-copy{font-size:14px;line-height:1.6}.gameplay-v3 .project-row{gap:10px}.gameplay-v3 .row-copy small{line-height:1.4}
+@keyframes cat-stretch{0%,100%{transform:scale(1,1)}35%,65%{transform:scale(1.035,.965) rotate(-1deg)}}
+@keyframes duck-feed{0%,100%{transform:rotate(0)}25%,65%{transform:rotate(7deg) translateY(2px)}45%,85%{transform:rotate(3deg)}}
+@keyframes stitch-rise{0%{opacity:1;transform:translate(-50%,0) scale(.85)}25%{transform:translate(-50%,-8px) scale(1.1)}100%{opacity:0;transform:translate(-50%,-35px) scale(.8)}}
+@keyframes object-effect{0%{opacity:0;transform:translate(-50%,8px) scale(.8)}25%,65%{opacity:1}100%{opacity:0;transform:translate(-50%,-16px) scale(1.1)}}
+@keyframes friend-hop{0%,100%{transform:translateY(0)}25%{transform:translateY(-5px)}50%{transform:translateY(0)}70%{transform:translateY(-3px)}}
+@keyframes branch-sway{0%,100%{transform:rotate(0)}30%{transform:rotate(-2deg)}65%{transform:rotate(2deg)}}
+@keyframes chair-rock{0%,100%{transform:rotate(0)}25%,70%{transform:rotate(-3deg)}45%,85%{transform:rotate(2deg)}}
+@keyframes butterfly-land{0%,100%{transform:translateY(0)}40%,70%{transform:translateY(12px) rotate(4deg)}}
+@media(max-width:380px){.gameplay-v3 .place-title{font-size:12px}.gameplay-v3 .progress-panel small{font-size:9px}.gameplay-v3 .action-hint{font-size:9px}}
+@media(prefers-reduced-motion:reduce){.gameplay-v3 .stitch-pulse,.gameplay-v3 .object-effect,.gameplay-v3 .object-reacting img{animation:none!important}}
+.gameplay-v3 .working-yarn{position:absolute;inset:0;width:100%;height:100%;z-index:14;pointer-events:none;overflow:hidden}
+.gameplay-v3 .yarn-shadow{opacity:.46;filter:blur(2px);transform:translate(1px,4px)}
+.gameplay-v3 .yarn-body{filter:drop-shadow(0 2px 1px #4e352855)}
+.gameplay-v3 .yarn-highlight{opacity:.8;transform:translate(-1px,-2px)}
+.gameplay-v3 .yarn-glint{animation:yarn-travel 2400ms linear infinite}
+.gameplay-v3 .yarn-pulse .yarn-glint{animation-duration:400ms;filter:drop-shadow(0 0 5px #fff2ad)}
+.gameplay-v3 .new-stitch{filter:drop-shadow(0 0 8px #ffd77a);animation:stitch-light 650ms both}
+@keyframes yarn-travel{to{stroke-dashoffset:-86}}
+@keyframes stitch-light{0%{opacity:.3;stroke-dasharray:1 200}30%{opacity:1;stroke-dasharray:90 110}70%{opacity:1;stroke-dasharray:200 0}100%{opacity:0;stroke-dasharray:200 0}}
+@media(prefers-reduced-motion:reduce){.gameplay-v3 .yarn-glint,.gameplay-v3 .new-stitch{animation:none!important}}
