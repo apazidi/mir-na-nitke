@@ -27,6 +27,6 @@ export function stagedCatalog(){
   const path=n?'./art-experiments/stage-integration-v1/exports/pond-day-v1.webp':'./art-experiments/craft-feel-v1/exports/meadow-day.webp';
   m.art.backgroundDay=path;m.art.backgroundEvening=path;
  }
- c.meadows[1].slots.find(s=>s.id==='kot-leaf-house').y=.275;
+ c.meadows[1].slots.find(s=>s.id==='kot-leaf-house').y=.24;
  return {...runtime,legacyConfig:gameplayCatalog(true).config};
 }

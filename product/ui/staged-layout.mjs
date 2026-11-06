@@ -3,7 +3,7 @@
 export const STAGED_LAYOUT=Object.freeze({
  rabbit:{x:.38,foot:.69,maxWidth:130,maxHeight:230},
  flower:{x:.73,foot:.70,maxWidth:150,maxHeight:170},
- tree:{x:.25,foot:.47,maxWidth:150,maxHeight:175},
+ tree:{x:.235,foot:.37,maxWidth:140,maxHeight:145},
  'kot-cat':{x:.43,foot:.70,maxWidth:155,maxHeight:230},
 });
 export function stagedFit(id,art,width,height){
