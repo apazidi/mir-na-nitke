@@ -1,0 +1,150 @@
+{
+  "runtime": "5cc9ef5af302908a4fce816134708bae31e97911",
+  "clock": "Real time, ~1 click/s, auto off, no scripted pauses",
+  "records": [
+    {
+      "click": 1,
+      "t": 2.4665856000185014,
+      "work": 2.8,
+      "craft": {
+        "itemId": "rabbit",
+        "sectionIndex": 0,
+        "sectionProgress": 0.1818181818181818,
+        "ready": true,
+        "error": null
+      }
+    },
+    {
+      "click": 2,
+      "t": 3.442003800034523,
+      "work": 5.6,
+      "craft": {
+        "itemId": "rabbit",
+        "sectionIndex": 0,
+        "sectionProgress": 0.3636363636363636,
+        "ready": true,
+        "error": null
+      }
+    },
+    {
+      "click": 3,
+      "t": 4.466825500011444,
+      "work": 8.399999999999999,
+      "craft": {
+        "itemId": "rabbit",
+        "sectionIndex": 0,
+        "sectionProgress": 0.5454545454545453,
+        "ready": true,
+        "error": null
+      }
+    },
+    {
+      "click": 4,
+      "t": 5.462121200025082,
+      "work": 11.2,
+      "craft": {
+        "itemId": "rabbit",
+        "sectionIndex": 0,
+        "sectionProgress": 0.7272727272727272,
+        "ready": true,
+        "error": null
+      }
+    },
+    {
+      "click": 5,
+      "t": 6.456508500039577,
+      "work": 14,
+      "craft": {
+        "itemId": "rabbit",
+        "sectionIndex": 0,
+        "sectionProgress": 0.9090909090909091,
+        "ready": true,
+        "error": null
+      }
+    },
+    {
+      "click": 6,
+      "t": 7.479433400034904,
+      "work": 16.8,
+      "craft": {
+        "itemId": "rabbit",
+        "sectionIndex": 1,
+        "sectionProgress": 0.09090909090909093,
+        "ready": true,
+        "error": null
+      }
+    },
+    {
+      "click": 7,
+      "t": 8.493829900026322,
+      "work": 19.6,
+      "craft": {
+        "itemId": "rabbit",
+        "sectionIndex": 1,
+        "sectionProgress": 0.27272727272727276,
+        "ready": true,
+        "error": null
+      }
+    },
+    {
+      "click": 8,
+      "t": 9.488181200027466,
+      "work": 22.400000000000002,
+      "craft": {
+        "itemId": "rabbit",
+        "sectionIndex": 1,
+        "sectionProgress": 0.45454545454545464,
+        "ready": true,
+        "error": null
+      }
+    },
+    {
+      "click": 9,
+      "t": 10.495404600024223,
+      "work": 25.200000000000003,
+      "craft": {
+        "itemId": "rabbit",
+        "sectionIndex": 1,
+        "sectionProgress": 0.6363636363636365,
+        "ready": true,
+        "error": null
+      }
+    },
+    {
+      "click": 10,
+      "t": 11.514578299999236,
+      "work": 28.000000000000004,
+      "craft": {
+        "itemId": "rabbit",
+        "sectionIndex": 1,
+        "sectionProgress": 0.8181818181818183,
+        "ready": true,
+        "error": null
+      }
+    },
+    {
+      "click": 11,
+      "t": 12.533376600027085,
+      "work": 30.800000000000004,
+      "craft": {
+        "itemId": "rabbit",
+        "sectionIndex": 2,
+        "sectionProgress": 1.0150610510858574e-16,
+        "ready": true,
+        "error": null
+      }
+    },
+    {
+      "click": 12,
+      "t": 13.529415499985218,
+      "work": 33.6,
+      "craft": {
+        "itemId": "rabbit",
+        "sectionIndex": 2,
+        "sectionProgress": 0.08000000000000007,
+        "ready": true,
+        "error": null
+      }
+    }
+  ]
+}

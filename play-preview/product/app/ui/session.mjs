@@ -1,9 +1,12 @@
 import * as core from '../core/index.mjs';
-/** Browser host: commit elapsed time before attempting a possibly rejected command. */
-export function createSession(config, {storage, key='mir-na-nitke-v1', legacyKey, legacyConfig, now=Date.now, onNotice=()=>{}}={}) {
+/** Browser host: commit elapsed time before attempting a possibly rejected command.
+ * legacyMigration='config' opts into rich-world balance migration; default 'v1'
+ * keeps the historical v2-key to v3-key schema bridge. Never writes legacyKey. */
+export function createSession(config, {storage, key='mir-na-nitke-v1', legacyKey, legacyConfig, legacyMigration='v1', now=Date.now, onNotice=()=>{}}={}) {
   let state;
   let blockedSave=false,imported=false,importedReport=null;
   try {
+    if(!['v1','config'].includes(legacyMigration))throw Error('Unknown legacy migration');
     const raw=storage?.getItem(key),missing=raw===null||raw===undefined;
     const oldRaw=missing&&legacyKey?storage?.getItem(legacyKey):null;
     if(!missing)state=core.deserializeState(raw,config);
@@ -12,12 +15,19 @@ export function createSession(config, {storage, key='mir-na-nitke-v1', legacyKey
       // written by the engine-only preview. Validate before explicit migration.
       const old=core.deserializeState(oldRaw,legacyConfig),settled=core.advanceTime(old,now(),legacyConfig);
       importedReport=summarizeAdvance(old,settled,legacyConfig);
-      if(importedReport&&old.project?.itemId){const id=old.project.itemId;importedReport.work*=config.items.find(i=>i.id===id).workUnits/legacyConfig.items.find(i=>i.id===id).workUnits;}
-      const source={...settled,version:1};delete source.events;delete source.memories;delete source.accrual;
-      state=core.deserializeState(JSON.stringify(source),config);imported=true;
+      if(importedReport&&old.project){
+        const field=old.project.recipeId?'recipes':'items',id=old.project.recipeId??old.project.itemId;
+        importedReport.work*=config[field].find(i=>i.id===id).workUnits/legacyConfig[field].find(i=>i.id===id).workUnits;
+      }
+      if(legacyMigration==='config')state=core.migrateConfigState(settled,legacyConfig,config,settled.lastTimestamp);
+      else{
+        const source={...settled,version:1};delete source.events;delete source.memories;delete source.accrual;
+        state=core.deserializeState(JSON.stringify(source),config);
+      }
+      imported=true;
     }else state=core.createInitialState(config,now());
   }
-  catch { blockedSave=true; state=core.createInitialState(config,now()); onNotice('Сохранение недоступно или несовместимо. Игра работает временно; исходное сохранение не перезаписывается.'); }
+  catch { blockedSave=true; importedReport=null; state=core.createInitialState(config,now()); onNotice('Сохранение недоступно или несовместимо. Игра работает временно; исходное сохранение не перезаписывается.'); }
   function persist(){ if(blockedSave)return; try{storage?.setItem(key,core.serializeState(state));}catch{onNotice('Не удалось сохранить. Оставьте эту вкладку открытой.');} }
   function tick(){ const before=state; state=core.advanceTime(state,now(),config); persist(); return {before,state,report:summarizeAdvance(before,state,config)}; }
   const initial=tick();let awayReport=importedReport??initial.report;

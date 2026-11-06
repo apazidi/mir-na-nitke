@@ -1,0 +1,23 @@
+{
+  "runtime": "e2b137657278cec06b0f202a861f1a2d7018bfca",
+  "reference": {
+    "path": "design-system/reference-v4.webp",
+    "width": 387,
+    "height": 620,
+    "fit": "contain"
+  },
+  "candidate": {
+    "path": "product/preview-evidence/v4-tree-placed-390.png",
+    "width": 390,
+    "height": 844,
+    "kind": "Unmodified screenshot from root fresh UI path; not imported fixture",
+    "transient": "Fading tree-placement message retained. Alternative critic/repair/07-settled.png was visually checked and still contains the message; no retouching."
+  },
+  "panels": {
+    "width": 390,
+    "height": 844,
+    "gap": 16,
+    "heading": 45
+  },
+  "diagnosticOnly": true
+}

@@ -3,8 +3,8 @@ import {loadRuntimeCatalog, selectStage, placementLayout} from '../app/content/i
 import {developmentCatalog} from './dev-catalog.mjs';
 import {startGameplay} from './gameplay.mjs';
 
-if(new URLSearchParams(location.search).get('gameplay')==='v3') {
- await startGameplay();
+if(['v3','v4'].includes(new URLSearchParams(location.search).get('gameplay'))) {
+ await startGameplay({staged:new URLSearchParams(location.search).get('gameplay')==='v4'});
 } else {
 
 const app = document.querySelector('#app');
