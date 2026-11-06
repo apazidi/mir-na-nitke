@@ -90,7 +90,7 @@ for(const lighting of ['day','evening']){
  for(const[w,h]of[[360,800],[430,932]])await composition(w,h,5,lighting);
 }
 async function sources(directory){for(const entry of await readdir(at(directory),{withFileTypes:true})){
- const name=directory+'/'+entry.name;if(entry.isDirectory()){await sources(name);continue;}if(!/\.(png|webp|json)$/.test(name))continue;
+ const name=directory+'/'+entry.name;if(entry.isDirectory()){if(name!=='source/ui')await sources(name);continue;}if(!/\.(png|webp|json)$/.test(name))continue;
  let bytes=await readFile(at(name));if(name.endsWith('.json'))bytes=Buffer.from(bytes.toString('utf8').replace(/\r\n/g,'\n'));
  let image={};if(/\.(png|webp)$/.test(name)){const m=await sharp(bytes).metadata();image={width:m.width,height:m.height,format:m.format,channels:m.channels};}
  report.sources.push({path:name,bytes:bytes.length,sha256:sha(bytes),...image});
