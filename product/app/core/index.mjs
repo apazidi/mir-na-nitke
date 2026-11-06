@@ -69,7 +69,7 @@ export function validateConfig(c){
   if(!e.requiresPlaced?.length&&!e.requiresMemories?.length)fail('Event requires progress');
   if(e.visitor){item(c,e.visitor.itemId);meadow(c,e.visitor.meadowId);for(const p of ['x','y','scale'])number(e.visitor[p],'Visitor '+p,p==='scale');if(e.visitor.x>1||e.visitor.y>1)fail('Visitor outside world');}
  }
- for(const r of recipes(c)){validateWork(r);validateRequirements(c,r);if(!events(c).some(e=>e.id===r.eventId&&e.trigger==='project'))fail('Recipe event');}
+ for(const r of recipes(c)){validateWork(r);validateRequirements(c,r);if(r.meadowId)meadow(c,r.meadowId);if(!events(c).some(e=>e.id===r.eventId&&e.trigger==='project'))fail('Recipe event');}
  if(c.migrationV1){for(const [id,units]of Object.entries(c.migrationV1.workUnits??{})){item(c,id);number(units,'Legacy work',true);}for(const id of c.migrationV1.ruleIds??[])if(!c.meadows.some(m=>rules(m).some(r=>ruleKey(m,r)===id)))fail('Unknown legacy rule');}
  return c;
 }

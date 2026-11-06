@@ -73,7 +73,7 @@ test('v1 migration retains earned state and work ratio, adds only new timers and
 test('corrupt new state and unknown declarative references fail closed',()=>{
  const saved=core.advanceTime(all(),8000,c);
  for(const mutate of [s=>s.memories.unknown={firstAt:1,lastAt:1,count:1},s=>s.events['visit-rabbit'].count=3,s=>s.accrual.baseYarn+=20,s=>delete s.events['visit-duck'],s=>s.events['visit-rabbit'].phase='anything']){const bad=structuredClone(saved);mutate(bad);assert.throws(()=>core.deserializeState(core.serializeState(bad),c));}
- for(const mutate of [x=>x.items[1].requiresPlaced=[placed('first','missing')],x=>x.worldEvents[0].visitor.itemId='missing',x=>x.worldEvents[0].repeatable=true,x=>x.meadows[0].interactions[0].action='eval']){const bad=structuredClone(c);mutate(bad);assert.throws(()=>core.validateConfig(bad));}
+ for(const mutate of [x=>x.items[1].requiresPlaced=[placed('first','missing')],x=>x.worldEvents[0].visitor.itemId='missing',x=>x.worldEvents[0].repeatable=true,x=>x.meadows[0].interactions[0].action='eval',x=>x.recipes[0].meadowId='missing']){const bad=structuredClone(c);mutate(bad);assert.throws(()=>core.validateConfig(bad));}
 });
 test('save rejects replayed one-shot project events, terminal repeats and a blocked active recipe',()=>{
  const once=structuredClone(c);once.worldEvents.find(e=>e.id==='gift').repeatable=false;
