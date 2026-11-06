@@ -1,0 +1,13 @@
+{
+  "width": 390,
+  "height": 844,
+  "timeAcceleration": "Playwright controlled clock; UI commands only",
+  "firstProjectMs": 12000,
+  "unlockedAtMs": 165000,
+  "duckVisitAtMs": 459100,
+  "rabbitVisitAtMs": 963200,
+  "allTenAtMs": 882100,
+  "importVerified": true,
+  "wallMs": 62367,
+  "finalOwned": 10
+}

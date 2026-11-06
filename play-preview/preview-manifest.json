@@ -5,7 +5,7 @@
   "sceneReview": true,
   "gameplayReview": true,
   "saveKey": "mir-na-nitke-gameplay-preview-v3",
-  "appSourceCommit": "8b49a827a13d25dfcb823e28f51f68550b3fe853",
+  "appSourceCommit": "e67637a28ab8695cd14a8e6fd6f6078dd05b9c30",
   "sourceFiles": {
     "design-system/skin-v4.css": "e4f36c8097902532bbafde6589a5d916965f2b8881fd93a934d847b07d982b4c",
     "product/app/content/index.mjs": "00b9669ff7929c556b0b22b0dc1d54a8a717f80898af6668c6f674ae76033dff",
@@ -13,7 +13,7 @@
     "product/app/ui/session.mjs": "ecda8b028b5aaa34ac59b6045846878f2e551bb955a058745fedf29883131c0b",
     "product/ui/dev-catalog.mjs": "0cde75c784a37c47c3ea32a82c234b0aabfe38e5bc5029b1a2c7b84ee797c05b",
     "product/ui/gameplay-catalog.mjs": "3582a4f3bb2d442a0b4a70f646ad39beb0d189abf1b416c0fe1cb1208921657a",
-    "product/ui/gameplay.mjs": "3b65e2b88208eaae568e496c4c28c65b978e953265b7580d2821731e1e49c5ff",
+    "product/ui/gameplay.mjs": "7314775b2824adcf124d0ddb002dbbe42887e78488c07c131be5819fa9135134",
     "product/ui/index.html": "a0c11afe2326ccd9bc123d5fd75403be00a2943e3b328344958514a2c0542dc5",
     "product/ui/main.mjs": "4f34ffe453649b616674b1f40ffd11f9c0c61267183dbb51b67803ed202b1ece",
     "product/ui/shell.css": "b3ffa7b37e3334e7dd96fc5b78735feae40c95dc1c842e07745688e7c2a18095",
@@ -757,8 +757,8 @@
     },
     {
       "path": "product/ui/gameplay.mjs",
-      "bytes": 27016,
-      "sha256": "3b65e2b88208eaae568e496c4c28c65b978e953265b7580d2821731e1e49c5ff"
+      "bytes": 27219,
+      "sha256": "7314775b2824adcf124d0ddb002dbbe42887e78488c07c131be5819fa9135134"
     },
     {
       "path": "product/ui/index.html",
