@@ -69,7 +69,11 @@ export async function exercisePlayer(page,{url,evidenceDir,width,height,saveKey=
   const legacyRaw=await page.evaluate(key=>localStorage.getItem(key),LEGACY_SAVE_KEY),legacy=JSON.parse(legacyRaw);
   await page.evaluate(key=>{localStorage.removeItem(key);localStorage.removeItem(key+'-ui');},saveKey);await page.goto(gameplayUrl);await page.locator('[data-gameplay="v3"]').waitFor();await close();const imported=await read();
   assert.equal(await page.evaluate(key=>localStorage.getItem(key),LEGACY_SAVE_KEY),legacyRaw);assert.deepEqual(imported.owned,legacy.owned);assert.deepEqual(imported.placements,legacy.placements);assert.ok(Math.abs(imported.project.work/48-legacy.project.work/40)<1e-9);assert.equal(imported.wallet.yarn,legacy.wallet.yarn);report.importVerified=true;
+  // Leave the imported session before restoring an earned checkpoint: pagehide
+  // legitimately persists its live state and must not overwrite the test restore.
+  await page.goto(legacyUrl.href);
   await page.evaluate(({key,raw,ui})=>{localStorage.setItem(key,raw);if(ui)localStorage.setItem(key+'-ui',ui);},{key:saveKey,raw:earnedReturn,ui:uiReturn});await page.goto(gameplayUrl);await page.locator('[data-gameplay="v3"]').waitFor();await close();
+  assert.equal(await page.evaluate(key=>localStorage.getItem(key),LEGACY_SAVE_KEY),legacyRaw);
  }
  await page.emulateMedia({reducedMotion:'reduce'});await workshop();await key('tab-projects').click();await key('close-drawer').focus();await page.keyboard.press('Shift+Tab');assert.equal(await page.evaluate(()=>Boolean(document.activeElement.closest('.project-drawer'))),true);await page.keyboard.press('Escape');assert.equal(await page.evaluate(()=>document.activeElement.dataset.focusKey),'tab-projects');
  report.wallMs=Date.now()-startTime;report.finalOwned=(await read()).owned.length;assert.equal(report.finalOwned,10);
