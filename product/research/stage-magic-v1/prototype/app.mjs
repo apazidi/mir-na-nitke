@@ -24,7 +24,7 @@ try {
 
 let sections = [], ready = false, raf = 0, width = 390, height = 828;
 let artScale = .25, artX = 67, artY = 205;
-let shownOpacity=opacity(state.work%1),shownStage=Math.floor(state.work);
+let shownOpacity=opacity(state.work%1,Math.floor(state.work)),shownStage=Math.floor(state.work);
 let lastFrame = 0, lastPersist = 0, lastAutoSpark = 0, lastArrival = -1000, offlineUntil = 0;
 let flights = [], glints = [], accents = [], finaleAt = -10_000, serial = 0;
 const waveCanvas = document.createElement('canvas'), waveCtx = waveCanvas.getContext('2d');
@@ -63,7 +63,10 @@ function resize() {
   wake();
 }
 const screen = point => ({ x: artX + point[0] * artScale, y: artY + point[1] * artScale });
-function opacity(progress) { return Math.pow(Math.max(0,Math.min(1,progress)),.25); }
+function opacity(progress, section) {
+  const p=Math.max(0,Math.min(1,progress));
+  return section===0 ? (p<=.08 ? p/.08*.5 : .5+(p-.08)/.92*.5) : Math.pow(p,.65);
+}
 
 function sectionDraw(section, alpha) {
   if (alpha <= 0) return;
@@ -127,7 +130,7 @@ function draw(now) {
   if (before.auto && !state.auto) { persist(); sync(); }
   const completed = Math.floor(state.work);
   if(completed!==shownStage){shownStage=completed;shownOpacity=0;}
-  const targetOpacity=opacity(state.work-completed);
+  const targetOpacity=opacity(state.work-completed,completed);
   shownOpacity=reduced.matches?targetOpacity:shownOpacity+(targetOpacity-shownOpacity)*Math.min(1,dt/65);
   if(Math.abs(targetOpacity-shownOpacity)<.0001)shownOpacity=targetOpacity;
   ctx.clearRect(0, 0, width, height);

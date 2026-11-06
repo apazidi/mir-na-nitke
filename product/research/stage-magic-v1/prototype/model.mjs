@@ -1,10 +1,30 @@
 export const VERSION = 1;
 export const SECTION_COUNT = 6;
+export const SECTION_COSTS = Object.freeze([1, .32, 1, .32, 1, .48]);
 export const CLICK_WORK = .08;
 export const STAGE_MS = 35_000;
 
 const clock = value => Number.isSafeInteger(value) && value >= 0;
 const complete = work => work >= SECTION_COUNT;
+const TOTAL_COST = SECTION_COSTS.reduce((sum, cost) => sum + cost, 0);
+
+// Saved work remains section + fraction. Only time/click accounting uses costs.
+function budgetOf(work) {
+  if (complete(work)) return TOTAL_COST;
+  const section = Math.floor(work);
+  return SECTION_COSTS.slice(0, section).reduce((sum, cost) => sum + cost, 0)
+    + (work - section) * SECTION_COSTS[section];
+}
+
+function workOf(budget) {
+  let remaining = Math.max(0, budget);
+  for (let section = 0; section < SECTION_COUNT; section++) {
+    const cost = SECTION_COSTS[section];
+    if (remaining < cost - 1e-10) return section + remaining / cost;
+    remaining = Math.max(0, remaining - cost);
+  }
+  return SECTION_COUNT;
+}
 
 export function createState(now = Date.now()) {
   if (!clock(now)) throw new TypeError('Invalid clock');
@@ -20,9 +40,11 @@ export function advance(state, now) {
   if (!state.started || !state.auto || complete(state.work) || !elapsed) {
     return { ...state, lastUpdatedAt };
   }
-  const work = Math.min(SECTION_COUNT, state.work + elapsed / STAGE_MS);
+  const budget = budgetOf(state.work);
+  const work = workOf(budget + elapsed / STAGE_MS);
+  // Ignore sub-microsecond floating noise before rounding to integer clock ms.
   const completedAt = complete(work)
-    ? Math.min(lastUpdatedAt, Math.ceil(state.lastUpdatedAt + (SECTION_COUNT - state.work) * STAGE_MS))
+    ? Math.min(lastUpdatedAt, Math.ceil(state.lastUpdatedAt + (TOTAL_COST - budget) * STAGE_MS - 1e-6))
     : null;
   return { ...state, work, lastUpdatedAt, completedAt, auto: !complete(work) };
 }
@@ -30,7 +52,7 @@ export function advance(state, now) {
 export function click(state, now) {
   const settled = advance(state, now);
   if (complete(settled.work)) return settled;
-  const work = Math.min(SECTION_COUNT, settled.work + CLICK_WORK);
+  const work = workOf(budgetOf(settled.work) + CLICK_WORK);
   return {
     ...settled, work, started: true,
     auto: complete(work) ? false : settled.auto,
