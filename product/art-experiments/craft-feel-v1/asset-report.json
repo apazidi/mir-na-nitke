@@ -1,0 +1,40 @@
+{
+  "status": "draft-not-approved",
+  "candidateCount": 1,
+  "source": {
+    "path": "source/meadow-day-master.png",
+    "width": 941,
+    "height": 1672,
+    "bytes": 3196633,
+    "sha256": "1b314eaf2595c6165499c7284859291dac71677183cd299adfc1bc4c48ae4b9e"
+  },
+  "export": {
+    "path": "exports/meadow-day.webp",
+    "width": 1024,
+    "height": 1820,
+    "bytes": 638600,
+    "sha256": "eaab42d57bab1cf48ef28fe4c687e1a41688374628e94c88568b38ffb40310a3",
+    "resize": "cover; center crop, preserve aspect ratio",
+    "webp": {
+      "quality": 94,
+      "effort": 6
+    }
+  },
+  "reviewFrames": [
+    {
+      "path": "review/meadow-empty-360.png",
+      "width": 360,
+      "height": 800
+    },
+    {
+      "path": "review/meadow-empty-390.png",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "path": "review/meadow-empty-430.png",
+      "width": 430,
+      "height": 932
+    }
+  ]
+}
