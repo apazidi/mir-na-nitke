@@ -4,6 +4,7 @@ on:
     paths:
       - 'product/**'
       - 'play-preview/**'
+      - 'craft-study/**'
       - '.agents/skills/**'
       - 'AGENTS.md'
       - '.github/workflows/content-qa.yml'
@@ -12,6 +13,7 @@ on:
     paths:
       - 'product/**'
       - 'play-preview/**'
+      - 'craft-study/**'
       - '.agents/skills/**'
       - 'AGENTS.md'
       - '.github/workflows/content-qa.yml'
@@ -67,6 +69,14 @@ jobs:
           PLAYWRIGHT_MODULE="$RUNNER_TEMP/mir-browser/node_modules/playwright/index.mjs" npm --prefix product run check:preview
           git diff --exit-code -- play-preview
           test -z "$(git ls-files --others --exclude-standard play-preview)"
+      - name: Exercise the isolated craft-feel study
+        run: PLAYWRIGHT_MODULE="$RUNNER_TEMP/mir-browser/node_modules/playwright/index.mjs" node product/research/craft-feel-v1/check.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: craft-study-mobile-evidence
+          path: product/research/craft-feel-v1/evidence/*.png
+          retention-days: 15
       - uses: actions/upload-artifact@v4
         if: always()
         with:

@@ -1,0 +1,12 @@
+{
+  "status": "draft-not-approved",
+  "method": "built-in image_gen",
+  "useCase": "precise-object-edit",
+  "inputRole": "Existing scene used as the edit target; keep material, lighting and camera, simplify composition.",
+  "referencePath": "../kotoutro-v1/exports/meadow-day.webp",
+  "targetArtboard": [
+    1024,
+    1820
+  ],
+  "prompt": "Use case: precise-object-edit.\nAsset type: draft portrait background for a premium crochet-diorama game, 1024 × 1820 composition, no UI.\nInput image: existing meadow background. Keep its high-fidelity handmade yarn materials, gently elevated three-quarter mobile-diorama camera, warm daylight from upper left, believable depth, and mature craft-display quality. Repaint it as the INITIAL EMPTY CLEARING before a player has made the objects.\nPrimary change: remove the terrace, timber floor, posts, rails, huge trunk, giant branch arch, flower arrangements, decorative garlands, pond, stream, bridges and large foreground rocks. Replace them with one calm softly undulating continuous moss-green crochet ground plane. The middle and lower 60% of the portrait must be one generous usable clearing with beautiful small-scale yarn-loop texture and gentle dappled light, visually quiet enough for a player's handmade flower or toy to become the focal point.\nComposition: camera looks across a shallow open clearing, not straight down. Horizon and softly blurred distant woodland occupy the upper quarter. A few small subdued knitted leaves and low moss at the extreme side edges create depth; keep these less than one tenth of the frame width. No conspicuous centerpiece anywhere. Warm sage and olive yarn, subtle cream sunlight, natural warm shadows. The ground is rich tactile fabric, not a flat green gradient, not a perfect oval mat, not a podium, not exposed wooden table.\nImportant: this is a starting environment awaiting the player's creative work, not a completed botanical exhibition. Complexity and brightness should not pull the eye away from future central foreground objects. Preserve detailed fibers and stitches, photographic material volume, soft perspective, and premium hand-crafted polish.\nNo characters, rabbits, cats, ducks, flowers, houses, furniture, cup, chair, butterfly, mushrooms, tools, skeins, architectural structures, prebuilt path, borders, frame, symbols or text. No UI. One seamless full portrait image."
+}

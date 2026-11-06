@@ -1,0 +1,42 @@
+{
+  "url": "http://127.0.0.1:49673/craft-study/",
+  "exactFiles": 12,
+  "reports": [
+    {
+      "width": 360,
+      "height": 800,
+      "firstTouchChangesArtwork": true,
+      "holdStopsAtPetal": true,
+      "reload": true,
+      "keyboard": true,
+      "reducedMotion": true,
+      "liveGameSavesUntouched": true,
+      "errors": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "firstTouchChangesArtwork": true,
+      "holdStopsAtPetal": true,
+      "reload": true,
+      "keyboard": true,
+      "reducedMotion": true,
+      "liveGameSavesUntouched": true,
+      "realTouch": true,
+      "heldEnter": true,
+      "corruptSaveRecovery": true,
+      "errors": []
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "firstTouchChangesArtwork": true,
+      "holdStopsAtPetal": true,
+      "reload": true,
+      "keyboard": true,
+      "reducedMotion": true,
+      "liveGameSavesUntouched": true,
+      "errors": []
+    }
+  ]
+}
