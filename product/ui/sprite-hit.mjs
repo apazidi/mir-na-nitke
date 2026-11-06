@@ -29,4 +29,4 @@ export function fitSpriteHitArea(target, visual, slot, world) {
  Object.assign(target.style,{left:(slot.x*world.clientWidth+offsetX)+'px',top:(slot.y*world.clientHeight+offsetY)+'px',width:hitWidth+'px',height:hitHeight+'px',aspectRatio:'auto'});
  Object.assign(visual.style,{position:'absolute',width:width+'px',height:height+'px',left:((hitWidth-width)/2-offsetX)+'px',top:((hitHeight-height)/2-offsetY)+'px'});
 }
-
+
