@@ -1,0 +1,53 @@
+name: Material preview HTTPS
+on:
+  pull_request:
+    paths: ['.github/workflows/material-https.yml']
+  workflow_run:
+    workflows: ['pages build and deployment']
+    branches: [main]
+    types: [completed]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  public-bundle:
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify reviewed files from outside the developer machine
+        env:
+          REVIEWED_SHA: ${{ github.event.workflow_run.head_sha || github.sha }}
+        run: |
+          node --input-type=module <<'NODE'
+          import assert from 'node:assert/strict';
+          import {readFile,writeFile} from 'node:fs/promises';
+          import {createHash} from 'node:crypto';
+          const base=new URL('https://apazidi.github.io/mir-na-nitke/material-study/');
+          const manifest=await readFile('material-study/manifest.json');
+          const expected=JSON.parse(manifest);
+          assert.deepEqual(expected.files.map(f=>f.name),['index.html','style.css','model.mjs','app.mjs']);
+          const receipt={url:base.href,reviewedSHA:process.env.REVIEWED_SHA,manifestSHA256:createHash('sha256').update(manifest).digest('hex'),runner:'GitHub-hosted ubuntu-24.04',checks:[],limits:'Public HTTPS bytes only; UI is exercised separately. No human enjoyment or art approval.'};
+          async function get(name){const r=await fetch(new URL(name,base),{signal:AbortSignal.timeout(15000),cache:'no-store'});assert.equal(r.status,200,name);return Buffer.from(await r.arrayBuffer());}
+          try{
+            assert.deepEqual(JSON.parse(await get('manifest.json')),expected);
+            for(const f of expected.files){const data=await get(f.name);assert.equal(data.length,f.bytes,f.name);assert.equal(createHash('sha256').update(data).digest('hex'),f.sha256,f.name);receipt.checks.push({file:f.name,bytes:f.bytes,sha256:f.sha256,result:'PASS'});}
+            receipt.result='PASS';
+          }catch(error){receipt.result='FAIL';receipt.error=error.message;process.exitCode=1;}
+          await writeFile('material-https-receipt.json',JSON.stringify(receipt,null,2)+'\n');
+          console.log(JSON.stringify(receipt,null,2));
+          NODE
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: material-https-receipt
+          path: material-https-receipt.json
+          retention-days: 90
