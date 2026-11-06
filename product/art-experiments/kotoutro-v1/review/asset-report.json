@@ -1,0 +1,2010 @@
+{
+  "status": "draft-not-approved",
+  "artboard": [
+    1024,
+    1820
+  ],
+  "sharp": {
+    "aom": "3.15.1",
+    "archive": "3.8.9",
+    "cairo": "1.18.6",
+    "cgif": "0.5.4",
+    "exif": "0.6.26",
+    "expat": "2.8.5",
+    "ffi": "3.8.0",
+    "fontconfig": "2.18.3",
+    "freetype": "2.14.3",
+    "fribidi": "1.0.17",
+    "glib": "2.90.0",
+    "harfbuzz": "14.5.0",
+    "heif": "1.23.5",
+    "highway": "1.4.0",
+    "imagequant": "2.4.1",
+    "lcms": "2.19.1",
+    "mozjpeg": "0826579",
+    "pango": "1.58.2",
+    "pixman": "0.46.4",
+    "png": "1.6.58",
+    "proxy-libintl": "0.5",
+    "rsvg": "2.63.2",
+    "tiff": "4.7.2",
+    "uhdr": "2.0.2",
+    "vips": "8.18.7",
+    "webp": "1.6.0",
+    "xml2": "2.15.4",
+    "zlib-ng": "2.3.3",
+    "sharp": "0.35.5"
+  },
+  "recipe": {
+    "alphaNoiseFloor": 12,
+    "opaqueThreshold": 248,
+    "webp": {
+      "quality": 95,
+      "alphaQuality": 100,
+      "effort": 6
+    },
+    "stages": "Equal 2×2 atlas cells; entire square resized to1024; placed at(0,440) on transparent1024×1820 artboard. No per-stage trim or fit."
+  },
+  "files": [
+    {
+      "path": "exports/meadow-day.webp",
+      "bytes": 774112,
+      "sha256": "4dd42cdc8d6a1897b502089de820862351872ab71f3aa0a842a3d0da6385c9dc",
+      "transparent": false,
+      "width": 1024,
+      "height": 1820,
+      "transparentPixels": 0,
+      "opaquePixels": 1863680,
+      "alphaBounds": {
+        "left": 0,
+        "top": 0,
+        "width": 1024,
+        "height": 1820
+      },
+      "normalizedBounds": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "path": "exports/meadow-evening.webp",
+      "bytes": 806812,
+      "sha256": "62fa8b6f2143a6a91916644feddb0e1e122f5a948b339221acf66c959101e991",
+      "transparent": false,
+      "width": 1024,
+      "height": 1820,
+      "transparentPixels": 0,
+      "opaquePixels": 1863680,
+      "alphaBounds": {
+        "left": 0,
+        "top": 0,
+        "width": 1024,
+        "height": 1820
+      },
+      "normalizedBounds": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "path": "exports/kot-cat-stage-00.webp",
+      "bytes": 80958,
+      "sha256": "e7083f40556f473a096c5af267c91e711ac3ab5b0625c9c6abaf64d3844cdd03",
+      "transparent": true,
+      "width": 1024,
+      "height": 1820,
+      "transparentPixels": 1690180,
+      "opaquePixels": 151912,
+      "alphaBounds": {
+        "left": 284,
+        "top": 986,
+        "width": 538,
+        "height": 432
+      },
+      "normalizedBounds": [
+        0.27734375,
+        0.5417582417582417,
+        0.802734375,
+        0.7791208791208791
+      ]
+    },
+    {
+      "path": "exports/kot-cat-stage-01.webp",
+      "bytes": 120692,
+      "sha256": "80226274ff86cea9a446df1ed7b7f596db7e021021cf6a75c1f5ae3198e5f369",
+      "transparent": true,
+      "width": 1024,
+      "height": 1820,
+      "transparentPixels": 1554059,
+      "opaquePixels": 288036,
+      "alphaBounds": {
+        "left": 235,
+        "top": 653,
+        "width": 517,
+        "height": 765
+      },
+      "normalizedBounds": [
+        0.2294921875,
+        0.3587912087912088,
+        0.734375,
+        0.7791208791208791
+      ]
+    },
+    {
+      "path": "exports/kot-cat-stage-02.webp",
+      "bytes": 181466,
+      "sha256": "6368a61acb71c3f7dd206dbb376971df82b6c10dcda77ce80088cd5cc29a397e",
+      "transparent": true,
+      "width": 1024,
+      "height": 1820,
+      "transparentPixels": 1415124,
+      "opaquePixels": 419422,
+      "alphaBounds": {
+        "left": 222,
+        "top": 481,
+        "width": 638,
+        "height": 937
+      },
+      "normalizedBounds": [
+        0.216796875,
+        0.2642857142857143,
+        0.83984375,
+        0.7791208791208791
+      ]
+    },
+    {
+      "path": "exports/kot-cat-stage-03.webp",
+      "bytes": 184026,
+      "sha256": "94bbc5a865a44e64abb958be7b41d6180c6b8ac7736581a61929ac04609efe7d",
+      "transparent": true,
+      "width": 1024,
+      "height": 1820,
+      "transparentPixels": 1400283,
+      "opaquePixels": 436077,
+      "alphaBounds": {
+        "left": 208,
+        "top": 473,
+        "width": 638,
+        "height": 945
+      },
+      "normalizedBounds": [
+        0.203125,
+        0.2598901098901099,
+        0.826171875,
+        0.7791208791208791
+      ]
+    },
+    {
+      "path": "exports/kot-cat-finished.webp",
+      "bytes": 177978,
+      "sha256": "7ce4277ae3131d44f79efe63357c528865813898475cc8bcce544da0db7d9775",
+      "transparent": true,
+      "width": 1024,
+      "height": 1024,
+      "transparentPixels": 585179,
+      "opaquePixels": 436077,
+      "alphaBounds": {
+        "left": 208,
+        "top": 33,
+        "width": 638,
+        "height": 945
+      },
+      "normalizedBounds": [
+        0.203125,
+        0.0322265625,
+        0.826171875,
+        0.955078125
+      ]
+    },
+    {
+      "path": "exports/kot-coffee-stage-00.webp",
+      "bytes": 112002,
+      "sha256": "e27cdec3988b73cf43d12a188eef20b1b6f31e5f463c79a9d2e10ca4807f3c97",
+      "transparent": true,
+      "width": 1024,
+      "height": 1820,
+      "transparentPixels": 1693138,
+      "opaquePixels": 116384,
+      "alphaBounds": {
+        "left": 54,
+        "top": 956,
+        "width": 820,
+        "height": 433
+      },
+      "normalizedBounds": [
+        0.052734375,
+        0.5252747252747253,
+        0.853515625,
+        0.7631868131868131
+      ]
+    },
+    {
+      "path": "exports/kot-coffee-stage-01.webp",
+      "bytes": 179080,
+      "sha256": "c371ed539df7de7c5c4017497225fcaedf4557c587ee4189257757c0507cdb62",
+      "transparent": true,
+      "width": 1024,
+      "height": 1820,
+      "transparentPixels": 1546633,
+      "opaquePixels": 253964,
+      "alphaBounds": {
+        "left": 20,
+        "top": 771,
+        "width": 879,
+        "height": 618
+      },
+      "normalizedBounds": [
+        0.01953125,
+        0.4236263736263736,
+        0.8779296875,
+        0.7631868131868131
+      ]
+    },
+    {
+      "path": "exports/kot-coffee-stage-02.webp",
+      "bytes": 191742,
+      "sha256": "919c8018354c850444d2225cfae996be80abaaca67c3d91768aebceb6de3e7ea",
+      "transparent": true,
+      "width": 1024,
+      "height": 1820,
+      "transparentPixels": 1452108,
+      "opaquePixels": 365518,
+      "alphaBounds": {
+        "left": 117,
+        "top": 580,
+        "width": 798,
+        "height": 809
+      },
+      "normalizedBounds": [
+        0.1142578125,
+        0.31868131868131866,
+        0.8935546875,
+        0.7631868131868131
+      ]
+    },
+    {
+      "path": "exports/kot-coffee-stage-03.webp",
+      "bytes": 195214,
+      "sha256": "797e976d3aeb7f9f74b17b398647e04e2695d002f562a431684daa54c878b8c4",
+      "transparent": true,
+      "width": 1024,
+      "height": 1820,
+      "transparentPixels": 1442556,
+      "opaquePixels": 373981,
+      "alphaBounds": {
+        "left": 116,
+        "top": 485,
+        "width": 799,
+        "height": 904
+      },
+      "normalizedBounds": [
+        0.11328125,
+        0.2664835164835165,
+        0.8935546875,
+        0.7631868131868131
+      ]
+    },
+    {
+      "path": "exports/kot-coffee-finished.webp",
+      "bytes": 185458,
+      "sha256": "9bef062afdab599d44ea6e82761144212ff177e5cea828b2a75116915b939846",
+      "transparent": true,
+      "width": 1024,
+      "height": 1024,
+      "transparentPixels": 627452,
+      "opaquePixels": 373981,
+      "alphaBounds": {
+        "left": 116,
+        "top": 45,
+        "width": 799,
+        "height": 904
+      },
+      "normalizedBounds": [
+        0.11328125,
+        0.0439453125,
+        0.8935546875,
+        0.9267578125
+      ]
+    },
+    {
+      "path": "exports/kot-duck-stage-00.webp",
+      "bytes": 54750,
+      "sha256": "8e7b3c3c9c8f203a35a7ab08540898988b37409eda31d275c14c50660db121a4",
+      "transparent": true,
+      "width": 1024,
+      "height": 1820,
+      "transparentPixels": 1736932,
+      "opaquePixels": 97572,
+      "alphaBounds": {
+        "left": 293,
+        "top": 1073,
+        "width": 517,
+        "height": 342
+      },
+      "normalizedBounds": [
+        0.2861328125,
+        0.5895604395604396,
+        0.791015625,
+        0.7774725274725275
+      ]
+    },
+    {
+      "path": "exports/kot-duck-stage-01.webp",
+      "bytes": 82100,
+      "sha256": "5169654051a4032bf17bea14feb02587a83196d6542dd40658e0d82f90291a53",
+      "transparent": true,
+      "width": 1024,
+      "height": 1820,
+      "transparentPixels": 1621458,
+      "opaquePixels": 206897,
+      "alphaBounds": {
+        "left": 262,
+        "top": 796,
+        "width": 496,
+        "height": 619
+      },
+      "normalizedBounds": [
+        0.255859375,
+        0.43736263736263736,
+        0.740234375,
+        0.7774725274725275
+      ]
+    },
+    {
+      "path": "exports/kot-duck-stage-02.webp",
+      "bytes": 126616,
+      "sha256": "bdaaafc842ad30fc03faba665ff0a750e599b9117bed12d006175bc71a1c0405",
+      "transparent": true,
+      "width": 1024,
+      "height": 1820,
+      "transparentPixels": 1500560,
+      "opaquePixels": 299236,
+      "alphaBounds": {
+        "left": 264,
+        "top": 514,
+        "width": 586,
+        "height": 901
+      },
+      "normalizedBounds": [
+        0.2578125,
+        0.2824175824175824,
+        0.830078125,
+        0.7774725274725275
+      ]
+    },
+    {
+      "path": "exports/kot-duck-stage-03.webp",
+      "bytes": 129334,
+      "sha256": "863ab6362f7c16b3172e54f07205c9313bc1f0c7d4455773f06d8bb9c59d563f",
+      "transparent": true,
+      "width": 1024,
+      "height": 1820,
+      "transparentPixels": 1489338,
+      "opaquePixels": 305665,
+      "alphaBounds": {
+        "left": 251,
+        "top": 511,
+        "width": 548,
+        "height": 904
+      },
+      "normalizedBounds": [
+        0.2451171875,
+        0.28076923076923077,
+        0.7802734375,
+        0.7774725274725275
+      ]
+    },
+    {
+      "path": "exports/kot-duck-finished.webp",
+      "bytes": 127276,
+      "sha256": "53d6ea13d19714be67f9cbe328125650b4fec8808816f13e5aa4c58067b54981",
+      "transparent": true,
+      "width": 1024,
+      "height": 1024,
+      "transparentPixels": 674234,
+      "opaquePixels": 305665,
+      "alphaBounds": {
+        "left": 251,
+        "top": 71,
+        "width": 548,
+        "height": 904
+      },
+      "normalizedBounds": [
+        0.2451171875,
+        0.0693359375,
+        0.7802734375,
+        0.9521484375
+      ]
+    },
+    {
+      "path": "exports/kot-chair-stage-00.webp",
+      "bytes": 119664,
+      "sha256": "de986671e6ff3bde1ff4a1fae6f88ba1954555337cae28b571f542140e2b1adb",
+      "transparent": true,
+      "width": 1024,
+      "height": 1820,
+      "transparentPixels": 1618851,
+      "opaquePixels": 208858,
+      "alphaBounds": {
+        "left": 130,
+        "top": 997,
+        "width": 835,
+        "height": 421
+      },
+      "normalizedBounds": [
+        0.126953125,
+        0.5478021978021979,
+        0.9423828125,
+        0.7791208791208791
+      ]
+    },
+    {
+      "path": "exports/kot-chair-stage-01.webp",
+      "bytes": 227090,
+      "sha256": "287ffe9e59fd3c713f3c9118278ee2fcebb8f0e598e6bfaedebc08a5cc1d86e4",
+      "transparent": true,
+      "width": 1024,
+      "height": 1820,
+      "transparentPixels": 1335670,
+      "opaquePixels": 490266,
+      "alphaBounds": {
+        "left": 82,
+        "top": 607,
+        "width": 865,
+        "height": 811
+      },
+      "normalizedBounds": [
+        0.080078125,
+        0.3335164835164835,
+        0.9248046875,
+        0.7791208791208791
+      ]
+    },
+    {
+      "path": "exports/kot-chair-stage-02.webp",
+      "bytes": 245940,
+      "sha256": "ace0c029bc1035b599cfb237be08e87034b6752b9c6598b96c6e1574fc47eb16",
+      "transparent": true,
+      "width": 1024,
+      "height": 1820,
+      "transparentPixels": 1268811,
+      "opaquePixels": 562406,
+      "alphaBounds": {
+        "left": 83,
+        "top": 491,
+        "width": 870,
+        "height": 927
+      },
+      "normalizedBounds": [
+        0.0810546875,
+        0.26978021978021977,
+        0.9306640625,
+        0.7791208791208791
+      ]
+    },
+    {
+      "path": "exports/kot-chair-stage-03.webp",
+      "bytes": 252754,
+      "sha256": "5558f5fc20c243278bf54c39548bcdabf42969f0cbc65f6a271b7ecc2797c7bf",
+      "transparent": true,
+      "width": 1024,
+      "height": 1820,
+      "transparentPixels": 1235576,
+      "opaquePixels": 592480,
+      "alphaBounds": {
+        "left": 32,
+        "top": 473,
+        "width": 941,
+        "height": 945
+      },
+      "normalizedBounds": [
+        0.03125,
+        0.2598901098901099,
+        0.9501953125,
+        0.7791208791208791
+      ]
+    },
+    {
+      "path": "exports/kot-chair-finished.webp",
+      "bytes": 249460,
+      "sha256": "3f5625b558fb664ef1c5e2bc851a1480c821f88648732abc5905a231c4587ca4",
+      "transparent": true,
+      "width": 1024,
+      "height": 1024,
+      "transparentPixels": 420472,
+      "opaquePixels": 592480,
+      "alphaBounds": {
+        "left": 32,
+        "top": 33,
+        "width": 941,
+        "height": 945
+      },
+      "normalizedBounds": [
+        0.03125,
+        0.0322265625,
+        0.9501953125,
+        0.955078125
+      ]
+    },
+    {
+      "path": "exports/kot-leaf-house-stage-00.webp",
+      "bytes": 70452,
+      "sha256": "f54def08e77c007fbdfdcf0b655ac377cfb052e53c15b353519c1a9adb1ee04c",
+      "transparent": true,
+      "width": 1024,
+      "height": 1820,
+      "transparentPixels": 1711495,
+      "opaquePixels": 132857,
+      "alphaBounds": {
+        "left": 185,
+        "top": 988,
+        "width": 706,
+        "height": 323
+      },
+      "normalizedBounds": [
+        0.1806640625,
+        0.5428571428571428,
+        0.8701171875,
+        0.7203296703296703
+      ]
+    },
+    {
+      "path": "exports/kot-leaf-house-stage-01.webp",
+      "bytes": 111156,
+      "sha256": "85692544d3db621fe922807db8fc67854cf117d9d46292e91038f8439c22c03e",
+      "transparent": true,
+      "width": 1024,
+      "height": 1820,
+      "transparentPixels": 1588780,
+      "opaquePixels": 251976,
+      "alphaBounds": {
+        "left": 133,
+        "top": 671,
+        "width": 702,
+        "height": 640
+      },
+      "normalizedBounds": [
+        0.1298828125,
+        0.3686813186813187,
+        0.8154296875,
+        0.7203296703296703
+      ]
+    },
+    {
+      "path": "exports/kot-leaf-house-stage-02.webp",
+      "bytes": 154404,
+      "sha256": "c1782b8cfb2a1fcc999c8a68adc03d99f36d797fbb403f0d50fa4c0e65f48b1a",
+      "transparent": true,
+      "width": 1024,
+      "height": 1820,
+      "transparentPixels": 1488836,
+      "opaquePixels": 344182,
+      "alphaBounds": {
+        "left": 148,
+        "top": 558,
+        "width": 793,
+        "height": 753
+      },
+      "normalizedBounds": [
+        0.14453125,
+        0.3065934065934066,
+        0.9189453125,
+        0.7203296703296703
+      ]
+    },
+    {
+      "path": "exports/kot-leaf-house-stage-03.webp",
+      "bytes": 163992,
+      "sha256": "8b9cf642c2f9f4325b454c02aac9842f4157f9bce5f014afa5da4f6c60337977",
+      "transparent": true,
+      "width": 1024,
+      "height": 1820,
+      "transparentPixels": 1456762,
+      "opaquePixels": 383648,
+      "alphaBounds": {
+        "left": 105,
+        "top": 527,
+        "width": 817,
+        "height": 784
+      },
+      "normalizedBounds": [
+        0.1025390625,
+        0.2895604395604396,
+        0.900390625,
+        0.7203296703296703
+      ]
+    },
+    {
+      "path": "exports/kot-leaf-house-finished.webp",
+      "bytes": 159114,
+      "sha256": "e17e33aed19040d3ee0c81959fd9a7d79681d6863903a74d73914d18eb5980a0",
+      "transparent": true,
+      "width": 1024,
+      "height": 1024,
+      "transparentPixels": 641658,
+      "opaquePixels": 383648,
+      "alphaBounds": {
+        "left": 105,
+        "top": 87,
+        "width": 817,
+        "height": 784
+      },
+      "normalizedBounds": [
+        0.1025390625,
+        0.0849609375,
+        0.900390625,
+        0.8505859375
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "path": "layout.json",
+      "bytes": 990,
+      "sha256": "92f296a7a01e0945fdf9123420bc414522e67a26ec071f6f3fbf804ef74a66d1"
+    },
+    {
+      "path": "source/kot-cat-atlas-clean.png",
+      "bytes": 1407208,
+      "sha256": "e63a61123ebe12df217124f2dbeeacdc1084ab1437757ba2d9456dc650dec721",
+      "width": 1254,
+      "height": 1254,
+      "format": "png",
+      "channels": 4
+    },
+    {
+      "path": "source/kot-cat-atlas.png",
+      "bytes": 1492080,
+      "sha256": "2958b5b709bfbf947cfa394bdc18d7fd378b5e29bb18003d07355a5471b12180",
+      "width": 1254,
+      "height": 1254,
+      "format": "png",
+      "channels": 4
+    },
+    {
+      "path": "source/kot-cat-master.png",
+      "bytes": 1751623,
+      "sha256": "5707ffb1010fcbefa39922b55bc6b73ebf8d57b82bff3e03f5d0345cd06b2a70",
+      "width": 1254,
+      "height": 1254,
+      "format": "png",
+      "channels": 4
+    },
+    {
+      "path": "source/kot-chair-atlas.png",
+      "bytes": 2338759,
+      "sha256": "ce628084e441c6884a1c00f8814c1efd20e3c2c9410719924e4170017c2959af",
+      "width": 1254,
+      "height": 1254,
+      "format": "png",
+      "channels": 4
+    },
+    {
+      "path": "source/kot-chair-master.png",
+      "bytes": 2282220,
+      "sha256": "d47af9d6548d98b1912047c8781570241a463a20cd146561e9881891a8a78278",
+      "width": 1254,
+      "height": 1254,
+      "format": "png",
+      "channels": 4
+    },
+    {
+      "path": "source/kot-coffee-atlas.png",
+      "bytes": 1665988,
+      "sha256": "226d0595c6aa0f5fa18fa118f6cfcfd5ee3a89455dab4e91c880e06f47120981",
+      "width": 1254,
+      "height": 1254,
+      "format": "png",
+      "channels": 4
+    },
+    {
+      "path": "source/kot-coffee-master.png",
+      "bytes": 1892264,
+      "sha256": "abb1b3d875494eb0589798b688c2ea0b294c00e1e6aff64d7573515109737a18",
+      "width": 1254,
+      "height": 1254,
+      "format": "png",
+      "channels": 4
+    },
+    {
+      "path": "source/kot-duck-atlas-clean.png",
+      "bytes": 1267253,
+      "sha256": "3b311797aa243c7fdc1b12c8af431de1a41001935909f51d31788b7b7d8b417a",
+      "width": 1254,
+      "height": 1254,
+      "format": "png",
+      "channels": 4
+    },
+    {
+      "path": "source/kot-duck-atlas.png",
+      "bytes": 1242902,
+      "sha256": "d44011687f4932352bb3ff7cb8b24c8e5b66bdc27a0c83804f2732ee7ae2a354",
+      "width": 1254,
+      "height": 1254,
+      "format": "png",
+      "channels": 4
+    },
+    {
+      "path": "source/kot-duck-master.png",
+      "bytes": 1164968,
+      "sha256": "44329da661a1dc4c1a595d9841fc771ecec70c4a6a77c9d1f0d28ce9b3ec035d",
+      "width": 1254,
+      "height": 1254,
+      "format": "png",
+      "channels": 4
+    },
+    {
+      "path": "source/kot-leaf-house-atlas.png",
+      "bytes": 1305305,
+      "sha256": "9f57290869d861530e48726d8cb0ef7de00b14420804e9fdf99cecc8d0e15988",
+      "width": 1254,
+      "height": 1254,
+      "format": "png",
+      "channels": 4
+    },
+    {
+      "path": "source/kot-leaf-house-clean-master.png",
+      "bytes": 1236430,
+      "sha256": "6e6aa22bbf2e356d599da7b2f33861a3b7bfb580900be4294a9e82dc67defb2c",
+      "width": 1254,
+      "height": 1254,
+      "format": "png",
+      "channels": 4
+    },
+    {
+      "path": "source/kot-leaf-house-master.png",
+      "bytes": 1376847,
+      "sha256": "2f868896afd6b2fee096b1c19ea89e4c7cae735a655c980970628c47ad235c27",
+      "width": 1254,
+      "height": 1254,
+      "format": "png",
+      "channels": 4
+    },
+    {
+      "path": "source/meadow-day-master.png",
+      "bytes": 3376368,
+      "sha256": "9c35d0034bcf091f707acdc09556c33e10866f67e1623ffe316834bda8429992",
+      "width": 941,
+      "height": 1672,
+      "format": "png",
+      "channels": 3
+    },
+    {
+      "path": "source/meadow-evening-master.png",
+      "bytes": 3495038,
+      "sha256": "7f4056ba296cf9f4ff7a8be3dfa9607c124212cf71597b165048506804e4486a",
+      "width": 941,
+      "height": 1672,
+      "format": "png",
+      "channels": 3
+    },
+    {
+      "path": "source/prompts.json",
+      "bytes": 35180,
+      "sha256": "2ba0fdc730eaf1691388d20ba53db47d3fe8694faad48bd791c0a79fa6fd1533"
+    },
+    {
+      "path": "source/references/guest-rabbit.webp",
+      "bytes": 234578,
+      "sha256": "f2b16b65a25c73c0f7f9d45ef73a4e30429e731598c8a65188f81f9c9576aab6",
+      "width": 1024,
+      "height": 1820,
+      "format": "webp",
+      "channels": 4
+    },
+    {
+      "path": "source/references/kot-cat-wb-373108430.webp",
+      "bytes": 83196,
+      "sha256": "c65749f04ab9be477caddf0406c5549446a2bc0621fa25ace5aa08b74996d0ae",
+      "width": 516,
+      "height": 688,
+      "format": "webp",
+      "channels": 3
+    },
+    {
+      "path": "source/references/kot-duck-wb-912360683.webp",
+      "bytes": 83344,
+      "sha256": "0d3a921d5dd9e330940193e7128bdeb3ea1245139e94b866ccefeffd2b7747bb",
+      "width": 516,
+      "height": 688,
+      "format": "webp",
+      "channels": 4
+    },
+    {
+      "path": "source/references/reference-v4.webp",
+      "bytes": 82964,
+      "sha256": "ddc10e3eed1cb78ffeb0f3bfb8587e9264fd1fccee368a48ae2742649fa73868",
+      "width": 387,
+      "height": 620,
+      "format": "webp",
+      "channels": 3
+    },
+    {
+      "path": "source/references/scene-v2-live-day-390.png",
+      "bytes": 696539,
+      "sha256": "9393a60f65223c8271acf58ff97a8eba2d50b92137b11039d22db7a0f3e9dff1",
+      "width": 390,
+      "height": 844,
+      "format": "png",
+      "channels": 3
+    }
+  ],
+  "items": {
+    "kot-cat": {
+      "source": "source/kot-cat-atlas-clean.png",
+      "cellSize": 627,
+      "stages": [
+        {
+          "index": 0,
+          "at": 0,
+          "fixedCanvasOffset": [
+            0,
+            35
+          ],
+          "tile": {
+            "width": 1024,
+            "height": 1024,
+            "transparentPixels": 875076,
+            "opaquePixels": 151912,
+            "alphaBounds": {
+              "left": 284,
+              "top": 546,
+              "width": 538,
+              "height": 432
+            },
+            "normalizedBounds": [
+              0.27734375,
+              0.533203125,
+              0.802734375,
+              0.955078125
+            ]
+          }
+        },
+        {
+          "index": 1,
+          "at": 0.3333333333333333,
+          "fixedCanvasOffset": [
+            0,
+            33
+          ],
+          "tile": {
+            "width": 1024,
+            "height": 1024,
+            "transparentPixels": 738955,
+            "opaquePixels": 288036,
+            "alphaBounds": {
+              "left": 235,
+              "top": 213,
+              "width": 517,
+              "height": 765
+            },
+            "normalizedBounds": [
+              0.2294921875,
+              0.2080078125,
+              0.734375,
+              0.955078125
+            ]
+          }
+        },
+        {
+          "index": 2,
+          "at": 0.6666666666666666,
+          "fixedCanvasOffset": [
+            0,
+            1
+          ],
+          "tile": {
+            "width": 1024,
+            "height": 1024,
+            "transparentPixels": 600020,
+            "opaquePixels": 419422,
+            "alphaBounds": {
+              "left": 222,
+              "top": 41,
+              "width": 638,
+              "height": 937
+            },
+            "normalizedBounds": [
+              0.216796875,
+              0.0400390625,
+              0.83984375,
+              0.955078125
+            ]
+          }
+        },
+        {
+          "index": 3,
+          "at": 1,
+          "fixedCanvasOffset": [
+            0,
+            0
+          ],
+          "tile": {
+            "width": 1024,
+            "height": 1024,
+            "transparentPixels": 585179,
+            "opaquePixels": 436077,
+            "alphaBounds": {
+              "left": 208,
+              "top": 33,
+              "width": 638,
+              "height": 945
+            },
+            "normalizedBounds": [
+              0.203125,
+              0.0322265625,
+              0.826171875,
+              0.955078125
+            ]
+          }
+        }
+      ],
+      "finished": {
+        "width": 1024,
+        "height": 1024,
+        "transparentPixels": 585179,
+        "opaquePixels": 436077,
+        "alphaBounds": {
+          "left": 208,
+          "top": 33,
+          "width": 638,
+          "height": 945
+        },
+        "normalizedBounds": [
+          0.203125,
+          0.0322265625,
+          0.826171875,
+          0.955078125
+        ]
+      }
+    },
+    "kot-coffee": {
+      "source": "source/kot-coffee-atlas.png",
+      "cellSize": 627,
+      "stages": [
+        {
+          "index": 0,
+          "at": 0,
+          "fixedCanvasOffset": [
+            0,
+            -25
+          ],
+          "tile": {
+            "width": 1024,
+            "height": 1024,
+            "transparentPixels": 878034,
+            "opaquePixels": 116384,
+            "alphaBounds": {
+              "left": 54,
+              "top": 516,
+              "width": 820,
+              "height": 433
+            },
+            "normalizedBounds": [
+              0.052734375,
+              0.50390625,
+              0.853515625,
+              0.9267578125
+            ]
+          }
+        },
+        {
+          "index": 1,
+          "at": 0.3333333333333333,
+          "fixedCanvasOffset": [
+            0,
+            -24
+          ],
+          "tile": {
+            "width": 1024,
+            "height": 1024,
+            "transparentPixels": 731529,
+            "opaquePixels": 253964,
+            "alphaBounds": {
+              "left": 20,
+              "top": 331,
+              "width": 879,
+              "height": 618
+            },
+            "normalizedBounds": [
+              0.01953125,
+              0.3232421875,
+              0.8779296875,
+              0.9267578125
+            ]
+          }
+        },
+        {
+          "index": 2,
+          "at": 0.6666666666666666,
+          "fixedCanvasOffset": [
+            0,
+            0
+          ],
+          "tile": {
+            "width": 1024,
+            "height": 1024,
+            "transparentPixels": 637004,
+            "opaquePixels": 365518,
+            "alphaBounds": {
+              "left": 117,
+              "top": 140,
+              "width": 798,
+              "height": 809
+            },
+            "normalizedBounds": [
+              0.1142578125,
+              0.13671875,
+              0.8935546875,
+              0.9267578125
+            ]
+          }
+        },
+        {
+          "index": 3,
+          "at": 1,
+          "fixedCanvasOffset": [
+            0,
+            0
+          ],
+          "tile": {
+            "width": 1024,
+            "height": 1024,
+            "transparentPixels": 627452,
+            "opaquePixels": 373981,
+            "alphaBounds": {
+              "left": 116,
+              "top": 45,
+              "width": 799,
+              "height": 904
+            },
+            "normalizedBounds": [
+              0.11328125,
+              0.0439453125,
+              0.8935546875,
+              0.9267578125
+            ]
+          }
+        }
+      ],
+      "finished": {
+        "width": 1024,
+        "height": 1024,
+        "transparentPixels": 627452,
+        "opaquePixels": 373981,
+        "alphaBounds": {
+          "left": 116,
+          "top": 45,
+          "width": 799,
+          "height": 904
+        },
+        "normalizedBounds": [
+          0.11328125,
+          0.0439453125,
+          0.8935546875,
+          0.9267578125
+        ]
+      }
+    },
+    "kot-duck": {
+      "source": "source/kot-duck-atlas-clean.png",
+      "cellSize": 627,
+      "stages": [
+        {
+          "index": 0,
+          "at": 0,
+          "fixedCanvasOffset": [
+            0,
+            10
+          ],
+          "tile": {
+            "width": 1024,
+            "height": 1024,
+            "transparentPixels": 921828,
+            "opaquePixels": 97572,
+            "alphaBounds": {
+              "left": 293,
+              "top": 633,
+              "width": 517,
+              "height": 342
+            },
+            "normalizedBounds": [
+              0.2861328125,
+              0.6181640625,
+              0.791015625,
+              0.9521484375
+            ]
+          }
+        },
+        {
+          "index": 1,
+          "at": 0.3333333333333333,
+          "fixedCanvasOffset": [
+            0,
+            6
+          ],
+          "tile": {
+            "width": 1024,
+            "height": 1024,
+            "transparentPixels": 806354,
+            "opaquePixels": 206897,
+            "alphaBounds": {
+              "left": 262,
+              "top": 356,
+              "width": 496,
+              "height": 619
+            },
+            "normalizedBounds": [
+              0.255859375,
+              0.34765625,
+              0.740234375,
+              0.9521484375
+            ]
+          }
+        },
+        {
+          "index": 2,
+          "at": 0.6666666666666666,
+          "fixedCanvasOffset": [
+            0,
+            1
+          ],
+          "tile": {
+            "width": 1024,
+            "height": 1024,
+            "transparentPixels": 685456,
+            "opaquePixels": 299236,
+            "alphaBounds": {
+              "left": 264,
+              "top": 74,
+              "width": 586,
+              "height": 901
+            },
+            "normalizedBounds": [
+              0.2578125,
+              0.072265625,
+              0.830078125,
+              0.9521484375
+            ]
+          }
+        },
+        {
+          "index": 3,
+          "at": 1,
+          "fixedCanvasOffset": [
+            0,
+            0
+          ],
+          "tile": {
+            "width": 1024,
+            "height": 1024,
+            "transparentPixels": 674234,
+            "opaquePixels": 305665,
+            "alphaBounds": {
+              "left": 251,
+              "top": 71,
+              "width": 548,
+              "height": 904
+            },
+            "normalizedBounds": [
+              0.2451171875,
+              0.0693359375,
+              0.7802734375,
+              0.9521484375
+            ]
+          }
+        }
+      ],
+      "finished": {
+        "width": 1024,
+        "height": 1024,
+        "transparentPixels": 674234,
+        "opaquePixels": 305665,
+        "alphaBounds": {
+          "left": 251,
+          "top": 71,
+          "width": 548,
+          "height": 904
+        },
+        "normalizedBounds": [
+          0.2451171875,
+          0.0693359375,
+          0.7802734375,
+          0.9521484375
+        ]
+      }
+    },
+    "kot-chair": {
+      "source": "source/kot-chair-atlas.png",
+      "cellSize": 627,
+      "stages": [
+        {
+          "index": 0,
+          "at": 0,
+          "fixedCanvasOffset": [
+            0,
+            2
+          ],
+          "tile": {
+            "width": 1024,
+            "height": 1024,
+            "transparentPixels": 803747,
+            "opaquePixels": 208858,
+            "alphaBounds": {
+              "left": 130,
+              "top": 557,
+              "width": 835,
+              "height": 421
+            },
+            "normalizedBounds": [
+              0.126953125,
+              0.5439453125,
+              0.9423828125,
+              0.955078125
+            ]
+          }
+        },
+        {
+          "index": 1,
+          "at": 0.3333333333333333,
+          "fixedCanvasOffset": [
+            0,
+            1
+          ],
+          "tile": {
+            "width": 1024,
+            "height": 1024,
+            "transparentPixels": 520566,
+            "opaquePixels": 490266,
+            "alphaBounds": {
+              "left": 82,
+              "top": 167,
+              "width": 865,
+              "height": 811
+            },
+            "normalizedBounds": [
+              0.080078125,
+              0.1630859375,
+              0.9248046875,
+              0.955078125
+            ]
+          }
+        },
+        {
+          "index": 2,
+          "at": 0.6666666666666666,
+          "fixedCanvasOffset": [
+            0,
+            0
+          ],
+          "tile": {
+            "width": 1024,
+            "height": 1024,
+            "transparentPixels": 453707,
+            "opaquePixels": 562406,
+            "alphaBounds": {
+              "left": 83,
+              "top": 51,
+              "width": 870,
+              "height": 927
+            },
+            "normalizedBounds": [
+              0.0810546875,
+              0.0498046875,
+              0.9306640625,
+              0.955078125
+            ]
+          }
+        },
+        {
+          "index": 3,
+          "at": 1,
+          "fixedCanvasOffset": [
+            0,
+            0
+          ],
+          "tile": {
+            "width": 1024,
+            "height": 1024,
+            "transparentPixels": 420472,
+            "opaquePixels": 592480,
+            "alphaBounds": {
+              "left": 32,
+              "top": 33,
+              "width": 941,
+              "height": 945
+            },
+            "normalizedBounds": [
+              0.03125,
+              0.0322265625,
+              0.9501953125,
+              0.955078125
+            ]
+          }
+        }
+      ],
+      "finished": {
+        "width": 1024,
+        "height": 1024,
+        "transparentPixels": 420472,
+        "opaquePixels": 592480,
+        "alphaBounds": {
+          "left": 32,
+          "top": 33,
+          "width": 941,
+          "height": 945
+        },
+        "normalizedBounds": [
+          0.03125,
+          0.0322265625,
+          0.9501953125,
+          0.955078125
+        ]
+      }
+    },
+    "kot-leaf-house": {
+      "source": "source/kot-leaf-house-atlas.png",
+      "cellSize": 627,
+      "stages": [
+        {
+          "index": 0,
+          "at": 0,
+          "fixedCanvasOffset": [
+            0,
+            -83
+          ],
+          "tile": {
+            "width": 1024,
+            "height": 1024,
+            "transparentPixels": 896391,
+            "opaquePixels": 132857,
+            "alphaBounds": {
+              "left": 185,
+              "top": 548,
+              "width": 706,
+              "height": 323
+            },
+            "normalizedBounds": [
+              0.1806640625,
+              0.53515625,
+              0.8701171875,
+              0.8505859375
+            ]
+          }
+        },
+        {
+          "index": 1,
+          "at": 0.3333333333333333,
+          "fixedCanvasOffset": [
+            0,
+            -84
+          ],
+          "tile": {
+            "width": 1024,
+            "height": 1024,
+            "transparentPixels": 773676,
+            "opaquePixels": 251976,
+            "alphaBounds": {
+              "left": 133,
+              "top": 231,
+              "width": 702,
+              "height": 640
+            },
+            "normalizedBounds": [
+              0.1298828125,
+              0.2255859375,
+              0.8154296875,
+              0.8505859375
+            ]
+          }
+        },
+        {
+          "index": 2,
+          "at": 0.6666666666666666,
+          "fixedCanvasOffset": [
+            0,
+            1
+          ],
+          "tile": {
+            "width": 1024,
+            "height": 1024,
+            "transparentPixels": 673732,
+            "opaquePixels": 344182,
+            "alphaBounds": {
+              "left": 148,
+              "top": 118,
+              "width": 793,
+              "height": 753
+            },
+            "normalizedBounds": [
+              0.14453125,
+              0.115234375,
+              0.9189453125,
+              0.8505859375
+            ]
+          }
+        },
+        {
+          "index": 3,
+          "at": 1,
+          "fixedCanvasOffset": [
+            0,
+            0
+          ],
+          "tile": {
+            "width": 1024,
+            "height": 1024,
+            "transparentPixels": 641658,
+            "opaquePixels": 383648,
+            "alphaBounds": {
+              "left": 105,
+              "top": 87,
+              "width": 817,
+              "height": 784
+            },
+            "normalizedBounds": [
+              0.1025390625,
+              0.0849609375,
+              0.900390625,
+              0.8505859375
+            ]
+          }
+        }
+      ],
+      "finished": {
+        "width": 1024,
+        "height": 1024,
+        "transparentPixels": 641658,
+        "opaquePixels": 383648,
+        "alphaBounds": {
+          "left": 105,
+          "top": 87,
+          "width": 817,
+          "height": 784
+        },
+        "normalizedBounds": [
+          0.1025390625,
+          0.0849609375,
+          0.900390625,
+          0.8505859375
+        ]
+      }
+    }
+  },
+  "compositionStudies": [
+    {
+      "path": "review/scene-day-0-390.png",
+      "viewport": [
+        390,
+        844
+      ],
+      "count": 0,
+      "guest": false,
+      "lighting": "day",
+      "bounds": [],
+      "kind": "asset-composition-study-not-game-screenshot"
+    },
+    {
+      "path": "review/scene-day-1-390.png",
+      "viewport": [
+        390,
+        844
+      ],
+      "count": 1,
+      "guest": false,
+      "lighting": "day",
+      "bounds": [
+        {
+          "id": "kot-cat",
+          "left": 95,
+          "top": 406,
+          "width": 145,
+          "height": 215
+        }
+      ],
+      "kind": "asset-composition-study-not-game-screenshot"
+    },
+    {
+      "path": "review/scene-day-3-390.png",
+      "viewport": [
+        390,
+        844
+      ],
+      "count": 3,
+      "guest": false,
+      "lighting": "day",
+      "bounds": [
+        {
+          "id": "kot-duck",
+          "left": 252,
+          "top": 334,
+          "width": 68,
+          "height": 112
+        },
+        {
+          "id": "kot-cat",
+          "left": 95,
+          "top": 406,
+          "width": 145,
+          "height": 215
+        },
+        {
+          "id": "kot-coffee",
+          "left": 231,
+          "top": 457,
+          "width": 100,
+          "height": 112
+        }
+      ],
+      "kind": "asset-composition-study-not-game-screenshot"
+    },
+    {
+      "path": "review/scene-day-5-390.png",
+      "viewport": [
+        390,
+        844
+      ],
+      "count": 5,
+      "guest": false,
+      "lighting": "day",
+      "bounds": [
+        {
+          "id": "kot-leaf-house",
+          "left": 231,
+          "top": 192,
+          "width": 117,
+          "height": 112
+        },
+        {
+          "id": "kot-chair",
+          "left": 25,
+          "top": 269,
+          "width": 143,
+          "height": 144
+        },
+        {
+          "id": "kot-duck",
+          "left": 252,
+          "top": 334,
+          "width": 68,
+          "height": 112
+        },
+        {
+          "id": "kot-cat",
+          "left": 95,
+          "top": 406,
+          "width": 145,
+          "height": 215
+        },
+        {
+          "id": "kot-coffee",
+          "left": 231,
+          "top": 457,
+          "width": 100,
+          "height": 112
+        }
+      ],
+      "kind": "asset-composition-study-not-game-screenshot"
+    },
+    {
+      "path": "review/scene-day-5-visitor-390.png",
+      "viewport": [
+        390,
+        844
+      ],
+      "count": 5,
+      "guest": true,
+      "lighting": "day",
+      "bounds": [
+        {
+          "id": "kot-leaf-house",
+          "left": 231,
+          "top": 192,
+          "width": 117,
+          "height": 112
+        },
+        {
+          "id": "kot-chair",
+          "left": 25,
+          "top": 269,
+          "width": 143,
+          "height": 144
+        },
+        {
+          "id": "kot-duck",
+          "left": 252,
+          "top": 334,
+          "width": 68,
+          "height": 112
+        },
+        {
+          "id": "kot-cat",
+          "left": 95,
+          "top": 406,
+          "width": 145,
+          "height": 215
+        },
+        {
+          "id": "kot-coffee",
+          "left": 231,
+          "top": 457,
+          "width": 100,
+          "height": 112
+        },
+        {
+          "id": "guest-rabbit",
+          "left": 37,
+          "top": 497,
+          "width": 54,
+          "height": 100
+        }
+      ],
+      "kind": "asset-composition-study-not-game-screenshot"
+    },
+    {
+      "path": "review/scene-day-5-360.png",
+      "viewport": [
+        360,
+        800
+      ],
+      "count": 5,
+      "guest": false,
+      "lighting": "day",
+      "bounds": [
+        {
+          "id": "kot-leaf-house",
+          "left": 213,
+          "top": 184,
+          "width": 108,
+          "height": 104
+        },
+        {
+          "id": "kot-chair",
+          "left": 22,
+          "top": 257,
+          "width": 133,
+          "height": 133
+        },
+        {
+          "id": "kot-duck",
+          "left": 233,
+          "top": 318,
+          "width": 62,
+          "height": 103
+        },
+        {
+          "id": "kot-cat",
+          "left": 87,
+          "top": 387,
+          "width": 135,
+          "height": 199
+        },
+        {
+          "id": "kot-coffee",
+          "left": 214,
+          "top": 435,
+          "width": 92,
+          "height": 103
+        }
+      ],
+      "kind": "asset-composition-study-not-game-screenshot"
+    },
+    {
+      "path": "review/scene-day-5-430.png",
+      "viewport": [
+        430,
+        932
+      ],
+      "count": 5,
+      "guest": false,
+      "lighting": "day",
+      "bounds": [
+        {
+          "id": "kot-leaf-house",
+          "left": 254,
+          "top": 212,
+          "width": 129,
+          "height": 124
+        },
+        {
+          "id": "kot-chair",
+          "left": 27,
+          "top": 296,
+          "width": 159,
+          "height": 159
+        },
+        {
+          "id": "kot-duck",
+          "left": 278,
+          "top": 369,
+          "width": 75,
+          "height": 123
+        },
+        {
+          "id": "kot-cat",
+          "left": 104,
+          "top": 448,
+          "width": 161,
+          "height": 238
+        },
+        {
+          "id": "kot-coffee",
+          "left": 256,
+          "top": 505,
+          "width": 109,
+          "height": 124
+        }
+      ],
+      "kind": "asset-composition-study-not-game-screenshot"
+    },
+    {
+      "path": "review/scene-evening-0-390.png",
+      "viewport": [
+        390,
+        844
+      ],
+      "count": 0,
+      "guest": false,
+      "lighting": "evening",
+      "bounds": [],
+      "kind": "asset-composition-study-not-game-screenshot"
+    },
+    {
+      "path": "review/scene-evening-1-390.png",
+      "viewport": [
+        390,
+        844
+      ],
+      "count": 1,
+      "guest": false,
+      "lighting": "evening",
+      "bounds": [
+        {
+          "id": "kot-cat",
+          "left": 95,
+          "top": 406,
+          "width": 145,
+          "height": 215
+        }
+      ],
+      "kind": "asset-composition-study-not-game-screenshot"
+    },
+    {
+      "path": "review/scene-evening-3-390.png",
+      "viewport": [
+        390,
+        844
+      ],
+      "count": 3,
+      "guest": false,
+      "lighting": "evening",
+      "bounds": [
+        {
+          "id": "kot-duck",
+          "left": 252,
+          "top": 334,
+          "width": 68,
+          "height": 112
+        },
+        {
+          "id": "kot-cat",
+          "left": 95,
+          "top": 406,
+          "width": 145,
+          "height": 215
+        },
+        {
+          "id": "kot-coffee",
+          "left": 231,
+          "top": 457,
+          "width": 100,
+          "height": 112
+        }
+      ],
+      "kind": "asset-composition-study-not-game-screenshot"
+    },
+    {
+      "path": "review/scene-evening-5-390.png",
+      "viewport": [
+        390,
+        844
+      ],
+      "count": 5,
+      "guest": false,
+      "lighting": "evening",
+      "bounds": [
+        {
+          "id": "kot-leaf-house",
+          "left": 231,
+          "top": 192,
+          "width": 117,
+          "height": 112
+        },
+        {
+          "id": "kot-chair",
+          "left": 25,
+          "top": 269,
+          "width": 143,
+          "height": 144
+        },
+        {
+          "id": "kot-duck",
+          "left": 252,
+          "top": 334,
+          "width": 68,
+          "height": 112
+        },
+        {
+          "id": "kot-cat",
+          "left": 95,
+          "top": 406,
+          "width": 145,
+          "height": 215
+        },
+        {
+          "id": "kot-coffee",
+          "left": 231,
+          "top": 457,
+          "width": 100,
+          "height": 112
+        }
+      ],
+      "kind": "asset-composition-study-not-game-screenshot"
+    },
+    {
+      "path": "review/scene-evening-5-visitor-390.png",
+      "viewport": [
+        390,
+        844
+      ],
+      "count": 5,
+      "guest": true,
+      "lighting": "evening",
+      "bounds": [
+        {
+          "id": "kot-leaf-house",
+          "left": 231,
+          "top": 192,
+          "width": 117,
+          "height": 112
+        },
+        {
+          "id": "kot-chair",
+          "left": 25,
+          "top": 269,
+          "width": 143,
+          "height": 144
+        },
+        {
+          "id": "kot-duck",
+          "left": 252,
+          "top": 334,
+          "width": 68,
+          "height": 112
+        },
+        {
+          "id": "kot-cat",
+          "left": 95,
+          "top": 406,
+          "width": 145,
+          "height": 215
+        },
+        {
+          "id": "kot-coffee",
+          "left": 231,
+          "top": 457,
+          "width": 100,
+          "height": 112
+        },
+        {
+          "id": "guest-rabbit",
+          "left": 37,
+          "top": 497,
+          "width": 54,
+          "height": 100
+        }
+      ],
+      "kind": "asset-composition-study-not-game-screenshot"
+    },
+    {
+      "path": "review/scene-evening-5-360.png",
+      "viewport": [
+        360,
+        800
+      ],
+      "count": 5,
+      "guest": false,
+      "lighting": "evening",
+      "bounds": [
+        {
+          "id": "kot-leaf-house",
+          "left": 213,
+          "top": 184,
+          "width": 108,
+          "height": 104
+        },
+        {
+          "id": "kot-chair",
+          "left": 22,
+          "top": 257,
+          "width": 133,
+          "height": 133
+        },
+        {
+          "id": "kot-duck",
+          "left": 233,
+          "top": 318,
+          "width": 62,
+          "height": 103
+        },
+        {
+          "id": "kot-cat",
+          "left": 87,
+          "top": 387,
+          "width": 135,
+          "height": 199
+        },
+        {
+          "id": "kot-coffee",
+          "left": 214,
+          "top": 435,
+          "width": 92,
+          "height": 103
+        }
+      ],
+      "kind": "asset-composition-study-not-game-screenshot"
+    },
+    {
+      "path": "review/scene-evening-5-430.png",
+      "viewport": [
+        430,
+        932
+      ],
+      "count": 5,
+      "guest": false,
+      "lighting": "evening",
+      "bounds": [
+        {
+          "id": "kot-leaf-house",
+          "left": 254,
+          "top": 212,
+          "width": 129,
+          "height": 124
+        },
+        {
+          "id": "kot-chair",
+          "left": 27,
+          "top": 296,
+          "width": 159,
+          "height": 159
+        },
+        {
+          "id": "kot-duck",
+          "left": 278,
+          "top": 369,
+          "width": 75,
+          "height": 123
+        },
+        {
+          "id": "kot-cat",
+          "left": 104,
+          "top": 448,
+          "width": 161,
+          "height": 238
+        },
+        {
+          "id": "kot-coffee",
+          "left": 256,
+          "top": 505,
+          "width": 109,
+          "height": 124
+        }
+      ],
+      "kind": "asset-composition-study-not-game-screenshot"
+    }
+  ]
+}
