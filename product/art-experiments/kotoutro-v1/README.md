@@ -6,7 +6,7 @@ The scene is a warm knitted garden veranda beside a pond. The background contain
 
 ## Runtime files
 
-There are27 WebPs, together5,463,642bytes:
+The scene uses 27 WebPs, together 5,463,642 bytes. The separate contextual control set adds 27 WebPs / 1,436,138 bytes, for 54 runtime files / 6,899,780 bytes in the complete pack.
 
 - `exports/meadow-{day,evening}.webp`: two1024×1820 background candidates with matching composition and changed illumination.
 - `exports/{id}-finished.webp`: five1024×1024 transparent placement sprites.
@@ -30,7 +30,7 @@ npm ci
 npm run export
 ```
 
-Node20.9+ and locked Sharp0.35.5 perform only local deterministic processing. No model/API call, credentials, paid service, external worktree or machine-specific path is required to export. All required masters and proof references are retained under `source/`. `source/prompts.json` archives15 built-in image_gen calls with exact prompts, input roles and original tool output paths. The two WB photo URLs and product IDs are recorded there; the photographs are inspiration/reference material, not new catalog exports.
+Node 20.9+ and locked Sharp 0.35.5 perform only local deterministic processing. No model/API call, credentials, paid service, external worktree or machine-specific path is required to export. All required masters and proof references are retained under `source/`. `source/prompts.json` archives 15 built-in image_gen calls with exact prompts, input roles and original tool output paths. The two WB photo URLs and product IDs are recorded there; the photographs are inspiration/reference material, not new catalog exports. `npm run export` rebuilds scene and controls; `export:scene` and `export:ui` rebuild either group independently.
 
 Every item begins with one finished master, then one coherent2×2 construction atlas derived from it. Each equal square cell is resized as a whole to1024×1024; no stage is independently trimmed or fitted. Explicit reviewed vertical canvas translations in `stageOffsetY` align the floor anchor across the four stages, preserving scale and horizontal position. The largest correction is84pixels for the leaf foundation; the final cell stays unchanged. Workshop placement is always(0,440) on the1024×1820 canvas. The final placed sprite comes from the same bottom-right cell as stage03. Construction states contain unfinished physical parts, not faded or covered completed art.
 
@@ -50,3 +50,23 @@ Targeted image_gen edits remove pale shadow matting from the cat and duck atlase
 - `review/leaf-before-alpha-repair-*.png`: explicitly retained rejected pale-matte evidence; these are not current exports.
 
 These are **asset composition studies, not screenshots of playable software**. They intentionally contain no invented UI. Evening object lighting approximates the shared renderer's brightness/saturation adjustment. There are no dedicated evening object variants in this pack. The integration owner must review actual workshop/day/evening screens with shared controls and compare390×844 to the approved reference before promotion. Contact with the veranda/pond bank, guest scale, tap targets and interaction effects remain integration review concerns.
+
+## Contextual controls
+
+The additional controls match the existing `scene-v2/ui/pet.webp` linen, rose piping, stitching and warm brown lettering. One 3×3 atlas provides all nine labels. `source/ui/prompts.json` archives this additional built-in image_gen call and its retained template; no separate style was introduced.
+
+| ID | Exact baked label |
+| --- | --- |
+| `water` | Полить |
+| `sway` | Качнуть |
+| `knock` | Постучать |
+| `land` | Позвать |
+| `greet` | Поздороваться |
+| `brew` | Заварить |
+| `feed` | Угостить |
+| `rock` | Покачать |
+| `shelter` | Зажечь |
+
+Files are `ui/{id}.webp`, `ui/{id}-pressed.webp`, `ui/{id}-disabled.webp`, all 768×256. Preserve the corresponding accessible Russian label in HTML. Scale the whole image; never overlay or reflow its lettering. Values and cooldowns remain live UI outside the artwork. Intended display size is 150×50, checked in `review/ui-states-150.png` (columns normal, pressed, disabled). `ui-normal-{dark,cream}.png` checks compositing on contrasting backgrounds.
+
+The exporter aligns each complete button into a common source canvas without changing individual scale, then applies one shared resize. State changes affect only brightness/saturation. `review/ui-report.json` verifies identical alpha hashes across all three states, real transparent and opaque pixels, and hashes for 27 controls and three source files. Scene and UI reports intentionally have separate source inventories.

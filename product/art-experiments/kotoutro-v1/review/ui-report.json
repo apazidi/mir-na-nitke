@@ -1,0 +1,683 @@
+{
+  "status": "draft-not-approved",
+  "source": "source/ui/actions-atlas.png",
+  "cellSize": 418,
+  "normalCanvas": [
+    768,
+    256
+  ],
+  "commonSourceCanvas": [
+    416,
+    165
+  ],
+  "recipe": "Crop alpha bounds plus8px safety margin; translate into one shared maximum-size source canvas; same whole-asset scaling for every control. No lettering overlay/stretch. Pressed brightness.88/saturation.98; disabled brightness.96/saturation.22.",
+  "files": [
+    {
+      "path": "ui/water.webp",
+      "label": "Полить",
+      "state": "normal",
+      "bytes": 56936,
+      "sha256": "28ad3638b18b4081a39e0ab95d73b84fe05ea64e0e6df52c129e6300ef1c0e02",
+      "width": 768,
+      "height": 256,
+      "transparentPixels": 62295,
+      "opaquePixels": 127223,
+      "alphaSha256": "7b79719f784812bedae79ca9f7f5cf7f1e693eb45a7a448fadb3d72850e73c08",
+      "alphaBounds": {
+        "left": 74,
+        "top": 13,
+        "width": 621,
+        "height": 231
+      }
+    },
+    {
+      "path": "ui/water-pressed.webp",
+      "label": "Полить",
+      "state": "pressed",
+      "bytes": 52898,
+      "sha256": "e960e6afaa06bb4e223c4b7e402950952c9c078ddd580c50bbd0b88e543091c9",
+      "width": 768,
+      "height": 256,
+      "transparentPixels": 62295,
+      "opaquePixels": 127223,
+      "alphaSha256": "7b79719f784812bedae79ca9f7f5cf7f1e693eb45a7a448fadb3d72850e73c08",
+      "alphaBounds": {
+        "left": 74,
+        "top": 13,
+        "width": 621,
+        "height": 231
+      }
+    },
+    {
+      "path": "ui/water-disabled.webp",
+      "label": "Полить",
+      "state": "disabled",
+      "bytes": 46884,
+      "sha256": "a85ff82a18dac6f8dc61cdde11cb666ccb9c57562b6ebda1b4baa995329bca04",
+      "width": 768,
+      "height": 256,
+      "transparentPixels": 62295,
+      "opaquePixels": 127223,
+      "alphaSha256": "7b79719f784812bedae79ca9f7f5cf7f1e693eb45a7a448fadb3d72850e73c08",
+      "alphaBounds": {
+        "left": 74,
+        "top": 13,
+        "width": 621,
+        "height": 231
+      }
+    },
+    {
+      "path": "ui/sway.webp",
+      "label": "Качнуть",
+      "state": "normal",
+      "bytes": 57312,
+      "sha256": "5ffbe3ed9fa21d6582ffe6f18f5b10ffd9ca590e909408a602c25ae59fcb3e4e",
+      "width": 768,
+      "height": 256,
+      "transparentPixels": 62255,
+      "opaquePixels": 127575,
+      "alphaSha256": "64c20b3f270832a9a2975d23a98d9cc9abf0e21054f1aab5158335eefb86018b",
+      "alphaBounds": {
+        "left": 74,
+        "top": 13,
+        "width": 621,
+        "height": 231
+      }
+    },
+    {
+      "path": "ui/sway-pressed.webp",
+      "label": "Качнуть",
+      "state": "pressed",
+      "bytes": 53858,
+      "sha256": "26dbdd35f8188b6a9809e0418cd80a7cc06ed620500e5b36bfbc187aa9a0e5d1",
+      "width": 768,
+      "height": 256,
+      "transparentPixels": 62255,
+      "opaquePixels": 127575,
+      "alphaSha256": "64c20b3f270832a9a2975d23a98d9cc9abf0e21054f1aab5158335eefb86018b",
+      "alphaBounds": {
+        "left": 74,
+        "top": 13,
+        "width": 621,
+        "height": 231
+      }
+    },
+    {
+      "path": "ui/sway-disabled.webp",
+      "label": "Качнуть",
+      "state": "disabled",
+      "bytes": 48446,
+      "sha256": "f7db19b3a0625c5bb3c1f4d95d0b147bf831244f0f2145b8dcf4b2c2c6be0917",
+      "width": 768,
+      "height": 256,
+      "transparentPixels": 62255,
+      "opaquePixels": 127575,
+      "alphaSha256": "64c20b3f270832a9a2975d23a98d9cc9abf0e21054f1aab5158335eefb86018b",
+      "alphaBounds": {
+        "left": 74,
+        "top": 13,
+        "width": 621,
+        "height": 231
+      }
+    },
+    {
+      "path": "ui/knock.webp",
+      "label": "Постучать",
+      "state": "normal",
+      "bytes": 56504,
+      "sha256": "3279e1e776b20725225cf32e63d2d6b25c7320d3a5ea8b70f19ce89b64b1ca5a",
+      "width": 768,
+      "height": 256,
+      "transparentPixels": 62156,
+      "opaquePixels": 127607,
+      "alphaSha256": "29fffa02d08c4d8500bf3f6f5dcf704f29566c6dab6e2ae7750530c58fdbad3e",
+      "alphaBounds": {
+        "left": 74,
+        "top": 13,
+        "width": 621,
+        "height": 231
+      }
+    },
+    {
+      "path": "ui/knock-pressed.webp",
+      "label": "Постучать",
+      "state": "pressed",
+      "bytes": 53792,
+      "sha256": "783fbd5b56486a6808afc7d56460a7003445526c3eefb6969df86e1c1cdc5e84",
+      "width": 768,
+      "height": 256,
+      "transparentPixels": 62156,
+      "opaquePixels": 127607,
+      "alphaSha256": "29fffa02d08c4d8500bf3f6f5dcf704f29566c6dab6e2ae7750530c58fdbad3e",
+      "alphaBounds": {
+        "left": 74,
+        "top": 13,
+        "width": 621,
+        "height": 231
+      }
+    },
+    {
+      "path": "ui/knock-disabled.webp",
+      "label": "Постучать",
+      "state": "disabled",
+      "bytes": 48170,
+      "sha256": "50502c2cd25b7c428f658af38df31865e6046c8308422c2e8e2960c1d8c9d9e3",
+      "width": 768,
+      "height": 256,
+      "transparentPixels": 62156,
+      "opaquePixels": 127607,
+      "alphaSha256": "29fffa02d08c4d8500bf3f6f5dcf704f29566c6dab6e2ae7750530c58fdbad3e",
+      "alphaBounds": {
+        "left": 74,
+        "top": 13,
+        "width": 621,
+        "height": 231
+      }
+    },
+    {
+      "path": "ui/land.webp",
+      "label": "Позвать",
+      "state": "normal",
+      "bytes": 57700,
+      "sha256": "0dad331ce1a470b3817a7e67b3505572a820e2e0d065615d3f0486a6af00e7e2",
+      "width": 768,
+      "height": 256,
+      "transparentPixels": 62035,
+      "opaquePixels": 126346,
+      "alphaSha256": "c396a1f52dbd52c688eada3e54afbef9c38cc6654bd5bdda346db3f9b055a467",
+      "alphaBounds": {
+        "left": 74,
+        "top": 13,
+        "width": 621,
+        "height": 232
+      }
+    },
+    {
+      "path": "ui/land-pressed.webp",
+      "label": "Позвать",
+      "state": "pressed",
+      "bytes": 54616,
+      "sha256": "992506444ada9e2800f849f93e054cfa55bb2f9091d2106282a6dd51a277738a",
+      "width": 768,
+      "height": 256,
+      "transparentPixels": 62035,
+      "opaquePixels": 126346,
+      "alphaSha256": "c396a1f52dbd52c688eada3e54afbef9c38cc6654bd5bdda346db3f9b055a467",
+      "alphaBounds": {
+        "left": 74,
+        "top": 13,
+        "width": 621,
+        "height": 232
+      }
+    },
+    {
+      "path": "ui/land-disabled.webp",
+      "label": "Позвать",
+      "state": "disabled",
+      "bytes": 49240,
+      "sha256": "09d7ae1821ae0a5fba23bd608c49dfdfdf8e185cda302d3b0b76c505a1d05ccc",
+      "width": 768,
+      "height": 256,
+      "transparentPixels": 62035,
+      "opaquePixels": 126346,
+      "alphaSha256": "c396a1f52dbd52c688eada3e54afbef9c38cc6654bd5bdda346db3f9b055a467",
+      "alphaBounds": {
+        "left": 74,
+        "top": 13,
+        "width": 621,
+        "height": 232
+      }
+    },
+    {
+      "path": "ui/greet.webp",
+      "label": "Поздороваться",
+      "state": "normal",
+      "bytes": 58768,
+      "sha256": "33c1e0ec459d7d673f90c02c21929cc31dc4c9abb7b7e4da1276e4dce14cf931",
+      "width": 768,
+      "height": 256,
+      "transparentPixels": 61933,
+      "opaquePixels": 126392,
+      "alphaSha256": "f661df8a096e2815d352dd6e039ce7ab06c218036d36f266931876f3d88f9626",
+      "alphaBounds": {
+        "left": 74,
+        "top": 12,
+        "width": 621,
+        "height": 233
+      }
+    },
+    {
+      "path": "ui/greet-pressed.webp",
+      "label": "Поздороваться",
+      "state": "pressed",
+      "bytes": 55262,
+      "sha256": "77c374db04750059a4d27455d339dca31db959251d6512483d359ed9933bcb6f",
+      "width": 768,
+      "height": 256,
+      "transparentPixels": 61933,
+      "opaquePixels": 126392,
+      "alphaSha256": "f661df8a096e2815d352dd6e039ce7ab06c218036d36f266931876f3d88f9626",
+      "alphaBounds": {
+        "left": 74,
+        "top": 12,
+        "width": 621,
+        "height": 233
+      }
+    },
+    {
+      "path": "ui/greet-disabled.webp",
+      "label": "Поздороваться",
+      "state": "disabled",
+      "bytes": 49844,
+      "sha256": "c71244d87790baa4ace422cf5104e55b838951568e676b7035f0caf2a68eeeee",
+      "width": 768,
+      "height": 256,
+      "transparentPixels": 61933,
+      "opaquePixels": 126392,
+      "alphaSha256": "f661df8a096e2815d352dd6e039ce7ab06c218036d36f266931876f3d88f9626",
+      "alphaBounds": {
+        "left": 74,
+        "top": 12,
+        "width": 621,
+        "height": 233
+      }
+    },
+    {
+      "path": "ui/brew.webp",
+      "label": "Заварить",
+      "state": "normal",
+      "bytes": 58058,
+      "sha256": "e1a71b8ccb47be1dcc49913f7a6863b6eb2e37d4ce3038cee5f293d60a09f391",
+      "width": 768,
+      "height": 256,
+      "transparentPixels": 61873,
+      "opaquePixels": 126432,
+      "alphaSha256": "3afedfd1a985b0350e06e305be950fc1c8d044478b5185c6385273747baeb9ff",
+      "alphaBounds": {
+        "left": 74,
+        "top": 12,
+        "width": 621,
+        "height": 233
+      }
+    },
+    {
+      "path": "ui/brew-pressed.webp",
+      "label": "Заварить",
+      "state": "pressed",
+      "bytes": 54682,
+      "sha256": "5a11637d878a45f9cfb813c6aabe0d7f118ce1dc00e8da5b39c46c8e10db7084",
+      "width": 768,
+      "height": 256,
+      "transparentPixels": 61873,
+      "opaquePixels": 126432,
+      "alphaSha256": "3afedfd1a985b0350e06e305be950fc1c8d044478b5185c6385273747baeb9ff",
+      "alphaBounds": {
+        "left": 74,
+        "top": 12,
+        "width": 621,
+        "height": 233
+      }
+    },
+    {
+      "path": "ui/brew-disabled.webp",
+      "label": "Заварить",
+      "state": "disabled",
+      "bytes": 49086,
+      "sha256": "e253f8c12a4e3fb36244309f1f4eeb8d025f9b453b268b6b92bb49af4e8faade",
+      "width": 768,
+      "height": 256,
+      "transparentPixels": 61873,
+      "opaquePixels": 126432,
+      "alphaSha256": "3afedfd1a985b0350e06e305be950fc1c8d044478b5185c6385273747baeb9ff",
+      "alphaBounds": {
+        "left": 74,
+        "top": 12,
+        "width": 621,
+        "height": 233
+      }
+    },
+    {
+      "path": "ui/feed.webp",
+      "label": "Угостить",
+      "state": "normal",
+      "bytes": 57076,
+      "sha256": "220ca88df0e4ecd1edac9f3ba191ed1709fdeaa49b268321e3a778a51c2ce9ee",
+      "width": 768,
+      "height": 256,
+      "transparentPixels": 62446,
+      "opaquePixels": 126711,
+      "alphaSha256": "de2a35ed57b3b3fb988ce536cd7b163366df1968a0480b3d2c42d4a4995127c6",
+      "alphaBounds": {
+        "left": 74,
+        "top": 13,
+        "width": 621,
+        "height": 231
+      }
+    },
+    {
+      "path": "ui/feed-pressed.webp",
+      "label": "Угостить",
+      "state": "pressed",
+      "bytes": 52978,
+      "sha256": "f8d898e644134503785739fa209cc223f8fe45c57a5355ae8b83d7e91f63ff33",
+      "width": 768,
+      "height": 256,
+      "transparentPixels": 62446,
+      "opaquePixels": 126711,
+      "alphaSha256": "de2a35ed57b3b3fb988ce536cd7b163366df1968a0480b3d2c42d4a4995127c6",
+      "alphaBounds": {
+        "left": 74,
+        "top": 13,
+        "width": 621,
+        "height": 231
+      }
+    },
+    {
+      "path": "ui/feed-disabled.webp",
+      "label": "Угостить",
+      "state": "disabled",
+      "bytes": 47722,
+      "sha256": "eec9d2fe5ab7199881a6b0c82d7434801ec56dfe8c9bb66fc8534038c8de950f",
+      "width": 768,
+      "height": 256,
+      "transparentPixels": 62446,
+      "opaquePixels": 126711,
+      "alphaSha256": "de2a35ed57b3b3fb988ce536cd7b163366df1968a0480b3d2c42d4a4995127c6",
+      "alphaBounds": {
+        "left": 74,
+        "top": 13,
+        "width": 621,
+        "height": 231
+      }
+    },
+    {
+      "path": "ui/rock.webp",
+      "label": "Покачать",
+      "state": "normal",
+      "bytes": 56572,
+      "sha256": "391af3293c7c1bfa0d9ca3efa820775d8f1590f760f1ad20a576c9fdf591fa36",
+      "width": 768,
+      "height": 256,
+      "transparentPixels": 62301,
+      "opaquePixels": 126712,
+      "alphaSha256": "7611c1a81c5c7485a472aa1254553feddec8d01f4017e5ec4b446619b28d2ba8",
+      "alphaBounds": {
+        "left": 74,
+        "top": 13,
+        "width": 621,
+        "height": 231
+      }
+    },
+    {
+      "path": "ui/rock-pressed.webp",
+      "label": "Покачать",
+      "state": "pressed",
+      "bytes": 53514,
+      "sha256": "46d80f7ce654a448f4be213bd53260df7e04abd4db6634ac0a0a2fc72415a688",
+      "width": 768,
+      "height": 256,
+      "transparentPixels": 62301,
+      "opaquePixels": 126712,
+      "alphaSha256": "7611c1a81c5c7485a472aa1254553feddec8d01f4017e5ec4b446619b28d2ba8",
+      "alphaBounds": {
+        "left": 74,
+        "top": 13,
+        "width": 621,
+        "height": 231
+      }
+    },
+    {
+      "path": "ui/rock-disabled.webp",
+      "label": "Покачать",
+      "state": "disabled",
+      "bytes": 47028,
+      "sha256": "48fae4e1e6445c8e4f19d58dd037361d1730e4cc982b4ce9ad99739572de9274",
+      "width": 768,
+      "height": 256,
+      "transparentPixels": 62301,
+      "opaquePixels": 126712,
+      "alphaSha256": "7611c1a81c5c7485a472aa1254553feddec8d01f4017e5ec4b446619b28d2ba8",
+      "alphaBounds": {
+        "left": 74,
+        "top": 13,
+        "width": 621,
+        "height": 231
+      }
+    },
+    {
+      "path": "ui/shelter.webp",
+      "label": "Зажечь",
+      "state": "normal",
+      "bytes": 56616,
+      "sha256": "34b4cbadc7e5d9d01c62f09cfde32b66f5e051343a787728271147795bcb2d17",
+      "width": 768,
+      "height": 256,
+      "transparentPixels": 62306,
+      "opaquePixels": 126787,
+      "alphaSha256": "b19e3289ed6d4b33db4da8a6d3ba1f6209e19f408466a69565e54196dfe4c9a1",
+      "alphaBounds": {
+        "left": 73,
+        "top": 13,
+        "width": 622,
+        "height": 231
+      }
+    },
+    {
+      "path": "ui/shelter-pressed.webp",
+      "label": "Зажечь",
+      "state": "pressed",
+      "bytes": 55084,
+      "sha256": "2813a49d9efd59705763be29ba0e469c4ffd697b6101a0b0e89e2b1b5983ad9c",
+      "width": 768,
+      "height": 256,
+      "transparentPixels": 62306,
+      "opaquePixels": 126787,
+      "alphaSha256": "b19e3289ed6d4b33db4da8a6d3ba1f6209e19f408466a69565e54196dfe4c9a1",
+      "alphaBounds": {
+        "left": 73,
+        "top": 13,
+        "width": 622,
+        "height": 231
+      }
+    },
+    {
+      "path": "ui/shelter-disabled.webp",
+      "label": "Зажечь",
+      "state": "disabled",
+      "bytes": 47492,
+      "sha256": "155f02c6673c7d0e8a69b658e934d11ae580d22c1e3c8db8f0d5c7ae18482b5c",
+      "width": 768,
+      "height": 256,
+      "transparentPixels": 62306,
+      "opaquePixels": 126787,
+      "alphaSha256": "b19e3289ed6d4b33db4da8a6d3ba1f6209e19f408466a69565e54196dfe4c9a1",
+      "alphaBounds": {
+        "left": 73,
+        "top": 13,
+        "width": 622,
+        "height": 231
+      }
+    }
+  ],
+  "controls": {
+    "water": {
+      "label": "Полить",
+      "cell": [
+        0,
+        0
+      ],
+      "crop": {
+        "left": 1,
+        "top": 152,
+        "width": 416,
+        "height": 165
+      },
+      "displaySize": [
+        150,
+        50
+      ],
+      "requiresAccessibleLabel": true
+    },
+    "sway": {
+      "label": "Качнуть",
+      "cell": [
+        1,
+        0
+      ],
+      "crop": {
+        "left": 1,
+        "top": 152,
+        "width": 416,
+        "height": 165
+      },
+      "displaySize": [
+        150,
+        50
+      ],
+      "requiresAccessibleLabel": true
+    },
+    "knock": {
+      "label": "Постучать",
+      "cell": [
+        2,
+        0
+      ],
+      "crop": {
+        "left": 1,
+        "top": 152,
+        "width": 416,
+        "height": 165
+      },
+      "displaySize": [
+        150,
+        50
+      ],
+      "requiresAccessibleLabel": true
+    },
+    "land": {
+      "label": "Позвать",
+      "cell": [
+        0,
+        1
+      ],
+      "crop": {
+        "left": 1,
+        "top": 126,
+        "width": 416,
+        "height": 165
+      },
+      "displaySize": [
+        150,
+        50
+      ],
+      "requiresAccessibleLabel": true
+    },
+    "greet": {
+      "label": "Поздороваться",
+      "cell": [
+        1,
+        1
+      ],
+      "crop": {
+        "left": 1,
+        "top": 126,
+        "width": 416,
+        "height": 165
+      },
+      "displaySize": [
+        150,
+        50
+      ],
+      "requiresAccessibleLabel": true
+    },
+    "brew": {
+      "label": "Заварить",
+      "cell": [
+        2,
+        1
+      ],
+      "crop": {
+        "left": 1,
+        "top": 126,
+        "width": 416,
+        "height": 165
+      },
+      "displaySize": [
+        150,
+        50
+      ],
+      "requiresAccessibleLabel": true
+    },
+    "feed": {
+      "label": "Угостить",
+      "cell": [
+        0,
+        2
+      ],
+      "crop": {
+        "left": 1,
+        "top": 100,
+        "width": 416,
+        "height": 165
+      },
+      "displaySize": [
+        150,
+        50
+      ],
+      "requiresAccessibleLabel": true
+    },
+    "rock": {
+      "label": "Покачать",
+      "cell": [
+        1,
+        2
+      ],
+      "crop": {
+        "left": 1,
+        "top": 100,
+        "width": 416,
+        "height": 165
+      },
+      "displaySize": [
+        150,
+        50
+      ],
+      "requiresAccessibleLabel": true
+    },
+    "shelter": {
+      "label": "Зажечь",
+      "cell": [
+        2,
+        2
+      ],
+      "crop": {
+        "left": 1,
+        "top": 100,
+        "width": 416,
+        "height": 165
+      },
+      "displaySize": [
+        150,
+        50
+      ],
+      "requiresAccessibleLabel": true
+    }
+  },
+  "sources": [
+    {
+      "path": "source/ui/actions-atlas.png",
+      "bytes": 1452255,
+      "sha256": "a864f284075f7494410c079172d47441c3c1ad744a05fda606effb2dc0a3c249"
+    },
+    {
+      "path": "source/ui/pet-reference.webp",
+      "bytes": 86418,
+      "sha256": "0ae1fa8c6b71fc7be283cb662e78f5cf8e69a5140704695d89017322907788d7"
+    },
+    {
+      "path": "source/ui/prompts.json",
+      "bytes": 2817,
+      "sha256": "2297df5d508c40e6763761ecf1c2456c0f3e66fcb0df9bac0f25afe39023f93b"
+    }
+  ]
+}
