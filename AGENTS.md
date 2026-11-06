@@ -8,6 +8,8 @@ The project's ONE user-facing lead is `.agents/skills/game-product-director/SKIL
 
 **Current priority (2026-11-06):** the owner rejected both the two-meadow gameplay and the flower craft study as unenjoyable. Pleasure of making for adult craft hobbyists comes before further scene production; retain the approved visual direction. Follow [Product Critic](product/roles/PRODUCT-CRITIC.md): an independent `product_critic` must challenge substantial gameplay ideas before implementation and review the actual experience before owner presentation. Prototype permission is not proof of fun. See [mechanics research](product/research/MECHANICS-RESEARCH-2026-11-06.md) and open issue #32.
 
+**Later owner clarification:** the [assembly study](product/research/assembly-v1/REVIEW.md) also received RETURN. Rejecting a candidate must not end the requested search: continue with other bounded hypotheses and the independent critic during the active session. The owner explicitly authorized publishing internal reports and selected evidence in GitHub for analysis of development quality and owner/agent participation. Archive negative outcomes too; publication of a report does not authorize presenting an unselected playable demo.
+
 
 This repository contains **historical prototypes** (root, `v3*`, `v4*`) and the **new production foundation** in `product/`. Historical routes are frozen unless the user explicitly requests a fix to one of them. Never copy their HTML/CSS wholesale into the new product.
 
