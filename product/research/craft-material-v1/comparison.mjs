@@ -1,0 +1,10 @@
+import {createRequire} from 'node:module';
+import {fileURLToPath} from 'node:url';
+const require=createRequire(import.meta.url),sharp=require(process.env.SHARP_MODULE);
+const root=fileURLToPath(new URL('../../../',import.meta.url));
+const base=fileURLToPath(new URL('./evidence/',import.meta.url));
+const reference=await sharp(`${root}/design-system/reference-v4.webp`).resize(390,844,{fit:'contain',background:'#f3e8d5'}).png().toBuffer();
+const candidate=await sharp(`${base}/qa-390/00-start.png`).resize(390,844,{fit:'contain',background:'#f3e8d5'}).png().toBuffer();
+const labels=Buffer.from('<svg xmlns="http://www.w3.org/2000/svg" width="796" height="32"><rect width="796" height="32" fill="#f3e8d5"/><g fill="#523e2d" font-family="Arial" font-size="13"><text x="12" y="22">Reference v4 · вписан без растяжения</text><text x="418" y="22">Проба формования · 390×844</text></g></svg>');
+await sharp({create:{width:796,height:876,channels:3,background:'#f3e8d5'}}).composite([{input:labels,left:0,top:0},{input:reference,left:0,top:32},{input:candidate,left:406,top:32}]).png().toFile(`${base}/reference-comparison-v2.png`);
+console.log('Two 390x844 frames, reference 387x620 contained without distortion; 16px gap and 32px labels. No baseline updated.');

@@ -1,0 +1,12 @@
+{
+  "width": 360,
+  "height": 800,
+  "localCut": true,
+  "exactUndoAfterReload": true,
+  "finishPreservesForm": true,
+  "otherSavesUntouched": true,
+  "controlsVisible": true,
+  "noHorizontalOverflow": true,
+  "errors": [],
+  "limits": "Automated Chromium browser; no physical phone, human playtest or art PASS."
+}

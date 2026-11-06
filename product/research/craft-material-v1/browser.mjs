@@ -7,7 +7,7 @@ export async function inspect({name='director',width=390,height=844,record=false
  const {chromium}=await import(pathToFileURL(process.env.PLAYWRIGHT_MODULE).href);
  const out=fileURLToPath(new URL(`./evidence/${name}/`,import.meta.url));await mkdir(out,{recursive:true});
  const server=process.env.PREVIEW_URL?null:await startServer(0);
- const url=process.env.PREVIEW_URL??`http://127.0.0.1:${server.address().port}/product/research/craft-material-v1/prototype/`;
+ const url=process.env.PREVIEW_URL??`http://127.0.0.1:${server.address().port}${process.env.LOCAL_PREVIEW_PATH??'/product/research/craft-material-v1/prototype/'}`;
  if(process.env.PREVIEW_URL&&new URL(url).protocol!=='https:')throw Error('External delivery must use HTTPS');
  const browser=await chromium.launch({headless:true,...(process.env.CHROME_PATH?{executablePath:process.env.CHROME_PATH}:{})});
  const context=await browser.newContext({viewport:{width,height},deviceScaleFactor:1,...(record?{recordVideo:{dir:out,size:{width,height}}}:{})});

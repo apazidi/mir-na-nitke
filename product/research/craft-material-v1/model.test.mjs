@@ -17,6 +17,15 @@ test('a deep cut is possible and undo restores precisely the preceding material'
  const a=cut(m.createState()),b=cut(a,.35);assert.notDeepEqual(a.lengths,b.lengths);
  assert.deepEqual(m.undo(b).lengths,a.lengths);
 });
+test('deep cuts change the silhouette, with no stranded roots beyond the cutting line',()=>{
+ const state=m.createState(),fibers=m.makeFibers(state.seed);
+ const left=m.cutSegment(state,{x:-.47,y:-1.5},{x:-.47,y:1.5}).state;
+ const cap=m.cutSegment(state,{x:-1.5,y:-.72},{x:1.5,y:-.72}).state;
+ const leftEdge=Math.min(...fibers.flatMap(f=>m.visiblePoints(f,left.lengths[f.id]).map(p=>p.x)));
+ const topEdge=Math.min(...fibers.flatMap(f=>m.visiblePoints(f,cap.lengths[f.id]).map(p=>p.y)));
+ assert.ok(leftEdge>=-.470001,`unremoved left material at ${leftEdge}`);
+ assert.ok(topEdge>=-.720001,`unremoved top material at ${topEdge}`);
+});
 test('save, load and finish keep the chosen irregular material instead of a target',()=>{
  const a=cut(m.createState()),b=m.finish(a),c=m.load(m.save(b));
  assert.deepEqual(b.lengths,a.lengths);assert.deepEqual(m.snapshot(c),m.snapshot(b));

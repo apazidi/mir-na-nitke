@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import {inspect} from './browser.mjs';
-await inspect({name:'director-v1',record:true},async({page,snapshot,points,capture,pass,errors})=>{
+await inspect({name:process.env.EVIDENCE_NAME??'director-v1',record:true},async({page,snapshot,points,capture,pass,errors})=>{
  const p=await points(),at=(x,y)=>({x:p.center.x+x*p.scale+(p.gripOffset?.x??0),y:p.center.y+y*p.scale+(p.gripOffset?.y??0)});
  const initial=await capture('00-start');
  await pass('01-empty',[at(-1.65,-1.6),at(-1.45,-1.6),at(-1.25,-1.6)]);

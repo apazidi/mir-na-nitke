@@ -1,0 +1,25 @@
+{
+  "checks": {
+    "undoExact": true,
+    "finishExact": true,
+    "reloadExact": true,
+    "holdExact": true,
+    "initialChanged": 0,
+    "deepChanged": 849
+  },
+  "errors": [],
+  "timings": [
+    {
+      "name": "01-left",
+      "withScreenshotsMs": 915.347500026226
+    },
+    {
+      "name": "02-deep",
+      "withScreenshotsMs": 1331.990700006485
+    },
+    {
+      "name": "06-top",
+      "withScreenshotsMs": 1199.796700000763
+    }
+  ]
+}
