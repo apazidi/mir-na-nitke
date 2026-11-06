@@ -112,6 +112,7 @@ export async function startGameplay(){
  function render(focusOverride){
   const focused=focusOverride??document.activeElement?.dataset.focusKey,scroll=app.querySelector('.project-drawer')?.scrollTop??0,view=session.view;
   const meadow=byMeadow(ui.meadowId),meadowView=view.meadows.find(m=>m.id===meadow.id),project=definition(),scope=ui.screen==='workshop'?'workshop':meadow.id;
+  let absenceText='';
   reactions=reactions.filter(r=>Date.now()-r.at<5000);if(replay&&Date.now()>replay.until)replay=null;
   const reaction=reactions.findLast(r=>r.scope===scope&&r.kind!=='stitch'&&Date.now()-r.at<3400);
   app.replaceChildren();const build=el('p',undefined,'build-label');build.append(el('strong','TECHNICAL PREVIEW — ART NOT APPROVED'),el('span','Черновик · две полянки и общая мастерская'));app.append(build);
@@ -128,11 +129,12 @@ export async function startGameplay(){
    world.append(image(assetUrl(meadow,meadow.art[ui.evening?'backgroundEvening':'backgroundDay']),'','meadow-back scene-art'));
    const travelling=new Set(view.visitors.map(v=>v.itemId));
    for(const slot of placementLayout(meadow,session.state.placements[meadow.id]??{},catalog.items))if(!travelling.has(slot.item.id))renderSprite(world,slot,meadow,meadowView);
-   const visitors=view.visitors.filter(v=>v.meadowId===meadow.id);const recalled=replay?config.worldEvents.find(e=>e.id===replay.eventId):null;
+   // Several activities may overlap during one visit; show the resident once.
+   const visitors=[...new Map(view.visitors.filter(v=>v.meadowId===meadow.id).map(v=>[v.itemId,v])).values()];const recalled=replay?config.worldEvents.find(e=>e.id===replay.eventId):null;
    if(recalled&&!visitors.some(v=>v.itemId===recalled.visitor.itemId))visitors.push({...recalled.visitor,eventId:recalled.id,memory:true});
    for(const visitor of visitors)renderSprite(world,{...visitor,id:visitor.eventId,item:byId(visitor.itemId)},meadow,meadowView,{visitor:true,memory:visitor.memory});
    if(!meadowView.slots.some(s=>s.placed))world.append(el('p','Здесь поселятся ваши новые друзья','world-message compact-message'));
-   const gone=meadowView.slots.find(s=>s.placed&&travelling.has(s.itemId));if(gone)world.append(el('p',byId(gone.itemId).displayName+' сейчас в гостях. Дом продолжает приносить пряжу.','home-absence'));
+   const gone=meadowView.slots.find(s=>s.placed&&travelling.has(s.itemId));if(gone)absenceText=byId(gone.itemId).displayName+' гостит у друзей';
   }
   const header=el('header',undefined,'app-header');
   header.append(button(ui.screen==='workshop'?'Мастерская':meadow.displayName+' ▾',()=>openDrawer('map'),{cls:'place-title',key:'scene-chooser'}),el('span',amount(view.wallet.yarn)+' пряжи','yarn-wallet'),button(ui.evening?'День':'Вечер',()=>{ui.evening=!ui.evening;saveUI();render();},{cls:'button lighting',key:'lighting'}));world.append(header);
@@ -145,7 +147,7 @@ export async function startGameplay(){
   if(replay){const note=el('div',undefined,'story-note memory-note');note.append(el('span','Воспоминание · '+config.worldEvents.find(e=>e.id===replay.eventId).memoryText),button('Закончить',()=>{replay=null;render();},{key:'stop-memory'}));world.append(note);}
   else if(ui.screen==='meadow'&&!reaction){
    const story=view.events.find(e=>e.meadowId===meadow.id&&['waiting','visiting'].includes(e.phase));
-   if(story){const source=config.worldEvents.find(e=>e.id===story.id);world.append(el('p',(story.phase==='waiting'?source.waitingText:source.visitText)+' · '+duration((story.dueAt-session.state.lastTimestamp)/1000),'story-note'));}
+   const notes=[];if(story){const source=config.worldEvents.find(e=>e.id===story.id);notes.push((story.phase==='waiting'?source.waitingText:byId(source.visitor.itemId).displayName+' в гостях')+' · '+duration((story.dueAt-session.state.lastTimestamp)/1000));}if(absenceText)notes.push(absenceText);if(notes.length)world.append(el('p',notes.join(' · '),'story-note'));
   }
   if(drawer)drawerPanel(world,view,meadow,meadowView);
   else{
