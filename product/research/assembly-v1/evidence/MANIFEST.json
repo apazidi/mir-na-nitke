@@ -1,0 +1,135 @@
+{
+  "description": "Selected evidence; observation.json only has its transient localhost origin removed.",
+  "files": [
+    {
+      "path": "critic-v2/00-start.png",
+      "bytes": 195106,
+      "sha256": "a59f234509c360d14258afabd0a1a9fa8cde6e98e9fbf52f24f59f704f156347"
+    },
+    {
+      "path": "critic-v2/01-contact--10.png",
+      "bytes": 201581,
+      "sha256": "d5df217687434ab391b4bb51acf720031524de7d59b055b65b8cc52fc95ed984"
+    },
+    {
+      "path": "critic-v2/01-contact--15.png",
+      "bytes": 201091,
+      "sha256": "f96829ec8ee2af6a8e2ef543d2ce718082936e41d56d51898c880ab0d35caad0"
+    },
+    {
+      "path": "critic-v2/01-contact--5.png",
+      "bytes": 200101,
+      "sha256": "0076e3b8c990809441770aa76bbf6ae61f61b7ab37d9337d61969386daaf4f7b"
+    },
+    {
+      "path": "critic-v2/01-contact-5.png",
+      "bytes": 196024,
+      "sha256": "118a8756e3426e67be8dea887273db7d63d0c5929082d9f2547fe3f1389d70de"
+    },
+    {
+      "path": "critic-v2/07-second-fit.png",
+      "bytes": 190069,
+      "sha256": "6e19063ce311ddfe147c1d705a2ade321082a6ced9cabc3a74d6957c646e1f7d"
+    },
+    {
+      "path": "critic-v2/10-wrong-held.png",
+      "bytes": 185174,
+      "sha256": "44bf7ea7577df6796ef8675919a9d625c20db6aa7cfb4d41288ecb8342115a00"
+    },
+    {
+      "path": "critic-v2/11-wrong-released.png",
+      "bytes": 183942,
+      "sha256": "f16c6d2d8c610baeebaec79f75b9869e9c7b61314f15b494ccfbdb9c9e6b798c"
+    },
+    {
+      "path": "critic-v2/12-wrong-repicked.png",
+      "bytes": 185174,
+      "sha256": "44bf7ea7577df6796ef8675919a9d625c20db6aa7cfb4d41288ecb8342115a00"
+    },
+    {
+      "path": "critic-v2/fit-A-fixed.png",
+      "bytes": 197995,
+      "sha256": "643c0c57f6dae1bc9a9953318c9db8a3ee0ad0408bcb4d6c3b33c01b3b214301"
+    },
+    {
+      "path": "critic-v2/fit-B-fixed.png",
+      "bytes": 195477,
+      "sha256": "2c7aa9f4ff449d4d48a8ec2cd867806827ce9413702285fd00c9bb87fee0a8c9"
+    },
+    {
+      "path": "critic-v2/fit-C-fixed.png",
+      "bytes": 195982,
+      "sha256": "7b5ab42741db68d3fb712e0996691eb33cf5511b2ed7c5b8160716e353d29cef"
+    },
+    {
+      "path": "critic-v2/fit-C-reloaded.png",
+      "bytes": 195982,
+      "sha256": "7b5ab42741db68d3fb712e0996691eb33cf5511b2ed7c5b8160716e353d29cef"
+    },
+    {
+      "path": "critic-v2/observation.json",
+      "bytes": 108469,
+      "sha256": "bb19f596905e422de14d1f79352bf102c97299c00655dd36e6a9250191e18c85"
+    },
+    {
+      "path": "critic-v2/refit-observation.json",
+      "bytes": 5341,
+      "sha256": "460d10072df839f5e173e045b9914d7f92057e0e1929f5c2e35e1db24c6eddf6"
+    },
+    {
+      "path": "critic/adjacent--19.png",
+      "bytes": 200319,
+      "sha256": "79ead2065635f1c97a1d996e56677f44f88e5e2aeb7e4da158d86fd9cec6c993"
+    },
+    {
+      "path": "critic/adjacent--20.png",
+      "bytes": 201976,
+      "sha256": "92087dbe0429aac37529e14ada5af679cc6c8619abf8807c93ec567a252795ee"
+    },
+    {
+      "path": "critic/adjacent-4.png",
+      "bytes": 200319,
+      "sha256": "79ead2065635f1c97a1d996e56677f44f88e5e2aeb7e4da158d86fd9cec6c993"
+    },
+    {
+      "path": "critic/adjacent-5.png",
+      "bytes": 198712,
+      "sha256": "e3d87bee45da436571513a72937c40f2caf2197839aee0e439dc7d96e6653f0d"
+    },
+    {
+      "path": "critic/contact-transition.json",
+      "bytes": 3923,
+      "sha256": "f1a4bd08d1fb5855ca870222bf8e4dff7cc6be6d5641e39a31409e9e28ad6b3a"
+    },
+    {
+      "path": "critic/critic-06-wrong-held.png",
+      "bytes": 185173,
+      "sha256": "a5a5138bf23e9085e6e2799137dd348bc41ec2325b094bfaea46742fc644979d"
+    },
+    {
+      "path": "critic/critic-07-wrong-release.png",
+      "bytes": 194605,
+      "sha256": "7419127fefbacef91cd37c0dfecdebaa0388ac49940f14728c9c199d2fc17810"
+    },
+    {
+      "path": "critic/critic-observation.json",
+      "bytes": 61897,
+      "sha256": "6e73267c48b624528555fbab579df0a8f83a1e17166c94d7457fa49541dacfab"
+    },
+    {
+      "path": "observation.json",
+      "bytes": 34296,
+      "sha256": "8819c6032dde5e1dda6e7701dd18d4482a51a2b5fb453eb3314bcb851ae5a178"
+    },
+    {
+      "path": "reference-comparison.png",
+      "bytes": 1020135,
+      "sha256": "d85a6ffbf626ca48a54a154608dcfd078b5e00af93c8d36256fc1c08f7b91d13"
+    },
+    {
+      "path": "v1-process.webm",
+      "bytes": 2140267,
+      "sha256": "f2e9863f614d5e52607822100aefc472e87c01929d1fb82748e8419ddc117c7a"
+    }
+  ]
+}

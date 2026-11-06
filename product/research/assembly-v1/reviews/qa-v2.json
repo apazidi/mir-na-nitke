@@ -1,0 +1,40 @@
+{
+  "reports": [
+    {
+      "width": 360,
+      "height": 800,
+      "directManipulation": true,
+      "distinctConnections": true,
+      "saveReload": true,
+      "otherSavesUntouched": true,
+      "noOverflow": true,
+      "errors": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "directManipulation": true,
+      "distinctConnections": true,
+      "saveReload": true,
+      "otherSavesUntouched": true,
+      "noOverflow": true,
+      "errors": [],
+      "touch": true,
+      "pointerCancel": true,
+      "keyboard": true,
+      "reducedMotion": true,
+      "corruptSave": true
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "directManipulation": true,
+      "distinctConnections": true,
+      "saveReload": true,
+      "otherSavesUntouched": true,
+      "noOverflow": true,
+      "errors": []
+    }
+  ],
+  "limitation": "Headless Chromium with SwiftShader, not real-device frame-rate or human enjoyment evidence."
+}
