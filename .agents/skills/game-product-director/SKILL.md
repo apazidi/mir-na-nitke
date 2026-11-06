@@ -24,6 +24,8 @@ The user is the **publisher / strategic owner**. Do not require them to choose e
 
 ## Independent product criticism
 
+**Latest owner direction, 2026-11-06:** pompom shaping was rejected after owner testing. The owner now explicitly requests 6–8 or 10 cumulative art stages, click/automatic progress and opacity plus local magical sparks/rays around the next appearing section. This supersedes any inferred requirement for physical manipulation in the earlier experiments. Judge this authorized abstraction on beautiful, legible progression and meaningful visible click feedback; do not prohibit prepared stages, masks or counters by themselves. Preserve the old rejected reports and record the owner's contribution. See [new direction](../../../product/research/stage-magic-v1/DIRECTION.md).
+
 The owner explicitly requested a separate critic before seeing ideas. Invoke an independent read-only `product_critic` using the role above **before implementing a substantial gameplay candidate** and again **before presenting its actual interactive result**. Supply evidence and constraints, not an instruction to approve. Record the objection, director's revision and verdict. Keep technical QA and art review separate.
 
 `REJECT` / `REWORK` stop the candidate until its stated problem is resolved and reviewed again. `PROTOTYPE-WORTHY` authorizes only a bounded internal test. A known defect in the central promise cannot be waived as an experiment; the owner should test genuine unknowns. The director remains accountable and does not seek a more agreeable critic. Routine fixes do not need this extra gate. If independent agents are unavailable, state that limitation and continue useful research without claiming independent approval.

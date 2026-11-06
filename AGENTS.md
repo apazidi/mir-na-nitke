@@ -10,6 +10,8 @@ The project's ONE user-facing lead is `.agents/skills/game-product-director/SKIL
 
 **Later owner clarification:** the [assembly study](product/research/assembly-v1/REVIEW.md) also received RETURN. Rejecting a candidate must not end the requested search: continue with other bounded hypotheses and the independent critic during the active session. The owner explicitly authorized publishing internal reports and selected evidence in GitHub for analysis of development quality and owner/agent participation. Archive negative outcomes too; publication of a report does not authorize presenting an unselected playable demo.
 
+**Latest owner direction, 2026-11-06:** the pompom was [rejected by the owner](product/research/craft-material-v1/OWNER-FEEDBACK.md): trimming had no meaningful purpose or pleasure. The owner explicitly asks to return to **6–8 or 10 cumulative art stages**, click/auto progress, and a beautiful opacity/spark/ray appearance of the next section on an empty meadow. Treat this as authorized magical staged creation; do not require physical crafting simulation or reject counters/masks/transparency merely for being abstractions. Review readability, pacing, local feedback, scale and stage continuity. See [stage-magic-v1](product/research/stage-magic-v1/DIRECTION.md). Existing game/economy integration remains separate from this bounded preview.
+
 
 This repository contains **historical prototypes** (root, `v3*`, `v4*`) and the **new production foundation** in `product/`. Historical routes are frozen unless the user explicitly requests a fix to one of them. Never copy their HTML/CSS wholesale into the new product.
 
