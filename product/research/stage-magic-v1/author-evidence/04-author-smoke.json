@@ -1,0 +1,50 @@
+[
+  {
+    "effect": "sparks",
+    "errors": [],
+    "finished": {
+      "version": 1,
+      "work": 6,
+      "started": true,
+      "auto": false,
+      "lastUpdatedAt": 1793990972627,
+      "completedAt": 1793990971437,
+      "totalSections": 6,
+      "stageIndex": 5,
+      "stageProgress": 1,
+      "stage": 6,
+      "completedSections": 6,
+      "complete": true,
+      "finished": true,
+      "effect": "sparks",
+      "storageAvailable": true,
+      "artReady": true
+    }
+  },
+  {
+    "effect": "wave",
+    "errors": [],
+    "finished": {
+      "version": 1,
+      "work": 6,
+      "started": true,
+      "auto": false,
+      "lastUpdatedAt": 1793990986577,
+      "completedAt": 1793990985382,
+      "totalSections": 6,
+      "stageIndex": 5,
+      "stageProgress": 1,
+      "stage": 6,
+      "completedSections": 6,
+      "complete": true,
+      "finished": true,
+      "effect": "wave",
+      "storageAvailable": true,
+      "artReady": true
+    }
+  },
+  {
+    "autoExplicitPauseReload": "pass",
+    "workAfterFiveSeconds": 0.1470857142857136
+  }
+]

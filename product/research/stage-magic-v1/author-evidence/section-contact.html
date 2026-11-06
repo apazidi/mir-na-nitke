@@ -1,0 +1,15 @@
+<!doctype html><html lang="ru"><meta charset="utf-8"><title>Internal semantic section contact</title>
+<style>body{margin:0;padding:16px;background:#ede0c6;color:#60452e;font:16px Georgia,serif}main{display:grid;grid-template-columns:repeat(3,300px);gap:14px}figure{margin:0}canvas{display:block;width:300px;height:330px;border-radius:12px}figcaption{padding:8px;font-size:14px}</style>
+<main id="contact"></main><script type="module">
+import {loadSections} from '../prototype/sections.mjs';
+const sections=await loadSections(),back=new Image();back.src='../../../../craft-study/assets/meadow.webp';await back.decode();
+for(let completed=1;completed<=sections.length;completed++){
+ const figure=document.createElement('figure'),canvas=document.createElement('canvas');canvas.width=300;canvas.height=330;
+ const context=canvas.getContext('2d'),full=document.createElement('canvas');full.width=390;full.height=844;const c=full.getContext('2d');
+ const cover=Math.max(390/back.width,844/back.height);c.drawImage(back,(390-back.width*cover)/2,(844-back.height*cover)/2,back.width*cover,back.height*cover);
+ const scale=184/730,x=390*.52-500*scale,y=844*.65-1365*scale;
+ for(const entry of sections.map((section,index)=>({section,index})).sort((a,b)=>a.section.z-b.section.z))if(entry.index<completed){const s=entry.section,b=s.bounds;c.drawImage(s.image,x+b[0]*scale,y+b[1]*scale,b[2]*scale,b[3]*scale);}
+ context.drawImage(full,70,300,260,286,0,0,300,330);figure.append(canvas);const label=document.createElement('figcaption');label.textContent=completed+'. '+sections[completed-1].name;figure.append(label);document.querySelector('main').append(figure);
+}
+document.documentElement.dataset.ready='true';
+</script></html>
