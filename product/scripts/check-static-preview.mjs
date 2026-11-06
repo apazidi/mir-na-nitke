@@ -67,6 +67,7 @@ try {
         if (/^https?:/.test(request.url()) && !request.url().startsWith(base.href)) errors.push('Outside bundle: ' + request.url());
       });
       await context.addInitScript(() => {
+        if (!/^https?:$/.test(location.protocol)) return;
         for (const key of ['mir-na-nitke-v1', 'mir-na-nitke-development-v1', 'mir-na-nitke-save']) {
           if (localStorage.getItem(key) === null) localStorage.setItem(key, 'unrelated-save-sentinel');
         }
@@ -95,6 +96,7 @@ try {
     page.on('response', response => { if (response.status() >= 400) errors.push(response.status() + ' ' + response.url()); });
     page.on('request', request => { if (/^https?:/.test(request.url()) && !request.url().startsWith(base.href)) errors.push('Outside bundle: ' + request.url()); });
     await context.addInitScript(() => {
+      if (!/^https?:$/.test(location.protocol)) return;
       for (const key of ['mir-na-nitke-v1', 'mir-na-nitke-development-v1', 'mir-na-nitke-save']) {
         if (localStorage.getItem(key) === null) localStorage.setItem(key, 'unrelated-save-sentinel');
       }
