@@ -1,0 +1,46 @@
+{
+  "artboard": [
+    1024,
+    1820
+  ],
+  "productionStatus": "draft",
+  "missingStages": [],
+  "sources": [
+    {
+      "file": "master-00.png",
+      "width": 1199,
+      "height": 1312,
+      "hasAlpha": true,
+      "transparentPixels": 1449793,
+      "opaquePixels": 1,
+      "totalPixels": 1573088
+    },
+    {
+      "file": "master-01.png",
+      "width": 1199,
+      "height": 1312,
+      "hasAlpha": true,
+      "transparentPixels": 1139494,
+      "opaquePixels": 99,
+      "totalPixels": 1573088
+    },
+    {
+      "file": "master-partial.png",
+      "width": 1199,
+      "height": 1312,
+      "hasAlpha": true,
+      "transparentPixels": 1054609,
+      "opaquePixels": 20,
+      "totalPixels": 1573088
+    },
+    {
+      "file": "master-final.png",
+      "width": 1199,
+      "height": 1312,
+      "hasAlpha": true,
+      "transparentPixels": 669839,
+      "opaquePixels": 14,
+      "totalPixels": 1573088
+    }
+  ]
+}
