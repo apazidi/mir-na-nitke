@@ -25,10 +25,11 @@ export function makeFibers(seed=DEFAULT_SEED){
    const bend=Math.sin(Math.PI*t)*curl,other=Math.sin(Math.PI*t)*otherCurl;
    points.push({x:root.x+dx*t+tangent.x*bend+cross.x*other,y:root.y+dy*t+tangent.y*bend+cross.y*other,z:root.z+dz*t+r*other});
   }
-  fibers.push(Object.freeze({id,points:Object.freeze(points.map(Object.freeze)),normal:Object.freeze({x:nx,y:ny,z:nz}),depth:end.z,width:.014+rnd()*.012,tone:rnd(),phase}));
+  const bounds=Object.freeze({left:Math.min(...points.map(p=>p.x)),right:Math.max(...points.map(p=>p.x)),top:Math.min(...points.map(p=>p.y)),bottom:Math.max(...points.map(p=>p.y))});
+  fibers.push(Object.freeze({id,points:Object.freeze(points.map(Object.freeze)),bounds,normal:Object.freeze({x:nx,y:ny,z:nz}),depth:end.z,width:.014+rnd()*.012,tone:rnd(),phase}));
  }
  const result=Object.freeze(fibers.sort((a,b)=>a.depth-b.depth));
- cache.set(seed,result);return result;
+ cache.set(seed,result);if(cache.size>2)cache.delete(cache.keys().next().value);return result;
 }
 export function createState(seed=DEFAULT_SEED){return{version:VERSION,seed:seed>>>0,lengths:Array(FIBER_COUNT).fill(1),history:[],active:false,finished:false,cutOperations:0,cutCount:0};}
 export function beginPass(state){return state.finished?state:{...state,active:false};}
@@ -43,13 +44,14 @@ function intersection(a,b,c,d){
 }
 export function cutSegment(state,a,b){
  if(state.finished||![a.x,a.y,b.x,b.y].every(Number.isFinite)||Math.hypot(a.x-b.x,a.y-b.y)<.001)return{state,fragments:[],changed:0};
- const fibers=makeFibers(state.seed),changes=[],fragments=[];
+ const fibers=makeFibers(state.seed),changes=[],fragments=[],left=Math.min(a.x,b.x),right=Math.max(a.x,b.x),top=Math.min(a.y,b.y),bottom=Math.max(a.y,b.y);
  for(const fiber of fibers){
+  const box=fiber.bounds;if(box.right<left||box.left>right||box.bottom<top||box.top>bottom)continue;
   const old=state.lengths[fiber.id];let hit=old;
   const max=Math.ceil(old*28);
   for(let j=0;j<max;j++){
    const from=j/28,to=Math.min((j+1)/28,old);
-   const meet=intersection(fiber.points[j],pointAt(fiber,to),a,b);
+   const meet=intersection(fiber.points[j],to===(j+1)/28?fiber.points[j+1]:pointAt(fiber,to),a,b);
    if(!meet)continue;
    const length=from+(to-from)*meet.t;
    if(length>=MIN_LENGTH&&length<hit-.004)hit=length;
