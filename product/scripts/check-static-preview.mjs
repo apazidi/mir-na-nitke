@@ -97,7 +97,14 @@ try {
         if(width===390){
           // New isolated storage for the technical migration fixture.
           const migrationContext=await browser.newContext({viewport:{width,height}});
-          try{const migrationPage=await migrationContext.newPage();migrationPage.on('pageerror',error=>errors.push(error.message));await exerciseStagedMigration(migrationPage,{url:base.href,evidenceDir:evidence});}
+          try{
+            const migrationPage=await migrationContext.newPage();
+            migrationPage.on('pageerror',error=>errors.push(error.message));
+            migrationPage.on('requestfailed',request=>{if(request.failure()?.errorText==='net::ERR_ABORTED'&&verifiedAssets.has(request.url()))return;errors.push(request.url()+': '+request.failure()?.errorText);});
+            migrationPage.on('response',response=>{if(response.status()>=400)errors.push(response.status()+' '+response.url());});
+            migrationPage.on('request',request=>{if(/^https?:/.test(request.url())&&!request.url().startsWith(base.href))errors.push('Outside bundle: '+request.url());});
+            await exerciseStagedMigration(migrationPage,{url:base.href,evidenceDir:evidence});
+          }
           finally{await migrationContext.close();}
         }
         assert.deepEqual(errors,[]);

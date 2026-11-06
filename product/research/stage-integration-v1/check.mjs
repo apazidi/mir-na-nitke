@@ -2,6 +2,8 @@
 import assert from 'node:assert/strict';
 import {mkdir,writeFile} from 'node:fs/promises';
 import path from 'node:path';
+import {fileURLToPath,pathToFileURL} from 'node:url';
+const boot=page=>page.waitForFunction(()=>Boolean(window.__stagedGameplay&&document.querySelector('.meadow-scene')));
 export async function exerciseStagedPlayer(page,{url,evidenceDir,width,height}){
  await mkdir(evidenceDir,{recursive:true});
  const key=name=>page.locator('[data-focus-key="'+name+'"]');
@@ -16,7 +18,7 @@ export async function exerciseStagedPlayer(page,{url,evidenceDir,width,height}){
   await page.screenshot({path:path.join(evidenceDir,`v4-${name}-${width}.png`),fullPage:false});
  };
  const ready=()=>page.waitForFunction(()=>window.__stagedGameplay?.snapshot().craft.ready===true);
- await page.goto(url);await page.locator('[data-gameplay="v4"]').waitFor();await close();
+ await page.goto(url);await boot(page);await close();
  assert.match(await page.locator('meta[name="robots"]').getAttribute('content'),/noindex/);
  let initial=await snapshot();assert.equal(initial.state.craftAuto,false);assert.equal(initial.state.owned.length,0);assert.ok(initial.state.wallet.yarn>=32&&initial.state.wallet.yarn<33);
  await shot('empty-workshop');
@@ -34,17 +36,20 @@ export async function exerciseStagedPlayer(page,{url,evidenceDir,width,height}){
    const clicked=await snapshot();assert.ok(clicked.state.project.work>before.state.project.work,'Keyboard contributes actual work');
    assert.equal(clicked.state.craftAuto,false);
    await page.waitForTimeout(1200);assert.equal((await snapshot()).state.project.work,clicked.state.project.work,'Auto starts paused');
-   await page.reload();await page.locator('[data-gameplay="v4"]').waitFor();await close();await ready();
+   await page.reload();await boot(page);await close();await ready();
    assert.equal((await snapshot()).state.project.work,clicked.state.project.work,'Paused work survives reload');
    await key('craft-auto').click();await page.waitForTimeout(2200);
    const automatic=await snapshot();assert.ok(automatic.state.project.work>=clicked.state.project.work+1.5);
+   await page.goto('about:blank');await page.waitForTimeout(1700);await page.goto(url);
+   await boot(page);await close();await ready();
+   assert.ok((await snapshot()).state.project.work>=automatic.state.project.work+1.5,'Enabled auto continues the paid project while away');
    await key('craft-auto').click();const paused=await snapshot();await page.waitForTimeout(1200);
    assert.equal((await snapshot()).state.project.work,paused.state.project.work);
    report.autoPauseVerified=true;
   }
   while(!(await snapshot()).view.project.canComplete){
    assert.ok(clicks<60,'The base-rate project is bounded at 52 manual clicks');
-   await key('craft').click();clicks++;
+   await key(clicks===13?'craft-art':'craft').click();clicks++;
    if(clicks===12||clicks===28){await page.waitForTimeout(120);await shot(id+'-'+clicks);}
   }
   await ready();await shot(id+'-finished');
@@ -77,7 +82,7 @@ export async function exerciseStagedPlayer(page,{url,evidenceDir,width,height}){
  const postFinish=await snapshot();assert.equal(postFinish.state.project,null);
  assert.deepEqual(postFinish.state.owned,earned.state.owned);assert.deepEqual(postFinish.state.placements,earned.state.placements);
  assert.ok(postFinish.state.wallet.yarn-preFinish.state.wallet.yarn<1,'Repeat finish adds no reward');report.repeatVerified=true;
- await page.reload();await page.locator('[data-gameplay="v4"]').waitFor();await close();
+ await page.reload();await boot(page);await close();
  assert.deepEqual((await snapshot()).state.placements,earned.state.placements);
  await page.emulateMedia({reducedMotion:'reduce'});await key('tab-projects').click();await key('close-drawer').focus();await page.keyboard.press('Shift+Tab');
  assert.equal(await page.evaluate(()=>Boolean(document.activeElement.closest('.project-drawer'))),true,'Drawer traps focus');
@@ -108,12 +113,13 @@ export async function exerciseStagedMigration(page,{url,evidenceDir}){
  act('startRecipe',{recipeId:'invitation'});act('click');
  const rawState=JSON.parse(core.serializeState(source));delete rawState.craftAuto;
  const raw=JSON.stringify(rawState);
- await page.clock.install({time:new Date(now-1)});await page.clock.pauseAt(new Date(now));
+ // Fix Date for exact economy assertions, while keeping rAF and image layout live.
+ await page.clock.setFixedTime(new Date(now));
  await page.addInitScript(({oldKey,newKey,raw})=>{
   if(!/^https?:$/.test(location.protocol))return;
   if(localStorage.getItem(oldKey)===null)localStorage.setItem(oldKey,raw);
  },{oldKey:GAMEPLAY_SAVE_KEY,newKey:STAGED_SAVE_KEY,raw});
- await page.goto(url);await page.locator('[data-gameplay="v4"]').waitFor();
+ await page.goto(url);await boot(page);
  const key=name=>page.locator('[data-focus-key="'+name+'"]');
  const snapshot=()=>page.evaluate(()=>window.__stagedGameplay.snapshot());
  const imported=await snapshot(),expected=core.migrateConfigState(core.deserializeState(raw,old),old,target,now);
@@ -121,6 +127,13 @@ export async function exerciseStagedMigration(page,{url,evidenceDir}){
  assert.equal(imported.state.craftAuto,true,'An old always-on save keeps auto on visibly');
  assert.equal(await page.evaluate(key=>localStorage.getItem(key),GAMEPLAY_SAVE_KEY),raw);
  if(await key('close-drawer').isVisible())await key('close-drawer').click();
+ for(const meadowId of ['test-meadow','kotoutro']){
+  await key('scene-chooser').click();await key('scene-'+meadowId).click();
+  await page.locator('img').evaluateAll(images=>Promise.all(images.map(image=>image.decode())));
+  await page.waitForTimeout(150);
+  assert.equal(await page.locator('.placed-object:not(.visitor)').count(),5,'Imported full meadow retains all residents');
+  await page.screenshot({path:path.join(evidenceDir,`v4-imported-full-${meadowId}-390.png`),fullPage:false});
+ }
  await key('tab-workshop').click();
  assert.equal(await page.locator('.working-yarn').count(),0,'Legacy recipe fallback does not resurrect the rejected animation');
  assert.equal(await key('craft-auto').isVisible(),true);
@@ -130,8 +143,29 @@ export async function exerciseStagedMigration(page,{url,evidenceDir}){
  for(let n=0;!(await snapshot()).view.project.canComplete;n++){assert.ok(n<10);await key('craft').click();}
  await key('craft').click();assert.equal((await snapshot()).state.project,null);
  assert.equal((await snapshot()).state.events['rabbit-visit'].phase,'waiting','Old paid recipe still starts the real visit');
- const completed=await snapshot();await page.reload();await page.locator('[data-gameplay="v4"]').waitFor();
+ const completed=await snapshot();await page.reload();await boot(page);
  assert.deepEqual((await snapshot()).state,completed.state,'Reload does not pay or finish again');
  assert.equal(await page.evaluate(key=>localStorage.getItem(key),GAMEPLAY_SAVE_KEY),raw,'Old raw save remains intact');
  await writeFile(path.join(evidenceDir,'v4-migration.json'),JSON.stringify({result:'PASS',fixture:'Technical old v3 full world, maximum upgrades, active paid invitation and missing historical craftAuto; fixed clock only for migration assertions',sourceYarn:source.wallet.yarn,importedYarn:imported.state.wallet.yarn,sourceWork:source.project.work,importedWork:imported.state.project.work,owned:imported.state.owned.length,oldRawUnchanged:true},null,2)+'\n');
+}
+
+// Focused rerun after v4 repairs. CI still calls both legacy and v4 journeys via check:preview.
+if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url)){
+ const {chromium}=await import(process.env.PLAYWRIGHT_MODULE?pathToFileURL(process.env.PLAYWRIGHT_MODULE).href:'playwright');
+ let server,browser;
+ try{
+  if(!process.env.PREVIEW_URL){const {startServer}=await import('../../scripts/serve-preview.mjs');server=await startServer(0);}
+  const url=process.env.PREVIEW_URL??`http://127.0.0.1:${server.address().port}/play-preview/`;
+  if(process.env.PREVIEW_URL)assert.equal(new URL(url).protocol,'https:');
+  const evidenceDir=fileURLToPath(new URL('../../preview-evidence/',import.meta.url));
+  browser=await chromium.launch({headless:true,...(process.env.CHROME_PATH?{executablePath:process.env.CHROME_PATH}:{})});
+  for(const [width,height] of [[360,800],[390,844],[430,932]]){
+   const context=await browser.newContext({viewport:{width,height},hasTouch:true}),page=await context.newPage(),errors=[];
+   page.on('pageerror',error=>errors.push(error.message));
+   page.on('response',response=>{if(response.status()>=400)errors.push(response.status()+' '+response.url());});
+   page.on('request',request=>{if(/^https?:/.test(request.url())&&!request.url().startsWith(url))errors.push('Outside bundle: '+request.url());});
+   try{await exerciseStagedPlayer(page,{url,evidenceDir,width,height});assert.deepEqual(errors,[]);}finally{await context.close();}
+   if(width===390){const migrationContext=await browser.newContext({viewport:{width,height}});try{const migrationPage=await migrationContext.newPage();migrationPage.on('pageerror',error=>errors.push(error.message));await exerciseStagedMigration(migrationPage,{url,evidenceDir});assert.deepEqual(errors,[]);}finally{await migrationContext.close();}}
+  }
+ }finally{await browser?.close();if(server)await new Promise(resolve=>server.close(resolve));}
 }
