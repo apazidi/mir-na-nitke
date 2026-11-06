@@ -11,7 +11,7 @@ const sha256 = bytes => createHash('sha256').update(bytes).digest('hex');
 const git = (...args) => execFileSync('git', args, {cwd: root, maxBuffer: 32 * 1024 * 1024});
 const appRef = git('rev-parse', 'HEAD').toString().trim();
 const sources = JSON.parse(await readFile(path.join(root, 'product/preview-sources.json'), 'utf8'));
-const saveKey = sources.gameplayReview ? 'mir-na-nitke-gameplay-preview-v3' : 'mir-na-nitke-art-preview-v2';
+const saveKey = sources.stagedReview ? 'mir-na-nitke-gameplay-preview-v4' : sources.gameplayReview ? 'mir-na-nitke-gameplay-preview-v3' : 'mir-na-nitke-art-preview-v2';
 const files = new Map();
 const sourceFiles = new Map();
 const put = (name, bytes) => {
@@ -33,6 +33,8 @@ async function copySource(name) {
   }
 }
 await copySource('product/ui/main.mjs');
+// The semantic mask plan is a runtime JSON resource, not an ES module import.
+if (sourceFiles.has('product/ui/staged-art.mjs')) await copySource('product/ui/staged-plan.json');
 await copySource('product/ui/index.html');
 await copySource('product/ui/shell.css');
 await copySource('design-system/skin-v4.css');
@@ -54,7 +56,7 @@ for (const source of sources.sources) {
   }
 }
 put('product/app/content/catalog.json', JSON.stringify({schemaVersion: 1, items: [], meadows: [], assets: []}, null, 2) + '\n');
-const entryQuery = 'mode=art-review&flower=review' + (sources.sceneReview ? '&scene=v2' : '') + (sources.gameplayReview ? '&gameplay=v3' : '');
+const entryQuery = 'mode=art-review&flower=review' + (sources.sceneReview ? '&scene=v2' : '') + (sources.stagedReview ? '&gameplay=v4' : sources.gameplayReview ? '&gameplay=v3' : '');
 put('index.html', `<!doctype html>
 <html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow"><title>Мир на ниточке — техническое превью</title></head>
@@ -67,6 +69,7 @@ const manifest = {
   productionContent: false,
   sceneReview: sources.sceneReview === true,
   gameplayReview: sources.gameplayReview === true,
+  stagedReview: sources.stagedReview === true,
   saveKey,
   appSourceCommit: git('log', '-1', '--format=%H', '--', ...[...sourceFiles.keys()].sort()).toString().trim(),
   sourceFiles: Object.fromEntries([...sourceFiles].sort(([a], [b]) => a.localeCompare(b))),

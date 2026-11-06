@@ -42,7 +42,7 @@ try {
   const expectedManifest = JSON.parse(await readFile(path.join(root, 'preview-manifest.json'), 'utf8'));
   assert.deepEqual(manifest, expectedManifest, 'The served manifest must match the exact locally reviewed bundle; an older self-consistent deployment is not accepted');
   assert.equal(manifest.productionContent, false);
-  assert.equal(manifest.saveKey, manifest.gameplayReview ? 'mir-na-nitke-gameplay-preview-v3' : 'mir-na-nitke-art-preview-v2');
+  assert.equal(manifest.saveKey, manifest.stagedReview ? 'mir-na-nitke-gameplay-preview-v4' : manifest.gameplayReview ? 'mir-na-nitke-gameplay-preview-v3' : 'mir-na-nitke-art-preview-v2');
   for (const file of manifest.files) {
     const response = await fetch(new URL(file.path, base));
     assert.equal(response.status, 200, file.path);
@@ -72,7 +72,8 @@ try {
           if (localStorage.getItem(key) === null) localStorage.setItem(key, 'unrelated-save-sentinel');
         }
       });
-      await exercisePlayer(page, {url: base.href, evidenceDir: evidence, width, height, saveKey: manifest.saveKey, clock: true});
+      const legacyUrl = manifest.stagedReview ? new URL('product/ui/?mode=art-review&flower=review&scene=v2&gameplay=v3', base).href : base.href;
+      await exercisePlayer(page, {url: legacyUrl, evidenceDir: evidence, width, height, saveKey: 'mir-na-nitke-gameplay-preview-v3', clock: true});
       for (const key of ['mir-na-nitke-v1', 'mir-na-nitke-development-v1', 'mir-na-nitke-save']) {
         assert.equal(await page.evaluate(key => localStorage.getItem(key), key), 'unrelated-save-sentinel');
       }
@@ -80,6 +81,29 @@ try {
       await context.close();
     }
     console.log(`Static two-meadow preview verified: ${base.href}; ${manifest.files.length} integrity checks; real UI commands with controlled test time at 360/390/430.`);
+    if (manifest.stagedReview) {
+      const {exerciseStagedPlayer,exerciseStagedMigration} = await import('../research/stage-integration-v1/check.mjs');
+      for (const [width,height] of [[360,800],[390,844],[430,932]]) {
+        const context = await browser.newContext({viewport:{width,height},hasTouch:true});
+        const page = await context.newPage(), errors=[];
+        page.on('pageerror', error=>errors.push(error.message));
+        page.on('requestfailed', request=>{
+          if(request.failure()?.errorText==='net::ERR_ABORTED'&&verifiedAssets.has(request.url()))return;
+          errors.push(request.url()+': '+request.failure()?.errorText);
+        });
+        page.on('response',response=>{if(response.status()>=400)errors.push(response.status()+' '+response.url());});
+        page.on('request',request=>{if(/^https?:/.test(request.url())&&!request.url().startsWith(base.href))errors.push('Outside bundle: '+request.url());});
+        await exerciseStagedPlayer(page,{url:base.href,evidenceDir:evidence,width,height});
+        if(width===390){
+          // New isolated storage for the technical migration fixture.
+          const migrationContext=await browser.newContext({viewport:{width,height}});
+          try{const migrationPage=await migrationContext.newPage();migrationPage.on('pageerror',error=>errors.push(error.message));await exerciseStagedMigration(migrationPage,{url:base.href,evidenceDir:evidence});}
+          finally{await migrationContext.close();}
+        }
+        assert.deepEqual(errors,[]);
+        await context.close();
+      }
+    }
   } else {
   let fullMeadowSave;
   for (const [width, height] of [[360, 800], [390, 844], [430, 932]]) {
