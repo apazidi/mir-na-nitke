@@ -1,0 +1,30 @@
+import assert from 'node:assert/strict';
+import {writeFile} from 'node:fs/promises';
+import {inspect} from './browser.mjs';
+for(const effect of (process.env.EFFECTS??'sparks,wave').split(','))await inspect({name:`${process.env.EVIDENCE_PREFIX??'director'}-${effect}`,effect,record:process.env.RECORD==='1'},async({page,out,capture,snapshot,errors})=>{
+ const started=Date.now(),events=[];let clicks=0;
+ const tap=async()=>{await page.locator('#craft').click();clicks++;events.push({click:clicks,ms:Date.now()-started,work:(await snapshot()).work});};
+ const to=async count=>{while(clicks<count){await tap();await page.waitForTimeout(260);}};
+ const toStage=async stage=>{while((await snapshot()).stage<stage){await tap();await page.waitForTimeout(260);}};
+ const toProgress=async progress=>{while((await snapshot()).stageProgress<progress){await tap();await page.waitForTimeout(260);}};
+ await capture('00-empty');
+ await tap();await page.waitForTimeout(130);await capture('01-first-response');
+ await page.waitForTimeout(700);await capture('02-first-settled');
+ await to(3);await page.waitForTimeout(800);await capture('03-green-24');
+ await to(6);await page.waitForTimeout(800);await capture('04-green-48');
+ await to(9);await page.waitForTimeout(800);await capture('05-green-72');
+ await toStage(1);await page.waitForTimeout(180);await capture('06-green-locked');
+ await page.waitForTimeout(850);await capture('07-green-stable');
+ await toStage(2);await page.waitForTimeout(850);await capture('08-heart-done');
+ await toProgress(.24);await page.waitForTimeout(800);await capture('09-corolla-near25');
+ await toProgress(.48);await page.waitForTimeout(800);await capture('10-corolla-near50');
+ await toProgress(.72);await page.waitForTimeout(800);await capture('11-corolla-near75');
+ await toStage(3);await page.waitForTimeout(200);await capture('12-daisy-locked');
+ await page.waitForTimeout(900);await capture('13-daisy-stable');
+ while(!(await snapshot()).finished&&clicks<80){await tap();await page.waitForTimeout(130);}
+ assert.equal((await snapshot()).finished,true);await page.waitForTimeout(180);await capture('14-final-response');
+ await page.waitForTimeout(1400);await capture('15-finished');
+ await page.reload();await page.waitForFunction(()=>document.documentElement.dataset.ready==='true');await capture('16-finished-return');
+ assert.deepEqual(errors,[]);await writeFile(`${out}/events.json`,JSON.stringify({effect,clicks,events,errors,limits:'UI-driven observations; timing includes screenshots and automation and is not mobile FPS.'},null,2)+'\n');
+ console.log(effect+': observed complete process with '+clicks+' real button clicks.');
+});

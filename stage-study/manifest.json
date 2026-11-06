@@ -1,0 +1,58 @@
+{
+  "study": "stage-magic-v1",
+  "modelVersion": 1,
+  "sections": 6,
+  "saveKey": "mir-stage-magic-v1",
+  "files": [
+    {
+      "name": "index.html",
+      "bytes": 1952,
+      "sha256": "9480487533093019a29941568f043c3c58da062d6371154a3b5307ca56b4b72a"
+    },
+    {
+      "name": "style.css",
+      "bytes": 3773,
+      "sha256": "a4b333e01f645ccec3c282ea584dc5bcf7e5833a5a63df100e6178b5be171dd5"
+    },
+    {
+      "name": "model.mjs",
+      "bytes": 3958,
+      "sha256": "ea3aa2a14061931426f0135c1e1c39c420a38e7cac23e1d839aa2ea77a7a8971"
+    },
+    {
+      "name": "sections.mjs",
+      "bytes": 5077,
+      "sha256": "1f789545f98d09a8990c4fcbd9c40ac0b98b5f04de9f074326bc131f4fe05c36"
+    },
+    {
+      "name": "app.mjs",
+      "bytes": 12637,
+      "sha256": "4fa1b873c427bb5975b4fa3bc37b0173cb7f4496dde3891499f5370a5e2585b7"
+    },
+    {
+      "name": "assets/skin-v4.css",
+      "bytes": 8213,
+      "sha256": "e4f36c8097902532bbafde6589a5d916965f2b8881fd93a934d847b07d982b4c"
+    },
+    {
+      "name": "assets/meadow.webp",
+      "bytes": 638600,
+      "sha256": "eaab42d57bab1cf48ef28fe4c687e1a41688374628e94c88568b38ffb40310a3"
+    },
+    {
+      "name": "assets/flower-base.webp",
+      "bytes": 176686,
+      "sha256": "6dfce439bcfe141d6627d68933128cad08151e44cefc6e329fc3272f87c905ba"
+    },
+    {
+      "name": "assets/flower.webp",
+      "bytes": 305534,
+      "sha256": "22c67d96fc833401fb4220ba6c76d113a58287705c5eddd9a489f5ab45b0eda3"
+    },
+    {
+      "name": "assets/knit.webp",
+      "bytes": 89786,
+      "sha256": "a7c9c10755d28cbdadc1c4831d0cb5c80db71fa36c25a6b237e817524c89ecbc"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+import {createRequire} from 'node:module';
+import {fileURLToPath} from 'node:url';
+const sharp=createRequire(import.meta.url)(process.env.SHARP_MODULE);
+const root=fileURLToPath(new URL('../../../',import.meta.url)),base=fileURLToPath(new URL('./evidence/',import.meta.url));
+const reference=await sharp(`${root}/design-system/reference-v4.webp`).resize(390,844,{fit:'contain',background:'#f4ead8'}).png().toBuffer();
+const qaPrefix=process.env.QA_PREFIX??'qa-v2',observationPrefix=process.env.OBSERVATION_PREFIX??'director-v2-sparks';
+const candidate=await sharp(`${base}/${qaPrefix}-390/04-finished.png`).png().toBuffer();
+const labels=Buffer.from('<svg xmlns="http://www.w3.org/2000/svg" width="796" height="32"><rect width="796" height="32" fill="#f4ead8"/><g fill="#583e2b" font-family="Arial" font-size="12"><text x="10" y="21">Reference v4 · без растяжения</text><text x="416" y="21">Поэтапное появление · 390×844</text></g></svg>');
+await sharp({create:{width:796,height:876,channels:3,background:'#f4ead8'}}).composite([{input:labels,left:0,top:0},{input:reference,left:0,top:32},{input:candidate,left:406,top:32}]).png().toFile(`${base}/reference-comparison.png`);
+const frames=['02-first-settled','03-green-24','04-green-48','05-green-72','07-green-stable','15-finished'];
+const patches=[];
+for(let i=0;i<frames.length;i++)patches.push({input:await sharp(`${base}/${observationPrefix}/${frames[i]}.png`).extract({left:72,top:320,width:250,height:270}).png().toBuffer(),left:(i%3)*260,top:Math.floor(i/3)*280});
+await sharp({create:{width:770,height:550,channels:3,background:'#f4ead8'}}).composite(patches).png().toFile(`${base}/progress-detail.png`);
+console.log('Reference and actual final use equal 390×844 frames. Detail strip: first click,24%,48%,72%,green complete,final.');

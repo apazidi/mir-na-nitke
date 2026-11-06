@@ -1,0 +1,88 @@
+{
+  "reviewedSHA": "16d44b85cf6c4dd139d19f5b8dad7a09c216799c",
+  "runtimeRepair": "4f3db4b",
+  "result": "PASS",
+  "bundleFileCount": 10,
+  "bundleBytes": 1246216,
+  "bundleMatchesNormalizedSources": true,
+  "rasterAssetsUnchanged": true,
+  "unexpectedBundleFiles": false,
+  "reviewedFiles": [
+    {
+      "name": "product/research/stage-magic-v1/prototype/index.html",
+      "canonicalLFBytes": 2019,
+      "canonicalLFSHA256": "79de2a83d7389528df41268af65c7f643a4f433ca2af48a8778267161d072bbe"
+    },
+    {
+      "name": "product/research/stage-magic-v1/prototype/style.css",
+      "canonicalLFBytes": 3773,
+      "canonicalLFSHA256": "a4b333e01f645ccec3c282ea584dc5bcf7e5833a5a63df100e6178b5be171dd5"
+    },
+    {
+      "name": "product/research/stage-magic-v1/prototype/model.mjs",
+      "canonicalLFBytes": 3958,
+      "canonicalLFSHA256": "ea3aa2a14061931426f0135c1e1c39c420a38e7cac23e1d839aa2ea77a7a8971"
+    },
+    {
+      "name": "product/research/stage-magic-v1/prototype/sections.mjs",
+      "canonicalLFBytes": 5125,
+      "canonicalLFSHA256": "3960dca298e4cf1cf18beef0c7397749ce2931aff0f0a73f360626ad0e47cd92"
+    },
+    {
+      "name": "product/research/stage-magic-v1/prototype/app.mjs",
+      "canonicalLFBytes": 12637,
+      "canonicalLFSHA256": "4fa1b873c427bb5975b4fa3bc37b0173cb7f4496dde3891499f5370a5e2585b7"
+    },
+    {
+      "name": "product/research/stage-magic-v1/browser.mjs",
+      "canonicalLFBytes": 2138,
+      "canonicalLFSHA256": "b6e16911ad09a325a3a05eb89ea419e16327b9ab91e8e706aa59918f2e1aaace"
+    },
+    {
+      "name": "product/research/stage-magic-v1/check.mjs",
+      "canonicalLFBytes": 4766,
+      "canonicalLFSHA256": "f1586d1a520daf8d4c705142c2e4987751408500d9231ffd5336549b49ad94f1"
+    },
+    {
+      "name": "product/research/stage-magic-v1/model.test.mjs",
+      "canonicalLFBytes": 4343,
+      "canonicalLFSHA256": "53c974d464e843612d967311e7828ac624c092f550f5d78e156d5b5a6508a09b"
+    },
+    {
+      "name": "product/research/stage-magic-v1/build.mjs",
+      "canonicalLFBytes": 2292,
+      "canonicalLFSHA256": "cc109614873e88989e7a67ed83c4ab84075888d274ffbd3080be7b499f23b84a"
+    },
+    {
+      "name": "product/research/stage-magic-v1/check-delivered.mjs",
+      "canonicalLFBytes": 1028,
+      "canonicalLFSHA256": "25e2ad143a5f5d7ad628e51d88f3051c86a3045fac3018d79fa68fc13f4e0db7"
+    },
+    {
+      "name": "product/research/stage-magic-v1/verify-public.mjs",
+      "canonicalLFBytes": 2671,
+      "canonicalLFSHA256": "35846ebbbfc0666ee96b13a098e5219a24512eb6a8b8c2fdbf9f02776babc000"
+    },
+    {
+      "name": "product/research/stage-magic-v1/observe.mjs",
+      "canonicalLFBytes": 2659,
+      "canonicalLFSHA256": "24631eeae0540ac50d4837f88c70fe7e58570aa8235a9cdcec7e6ee9a3cd0f52"
+    },
+    {
+      "name": "product/research/stage-magic-v1/comparison.mjs",
+      "canonicalLFBytes": 1827,
+      "canonicalLFSHA256": "d487bc305f3c10f8219308c9589662ad5af5bb73e87a7320d0e27b42504ccc1e"
+    },
+    {
+      "name": ".github/workflows/content-qa.yml",
+      "canonicalLFBytes": 5867,
+      "canonicalLFSHA256": "52398dd20383f82b2c137d4932493a5c4dc90775ee7c4d7efa68e9c196c35f3b"
+    },
+    {
+      "name": "stage-study/manifest.json",
+      "canonicalLFBytes": 1620,
+      "canonicalLFSHA256": "af99db037779d78f97aec524d558b4d181376701f1d973da0e10fee2caa8d084"
+    }
+  ],
+  "note": "Hashes normalize textual CRLF to LF to bind repository content across Windows/Linux; bundle manifest hashes are exact published bytes. Local independent file verification; not an external HTTPS receipt."
+}

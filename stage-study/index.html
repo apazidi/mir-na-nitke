@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Цветочная полянка — техническая проба</title>
+  <link rel="stylesheet" href="assets/skin-v4.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="design-v4 app-wrap study">
+    <section class="meadow-scene" aria-label="Цветочная полянка">
+      <img class="meadow-back" src="assets/meadow.webp" alt="">
+      <canvas id="scene" aria-label="Цветы постепенно появляются на полянке"></canvas>
+      <header class="scene-heading">
+        <div class="preview">TECHNICAL PREVIEW — ART NOT APPROVED</div>
+        <h1>Цветочная полянка</h1>
+      </header>
+      <div id="offline" role="status" hidden></div>
+      <div class="dock">
+        <div class="phase" aria-live="off"><span id="phase">Первые цветы</span><span id="step"></span><div class="thread-meter"><i id="meter"></i></div></div>
+        <p id="hint">Нажимайте «Вязать» — появится первая часть.</p>
+        <div class="actions">
+          <button id="craft" class="art-button" aria-label="Вязать — ускорить появление"><img src="assets/knit.webp" alt=""></button>
+          <button id="auto" class="textile-button" aria-pressed="false">Авто: выкл.</button>
+          <button id="reset" class="textile-button repeat" hidden>Создать ещё раз</button>
+        </div>
+        <p id="status" role="status" aria-live="polite"></p>
+      </div>
+      <p id="error" role="alert" hidden>Не удалось загрузить материал. Обновите страницу.</p>
+    </section>
+  </main>
+  <script type="module" src="app.mjs"></script>
+</body>
+</html>

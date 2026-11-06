@@ -1,0 +1,46 @@
+{
+  "reviewedSHA": "16d44b85cf6c4dd139d19f5b8dad7a09c216799c",
+  "runtimeRepair": "4f3db4b",
+  "repositoryModelTests": 7,
+  "independentOracle": "Integer effort in milliseconds: costs [35000,11200,35000,11200,35000,16800], click=2800; not the model budget conversion helpers.",
+  "randomOperations": 20000,
+  "randomAutoCompletions": 58,
+  "allSixBoundaries": [
+    {
+      "timeMs": 35000,
+      "sections": 1
+    },
+    {
+      "timeMs": 46200,
+      "sections": 2
+    },
+    {
+      "timeMs": 81200,
+      "sections": 3
+    },
+    {
+      "timeMs": 92400,
+      "sections": 4
+    },
+    {
+      "timeMs": 127400,
+      "sections": 5
+    },
+    {
+      "timeMs": 144200,
+      "sections": 6
+    }
+  ],
+  "oneMillisecondPartitions": 144300,
+  "exactCompletedAt": 144200,
+  "immutableInputs": true,
+  "roundTripEveryRandomStep": true,
+  "invalidSaveCases": 7,
+  "result": "PASS",
+  "limits": "Pure model checks; no claim of UI appearance, human enjoyment or actual mobile performance.",
+  "randomSeed": 9281347,
+  "randomGenerator": "LCG high-bit scaled ranges",
+  "randomCompletedTrials": 100,
+  "randomAutoToggleOperations": 5094,
+  "randomClockRollbacks": 3954
+}

@@ -1,0 +1,45 @@
+{
+  "reviewedSHA": "16d44b85cf6c4dd139d19f5b8dad7a09c216799c",
+  "route": "stage-study/",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "reports": [
+    {
+      "mode": "denied",
+      "initial": "Прогресс доступен только пока открыта страница: сохранение недоступно.",
+      "completedStatus": "Прогресс доступен только пока открыта страница: сохранение недоступно.",
+      "ordinaryClicks": 52,
+      "workAfterReturn": 6,
+      "recoveryPreservesWork": true,
+      "allFiveOldKeysUntouched": true,
+      "externalRequests": [],
+      "errors": []
+    },
+    {
+      "mode": "write-denied",
+      "initial": "",
+      "completedStatus": "Прогресс доступен только пока открыта страница: сохранение недоступно.",
+      "ordinaryClicks": 52,
+      "workAfterReturn": 6,
+      "recoveryPreservesWork": true,
+      "allFiveOldKeysUntouched": true,
+      "externalRequests": [],
+      "errors": []
+    },
+    {
+      "mode": "corrupt",
+      "initial": "Сохранение не прочиталось. Открыта пустая полянка.",
+      "completedStatus": "",
+      "ordinaryClicks": 1,
+      "workAfterReturn": 0.08,
+      "recoveryPreservesWork": true,
+      "allFiveOldKeysUntouched": true,
+      "externalRequests": [],
+      "errors": []
+    }
+  ],
+  "fixture": "Injected once per isolated context; restoring Storage methods genuinely removes the fault before return. An initial harness attempt re-injected on every navigation and was corrected; no runtime change.",
+  "limits": "Storage faults injected in isolated Chrome contexts; progress used real UI clicks. Local bundle only; not external HTTPS, human enjoyment or mobile performance evidence."
+}
