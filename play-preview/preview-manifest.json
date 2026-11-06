@@ -4,11 +4,11 @@
   "productionContent": false,
   "sceneReview": true,
   "saveKey": "mir-na-nitke-art-preview-v2",
-  "appSourceCommit": "31a8316b58f93947dbc708f62b01cd919167ed15",
+  "appSourceCommit": "0a5cd0fc99cc713566890b17375a43f4f53980c8",
   "sourceFiles": {
     "design-system/skin-v4.css": "e4f36c8097902532bbafde6589a5d916965f2b8881fd93a934d847b07d982b4c",
     "product/app/content/index.mjs": "00b9669ff7929c556b0b22b0dc1d54a8a717f80898af6668c6f674ae76033dff",
-    "product/app/core/index.mjs": "8719548d829d22c499e06c21c3c363aa80020daa2881ea52c57f082b1dbade16",
+    "product/app/core/index.mjs": "6d795249d0d9c4631760244a05178ecff15f9437dd144e4820d6c1c39b8c9dd6",
     "product/app/ui/session.mjs": "b3bd6367312130aae5ab906577c3aae1fa9018ecd2bd37a623f15c430c6d555d",
     "product/ui/dev-catalog.mjs": "0cde75c784a37c47c3ea32a82c234b0aabfe38e5bc5029b1a2c7b84ee797c05b",
     "product/ui/index.html": "a0c11afe2326ccd9bc123d5fd75403be00a2943e3b328344958514a2c0542dc5",
@@ -121,8 +121,8 @@
     },
     {
       "path": "product/app/core/index.mjs",
-      "bytes": 11861,
-      "sha256": "8719548d829d22c499e06c21c3c363aa80020daa2881ea52c57f082b1dbade16"
+      "bytes": 19379,
+      "sha256": "6d795249d0d9c4631760244a05178ecff15f9437dd144e4820d6c1c39b8c9dd6"
     },
     {
       "path": "product/app/ui/session.mjs",
