@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="ru">
+<head>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width,initial-scale=1">
+ <meta name="robots" content="noindex,nofollow">
+ <title>Мир на ниточке · этюд изготовления</title>
+ <link rel="stylesheet" href="../design-system/skin-v4.css">
+ <link rel="stylesheet" href="./study.css">
+</head>
+<body>
+ <main class="study">
+  <p class="preview"><strong>TECHNICAL PREVIEW — ART NOT APPROVED</strong><span>Этюд изготовления · отдельная проба, не новая версия игры</span></p>
+  <section class="atelier" aria-label="Изготовление цветочной композиции">
+   <img class="backdrop" src="./assets/workshop.webp" alt="">
+   <header><span class="eyebrow">МИР НА НИТОЧКЕ · МАСТЕРСКАЯ</span><h1>Лепесток за лепестком</h1></header>
+   <button id="surface" class="surface" type="button" aria-label="Добавить фрагмент лепестка"><canvas id="work" aria-hidden="true"></canvas></button>
+   <div class="dock">
+    <p id="phase" class="phase">Ромашка · первый лепесток</p>
+    <p id="hint" class="hint">Касайтесь изделия или удерживайте «Вязать».</p>
+    <button id="craft" class="art-button" type="button" aria-label="Вязать"><img src="./assets/knit.webp" alt=""></button>
+    <button id="next" class="art-button" type="button" hidden aria-label="Продолжить"><img src="./assets/complete.webp" alt=""></button>
+   </div>
+  </section>
+  <footer><button id="restart" type="button">Начать этюд заново</button><a href="../play-preview/">Текущая игра</a></footer>
+  <p id="announcement" class="sr-only" role="status" aria-live="polite"></p>
+  <p id="error" role="alert" hidden></p>
+ </main>
+ <script type="module" src="./study.mjs"></script>
+</body></html>
