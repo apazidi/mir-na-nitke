@@ -1,0 +1,5897 @@
+{
+  "runtime": "e2b137657278cec06b0f202a861f1a2d7018bfca",
+  "clock": "Real time; UI-earned neighbors, no grants",
+  "records": [
+    {
+      "name": "00-neighbors-earned",
+      "t": 6.521,
+      "snapshot": {
+        "state": {
+          "version": 2,
+          "lastTimestamp": 1794002040784,
+          "craftAuto": false,
+          "wallet": {
+            "yarn": 22.08952500000004
+          },
+          "project": null,
+          "owned": [
+            "rabbit",
+            "flower"
+          ],
+          "placements": {
+            "test-meadow": {
+              "rabbit": "rabbit",
+              "flower": "flower"
+            }
+          },
+          "upgrades": {},
+          "cooldowns": {
+            "test-meadow/pet": 1794002038483,
+            "test-meadow/water": 1794002040784,
+            "test-meadow/sniff": 1794002130784
+          },
+          "transactionSequence": 2,
+          "events": {},
+          "memories": {},
+          "accrual": {
+            "baseYarn": 22.08952500000004,
+            "baseWork": 0,
+            "elapsedMs": 0,
+            "automatic": {},
+            "events": {}
+          }
+        },
+        "view": {
+          "wallet": {
+            "yarn": 22.08952500000004
+          },
+          "owned": [
+            "rabbit",
+            "flower"
+          ],
+          "craftAuto": false,
+          "rates": {
+            "click": 2.8,
+            "idle": 1,
+            "yarnPerHour": 212
+          },
+          "project": null,
+          "projects": [
+            {
+              "itemId": "rabbit",
+              "yarnCost": 5,
+              "unlocked": true,
+              "canStart": false,
+              "canRecraft": true
+            },
+            {
+              "itemId": "flower",
+              "yarnCost": 5,
+              "unlocked": true,
+              "canStart": false,
+              "canRecraft": true
+            },
+            {
+              "itemId": "tree",
+              "yarnCost": 12,
+              "unlocked": true,
+              "canStart": true,
+              "canRecraft": false
+            },
+            {
+              "itemId": "house",
+              "yarnCost": 30,
+              "unlocked": false,
+              "canStart": false,
+              "canRecraft": false
+            },
+            {
+              "itemId": "butterfly",
+              "yarnCost": 36,
+              "unlocked": false,
+              "canStart": false,
+              "canRecraft": false
+            },
+            {
+              "itemId": "kot-cat",
+              "yarnCost": 10,
+              "unlocked": false,
+              "canStart": false,
+              "canRecraft": false
+            },
+            {
+              "itemId": "kot-coffee",
+              "yarnCost": 14,
+              "unlocked": false,
+              "canStart": false,
+              "canRecraft": false
+            },
+            {
+              "itemId": "kot-duck",
+              "yarnCost": 18,
+              "unlocked": false,
+              "canStart": false,
+              "canRecraft": false
+            },
+            {
+              "itemId": "kot-chair",
+              "yarnCost": 28,
+              "unlocked": false,
+              "canStart": false,
+              "canRecraft": false
+            },
+            {
+              "itemId": "kot-leaf-house",
+              "yarnCost": 34,
+              "unlocked": false,
+              "canStart": false,
+              "canRecraft": false
+            }
+          ],
+          "recipes": [
+            {
+              "recipeId": "invitation",
+              "yarnCost": 6,
+              "unlocked": false,
+              "canStart": false
+            },
+            {
+              "recipeId": "picnic-gift",
+              "yarnCost": 18,
+              "unlocked": false,
+              "canStart": false
+            }
+          ],
+          "upgrades": [
+            {
+              "id": "hook",
+              "target": "click",
+              "level": 0,
+              "cost": 2,
+              "current": 2.8,
+              "next": 3.15,
+              "maxed": false,
+              "canBuy": false
+            },
+            {
+              "id": "basket",
+              "target": "idle",
+              "level": 0,
+              "cost": 3,
+              "current": 1,
+              "next": 1.08,
+              "maxed": false,
+              "canBuy": false
+            }
+          ],
+          "meadows": [
+            {
+              "id": "test-meadow",
+              "unlocked": true,
+              "slots": [
+                {
+                  "id": "rabbit",
+                  "itemId": "rabbit",
+                  "x": 0.36,
+                  "y": 0.55,
+                  "scale": 1.85,
+                  "z": 3,
+                  "placed": true,
+                  "canPlace": false
+                },
+                {
+                  "id": "flower",
+                  "itemId": "flower",
+                  "x": 0.64,
+                  "y": 0.59,
+                  "scale": 1.05,
+                  "z": 4,
+                  "placed": true,
+                  "canPlace": false
+                },
+                {
+                  "id": "tree",
+                  "itemId": "tree",
+                  "x": 0.2,
+                  "y": 0.33,
+                  "scale": 1.4,
+                  "z": 1,
+                  "placed": false,
+                  "canPlace": false
+                },
+                {
+                  "id": "house",
+                  "itemId": "house",
+                  "x": 0.77,
+                  "y": 0.31,
+                  "scale": 1,
+                  "z": 0,
+                  "placed": false,
+                  "canPlace": false
+                },
+                {
+                  "id": "butterfly",
+                  "itemId": "butterfly",
+                  "x": 0.7,
+                  "y": 0.23,
+                  "scale": 0.4,
+                  "z": 5,
+                  "placed": false,
+                  "canPlace": false
+                }
+              ],
+              "interactions": [
+                {
+                  "id": "pet",
+                  "action": "pet",
+                  "actorSlot": "rabbit",
+                  "trigger": "manual",
+                  "amount": 0.7,
+                  "workBonus": 0,
+                  "active": true,
+                  "available": true,
+                  "readyAt": 1794002038483
+                },
+                {
+                  "id": "water",
+                  "action": "water",
+                  "actorSlot": "flower",
+                  "trigger": "manual",
+                  "amount": 0.6,
+                  "workBonus": 2,
+                  "active": true,
+                  "available": true,
+                  "readyAt": 1794002040784
+                },
+                {
+                  "id": "sway",
+                  "action": "sway",
+                  "actorSlot": "tree",
+                  "trigger": "manual",
+                  "amount": 0.8,
+                  "workBonus": 1,
+                  "active": false,
+                  "available": false,
+                  "readyAt": null
+                },
+                {
+                  "id": "knock",
+                  "action": "knock",
+                  "actorSlot": "house",
+                  "trigger": "manual",
+                  "amount": 1.2,
+                  "workBonus": 0,
+                  "active": false,
+                  "available": false,
+                  "readyAt": null
+                },
+                {
+                  "id": "land",
+                  "action": "land",
+                  "actorSlot": "butterfly",
+                  "trigger": "manual",
+                  "amount": 0.8,
+                  "workBonus": 0,
+                  "active": false,
+                  "available": false,
+                  "readyAt": null
+                },
+                {
+                  "id": "sniff",
+                  "action": "sniff",
+                  "actorSlot": "rabbit",
+                  "trigger": "idle",
+                  "amount": 0.6,
+                  "workBonus": 0,
+                  "active": true,
+                  "available": false,
+                  "readyAt": 1794002130784
+                }
+              ]
+            },
+            {
+              "id": "kotoutro",
+              "unlocked": false,
+              "slots": [
+                {
+                  "id": "kot-cat",
+                  "itemId": "kot-cat",
+                  "x": 0.42,
+                  "y": 0.61,
+                  "scale": 1.2,
+                  "z": 4,
+                  "placed": false,
+                  "canPlace": false
+                },
+                {
+                  "id": "kot-coffee",
+                  "itemId": "kot-coffee",
+                  "x": 0.72,
+                  "y": 0.61,
+                  "scale": 0.65,
+                  "z": 5,
+                  "placed": false,
+                  "canPlace": false
+                },
+                {
+                  "id": "kot-duck",
+                  "itemId": "kot-duck",
+                  "x": 0.73,
+                  "y": 0.46,
+                  "scale": 0.65,
+                  "z": 2,
+                  "placed": false,
+                  "canPlace": false
+                },
+                {
+                  "id": "kot-chair",
+                  "itemId": "kot-chair",
+                  "x": 0.25,
+                  "y": 0.405,
+                  "scale": 0.8,
+                  "z": 1,
+                  "placed": false,
+                  "canPlace": false
+                },
+                {
+                  "id": "kot-leaf-house",
+                  "itemId": "kot-leaf-house",
+                  "x": 0.74,
+                  "y": 0.24,
+                  "scale": 0.75,
+                  "z": 0,
+                  "placed": false,
+                  "canPlace": false
+                }
+              ],
+              "interactions": [
+                {
+                  "id": "greet",
+                  "action": "greet",
+                  "actorSlot": "kot-cat",
+                  "trigger": "manual",
+                  "amount": 0.8,
+                  "workBonus": 0,
+                  "active": false,
+                  "available": false,
+                  "readyAt": null
+                },
+                {
+                  "id": "brew",
+                  "action": "brew",
+                  "actorSlot": "kot-coffee",
+                  "trigger": "manual",
+                  "amount": 0.7,
+                  "workBonus": 3,
+                  "active": false,
+                  "available": false,
+                  "readyAt": null
+                },
+                {
+                  "id": "feed",
+                  "action": "feed",
+                  "actorSlot": "kot-duck",
+                  "trigger": "manual",
+                  "amount": 0.9,
+                  "workBonus": 0,
+                  "active": false,
+                  "available": false,
+                  "readyAt": null
+                },
+                {
+                  "id": "rock",
+                  "action": "rock",
+                  "actorSlot": "kot-chair",
+                  "trigger": "manual",
+                  "amount": 0.4,
+                  "workBonus": 4,
+                  "active": false,
+                  "available": false,
+                  "readyAt": null
+                },
+                {
+                  "id": "shelter",
+                  "action": "shelter",
+                  "actorSlot": "kot-leaf-house",
+                  "trigger": "manual",
+                  "amount": 0.6,
+                  "workBonus": 0,
+                  "active": false,
+                  "available": false,
+                  "readyAt": null
+                },
+                {
+                  "id": "coffee-time",
+                  "action": "brew",
+                  "actorSlot": "kot-coffee",
+                  "trigger": "idle",
+                  "amount": 0.7,
+                  "workBonus": 0,
+                  "active": false,
+                  "available": false,
+                  "readyAt": null
+                }
+              ]
+            }
+          ],
+          "events": [
+            {
+              "id": "duck-visit",
+              "meadowId": "test-meadow",
+              "unlocked": false,
+              "phase": "locked",
+              "dueAt": null,
+              "count": 0
+            },
+            {
+              "id": "rabbit-visit",
+              "meadowId": "kotoutro",
+              "unlocked": false,
+              "phase": "locked",
+              "dueAt": null,
+              "count": 0
+            },
+            {
+              "id": "friendship-picnic",
+              "meadowId": "kotoutro",
+              "unlocked": false,
+              "phase": "locked",
+              "dueAt": null,
+              "count": 0
+            }
+          ],
+          "visitors": [],
+          "memories": {}
+        },
+        "ui": {
+          "screen": "meadow",
+          "meadowId": "test-meadow",
+          "evening": false,
+          "selected": {
+            "test-meadow": "flower"
+          }
+        },
+        "craft": {
+          "itemId": "flower",
+          "sectionIndex": 6,
+          "sectionProgress": 0,
+          "ready": false,
+          "error": null
+        }
+      },
+      "points": {
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "item": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "sections": [
+          {
+            "id": "green-foundation",
+            "name": "Мох, стебли и листья",
+            "x": 0,
+            "y": 0
+          },
+          {
+            "id": "white-centre",
+            "name": "Сердцевина ромашки",
+            "x": 0,
+            "y": 0
+          },
+          {
+            "id": "white-corolla",
+            "name": "Белый венчик",
+            "x": 0,
+            "y": 0
+          },
+          {
+            "id": "pink-centre",
+            "name": "Тёплая сердцевина",
+            "x": 0,
+            "y": 0
+          },
+          {
+            "id": "pink-corolla",
+            "name": "Розовый венчик",
+            "x": 0,
+            "y": 0
+          },
+          {
+            "id": "closed-bud",
+            "name": "Последний бутон",
+            "x": 0,
+            "y": 0
+          }
+        ],
+        "controls": {
+          "object-rabbit": {
+            "x": 87.1171875,
+            "y": 359.859375,
+            "width": 125.984375,
+            "height": 230
+          },
+          "object-flower": {
+            "x": 206.015625,
+            "y": 432.6171875,
+            "width": 150,
+            "height": 165.171875
+          },
+          "scene-chooser": {
+            "x": 20,
+            "y": 51,
+            "width": 204.96875,
+            "height": 44
+          },
+          "lighting": {
+            "x": 322,
+            "y": 51,
+            "width": 48,
+            "height": 44
+          },
+          "open-memories": {
+            "x": 263.5,
+            "y": 107,
+            "width": 106.5,
+            "height": 44
+          },
+          "next-project": {
+            "x": 120,
+            "y": 681,
+            "width": 150,
+            "height": 50
+          },
+          "tab-workshop": {
+            "x": 18,
+            "y": 742,
+            "width": 116,
+            "height": 84
+          },
+          "tab-meadow": {
+            "x": 137,
+            "y": 742,
+            "width": 116,
+            "height": 84
+          },
+          "tab-projects": {
+            "x": 256,
+            "y": 742,
+            "width": 116,
+            "height": 84
+          }
+        }
+      },
+      "placed": []
+    },
+    {
+      "name": "01-tree-start",
+      "t": 6.72,
+      "snapshot": {
+        "state": {
+          "version": 2,
+          "lastTimestamp": 1794002041016,
+          "craftAuto": true,
+          "wallet": {
+            "yarn": 10.101640555555598
+          },
+          "project": {
+            "itemId": "tree",
+            "work": 0
+          },
+          "owned": [
+            "rabbit",
+            "flower"
+          ],
+          "placements": {
+            "test-meadow": {
+              "rabbit": "rabbit",
+              "flower": "flower"
+            }
+          },
+          "upgrades": {},
+          "cooldowns": {
+            "test-meadow/pet": 1794002038483,
+            "test-meadow/water": 1794002040784,
+            "test-meadow/sniff": 1794002130784
+          },
+          "transactionSequence": 3,
+          "events": {},
+          "memories": {},
+          "accrual": {
+            "baseYarn": 10.101640555555598,
+            "baseWork": 0,
+            "elapsedMs": 0,
+            "automatic": {},
+            "events": {}
+          }
+        },
+        "view": {
+          "wallet": {
+            "yarn": 10.101640555555598
+          },
+          "owned": [
+            "rabbit",
+            "flower"
+          ],
+          "craftAuto": true,
+          "rates": {
+            "click": 2.8,
+            "idle": 1,
+            "yarnPerHour": 212
+          },
+          "project": {
+            "itemId": "tree",
+            "work": 0,
+            "progress": 0,
+            "remaining": 144.20000000000002,
+            "etaSeconds": 144.20000000000002,
+            "stage": 0,
+            "canComplete": false
+          },
+          "projects": [
+            {
+              "itemId": "rabbit",
+              "yarnCost": 5,
+              "unlocked": true,
+              "canStart": false,
+              "canRecraft": false
+            },
+            {
+              "itemId": "flower",
+              "yarnCost": 5,
+              "unlocked": true,
+              "canStart": false,
+              "canRecraft": false
+            },
+            {
+              "itemId": "tree",
+              "yarnCost": 12,
+              "unlocked": true,
+              "canStart": false,
+              "canRecraft": false
+            },
+            {
+              "itemId": "house",
+              "yarnCost": 30,
+              "unlocked": false,
+              "canStart": false,
+              "canRecraft": false
+            },
+            {
+              "itemId": "butterfly",
+              "yarnCost": 36,
+              "unlocked": false,
+              "canStart": false,
+              "canRecraft": false
+            },
+            {
+              "itemId": "kot-cat",
+              "yarnCost": 10,
+              "unlocked": false,
+              "canStart": false,
+              "canRecraft": false
+            },
+            {
+              "itemId": "kot-coffee",
+              "yarnCost": 14,
+              "unlocked": false,
+              "canStart": false,
+              "canRecraft": false
+            },
+            {
+              "itemId": "kot-duck",
+              "yarnCost": 18,
+              "unlocked": false,
+              "canStart": false,
+              "canRecraft": false
+            },
+            {
+              "itemId": "kot-chair",
+              "yarnCost": 28,
+              "unlocked": false,
+              "canStart": false,
+              "canRecraft": false
+            },
+            {
+              "itemId": "kot-leaf-house",
+              "yarnCost": 34,
+              "unlocked": false,
+              "canStart": false,
+              "canRecraft": false
+            }
+          ],
+          "recipes": [
+            {
+              "recipeId": "invitation",
+              "yarnCost": 6,
+              "unlocked": false,
+              "canStart": false
+            },
+            {
+              "recipeId": "picnic-gift",
+              "yarnCost": 18,
+              "unlocked": false,
+              "canStart": false
+            }
+          ],
+          "upgrades": [
+            {
+              "id": "hook",
+              "target": "click",
+              "level": 0,
+              "cost": 2,
+              "current": 2.8,
+              "next": 3.15,
+              "maxed": false,
+              "canBuy": false
+            },
+            {
+              "id": "basket",
+              "target": "idle",
+              "level": 0,
+              "cost": 3,
+              "current": 1,
+              "next": 1.08,
+              "maxed": false,
+              "canBuy": false
+            }
+          ],
+          "meadows": [
+            {
+              "id": "test-meadow",
+              "unlocked": true,
+              "slots": [
+                {
+                  "id": "rabbit",
+                  "itemId": "rabbit",
+                  "x": 0.36,
+                  "y": 0.55,
+                  "scale": 1.85,
+                  "z": 3,
+                  "placed": true,
+                  "canPlace": false
+                },
+                {
+                  "id": "flower",
+                  "itemId": "flower",
+                  "x": 0.64,
+                  "y": 0.59,
+                  "scale": 1.05,
+                  "z": 4,
+                  "placed": true,
+                  "canPlace": false
+                },
+                {
+                  "id": "tree",
+                  "itemId": "tree",
+                  "x": 0.2,
+                  "y": 0.33,
+                  "scale": 1.4,
+                  "z": 1,
+                  "placed": false,
+                  "canPlace": false
+                },
+                {
+                  "id": "house",
+                  "itemId": "house",
+                  "x": 0.77,
+                  "y": 0.31,
+                  "scale": 1,
+                  "z": 0,
+                  "placed": false,
+                  "canPlace": false
+                },
+                {
+                  "id": "butterfly",
+                  "itemId": "butterfly",
+                  "x": 0.7,
+                  "y": 0.23,
+                  "scale": 0.4,
+                  "z": 5,
+                  "placed": false,
+                  "canPlace": false
+                }
+              ],
+              "interactions": [
+                {
+                  "id": "pet",
+                  "action": "pet",
+                  "actorSlot": "rabbit",
+                  "trigger": "manual",
+                  "amount": 0.7,
+                  "workBonus": 0,
+                  "active": true,
+                  "available": true,
+                  "readyAt": 1794002038483
+                },
+                {
+                  "id": "water",
+                  "action": "water",
+                  "actorSlot": "flower",
+                  "trigger": "manual",
+                  "amount": 0.6,
+                  "workBonus": 2,
+                  "active": true,
+                  "available": true,
+                  "readyAt": 1794002040784
+                },
+                {
+                  "id": "sway",
+                  "action": "sway",
+                  "actorSlot": "tree",
+                  "trigger": "manual",
+                  "amount": 0.8,
+                  "workBonus": 1,
+                  "active": false,
+                  "available": false,
+                  "readyAt": null
+                },
+                {
+                  "id": "knock",
+                  "action": "knock",
+                  "actorSlot": "house",
+                  "trigger": "manual",
+                  "amount": 1.2,
+                  "workBonus": 0,
+                  "active": false,
+                  "available": false,
+                  "readyAt": null
+                },
+                {
+                  "id": "land",
+                  "action": "land",
+                  "actorSlot": "butterfly",
+                  "trigger": "manual",
+                  "amount": 0.8,
+                  "workBonus": 0,
+                  "active": false,
+                  "available": false,
+                  "readyAt": null
+                },
+                {
+                  "id": "sniff",
+                  "action": "sniff",
+                  "actorSlot": "rabbit",
+                  "trigger": "idle",
+                  "amount": 0.6,
+                  "workBonus": 0,
+                  "active": true,
+                  "available": false,
+                  "readyAt": 1794002130784
+                }
+              ]
+            },
+            {
+              "id": "kotoutro",
+              "unlocked": false,
+              "slots": [
+                {
+                  "id": "kot-cat",
+                  "itemId": "kot-cat",
+                  "x": 0.42,
+                  "y": 0.61,
+                  "scale": 1.2,
+                  "z": 4,
+                  "placed": false,
+                  "canPlace": false
+                },
+                {
+                  "id": "kot-coffee",
+                  "itemId": "kot-coffee",
+                  "x": 0.72,
+                  "y": 0.61,
+                  "scale": 0.65,
+                  "z": 5,
+                  "placed": false,
+                  "canPlace": false
+                },
+                {
+                  "id": "kot-duck",
+                  "itemId": "kot-duck",
+                  "x": 0.73,
+                  "y": 0.46,
+                  "scale": 0.65,
+                  "z": 2,
+                  "placed": false,
+                  "canPlace": false
+                },
+                {
+                  "id": "kot-chair",
+                  "itemId": "kot-chair",
+                  "x": 0.25,
+                  "y": 0.405,
+                  "scale": 0.8,
+                  "z": 1,
+                  "placed": false,
+                  "canPlace": false
+                },
+                {
+                  "id": "kot-leaf-house",
+                  "itemId": "kot-leaf-house",
+                  "x": 0.74,
+                  "y": 0.24,
+                  "scale": 0.75,
+                  "z": 0,
+                  "placed": false,
+                  "canPlace": false
+                }
+              ],
+              "interactions": [
+                {
+                  "id": "greet",
+                  "action": "greet",
+                  "actorSlot": "kot-cat",
+                  "trigger": "manual",
+                  "amount": 0.8,
+                  "workBonus": 0,
+                  "active": false,
+                  "available": false,
+                  "readyAt": null
+                },
+                {
+                  "id": "brew",
+                  "action": "brew",
+                  "actorSlot": "kot-coffee",
+                  "trigger": "manual",
+                  "amount": 0.7,
+                  "workBonus": 3,
+                  "active": false,
+                  "available": false,
+                  "readyAt": null
+                },
+                {
+                  "id": "feed",
+                  "action": "feed",
+                  "actorSlot": "kot-duck",
+                  "trigger": "manual",
+                  "amount": 0.9,
+                  "workBonus": 0,
+                  "active": false,
+                  "available": false,
+                  "readyAt": null
+                },
+                {
+                  "id": "rock",
+                  "action": "rock",
+                  "actorSlot": "kot-chair",
+                  "trigger": "manual",
+                  "amount": 0.4,
+                  "workBonus": 4,
+                  "active": false,
+                  "available": false,
+                  "readyAt": null
+                },
+                {
+                  "id": "shelter",
+                  "action": "shelter",
+                  "actorSlot": "kot-leaf-house",
+                  "trigger": "manual",
+                  "amount": 0.6,
+                  "workBonus": 0,
+                  "active": false,
+                  "available": false,
+                  "readyAt": null
+                },
+                {
+                  "id": "coffee-time",
+                  "action": "brew",
+                  "actorSlot": "kot-coffee",
+                  "trigger": "idle",
+                  "amount": 0.7,
+                  "workBonus": 0,
+                  "active": false,
+                  "available": false,
+                  "readyAt": null
+                }
+              ]
+            }
+          ],
+          "events": [
+            {
+              "id": "duck-visit",
+              "meadowId": "test-meadow",
+              "unlocked": false,
+              "phase": "locked",
+              "dueAt": null,
+              "count": 0
+            },
+            {
+              "id": "rabbit-visit",
+              "meadowId": "kotoutro",
+              "unlocked": false,
+              "phase": "locked",
+              "dueAt": null,
+              "count": 0
+            },
+            {
+              "id": "friendship-picnic",
+              "meadowId": "kotoutro",
+              "unlocked": false,
+              "phase": "locked",
+              "dueAt": null,
+              "count": 0
+            }
+          ],
+          "visitors": [],
+          "memories": {}
+        },
+        "ui": {
+          "screen": "workshop",
+          "meadowId": "test-meadow",
+          "evening": false,
+          "selected": {
+            "test-meadow": "flower"
+          }
+        },
+        "craft": {
+          "itemId": "tree",
+          "sectionIndex": 0,
+          "sectionProgress": 0,
+          "ready": false,
+          "error": null
+        }
+      },
+      "points": {
+        "canvas": {
+          "x": 8,
+          "y": 42,
+          "width": 374,
+          "height": 794
+        },
+        "item": {
+          "x": 28.946569343065693,
+          "y": 190.77999999999997,
+          "width": 133.88686131386862,
+          "height": 145
+        },
+        "sections": [
+          {
+            "id": "trunk",
+            "name": "Корни, ствол и основания ветвей",
+            "x": 94.39060827250609,
+            "y": 306.3213625304136
+          },
+          {
+            "id": "central-crown",
+            "name": "Верхняя и средняя цветущая крона",
+            "x": 100.38817518248176,
+            "y": 223.76661800486616
+          },
+          {
+            "id": "upper-left-crown",
+            "name": "Левая верхняя цветущая ветвь",
+            "x": 61.05119221411192,
+            "y": 224.29581508515813
+          },
+          {
+            "id": "lower-left-crown",
+            "name": "Левая нижняя цветущая ветвь",
+            "x": 54.87722627737226,
+            "y": 256.2240389294404
+          },
+          {
+            "id": "upper-right-crown",
+            "name": "Правая верхняя цветущая ветвь",
+            "x": 138.84316301703166,
+            "y": 231.8809732360097
+          },
+          {
+            "id": "lower-right-crown",
+            "name": "Правая нижняя цветущая ветвь",
+            "x": 137.2555717761557,
+            "y": 263.63279805352795
+          }
+        ],
+        "controls": {
+          "object-rabbit": {
+            "x": -30.34375,
+            "y": 262.4765625,
+            "width": 345.9375,
+            "height": 432.421875
+          },
+          "object-flower": {
+            "x": 149.1875,
+            "y": 387.7421875,
+            "width": 196.34375,
+            "height": 245.421875
+          },
+          "craft-art": {
+            "x": 82.796875,
+            "y": 296.078125,
+            "width": 224.40625,
+            "height": 269.953125
+          },
+          "scene-chooser": {
+            "x": 20,
+            "y": 51,
+            "width": 204.96875,
+            "height": 44
+          },
+          "lighting": {
+            "x": 322,
+            "y": 51,
+            "width": 48,
+            "height": 44
+          },
+          "open-upgrades": {
+            "x": 237.359375,
+            "y": 107,
+            "width": 132.640625,
+            "height": 44
+          },
+          "craft": {
+            "x": 75.015625,
+            "y": 681,
+            "width": 150,
+            "height": 50
+          },
+          "craft-auto": {
+            "x": 232.015625,
+            "y": 684,
+            "width": 82.96875,
+            "height": 44
+          },
+          "tab-workshop": {
+            "x": 23,
+            "y": 737,
+            "width": 112,
+            "height": 84
+          },
+          "tab-meadow": {
+            "x": 139,
+            "y": 737,
+            "width": 112,
+            "height": 84
+          },
+          "tab-projects": {
+            "x": 255,
+            "y": 737,
+            "width": 112,
+            "height": 84
+          }
+        }
+      },
+      "placed": []
+    },
+    {
+      "name": "02-first-click",
+      "t": 7.603,
+      "snapshot": {
+        "state": {
+          "version": 2,
+          "lastTimestamp": 1794002041879,
+          "craftAuto": true,
+          "wallet": {
+            "yarn": 10.146708333333375
+          },
+          "project": {
+            "itemId": "tree",
+            "work": 3.663
+          },
+          "owned": [
+            "rabbit",
+            "flower"
+          ],
+          "placements": {
+            "test-meadow": {
+              "rabbit": "rabbit",
+              "flower": "flower"
+            }
+          },
+          "upgrades": {},
+          "cooldowns": {
+            "test-meadow/pet": 1794002038483,
+            "test-meadow/water": 1794002040784,
+            "test-meadow/sniff": 1794002130784
+          },
+          "transactionSequence": 3,
+          "events": {},
+          "memories": {},
+          "accrual": {
+            "baseYarn": 10.109473888888932,
+            "baseWork": 2.9499999999999997,
+            "elapsedMs": 713,
+            "automatic": {},
+            "events": {}
+          }
+        },
+        "view": {
+          "wallet": {
+            "yarn": 10.146708333333375
+          },
+          "owned": [
+            "rabbit",
+            "flower"
+          ],
+          "craftAuto": true,
+          "rates": {
+            "click": 2.8,
+            "idle": 1,
+            "yarnPerHour": 212
+          },
+          "project": {
+            "itemId": "tree",
+            "work": 3.663,
+            "progress": 0.025402219140083213,
+            "remaining": 140.537,
+            "etaSeconds": 140.537,
+            "stage": 0,
+            "canComplete": false
+          },
+          "projects": [
+            {
+              "itemId": "rabbit",
+              "yarnCost": 5,
+              "unlocked": true,
+              "canStart": false,
+              "canRecraft": false
+            },
+            {
+              "itemId": "flower",
+              "yarnCost": 5,
+              "unlocked": true,
+              "canStart": false,
+              "canRecraft": false
+            },
+            {
+              "itemId": "tree",
+              "yarnCost": 12,
+              "unlocked": true,
+              "canStart": false,
+              "canRecraft": false
+            },
+            {
+              "itemId": "house",
+              "yarnCost": 30,
+              "unlocked": false,
+              "canStart": false,
+              "canRecraft": false
+            },
+            {
+              "itemId": "butterfly",
+              "yarnCost": 36,
+              "unlocked": false,
+              "canStart": false,
+              "canRecraft": false
+            },
+            {
+              "itemId": "kot-cat",
+              "yarnCost": 10,
+              "unlocked": false,
+              "canStart": false,
+              "canRecraft": false
+            },
+            {
+              "itemId": "kot-coffee",
+              "yarnCost": 14,
+              "unlocked": false,
+              "canStart": false,
+              "canRecraft": false
+            },
+            {
+              "itemId": "kot-duck",
+              "yarnCost": 18,
+              "unlocked": false,
+              "canStart": false,
+              "canRecraft": false
+            },
+            {
+              "itemId": "kot-chair",
+              "yarnCost": 28,
+              "unlocked": false,
+              "canStart": false,
+              "canRecraft": false
+            },
+            {
+              "itemId": "kot-leaf-house",
+              "yarnCost": 34,
+              "unlocked": false,
+              "canStart": false,
+              "canRecraft": false
+            }
+          ],
+          "recipes": [
+            {
+              "recipeId": "invitation",
+              "yarnCost": 6,
+              "unlocked": false,
+              "canStart": false
+            },
+            {
+              "recipeId": "picnic-gift",
+              "yarnCost": 18,
+              "unlocked": false,
+              "canStart": false
+            }
+          ],
+          "upgrades": [
+            {
+              "id": "hook",
+              "target": "click",
+              "level": 0,
+              "cost": 2,
+              "current": 2.8,
+              "next": 3.15,
+              "maxed": false,
+              "canBuy": false
+            },
+            {
+              "id": "basket",
+              "target": "idle",
+              "level": 0,
+              "cost": 3,
+              "current": 1,
+              "next": 1.08,
+              "maxed": false,
+              "canBuy": false
+            }
+          ],
+          "meadows": [
+            {
+              "id": "test-meadow",
+              "unlocked": true,
+              "slots": [
+                {
+                  "id": "rabbit",
+                  "itemId": "rabbit",
+                  "x": 0.36,
+                  "y": 0.55,
+                  "scale": 1.85,
+                  "z": 3,
+                  "placed": true,
+                  "canPlace": false
+                },
+                {
+                  "id": "flower",
+                  "itemId": "flower",
+                  "x": 0.64,
+                  "y": 0.59,
+                  "scale": 1.05,
+                  "z": 4,
+                  "placed": true,
+                  "canPlace": false
+                },
+                {
+                  "id": "tree",
+                  "itemId": "tree",
+                  "x": 0.2,
+                  "y": 0.33,
+                  "scale": 1.4,
+                  "z": 1,
+                  "placed": false,
+                  "canPlace": false
+                },
+                {
+                  "id": "house",
+                  "itemId": "house",
+                  "x": 0.77,
+                  "y": 0.31,
+                  "scale": 1,
+                  "z": 0,
+                  "placed": false,
+                  "canPlace": false
+                },
+                {
+                  "id": "butterfly",
+                  "itemId": "butterfly",
+                  "x": 0.7,
+                  "y": 0.23,
+                  "scale": 0.4,
+                  "z": 5,
+                  "placed": false,
+                  "canPlace": false
+                }
+              ],
+              "interactions": [
+                {
+                  "id": "pet",
+                  "action": "pet",
+                  "actorSlot": "rabbit",
+                  "trigger": "manual",
+                  "amount": 0.7,
+                  "workBonus": 0,
+                  "active": true,
+                  "available": true,
+                  "readyAt": 1794002038483
+                },
+                {
+                  "id": "water",
+                  "action": "water",
+                  "actorSlot": "flower",
+                  "trigger": "manual",
+                  "amount": 0.6,
+                  "workBonus": 2,
+                  "active": true,
+                  "available": true,
+                  "readyAt": 1794002040784
+                },
+                {
+                  "id": "sway",
+                  "action": "sway",
+                  "actorSlot": "tree",
+                  "trigger": "manual",
+                  "amount": 0.8,
+                  "workBonus": 1,
+                  "active": false,
+                  "available": false,
+                  "readyAt": null
+                },
+                {
+                  "id": "knock",
+                  "action": "knock",
+                  "actorSlot": "house",
+                  "trigger": "manual",
+                  "amount": 1.2,
+                  "workBonus": 0,
+                  "active": false,
+                  "available": false,
+                  "readyAt": null
+                },
+                {
+                  "id": "land",
+                  "action": "land",
+                  "actorSlot": "butterfly",
+                  "trigger": "manual",
+                  "amount": 0.8,
+                  "workBonus": 0,
+                  "active": false,
+                  "available": false,
+                  "readyAt": null
+                },
+                {
+                  "id": "sniff",
+                  "action": "sniff",
+                  "actorSlot": "rabbit",
+                  "trigger": "idle",
+                  "amount": 0.6,
+                  "workBonus": 0,
+                  "active": true,
+                  "available": false,
+                  "readyAt": 1794002130784
+                }
+              ]
+            },
+            {
+              "id": "kotoutro",
+              "unlocked": false,
+              "slots": [
+                {
+                  "id": "kot-cat",
+                  "itemId": "kot-cat",
+                  "x": 0.42,
+                  "y": 0.61,
+                  "scale": 1.2,
+                  "z": 4,
+                  "placed": false,
+                  "canPlace": false
+                },
+                {
+                  "id": "kot-coffee",
+                  "itemId": "kot-coffee",
+                  "x": 0.72,
+                  "y": 0.61,
+                  "scale": 0.65,
+                  "z": 5,
+                  "placed": false,
+                  "canPlace": false
+                },
+                {
+                  "id": "kot-duck",
+                  "itemId": "kot-duck",
+                  "x": 0.73,
+                  "y": 0.46,
+                  "scale": 0.65,
+                  "z": 2,
+                  "placed": false,
+                  "canPlace": false
+                },
+                {
+                  "id": "kot-chair",
+                  "itemId": "kot-chair",
+                  "x": 0.25,
+                  "y": 0.405,
+                  "scale": 0.8,
+                  "z": 1,
+                  "placed": false,
+                  "canPlace": false
+                },
+                {
+                  "id": "kot-leaf-house",
+                  "itemId": "kot-leaf-house",
+                  "x": 0.74,
+                  "y": 0.24,
+                  "scale": 0.75,
+                  "z": 0,
+                  "placed": false,
+                  "canPlace": false
+                }
+              ],
+              "interactions": [
+                {
+                  "id": "greet",
+                  "action": "greet",
+                  "actorSlot": "kot-cat",
+                  "trigger": "manual",
+                  "amount": 0.8,
+                  "workBonus": 0,
+                  "active": false,
+                  "available": false,
+                  "readyAt": null
+                },
+                {
+                  "id": "brew",
+                  "action": "brew",
+                  "actorSlot": "kot-coffee",
+                  "trigger": "manual",
+                  "amount": 0.7,
+                  "workBonus": 3,
+                  "active": false,
+                  "available": false,
+                  "readyAt": null
+                },
+                {
+                  "id": "feed",
+                  "action": "feed",
+                  "actorSlot": "kot-duck",
+                  "trigger": "manual",
+                  "amount": 0.9,
+                  "workBonus": 0,
+                  "active": false,
+                  "available": false,
+                  "readyAt": null
+                },
+                {
+                  "id": "rock",
+                  "action": "rock",
+                  "actorSlot": "kot-chair",
+                  "trigger": "manual",
+                  "amount": 0.4,
+                  "workBonus": 4,
+                  "active": false,
+                  "available": false,
+                  "readyAt": null
+                },
+                {
+                  "id": "shelter",
+                  "action": "shelter",
+                  "actorSlot": "kot-leaf-house",
+                  "trigger": "manual",
+                  "amount": 0.6,
+                  "workBonus": 0,
+                  "active": false,
+                  "available": false,
+                  "readyAt": null
+                },
+                {
+                  "id": "coffee-time",
+                  "action": "brew",
+                  "actorSlot": "kot-coffee",
+                  "trigger": "idle",
+                  "amount": 0.7,
+                  "workBonus": 0,
+                  "active": false,
+                  "available": false,
+                  "readyAt": null
+                }
+              ]
+            }
+          ],
+          "events": [
+            {
+              "id": "duck-visit",
+              "meadowId": "test-meadow",
+              "unlocked": false,
+              "phase": "locked",
+              "dueAt": null,
+              "count": 0
+            },
+            {
+              "id": "rabbit-visit",
+              "meadowId": "kotoutro",
+              "unlocked": false,
+              "phase": "locked",
+              "dueAt": null,
+              "count": 0
+            },
+            {
+              "id": "friendship-picnic",
+              "meadowId": "kotoutro",
+              "unlocked": false,
+              "phase": "locked",
+              "dueAt": null,
+              "count": 0
+            }
+          ],
+          "visitors": [],
+          "memories": {}
+        },
+        "ui": {
+          "screen": "workshop",
+          "meadowId": "test-meadow",
+          "evening": false,
+          "selected": {
+            "test-meadow": "flower"
+          }
+        },
+        "craft": {
+          "itemId": "tree",
+          "sectionIndex": 0,
+          "sectionProgress": 0.10465714285714285,
+          "ready": true,
+          "error": null
+        }
+      },
+      "points": {
+        "canvas": {
+          "x": 8,
+          "y": 42,
+          "width": 374,
+          "height": 794
+        },
+        "item": {
+          "x": 28.946569343065693,
+          "y": 190.77999999999997,
+          "width": 133.88686131386862,
+          "height": 145
+        },
+        "sections": [
+          {
+            "id": "trunk",
+            "name": "Корни, ствол и основания ветвей",
+            "x": 94.39060827250609,
+            "y": 306.3213625304136
+          },
+          {
+            "id": "central-crown",
+            "name": "Верхняя и средняя цветущая крона",
+            "x": 100.38817518248176,
+            "y": 223.76661800486616
+          },
+          {
+            "id": "upper-left-crown",
+            "name": "Левая верхняя цветущая ветвь",
+            "x": 61.05119221411192,
+            "y": 224.29581508515813
+          },
+          {
+            "id": "lower-left-crown",
+            "name": "Левая нижняя цветущая ветвь",
+            "x": 54.87722627737226,
+            "y": 256.2240389294404
+          },
+          {
+            "id": "upper-right-crown",
+            "name": "Правая верхняя цветущая ветвь",
+            "x": 138.84316301703166,
+            "y": 231.8809732360097
+          },
+          {
+            "id": "lower-right-crown",
+            "name": "Правая нижняя цветущая ветвь",
+            "x": 137.2555717761557,
+            "y": 263.63279805352795
+          }
+        ],
+        "controls": {
+          "object-rabbit": {
+            "x": 87.1171875,
+            "y": 359.859375,
+            "width": 125.984375,
+            "height": 230
+          },
+          "object-flower": {
+            "x": 206.015625,
+            "y": 432.6171875,
+            "width": 150,
+            "height": 165.171875
+          },
+          "craft-art": {
+            "x": 28.9375,
+            "y": 190.765625,
+            "width": 133.875,
+            "height": 145
+          },
+          "scene-chooser": {
+            "x": 20,
+            "y": 51,
+            "width": 204.96875,
+            "height": 44
+          },
+          "lighting": {
+            "x": 322,
+            "y": 51,
+            "width": 48,
+            "height": 44
+          },
+          "open-upgrades": {
+            "x": 237.359375,
+            "y": 107,
+            "width": 132.640625,
+            "height": 44
+          },
+          "craft": {
+            "x": 75.015625,
+            "y": 681,
+            "width": 150,
+            "height": 50
+          },
+          "craft-auto": {
+            "x": 232.015625,
+            "y": 684,
+            "width": 82.96875,
+            "height": 44
+          },
+          "tab-workshop": {
+            "x": 23,
+            "y": 737,
+            "width": 112,
+            "height": 84
+          },
+          "tab-meadow": {
+            "x": 139,
+            "y": 737,
+            "width": 112,
+            "height": 84
+          },
+          "tab-projects": {
+            "x": 255,
+            "y": 737,
+            "width": 112,
+            "height": 84
+          }
+        }
+      },
+      "placed": []
+    },
+    {
+      "name": "03-part-1-half",
+      "t": 11.64,
+      "snapshot": {
+        "state": {
+          "version": 2,
+          "lastTimestamp": 1794002045879,
+          "craftAuto": true,
+          "wallet": {
+            "yarn": 10.355597222222267
+          },
+          "project": {
+            "itemId": "tree",
+            "work": 18.863
+          },
+          "owned": [
+            "rabbit",
+            "flower"
+          ],
+          "placements": {
+            "test-meadow": {
+              "rabbit": "rabbit",
+              "flower": "flower"
+            }
+          },
+          "upgrades": {},
+          "cooldowns": {
+            "test-meadow/pet": 1794002038483,
+            "test-meadow/water": 1794002040784,
+            "test-meadow/sniff": 1794002130784
+          },
+          "transactionSequence": 3,
+          "events": {},
+          "memories": {},
+          "accrual": {
+            "baseYarn": 10.320086111111156,
+            "baseWork": 18.183,
+            "elapsedMs": 680,
+            "automatic": {},
+            "events": {}
+          }
+        },
+        "view": {
+          "wallet": {
+            "yarn": 10.355597222222267
+          },
+          "owned": [
+            "rabbit",
+            "flower"
+          ],
+          "craftAuto": true,
+          "rates": {
+            "click": 2.8,
+            "idle": 1,
+            "yarnPerHour": 212
+          },
+          "project": {
+            "itemId": "tree",
+            "work": 18.863,
+            "progress": 0.13081137309292648,
+            "remaining": 125.33700000000002,
+            "etaSeconds": 125.33700000000002,
+            "stage": 0,
+            "canComplete": false
+          },
+          "projects": [
+            {
+              "itemId": "rabbit",
+              "yarnCost": 5,
+              "unlocked": true,
+              "canStart": false,
+              "canRecraft": false
+            },
+            {
+              "itemId": "flower",
+              "yarnCost": 5,
+              "unlocked": true,
+              "canStart": false,
+              "canRecraft": false
+            },
+            {
+              "itemId": "tree",
+              "yarnCost": 12,
+              "unlocked": true,
+              "canStart": false,
+              "canRecraft": false
+            },
+            {
+              "itemId": "house",
+              "yarnCost": 30,
+              "unlocked": false,
+              "canStart": false,
+              "canRecraft": false
+            },
+            {
+              "itemId": "butterfly",
+              "yarnCost": 36,
+              "unlocked": false,
+              "canStart": false,
+              "canRecraft": false
+            },
+            {
+              "itemId": "kot-cat",
+              "yarnCost": 10,
+              "unlocked": false,
+              "canStart": false,
+              "canRecraft": false
+            },
+            {
+              "itemId": "kot-coffee",
+              "yarnCost": 14,
+              "unlocked": false,
+              "canStart": false,
+              "canRecraft": false
+            },
+            {
+              "itemId": "kot-duck",
+              "yarnCost": 18,
+              "unlocked": false,
+              "canStart": false,
+              "canRecraft": false
+            },
+            {
+              "itemId": "kot-chair",
+              "yarnCost": 28,
+              "unlocked": false,
+              "canStart": false,
+              "canRecraft": false
+            },
+            {
+              "itemId": "kot-leaf-house",
+              "yarnCost": 34,
+              "unlocked": false,
+              "canStart": false,
+              "canRecraft": false
+            }
+          ],
+          "recipes": [
+            {
+              "recipeId": "invitation",
+              "yarnCost": 6,
+              "unlocked": false,
+              "canStart": false
+            },
+            {
+              "recipeId": "picnic-gift",
+              "yarnCost": 18,
+              "unlocked": false,
+              "canStart": false
+            }
+          ],
+          "upgrades": [
+            {
+              "id": "hook",
+              "target": "click",
+              "level": 0,
+              "cost": 2,
+              "current": 2.8,
+              "next": 3.15,
+              "maxed": false,
+              "canBuy": false
+            },
+            {
+              "id": "basket",
+              "target": "idle",
+              "level": 0,
+              "cost": 3,
+              "current": 1,
+              "next": 1.08,
+              "maxed": false,
+              "canBuy": false
+            }
+          ],
+          "meadows": [
+            {
+              "id": "test-meadow",
+              "unlocked": true,
+              "slots": [
+                {
+                  "id": "rabbit",
+                  "itemId": "rabbit",
+                  "x": 0.36,
+                  "y": 0.55,
+                  "scale": 1.85,
+                  "z": 3,
+                  "placed": true,
+                  "canPlace": false
+                },
+                {
+                  "id": "flower",
+                  "itemId": "flower",
+                  "x": 0.64,
+                  "y": 0.59,
+                  "scale": 1.05,
+                  "z": 4,
+                  "placed": true,
+                  "canPlace": false
+                },
+                {
+                  "id": "tree",
+                  "itemId": "tree",
+                  "x": 0.2,
+                  "y": 0.33,
+                  "scale": 1.4,
+                  "z": 1,
+                  "placed": false,
+                  "canPlace": false
+                },
+                {
+                  "id": "house",
+                  "itemId": "house",
+                  "x": 0.77,
+                  "y": 0.31,
+                  "scale": 1,
+                  "z": 0,
+                  "placed": false,
+                  "canPlace": false
+                },
+                {
+                  "id": "butterfly",
+                  "itemId": "butterfly",
+                  "x": 0.7,
+                  "y": 0.23,
+                  "scale": 0.4,
+                  "z": 5,
+                  "placed": false,
+                  "canPlace": false
+                }
+              ],
+              "interactions": [
+                {
+                  "id": "pet",
+                  "action": "pet",
+                  "actorSlot": "rabbit",
+                  "trigger": "manual",
+                  "amount": 0.7,
+                  "workBonus": 0,
+                  "active": true,
+                  "available": true,
+                  "readyAt": 1794002038483
+                },
+                {
+                  "id": "water",
+                  "action": "water",
+                  "actorSlot": "flower",
+                  "trigger": "manual",
+                  "amount": 0.6,
+                  "workBonus": 2,
+                  "active": true,
+                  "available": true,
+                  "readyAt": 1794002040784
+                },
+                {
+                  "id": "sway",
+                  "action": "sway",
+                  "actorSlot": "tree",
+                  "trigger": "manual",
+                  "amount": 0.8,
+                  "workBonus": 1,
+                  "active": false,
+                  "available": false,
+                  "readyAt": null
+                },
+                {
+                  "id": "knock",
+                  "action": "knock",
+                  "actorSlot": "house",
+                  "trigger": "manual",
+                  "amount": 1.2,
+                  "workBonus": 0,
+                  "active": false,
+                  "available": false,
+                  "readyAt": null
+                },
+                {
+                  "id": "land",
+                  "action": "land",
+                  "actorSlot": "butterfly",
+                  "trigger": "manual",
+                  "amount": 0.8,
+                  "workBonus": 0,
+                  "active": false,
+                  "available": false,
+                  "readyAt": null
+                },
+                {
+                  "id": "sniff",
+                  "action": "sniff",
+                  "actorSlot": "rabbit",
+                  "trigger": "idle",
+                  "amount": 0.6,
+                  "workBonus": 0,
+                  "active": true,
+                  "available": false,
+                  "readyAt": 1794002130784
+                }
+              ]
+            },
+            {
+              "id": "kotoutro",
+              "unlocked": false,
+              "slots": [
+                {
+                  "id": "kot-cat",
+                  "itemId": "kot-cat",
+                  "x": 0.42,
+                  "y": 0.61,
+                  "scale": 1.2,
+                  "z": 4,
+                  "placed": false,
+                  "canPlace": false
+                },
+                {
+                  "id": "kot-coffee",
+                  "itemId": "kot-coffee",
+                  "x": 0.72,
+                  "y": 0.61,
+                  "scale": 0.65,
+                  "z": 5,
+                  "placed": false,
+                  "canPlace": false
+                },
+                {
+                  "id": "kot-duck",
+                  "itemId": "kot-duck",
+                  "x": 0.73,
+                  "y": 0.46,
+                  "scale": 0.65,
+                  "z": 2,
+                  "placed": false,
+                  "canPlace": false
+                },
+                {
+                  "id": "kot-chair",
+                  "itemId": "kot-chair",
+                  "x": 0.25,
+                  "y": 0.405,
+                  "scale": 0.8,
+                  "z": 1,
+                  "placed": false,
+                  "canPlace": false
+                },
+                {
+                  "id": "kot-leaf-house",
+                  "itemId": "kot-leaf-house",
+                  "x": 0.74,
+                  "y": 0.24,
+                  "scale": 0.75,
+                  "z": 0,
+                  "placed": false,
+                  "canPlace": false
+                }
+              ],
+              "interactions": [
+                {
+                  "id": "greet",
+                  "action": "greet",
+                  "actorSlot": "kot-cat",
+                  "trigger": "manual",
+                  "amount": 0.8,
+                  "workBonus": 0,
+                  "active": false,
+                  "available": false,
+                  "readyAt": null
+                },
+                {
+                  "id": "brew",
+                  "action": "brew",
+                  "actorSlot": "kot-coffee",
+                  "trigger": "manual",
+                  "amount": 0.7,
+                  "workBonus": 3,
+                  "active": false,
+                  "available": false,
+                  "readyAt": null
+                },
+                {
+                  "id": "feed",
+                  "action": "feed",
+                  "actorSlot": "kot-duck",
+                  "trigger": "manual",
+                  "amount": 0.9,
+                  "workBonus": 0,
+                  "active": false,
+                  "available": false,
+                  "readyAt": null
+                },
+                {
+                  "id": "rock",
+                  "action": "rock",
+                  "actorSlot": "kot-chair",
+                  "trigger": "manual",
+                  "amount": 0.4,
+                  "workBonus": 4,
+                  "active": false,
+                  "available": false,
+                  "readyAt": null
+                },
+                {
+                  "id": "shelter",
+                  "action": "shelter",
+                  "actorSlot": "kot-leaf-house",
+                  "trigger": "manual",
+                  "amount": 0.6,
+                  "workBonus": 0,
+                  "active": false,
+                  "available": false,
+                  "readyAt": null
+                },
+                {
+                  "id": "coffee-time",
+                  "action": "brew",
+                  "actorSlot": "kot-coffee",
+                  "trigger": "idle",
+                  "amount": 0.7,
+                  "workBonus": 0,
+                  "active": false,
+                  "available": false,
+                  "readyAt": null
+                }
+              ]
+            }
+          ],
+          "events": [
+            {
+              "id": "duck-visit",
+              "meadowId": "test-meadow",
+              "unlocked": false,
+              "phase": "locked",
+              "dueAt": null,
+              "count": 0
+            },
+            {
+              "id": "rabbit-visit",
+              "meadowId": "kotoutro",
+              "unlocked": false,
+              "phase": "locked",
+              "dueAt": null,
+              "count": 0
+            },
+            {
+              "id": "friendship-picnic",
+              "meadowId": "kotoutro",
+              "unlocked": false,
+              "phase": "locked",
+              "dueAt": null,
+              "count": 0
+            }
+          ],
+          "visitors": [],
+          "memories": {}
+        },
+        "ui": {
+          "screen": "workshop",
+          "meadowId": "test-meadow",
+          "evening": false,
+          "selected": {
+            "test-meadow": "flower"
+          }
+        },
+        "craft": {
+          "itemId": "tree",
+          "sectionIndex": 0,
+          "sectionProgress": 0.5389428571428572,
+          "ready": true,
+          "error": null
+        }
+      },
+      "points": {
+        "canvas": {
+          "x": 8,
+          "y": 42,
+          "width": 374,
+          "height": 794
+        },
+        "item": {
+          "x": 28.946569343065693,
+          "y": 190.77999999999997,
+          "width": 133.88686131386862,
+          "height": 145
+        },
+        "sections": [
+          {
+            "id": "trunk",
+            "name": "Корни, ствол и основания ветвей",
+            "x": 94.39060827250609,
+            "y": 306.3213625304136
+          },
+          {
+            "id": "central-crown",
+            "name": "Верхняя и средняя цветущая крона",
+            "x": 100.38817518248176,
+            "y": 223.76661800486616
+          },
+          {
+            "id": "upper-left-crown",
+            "name": "Левая верхняя цветущая ветвь",
+            "x": 61.05119221411192,
+            "y": 224.29581508515813
+          },
+          {
+            "id": "lower-left-crown",
+            "name": "Левая нижняя цветущая ветвь",
+            "x": 54.87722627737226,
+            "y": 256.2240389294404
+          },
+          {
+            "id": "upper-right-crown",
+            "name": "Правая верхняя цветущая ветвь",
+            "x": 138.84316301703166,
+            "y": 231.8809732360097
+          },
+          {
+            "id": "lower-right-crown",
+            "name": "Правая нижняя цветущая ветвь",
+            "x": 137.2555717761557,
+            "y": 263.63279805352795
+          }
+        ],
+        "controls": {
+          "object-rabbit": {
+            "x": 87.1171875,
+            "y": 359.859375,
+            "width": 125.984375,
+            "height": 230
+          },
+          "object-flower": {
+            "x": 206.015625,
+            "y": 432.6171875,
+            "width": 150,
+            "height": 165.171875
+          },
+          "craft-art": {
+            "x": 28.9375,
+            "y": 190.765625,
+            "width": 133.875,
+            "height": 145
+          },
+          "scene-chooser": {
+            "x": 20,
+            "y": 51,
+            "width": 204.96875,
+            "height": 44
+          },
+          "lighting": {
+            "x": 322,
+            "y": 51,
+            "width": 48,
+            "height": 44
+          },
+          "open-upgrades": {
+            "x": 237.359375,
+            "y": 107,
+            "width": 132.640625,
+            "height": 44
+          },
+          "craft": {
+            "x": 75.015625,
+            "y": 681,
+            "width": 150,
+            "height": 50
+          },
+          "craft-auto": {
+            "x": 232.015625,
+            "y": 684,
+            "width": 82.96875,
+            "height": 44
+          },
+          "tab-workshop": {
+            "x": 23,
+            "y": 737,
+            "width": 112,
+            "height": 84
+          },
+          "tab-meadow": {
+            "x": 139,
+            "y": 737,
+            "width": 112,
+            "height": 84
+          },
+          "tab-projects": {
+            "x": 255,
+            "y": 737,
+            "width": 112,
+            "height": 84
+          }
+        }
+      },
+      "placed": []
+    },
+    {
+      "name": "03-part-2-half",
+      "t": 19.716,
+      "snapshot": {
+        "state": {
+          "version": 2,
+          "lastTimestamp": 1794002053879,
+          "craftAuto": true,
+          "wallet": {
+            "yarn": 10.773375000000046
+          },
+          "project": {
+            "itemId": "tree",
+            "work": 49.26299999999999
+          },
+          "owned": [
+            "rabbit",
+            "flower"
+          ],
+          "placements": {
+            "test-meadow": {
+              "rabbit": "rabbit",
+              "flower": "flower"
+            }
+          },
+          "upgrades": {},
+          "cooldowns": {
+            "test-meadow/pet": 1794002038483,
+            "test-meadow/water": 1794002040784,
+            "test-meadow/sniff": 1794002130784
+          },
+          "transactionSequence": 3,
+          "events": {},
+          "memories": {},
+          "accrual": {
+            "baseYarn": 10.74151944444449,
+            "baseWork": 48.65299999999999,
+            "elapsedMs": 610,
+            "automatic": {},
+            "events": {}
+          }
+        },
+        "view": {
+          "wallet": {
+            "yarn": 10.773375000000046
+          },
+          "owned": [
+            "rabbit",
+            "flower"
+          ],
+          "craftAuto": true,
+          "rates": {
+            "click": 2.8,
+            "idle": 1,
+            "yarnPerHour": 212
+          },
+          "project": {
+            "itemId": "tree",
+            "work": 49.26299999999999,
+            "progress": 0.34162968099861296,
+            "remaining": 94.93700000000003,
+            "etaSeconds": 94.93700000000003,
+            "stage": 1,
+            "canComplete": false
+          },
+          "projects": [
+            {
+              "itemId": "rabbit",
+              "yarnCost": 5,
+              "unlocked": true,
+              "canStart": false,
+              "canRecraft": false
+            },
+            {
+              "itemId": "flower",
+              "yarnCost": 5,
+              "unlocked": true,
+              "canStart": false,
+              "canRecraft": false
+            },
+            {
+              "itemId": "tree",
+              "yarnCost": 12,
+              "unlocked": true,
+              "canStart": false,
+              "canRecraft": false
+            },
+            {
+              "itemId": "house",
+              "yarnCost": 30,
+              "unlocked": false,
+              "canStart": false,
+              "canRecraft": false
+            },
+            {
+              "itemId": "butterfly",
+              "yarnCost": 36,
+              "unlocked": false,
+              "canStart": false,
+              "canRecraft": false
+            },
+            {
+              "itemId": "kot-cat",
+              "yarnCost": 10,
+              "unlocked": false,
+              "canStart": false,
+              "canRecraft": false
+            },
+            {
+              "itemId": "kot-coffee",
+              "yarnCost": 14,
+              "unlocked": false,
+              "canStart": false,
+              "canRecraft": false
+            },
+            {
+              "itemId": "kot-duck",
+              "yarnCost": 18,
+              "unlocked": false,
+              "canStart": false,
+              "canRecraft": false
+            },
+            {
+              "itemId": "kot-chair",
+              "yarnCost": 28,
+              "unlocked": false,
+              "canStart": false,
+              "canRecraft": false
+            },
+            {
+              "itemId": "kot-leaf-house",
+              "yarnCost": 34,
+              "unlocked": false,
+              "canStart": false,
+              "canRecraft": false
+            }
+          ],
+          "recipes": [
+            {
+              "recipeId": "invitation",
+              "yarnCost": 6,
+              "unlocked": false,
+              "canStart": false
+            },
+            {
+              "recipeId": "picnic-gift",
+              "yarnCost": 18,
+              "unlocked": false,
+              "canStart": false
+            }
+          ],
+          "upgrades": [
+            {
+              "id": "hook",
+              "target": "click",
+              "level": 0,
+              "cost": 2,
+              "current": 2.8,
+              "next": 3.15,
+              "maxed": false,
+              "canBuy": false
+            },
+            {
+              "id": "basket",
+              "target": "idle",
+              "level": 0,
+              "cost": 3,
+              "current": 1,
+              "next": 1.08,
+              "maxed": false,
+              "canBuy": false
+            }
+          ],
+          "meadows": [
+            {
+              "id": "test-meadow",
+              "unlocked": true,
+              "slots": [
+                {
+                  "id": "rabbit",
+                  "itemId": "rabbit",
+                  "x": 0.36,
+                  "y": 0.55,
+                  "scale": 1.85,
+                  "z": 3,
+                  "placed": true,
+                  "canPlace": false
+                },
+                {
+                  "id": "flower",
+                  "itemId": "flower",
+                  "x": 0.64,
+                  "y": 0.59,
+                  "scale": 1.05,
+                  "z": 4,
+                  "placed": true,
+                  "canPlace": false
+                },
+                {
+                  "id": "tree",
+                  "itemId": "tree",
+                  "x": 0.2,
+                  "y": 0.33,
+                  "scale": 1.4,
+                  "z": 1,
+                  "placed": false,
+                  "canPlace": false
+                },
+                {
+                  "id": "house",
+                  "itemId": "house",
+                  "x": 0.77,
+                  "y": 0.31,
+                  "scale": 1,
+                  "z": 0,
+                  "placed": false,
+                  "canPlace": false
+                },
+                {
+                  "id": "butterfly",
+                  "itemId": "butterfly",
+                  "x": 0.7,
+                  "y": 0.23,
+                  "scale": 0.4,
+                  "z": 5,
+                  "placed": false,
+                  "canPlace": false
+                }
+              ],
+              "interactions": [
+                {
+                  "id": "pet",
+                  "action": "pet",
+                  "actorSlot": "rabbit",
+                  "trigger": "manual",
+                  "amount": 0.7,
+                  "workBonus": 0,
+                  "active": true,
+                  "available": true,
+                  "readyAt": 1794002038483
+                },
+                {
+                  "id": "water",
+                  "action": "water",
+                  "actorSlot": "flower",
+                  "trigger": "manual",
+                  "amount": 0.6,
+                  "workBonus": 2,
+                  "active": true,
+                  "available": true,
+                  "readyAt": 1794002040784
+                },
+                {
+                  "id": "sway",
+                  "action": "sway",
+                  "actorSlot": "tree",
+                  "trigger": "manual",
+                  "amount": 0.8,
+                  "workBonus": 1,
+                  "active": false,
+                  "available": false,
+                  "readyAt": null
+                },
+                {
+                  "id": "knock",
+                  "action": "knock",
+                  "actorSlot": "house",
+                  "trigger": "manual",
+                  "amount": 1.2,
+                  "workBonus": 0,
+                  "active": false,
+                  "available": false,
+                  "readyAt": null
+                },
+                {
+                  "id": "land",
+                  "action": "land",
+                  "actorSlot": "butterfly",
+                  "trigger": "manual",
+                  "amount": 0.8,
+                  "workBonus": 0,
+                  "active": false,
+                  "available": false,
+                  "readyAt": null
+                },
+                {
+                  "id": "sniff",
+                  "action": "sniff",
+                  "actorSlot": "rabbit",
+                  "trigger": "idle",
+                  "amount": 0.6,
+                  "workBonus": 0,
+                  "active": true,
+                  "available": false,
+                  "readyAt": 1794002130784
+                }
+              ]
+            },
+            {
+              "id": "kotoutro",
+              "unlocked": false,
+              "slots": [
+                {
+                  "id": "kot-cat",
+                  "itemId": "kot-cat",
+                  "x": 0.42,
+                  "y": 0.61,
+                  "scale": 1.2,
+                  "z": 4,
+                  "placed": false,
+                  "canPlace": false
+                },
+                {
+                  "id": "kot-coffee",
+                  "itemId": "kot-coffee",
+                  "x": 0.72,
+                  "y": 0.61,
+                  "scale": 0.65,
+                  "z": 5,
+                  "placed": false,
+                  "canPlace": false
+                },
+                {
+                  "id": "kot-duck",
+                  "itemId": "kot-duck",
+                  "x": 0.73,
+                  "y": 0.46,
+                  "scale": 0.65,
+                  "z": 2,
+                  "placed": false,
+                  "canPlace": false
+                },
+                {
+                  "id": "kot-chair",
+                  "itemId": "kot-chair",
+                  "x": 0.25,
+                  "y": 0.405,
+                  "scale": 0.8,
+                  "z": 1,
+                  "placed": false,
+                  "canPlace": false
+                },
+                {
+                  "id": "kot-leaf-house",
+                  "itemId": "kot-leaf-house",
+                  "x": 0.74,
+                  "y": 0.24,
+                  "scale": 0.75,
+                  "z": 0,
+                  "placed": false,
+                  "canPlace": false
+                }
+              ],
+              "interactions": [
+                {
+                  "id": "greet",
+                  "action": "greet",
+                  "actorSlot": "kot-cat",
+                  "trigger": "manual",
+                  "amount": 0.8,
+                  "workBonus": 0,
+                  "active": false,
+                  "available": false,
+                  "readyAt": null
+                },
+                {
+                  "id": "brew",
+                  "action": "brew",
+                  "actorSlot": "kot-coffee",
+                  "trigger": "manual",
+                  "amount": 0.7,
+                  "workBonus": 3,
+                  "active": false,
+                  "available": false,
+                  "readyAt": null
+                },
+                {
+                  "id": "feed",
+                  "action": "feed",
+                  "actorSlot": "kot-duck",
+                  "trigger": "manual",
+                  "amount": 0.9,
+                  "workBonus": 0,
+                  "active": false,
+                  "available": false,
+                  "readyAt": null
+                },
+                {
+                  "id": "rock",
+                  "action": "rock",
+                  "actorSlot": "kot-chair",
+                  "trigger": "manual",
+                  "amount": 0.4,
+                  "workBonus": 4,
+                  "active": false,
+                  "available": false,
+                  "readyAt": null
+                },
+                {
+                  "id": "shelter",
+                  "action": "shelter",
+                  "actorSlot": "kot-leaf-house",
+                  "trigger": "manual",
+                  "amount": 0.6,
+                  "workBonus": 0,
+                  "active": false,
+                  "available": false,
+                  "readyAt": null
+                },
+                {
+                  "id": "coffee-time",
+                  "action": "brew",
+                  "actorSlot": "kot-coffee",
+                  "trigger": "idle",
+                  "amount": 0.7,
+                  "workBonus": 0,
+                  "active": false,
+                  "available": false,
+                  "readyAt": null
+                }
+              ]
+            }
+          ],
+          "events": [
+            {
+              "id": "duck-visit",
+              "meadowId": "test-meadow",
+              "unlocked": false,
+              "phase": "locked",
+              "dueAt": null,
+              "count": 0
+            },
+            {
+              "id": "rabbit-visit",
+              "meadowId": "kotoutro",
+              "unlocked": false,
+              "phase": "locked",
+              "dueAt": null,
+              "count": 0
+            },
+            {
+              "id": "friendship-picnic",
+              "meadowId": "kotoutro",
+              "unlocked": false,
+              "phase": "locked",
+              "dueAt": null,
+              "count": 0
+            }
+          ],
+          "visitors": [],
+          "memories": {}
+        },
+        "ui": {
+          "screen": "workshop",
+          "meadowId": "test-meadow",
+          "evening": false,
+          "selected": {
+            "test-meadow": "flower"
+          }
+        },
+        "craft": {
+          "itemId": "tree",
+          "sectionIndex": 1,
+          "sectionProgress": 0.5659920634920631,
+          "ready": true,
+          "error": null
+        }
+      },
+      "points": {
+        "canvas": {
+          "x": 8,
+          "y": 42,
+          "width": 374,
+          "height": 794
+        },
+        "item": {
+          "x": 28.946569343065693,
+          "y": 190.77999999999997,
+          "width": 133.88686131386862,
+          "height": 145
+        },
+        "sections": [
+          {
+            "id": "trunk",
+            "name": "Корни, ствол и основания ветвей",
+            "x": 94.39060827250609,
+            "y": 306.3213625304136
+          },
+          {
+            "id": "central-crown",
+            "name": "Верхняя и средняя цветущая крона",
+            "x": 100.38817518248176,
+            "y": 223.76661800486616
+          },
+          {
+            "id": "upper-left-crown",
+            "name": "Левая верхняя цветущая ветвь",
+            "x": 61.05119221411192,
+            "y": 224.29581508515813
+          },
+          {
+            "id": "lower-left-crown",
+            "name": "Левая нижняя цветущая ветвь",
+            "x": 54.87722627737226,
+            "y": 256.2240389294404
+          },
+          {
+            "id": "upper-right-crown",
+            "name": "Правая верхняя цветущая ветвь",
+            "x": 138.84316301703166,
+            "y": 231.8809732360097
+          },
+          {
+            "id": "lower-right-crown",
+            "name": "Правая нижняя цветущая ветвь",
+            "x": 137.2555717761557,
+            "y": 263.63279805352795
+          }
+        ],
+        "controls": {
+          "object-rabbit": {
+            "x": 87.1171875,
+            "y": 359.859375,
+            "width": 125.984375,
+            "height": 230
+          },
+          "object-flower": {
+            "x": 206.015625,
+            "y": 432.6171875,
+            "width": 150,
+            "height": 165.171875
+          },
+          "craft-art": {
+            "x": 28.9375,
+            "y": 190.765625,
+            "width": 133.875,
+            "height": 145
+          },
+          "scene-chooser": {
+            "x": 20,
+            "y": 51,
+            "width": 204.96875,
+            "height": 44
+          },
+          "lighting": {
+            "x": 322,
+            "y": 51,
+            "width": 48,
+            "height": 44
+          },
+          "open-upgrades": {
+            "x": 237.359375,
+            "y": 107,
+            "width": 132.640625,
+            "height": 44
+          },
+          "craft": {
+            "x": 75.015625,
+            "y": 681,
+            "width": 150,
+            "height": 50
+          },
+          "craft-auto": {
+            "x": 232.015625,
+            "y": 684,
+            "width": 82.96875,
+            "height": 44
+          },
+          "tab-workshop": {
+            "x": 23,
+            "y": 737,
+            "width": 112,
+            "height": 84
+          },
+          "tab-meadow": {
+            "x": 139,
+            "y": 737,
+            "width": 112,
+            "height": 84
+          },
+          "tab-projects": {
+            "x": 255,
+            "y": 737,
+            "width": 112,
+            "height": 84
+          }
+        }
+      },
+      "placed": []
+    },
+    {
+      "name": "04-next-canopy",
+      "t": 22.724,
+      "snapshot": {
+        "state": {
+          "version": 2,
+          "lastTimestamp": 1794002056879,
+          "craftAuto": true,
+          "wallet": {
+            "yarn": 10.930041666666712
+          },
+          "project": {
+            "itemId": "tree",
+            "work": 60.66299999999998
+          },
+          "owned": [
+            "rabbit",
+            "flower"
+          ],
+          "placements": {
+            "test-meadow": {
+              "rabbit": "rabbit",
+              "flower": "flower"
+            }
+          },
+          "upgrades": {},
+          "cooldowns": {
+            "test-meadow/pet": 1794002038483,
+            "test-meadow/water": 1794002040784,
+            "test-meadow/sniff": 1794002130784
+          },
+          "transactionSequence": 3,
+          "events": {},
+          "memories": {},
+          "accrual": {
+            "baseYarn": 10.898917222222268,
+            "baseWork": 60.066999999999986,
+            "elapsedMs": 596,
+            "automatic": {},
+            "events": {}
+          }
+        },
+        "view": {
+          "wallet": {
+            "yarn": 10.930041666666712
+          },
+          "owned": [
+            "rabbit",
+            "flower"
+          ],
+          "craftAuto": true,
+          "rates": {
+            "click": 2.8,
+            "idle": 1,
+            "yarnPerHour": 212
+          },
+          "project": {
+            "itemId": "tree",
+            "work": 60.66299999999998,
+            "progress": 0.4206865464632453,
+            "remaining": 83.53700000000003,
+            "etaSeconds": 83.53700000000003,
+            "stage": 1,
+            "canComplete": false
+          },
+          "projects": [
+            {
+              "itemId": "rabbit",
+              "yarnCost": 5,
+              "unlocked": true,
+              "canStart": false,
+              "canRecraft": false
+            },
+            {
+              "itemId": "flower",
+              "yarnCost": 5,
+              "unlocked": true,
+              "canStart": false,
+              "canRecraft": false
+            },
+            {
+              "itemId": "tree",
+              "yarnCost": 12,
+              "unlocked": true,
+              "canStart": false,
+              "canRecraft": false
+            },
+            {
+              "itemId": "house",
+              "yarnCost": 30,
+              "unlocked": false,
+              "canStart": false,
+              "canRecraft": false
+            },
+            {
+              "itemId": "butterfly",
+              "yarnCost": 36,
+              "unlocked": false,
+              "canStart": false,
+              "canRecraft": false
+            },
+            {
+              "itemId": "kot-cat",
+              "yarnCost": 10,
+              "unlocked": false,
+              "canStart": false,
+              "canRecraft": false
+            },
+            {
+              "itemId": "kot-coffee",
+              "yarnCost": 14,
+              "unlocked": false,
+              "canStart": false,
+              "canRecraft": false
+            },
+            {
+              "itemId": "kot-duck",
+              "yarnCost": 18,
+              "unlocked": false,
+              "canStart": false,
+              "canRecraft": false
+            },
+            {
+              "itemId": "kot-chair",
+              "yarnCost": 28,
+              "unlocked": false,
+              "canStart": false,
+              "canRecraft": false
+            },
+            {
+              "itemId": "kot-leaf-house",
+              "yarnCost": 34,
+              "unlocked": false,
+              "canStart": false,
+              "canRecraft": false
+            }
+          ],
+          "recipes": [
+            {
+              "recipeId": "invitation",
+              "yarnCost": 6,
+              "unlocked": false,
+              "canStart": false
+            },
+            {
+              "recipeId": "picnic-gift",
+              "yarnCost": 18,
+              "unlocked": false,
+              "canStart": false
+            }
+          ],
+          "upgrades": [
+            {
+              "id": "hook",
+              "target": "click",
+              "level": 0,
+              "cost": 2,
+              "current": 2.8,
+              "next": 3.15,
+              "maxed": false,
+              "canBuy": false
+            },
+            {
+              "id": "basket",
+              "target": "idle",
+              "level": 0,
+              "cost": 3,
+              "current": 1,
+              "next": 1.08,
+              "maxed": false,
+              "canBuy": false
+            }
+          ],
+          "meadows": [
+            {
+              "id": "test-meadow",
+              "unlocked": true,
+              "slots": [
+                {
+                  "id": "rabbit",
+                  "itemId": "rabbit",
+                  "x": 0.36,
+                  "y": 0.55,
+                  "scale": 1.85,
+                  "z": 3,
+                  "placed": true,
+                  "canPlace": false
+                },
+                {
+                  "id": "flower",
+                  "itemId": "flower",
+                  "x": 0.64,
+                  "y": 0.59,
+                  "scale": 1.05,
+                  "z": 4,
+                  "placed": true,
+                  "canPlace": false
+                },
+                {
+                  "id": "tree",
+                  "itemId": "tree",
+                  "x": 0.2,
+                  "y": 0.33,
+                  "scale": 1.4,
+                  "z": 1,
+                  "placed": false,
+                  "canPlace": false
+                },
+                {
+                  "id": "house",
+                  "itemId": "house",
+                  "x": 0.77,
+                  "y": 0.31,
+                  "scale": 1,
+                  "z": 0,
+                  "placed": false,
+                  "canPlace": false
+                },
+                {
+                  "id": "butterfly",
+                  "itemId": "butterfly",
+                  "x": 0.7,
+                  "y": 0.23,
+                  "scale": 0.4,
+                  "z": 5,
+                  "placed": false,
+                  "canPlace": false
+                }
+              ],
+              "interactions": [
+                {
+                  "id": "pet",
+                  "action": "pet",
+                  "actorSlot": "rabbit",
+                  "trigger": "manual",
+                  "amount": 0.7,
+                  "workBonus": 0,
+                  "active": true,
+                  "available": true,
+                  "readyAt": 1794002038483
+                },
+                {
+                  "id": "water",
+                  "action": "water",
+                  "actorSlot": "flower",
+                  "trigger": "manual",
+                  "amount": 0.6,
+                  "workBonus": 2,
+                  "active": true,
+                  "available": true,
+                  "readyAt": 1794002040784
+                },
+                {
+                  "id": "sway",
+                  "action": "sway",
+                  "actorSlot": "tree",
+                  "trigger": "manual",
+                  "amount": 0.8,
+                  "workBonus": 1,
+                  "active": false,
+                  "available": false,
+                  "readyAt": null
+                },
+                {
+                  "id": "knock",
+                  "action": "knock",
+                  "actorSlot": "house",
+                  "trigger": "manual",
+                  "amount": 1.2,
+                  "workBonus": 0,
+                  "active": false,
+                  "available": false,
+                  "readyAt": null
+                },
+                {
+                  "id": "land",
+                  "action": "land",
+                  "actorSlot": "butterfly",
+                  "trigger": "manual",
+                  "amount": 0.8,
+                  "workBonus": 0,
+                  "active": false,
+                  "available": false,
+                  "readyAt": null
+                },
+                {
+                  "id": "sniff",
+                  "action": "sniff",
+                  "actorSlot": "rabbit",
+                  "trigger": "idle",
+                  "amount": 0.6,
+                  "workBonus": 0,
+                  "active": true,
+                  "available": false,
+                  "readyAt": 1794002130784
+                }
+              ]
+            },
+            {
+              "id": "kotoutro",
+              "unlocked": false,
+              "slots": [
+                {
+                  "id": "kot-cat",
+                  "itemId": "kot-cat",
+                  "x": 0.42,
+                  "y": 0.61,
+                  "scale": 1.2,
+                  "z": 4,
+                  "placed": false,
+                  "canPlace": false
+                },
+                {
+                  "id": "kot-coffee",
+                  "itemId": "kot-coffee",
+                  "x": 0.72,
+                  "y": 0.61,
+                  "scale": 0.65,
+                  "z": 5,
+                  "placed": false,
+                  "canPlace": false
+                },
+                {
+                  "id": "kot-duck",
+                  "itemId": "kot-duck",
+                  "x": 0.73,
+                  "y": 0.46,
+                  "scale": 0.65,
+                  "z": 2,
+                  "placed": false,
+                  "canPlace": false
+                },
+                {
+                  "id": "kot-chair",
+                  "itemId": "kot-chair",
+                  "x": 0.25,
+                  "y": 0.405,
+                  "scale": 0.8,
+                  "z": 1,
+                  "placed": false,
+                  "canPlace": false
+                },
+                {
+                  "id": "kot-leaf-house",
+                  "itemId": "kot-leaf-house",
+                  "x": 0.74,
+                  "y": 0.24,
+                  "scale": 0.75,
+                  "z": 0,
+                  "placed": false,
+                  "canPlace": false
+                }
+              ],
+              "interactions": [
+                {
+                  "id": "greet",
+                  "action": "greet",
+                  "actorSlot": "kot-cat",
+                  "trigger": "manual",
+                  "amount": 0.8,
+                  "workBonus": 0,
+                  "active": false,
+                  "available": false,
+                  "readyAt": null
+                },
+                {
+                  "id": "brew",
+                  "action": "brew",
+                  "actorSlot": "kot-coffee",
+                  "trigger": "manual",
+                  "amount": 0.7,
+                  "workBonus": 3,
+                  "active": false,
+                  "available": false,
+                  "readyAt": null
+                },
+                {
+                  "id": "feed",
+                  "action": "feed",
+                  "actorSlot": "kot-duck",
+                  "trigger": "manual",
+                  "amount": 0.9,
+                  "workBonus": 0,
+                  "active": false,
+                  "available": false,
+                  "readyAt": null
+                },
+                {
+                  "id": "rock",
+                  "action": "rock",
+                  "actorSlot": "kot-chair",
+                  "trigger": "manual",
+                  "amount": 0.4,
+                  "workBonus": 4,
+                  "active": false,
+                  "available": false,
+                  "readyAt": null
+                },
+                {
+                  "id": "shelter",
+                  "action": "shelter",
+                  "actorSlot": "kot-leaf-house",
+                  "trigger": "manual",
+                  "amount": 0.6,
+                  "workBonus": 0,
+                  "active": false,
+                  "available": false,
+                  "readyAt": null
+                },
+                {
+                  "id": "coffee-time",
+                  "action": "brew",
+                  "actorSlot": "kot-coffee",
+                  "trigger": "idle",
+                  "amount": 0.7,
+                  "workBonus": 0,
+                  "active": false,
+                  "available": false,
+                  "readyAt": null
+                }
+              ]
+            }
+          ],
+          "events": [
+            {
+              "id": "duck-visit",
+              "meadowId": "test-meadow",
+              "unlocked": false,
+              "phase": "locked",
+              "dueAt": null,
+              "count": 0
+            },
+            {
+              "id": "rabbit-visit",
+              "meadowId": "kotoutro",
+              "unlocked": false,
+              "phase": "locked",
+              "dueAt": null,
+              "count": 0
+            },
+            {
+              "id": "friendship-picnic",
+              "meadowId": "kotoutro",
+              "unlocked": false,
+              "phase": "locked",
+              "dueAt": null,
+              "count": 0
+            }
+          ],
+          "visitors": [],
+          "memories": {}
+        },
+        "ui": {
+          "screen": "workshop",
+          "meadowId": "test-meadow",
+          "evening": false,
+          "selected": {
+            "test-meadow": "flower"
+          }
+        },
+        "craft": {
+          "itemId": "tree",
+          "sectionIndex": 2,
+          "sectionProgress": 0.022047619047618247,
+          "ready": true,
+          "error": null
+        }
+      },
+      "points": {
+        "canvas": {
+          "x": 8,
+          "y": 42,
+          "width": 374,
+          "height": 794
+        },
+        "item": {
+          "x": 28.946569343065693,
+          "y": 190.77999999999997,
+          "width": 133.88686131386862,
+          "height": 145
+        },
+        "sections": [
+          {
+            "id": "trunk",
+            "name": "Корни, ствол и основания ветвей",
+            "x": 94.39060827250609,
+            "y": 306.3213625304136
+          },
+          {
+            "id": "central-crown",
+            "name": "Верхняя и средняя цветущая крона",
+            "x": 100.38817518248176,
+            "y": 223.76661800486616
+          },
+          {
+            "id": "upper-left-crown",
+            "name": "Левая верхняя цветущая ветвь",
+            "x": 61.05119221411192,
+            "y": 224.29581508515813
+          },
+          {
+            "id": "lower-left-crown",
+            "name": "Левая нижняя цветущая ветвь",
+            "x": 54.87722627737226,
+            "y": 256.2240389294404
+          },
+          {
+            "id": "upper-right-crown",
+            "name": "Правая верхняя цветущая ветвь",
+            "x": 138.84316301703166,
+            "y": 231.8809732360097
+          },
+          {
+            "id": "lower-right-crown",
+            "name": "Правая нижняя цветущая ветвь",
+            "x": 137.2555717761557,
+            "y": 263.63279805352795
+          }
+        ],
+        "controls": {
+          "object-rabbit": {
+            "x": 87.1171875,
+            "y": 359.859375,
+            "width": 125.984375,
+            "height": 230
+          },
+          "object-flower": {
+            "x": 206.015625,
+            "y": 432.6171875,
+            "width": 150,
+            "height": 165.171875
+          },
+          "craft-art": {
+            "x": 28.9375,
+            "y": 190.765625,
+            "width": 133.875,
+            "height": 145
+          },
+          "scene-chooser": {
+            "x": 20,
+            "y": 51,
+            "width": 204.96875,
+            "height": 44
+          },
+          "lighting": {
+            "x": 322,
+            "y": 51,
+            "width": 48,
+            "height": 44
+          },
+          "open-upgrades": {
+            "x": 237.359375,
+            "y": 107,
+            "width": 132.640625,
+            "height": 44
+          },
+          "craft": {
+            "x": 75.015625,
+            "y": 681,
+            "width": 150,
+            "height": 50
+          },
+          "craft-auto": {
+            "x": 232.015625,
+            "y": 684,
+            "width": 82.96875,
+            "height": 44
+          },
+          "tab-workshop": {
+            "x": 23,
+            "y": 737,
+            "width": 112,
+            "height": 84
+          },
+          "tab-meadow": {
+            "x": 139,
+            "y": 737,
+            "width": 112,
+            "height": 84
+          },
+          "tab-projects": {
+            "x": 255,
+            "y": 737,
+            "width": 112,
+            "height": 84
+          }
+        }
+      },
+      "placed": []
+    },
+    {
+      "name": "05-tree-ready",
+      "t": 32.158,
+      "snapshot": {
+        "state": {
+          "version": 2,
+          "lastTimestamp": 1794002065879,
+          "craftAuto": true,
+          "wallet": {
+            "yarn": 11.400041666666715
+          },
+          "project": {
+            "itemId": "tree",
+            "work": 144.20000000000002
+          },
+          "owned": [
+            "rabbit",
+            "flower"
+          ],
+          "placements": {
+            "test-meadow": {
+              "rabbit": "rabbit",
+              "flower": "flower"
+            }
+          },
+          "upgrades": {},
+          "cooldowns": {
+            "test-meadow/pet": 1794002038483,
+            "test-meadow/water": 1794002040784,
+            "test-meadow/sniff": 1794002130784
+          },
+          "transactionSequence": 3,
+          "events": {},
+          "memories": {},
+          "accrual": {
+            "baseYarn": 11.373356111111159,
+            "baseWork": 144.20000000000002,
+            "elapsedMs": 511,
+            "automatic": {},
+            "events": {}
+          }
+        },
+        "view": {
+          "wallet": {
+            "yarn": 11.400041666666715
+          },
+          "owned": [
+            "rabbit",
+            "flower"
+          ],
+          "craftAuto": true,
+          "rates": {
+            "click": 2.8,
+            "idle": 1,
+            "yarnPerHour": 212
+          },
+          "project": {
+            "itemId": "tree",
+            "work": 144.20000000000002,
+            "progress": 1,
+            "remaining": 0,
+            "etaSeconds": 0,
+            "stage": 3,
+            "canComplete": true
+          },
+          "projects": [
+            {
+              "itemId": "rabbit",
+              "yarnCost": 5,
+              "unlocked": true,
+              "canStart": false,
+              "canRecraft": false
+            },
+            {
+              "itemId": "flower",
+              "yarnCost": 5,
+              "unlocked": true,
+              "canStart": false,
+              "canRecraft": false
+            },
+            {
+              "itemId": "tree",
+              "yarnCost": 12,
+              "unlocked": true,
+              "canStart": false,
+              "canRecraft": false
+            },
+            {
+              "itemId": "house",
+              "yarnCost": 30,
+              "unlocked": false,
+              "canStart": false,
+              "canRecraft": false
+            },
+            {
+              "itemId": "butterfly",
+              "yarnCost": 36,
+              "unlocked": false,
+              "canStart": false,
+              "canRecraft": false
+            },
+            {
+              "itemId": "kot-cat",
+              "yarnCost": 10,
+              "unlocked": false,
+              "canStart": false,
+              "canRecraft": false
+            },
+            {
+              "itemId": "kot-coffee",
+              "yarnCost": 14,
+              "unlocked": false,
+              "canStart": false,
+              "canRecraft": false
+            },
+            {
+              "itemId": "kot-duck",
+              "yarnCost": 18,
+              "unlocked": false,
+              "canStart": false,
+              "canRecraft": false
+            },
+            {
+              "itemId": "kot-chair",
+              "yarnCost": 28,
+              "unlocked": false,
+              "canStart": false,
+              "canRecraft": false
+            },
+            {
+              "itemId": "kot-leaf-house",
+              "yarnCost": 34,
+              "unlocked": false,
+              "canStart": false,
+              "canRecraft": false
+            }
+          ],
+          "recipes": [
+            {
+              "recipeId": "invitation",
+              "yarnCost": 6,
+              "unlocked": false,
+              "canStart": false
+            },
+            {
+              "recipeId": "picnic-gift",
+              "yarnCost": 18,
+              "unlocked": false,
+              "canStart": false
+            }
+          ],
+          "upgrades": [
+            {
+              "id": "hook",
+              "target": "click",
+              "level": 0,
+              "cost": 2,
+              "current": 2.8,
+              "next": 3.15,
+              "maxed": false,
+              "canBuy": false
+            },
+            {
+              "id": "basket",
+              "target": "idle",
+              "level": 0,
+              "cost": 3,
+              "current": 1,
+              "next": 1.08,
+              "maxed": false,
+              "canBuy": false
+            }
+          ],
+          "meadows": [
+            {
+              "id": "test-meadow",
+              "unlocked": true,
+              "slots": [
+                {
+                  "id": "rabbit",
+                  "itemId": "rabbit",
+                  "x": 0.36,
+                  "y": 0.55,
+                  "scale": 1.85,
+                  "z": 3,
+                  "placed": true,
+                  "canPlace": false
+                },
+                {
+                  "id": "flower",
+                  "itemId": "flower",
+                  "x": 0.64,
+                  "y": 0.59,
+                  "scale": 1.05,
+                  "z": 4,
+                  "placed": true,
+                  "canPlace": false
+                },
+                {
+                  "id": "tree",
+                  "itemId": "tree",
+                  "x": 0.2,
+                  "y": 0.33,
+                  "scale": 1.4,
+                  "z": 1,
+                  "placed": false,
+                  "canPlace": false
+                },
+                {
+                  "id": "house",
+                  "itemId": "house",
+                  "x": 0.77,
+                  "y": 0.31,
+                  "scale": 1,
+                  "z": 0,
+                  "placed": false,
+                  "canPlace": false
+                },
+                {
+                  "id": "butterfly",
+                  "itemId": "butterfly",
+                  "x": 0.7,
+                  "y": 0.23,
+                  "scale": 0.4,
+                  "z": 5,
+                  "placed": false,
+                  "canPlace": false
+                }
+              ],
+              "interactions": [
+                {
+                  "id": "pet",
+                  "action": "pet",
+                  "actorSlot": "rabbit",
+                  "trigger": "manual",
+                  "amount": 0.7,
+                  "workBonus": 0,
+                  "active": true,
+                  "available": true,
+                  "readyAt": 1794002038483
+                },
+                {
+                  "id": "water",
+                  "action": "water",
+                  "actorSlot": "flower",
+                  "trigger": "manual",
+                  "amount": 0.6,
+                  "workBonus": 2,
+                  "active": true,
+                  "available": true,
+                  "readyAt": 1794002040784
+                },
+                {
+                  "id": "sway",
+                  "action": "sway",
+                  "actorSlot": "tree",
+                  "trigger": "manual",
+                  "amount": 0.8,
+                  "workBonus": 1,
+                  "active": false,
+                  "available": false,
+                  "readyAt": null
+                },
+                {
+                  "id": "knock",
+                  "action": "knock",
+                  "actorSlot": "house",
+                  "trigger": "manual",
+                  "amount": 1.2,
+                  "workBonus": 0,
+                  "active": false,
+                  "available": false,
+                  "readyAt": null
+                },
+                {
+                  "id": "land",
+                  "action": "land",
+                  "actorSlot": "butterfly",
+                  "trigger": "manual",
+                  "amount": 0.8,
+                  "workBonus": 0,
+                  "active": false,
+                  "available": false,
+                  "readyAt": null
+                },
+                {
+                  "id": "sniff",
+                  "action": "sniff",
+                  "actorSlot": "rabbit",
+                  "trigger": "idle",
+                  "amount": 0.6,
+                  "workBonus": 0,
+                  "active": true,
+                  "available": false,
+                  "readyAt": 1794002130784
+                }
+              ]
+            },
+            {
+              "id": "kotoutro",
+              "unlocked": false,
+              "slots": [
+                {
+                  "id": "kot-cat",
+                  "itemId": "kot-cat",
+                  "x": 0.42,
+                  "y": 0.61,
+                  "scale": 1.2,
+                  "z": 4,
+                  "placed": false,
+                  "canPlace": false
+                },
+                {
+                  "id": "kot-coffee",
+                  "itemId": "kot-coffee",
+                  "x": 0.72,
+                  "y": 0.61,
+                  "scale": 0.65,
+                  "z": 5,
+                  "placed": false,
+                  "canPlace": false
+                },
+                {
+                  "id": "kot-duck",
+                  "itemId": "kot-duck",
+                  "x": 0.73,
+                  "y": 0.46,
+                  "scale": 0.65,
+                  "z": 2,
+                  "placed": false,
+                  "canPlace": false
+                },
+                {
+                  "id": "kot-chair",
+                  "itemId": "kot-chair",
+                  "x": 0.25,
+                  "y": 0.405,
+                  "scale": 0.8,
+                  "z": 1,
+                  "placed": false,
+                  "canPlace": false
+                },
+                {
+                  "id": "kot-leaf-house",
+                  "itemId": "kot-leaf-house",
+                  "x": 0.74,
+                  "y": 0.24,
+                  "scale": 0.75,
+                  "z": 0,
+                  "placed": false,
+                  "canPlace": false
+                }
+              ],
+              "interactions": [
+                {
+                  "id": "greet",
+                  "action": "greet",
+                  "actorSlot": "kot-cat",
+                  "trigger": "manual",
+                  "amount": 0.8,
+                  "workBonus": 0,
+                  "active": false,
+                  "available": false,
+                  "readyAt": null
+                },
+                {
+                  "id": "brew",
+                  "action": "brew",
+                  "actorSlot": "kot-coffee",
+                  "trigger": "manual",
+                  "amount": 0.7,
+                  "workBonus": 3,
+                  "active": false,
+                  "available": false,
+                  "readyAt": null
+                },
+                {
+                  "id": "feed",
+                  "action": "feed",
+                  "actorSlot": "kot-duck",
+                  "trigger": "manual",
+                  "amount": 0.9,
+                  "workBonus": 0,
+                  "active": false,
+                  "available": false,
+                  "readyAt": null
+                },
+                {
+                  "id": "rock",
+                  "action": "rock",
+                  "actorSlot": "kot-chair",
+                  "trigger": "manual",
+                  "amount": 0.4,
+                  "workBonus": 4,
+                  "active": false,
+                  "available": false,
+                  "readyAt": null
+                },
+                {
+                  "id": "shelter",
+                  "action": "shelter",
+                  "actorSlot": "kot-leaf-house",
+                  "trigger": "manual",
+                  "amount": 0.6,
+                  "workBonus": 0,
+                  "active": false,
+                  "available": false,
+                  "readyAt": null
+                },
+                {
+                  "id": "coffee-time",
+                  "action": "brew",
+                  "actorSlot": "kot-coffee",
+                  "trigger": "idle",
+                  "amount": 0.7,
+                  "workBonus": 0,
+                  "active": false,
+                  "available": false,
+                  "readyAt": null
+                }
+              ]
+            }
+          ],
+          "events": [
+            {
+              "id": "duck-visit",
+              "meadowId": "test-meadow",
+              "unlocked": false,
+              "phase": "locked",
+              "dueAt": null,
+              "count": 0
+            },
+            {
+              "id": "rabbit-visit",
+              "meadowId": "kotoutro",
+              "unlocked": false,
+              "phase": "locked",
+              "dueAt": null,
+              "count": 0
+            },
+            {
+              "id": "friendship-picnic",
+              "meadowId": "kotoutro",
+              "unlocked": false,
+              "phase": "locked",
+              "dueAt": null,
+              "count": 0
+            }
+          ],
+          "visitors": [],
+          "memories": {}
+        },
+        "ui": {
+          "screen": "workshop",
+          "meadowId": "test-meadow",
+          "evening": false,
+          "selected": {
+            "test-meadow": "flower"
+          }
+        },
+        "craft": {
+          "itemId": "tree",
+          "sectionIndex": 6,
+          "sectionProgress": 0,
+          "ready": true,
+          "error": null
+        }
+      },
+      "points": {
+        "canvas": {
+          "x": 8,
+          "y": 42,
+          "width": 374,
+          "height": 794
+        },
+        "item": {
+          "x": 28.946569343065693,
+          "y": 190.77999999999997,
+          "width": 133.88686131386862,
+          "height": 145
+        },
+        "sections": [
+          {
+            "id": "trunk",
+            "name": "Корни, ствол и основания ветвей",
+            "x": 94.39060827250609,
+            "y": 306.3213625304136
+          },
+          {
+            "id": "central-crown",
+            "name": "Верхняя и средняя цветущая крона",
+            "x": 100.38817518248176,
+            "y": 223.76661800486616
+          },
+          {
+            "id": "upper-left-crown",
+            "name": "Левая верхняя цветущая ветвь",
+            "x": 61.05119221411192,
+            "y": 224.29581508515813
+          },
+          {
+            "id": "lower-left-crown",
+            "name": "Левая нижняя цветущая ветвь",
+            "x": 54.87722627737226,
+            "y": 256.2240389294404
+          },
+          {
+            "id": "upper-right-crown",
+            "name": "Правая верхняя цветущая ветвь",
+            "x": 138.84316301703166,
+            "y": 231.8809732360097
+          },
+          {
+            "id": "lower-right-crown",
+            "name": "Правая нижняя цветущая ветвь",
+            "x": 137.2555717761557,
+            "y": 263.63279805352795
+          }
+        ],
+        "controls": {
+          "object-rabbit": {
+            "x": 87.1171875,
+            "y": 359.859375,
+            "width": 125.984375,
+            "height": 230
+          },
+          "object-flower": {
+            "x": 206.015625,
+            "y": 432.6171875,
+            "width": 150,
+            "height": 165.171875
+          },
+          "craft-art": {
+            "x": 28.9375,
+            "y": 190.765625,
+            "width": 133.875,
+            "height": 145
+          },
+          "scene-chooser": {
+            "x": 20,
+            "y": 51,
+            "width": 204.96875,
+            "height": 44
+          },
+          "lighting": {
+            "x": 322,
+            "y": 51,
+            "width": 48,
+            "height": 44
+          },
+          "open-upgrades": {
+            "x": 237.359375,
+            "y": 107,
+            "width": 132.640625,
+            "height": 44
+          },
+          "craft": {
+            "x": 120,
+            "y": 681,
+            "width": 150,
+            "height": 50
+          },
+          "tab-workshop": {
+            "x": 23,
+            "y": 737,
+            "width": 112,
+            "height": 84
+          },
+          "tab-meadow": {
+            "x": 139,
+            "y": 737,
+            "width": 112,
+            "height": 84
+          },
+          "tab-projects": {
+            "x": 255,
+            "y": 737,
+            "width": 112,
+            "height": 84
+          }
+        }
+      },
+      "placed": []
+    },
+    {
+      "name": "06-tree-placed",
+      "t": 32.598,
+      "snapshot": {
+        "state": {
+          "version": 2,
+          "lastTimestamp": 1794002066876,
+          "craftAuto": true,
+          "wallet": {
+            "yarn": 11.461579444444492
+          },
+          "project": null,
+          "owned": [
+            "rabbit",
+            "flower",
+            "tree"
+          ],
+          "placements": {
+            "test-meadow": {
+              "rabbit": "rabbit",
+              "flower": "flower",
+              "tree": "tree"
+            }
+          },
+          "upgrades": {},
+          "cooldowns": {
+            "test-meadow/pet": 1794002038483,
+            "test-meadow/water": 1794002040784,
+            "test-meadow/sniff": 1794002130784,
+            "test-meadow/sway": 1794002066566
+          },
+          "transactionSequence": 3,
+          "events": {},
+          "memories": {},
+          "accrual": {
+            "baseYarn": 11.435918333333381,
+            "baseWork": 0,
+            "elapsedMs": 310,
+            "automatic": {},
+            "events": {}
+          }
+        },
+        "view": {
+          "wallet": {
+            "yarn": 11.461579444444492
+          },
+          "owned": [
+            "rabbit",
+            "flower",
+            "tree"
+          ],
+          "craftAuto": true,
+          "rates": {
+            "click": 2.8,
+            "idle": 1,
+            "yarnPerHour": 322
+          },
+          "project": null,
+          "projects": [
+            {
+              "itemId": "rabbit",
+              "yarnCost": 5,
+              "unlocked": true,
+              "canStart": false,
+              "canRecraft": true
+            },
+            {
+              "itemId": "flower",
+              "yarnCost": 5,
+              "unlocked": true,
+              "canStart": false,
+              "canRecraft": true
+            },
+            {
+              "itemId": "tree",
+              "yarnCost": 12,
+              "unlocked": true,
+              "canStart": false,
+              "canRecraft": true
+            },
+            {
+              "itemId": "house",
+              "yarnCost": 30,
+              "unlocked": true,
+              "canStart": false,
+              "canRecraft": false
+            },
+            {
+              "itemId": "butterfly",
+              "yarnCost": 36,
+              "unlocked": true,
+              "canStart": false,
+              "canRecraft": false
+            },
+            {
+              "itemId": "kot-cat",
+              "yarnCost": 10,
+              "unlocked": true,
+              "canStart": true,
+              "canRecraft": false
+            },
+            {
+              "itemId": "kot-coffee",
+              "yarnCost": 14,
+              "unlocked": false,
+              "canStart": false,
+              "canRecraft": false
+            },
+            {
+              "itemId": "kot-duck",
+              "yarnCost": 18,
+              "unlocked": false,
+              "canStart": false,
+              "canRecraft": false
+            },
+            {
+              "itemId": "kot-chair",
+              "yarnCost": 28,
+              "unlocked": false,
+              "canStart": false,
+              "canRecraft": false
+            },
+            {
+              "itemId": "kot-leaf-house",
+              "yarnCost": 34,
+              "unlocked": false,
+              "canStart": false,
+              "canRecraft": false
+            }
+          ],
+          "recipes": [
+            {
+              "recipeId": "invitation",
+              "yarnCost": 6,
+              "unlocked": false,
+              "canStart": false
+            },
+            {
+              "recipeId": "picnic-gift",
+              "yarnCost": 18,
+              "unlocked": false,
+              "canStart": false
+            }
+          ],
+          "upgrades": [
+            {
+              "id": "hook",
+              "target": "click",
+              "level": 0,
+              "cost": 2,
+              "current": 2.8,
+              "next": 3.15,
+              "maxed": false,
+              "canBuy": false
+            },
+            {
+              "id": "basket",
+              "target": "idle",
+              "level": 0,
+              "cost": 3,
+              "current": 1,
+              "next": 1.08,
+              "maxed": false,
+              "canBuy": false
+            }
+          ],
+          "meadows": [
+            {
+              "id": "test-meadow",
+              "unlocked": true,
+              "slots": [
+                {
+                  "id": "rabbit",
+                  "itemId": "rabbit",
+                  "x": 0.36,
+                  "y": 0.55,
+                  "scale": 1.85,
+                  "z": 3,
+                  "placed": true,
+                  "canPlace": false
+                },
+                {
+                  "id": "flower",
+                  "itemId": "flower",
+                  "x": 0.64,
+                  "y": 0.59,
+                  "scale": 1.05,
+                  "z": 4,
+                  "placed": true,
+                  "canPlace": false
+                },
+                {
+                  "id": "tree",
+                  "itemId": "tree",
+                  "x": 0.2,
+                  "y": 0.33,
+                  "scale": 1.4,
+                  "z": 1,
+                  "placed": true,
+                  "canPlace": false
+                },
+                {
+                  "id": "house",
+                  "itemId": "house",
+                  "x": 0.77,
+                  "y": 0.31,
+                  "scale": 1,
+                  "z": 0,
+                  "placed": false,
+                  "canPlace": false
+                },
+                {
+                  "id": "butterfly",
+                  "itemId": "butterfly",
+                  "x": 0.7,
+                  "y": 0.23,
+                  "scale": 0.4,
+                  "z": 5,
+                  "placed": false,
+                  "canPlace": false
+                }
+              ],
+              "interactions": [
+                {
+                  "id": "pet",
+                  "action": "pet",
+                  "actorSlot": "rabbit",
+                  "trigger": "manual",
+                  "amount": 0.7,
+                  "workBonus": 0,
+                  "active": true,
+                  "available": true,
+                  "readyAt": 1794002038483
+                },
+                {
+                  "id": "water",
+                  "action": "water",
+                  "actorSlot": "flower",
+                  "trigger": "manual",
+                  "amount": 0.6,
+                  "workBonus": 2,
+                  "active": true,
+                  "available": true,
+                  "readyAt": 1794002040784
+                },
+                {
+                  "id": "sway",
+                  "action": "sway",
+                  "actorSlot": "tree",
+                  "trigger": "manual",
+                  "amount": 0.8,
+                  "workBonus": 1,
+                  "active": true,
+                  "available": true,
+                  "readyAt": 1794002066566
+                },
+                {
+                  "id": "knock",
+                  "action": "knock",
+                  "actorSlot": "house",
+                  "trigger": "manual",
+                  "amount": 1.2,
+                  "workBonus": 0,
+                  "active": false,
+                  "available": false,
+                  "readyAt": null
+                },
+                {
+                  "id": "land",
+                  "action": "land",
+                  "actorSlot": "butterfly",
+                  "trigger": "manual",
+                  "amount": 0.8,
+                  "workBonus": 0,
+                  "active": false,
+                  "available": false,
+                  "readyAt": null
+                },
+                {
+                  "id": "sniff",
+                  "action": "sniff",
+                  "actorSlot": "rabbit",
+                  "trigger": "idle",
+                  "amount": 0.6,
+                  "workBonus": 0,
+                  "active": true,
+                  "available": false,
+                  "readyAt": 1794002130784
+                }
+              ]
+            },
+            {
+              "id": "kotoutro",
+              "unlocked": true,
+              "slots": [
+                {
+                  "id": "kot-cat",
+                  "itemId": "kot-cat",
+                  "x": 0.42,
+                  "y": 0.61,
+                  "scale": 1.2,
+                  "z": 4,
+                  "placed": false,
+                  "canPlace": false
+                },
+                {
+                  "id": "kot-coffee",
+                  "itemId": "kot-coffee",
+                  "x": 0.72,
+                  "y": 0.61,
+                  "scale": 0.65,
+                  "z": 5,
+                  "placed": false,
+                  "canPlace": false
+                },
+                {
+                  "id": "kot-duck",
+                  "itemId": "kot-duck",
+                  "x": 0.73,
+                  "y": 0.46,
+                  "scale": 0.65,
+                  "z": 2,
+                  "placed": false,
+                  "canPlace": false
+                },
+                {
+                  "id": "kot-chair",
+                  "itemId": "kot-chair",
+                  "x": 0.25,
+                  "y": 0.405,
+                  "scale": 0.8,
+                  "z": 1,
+                  "placed": false,
+                  "canPlace": false
+                },
+                {
+                  "id": "kot-leaf-house",
+                  "itemId": "kot-leaf-house",
+                  "x": 0.74,
+                  "y": 0.24,
+                  "scale": 0.75,
+                  "z": 0,
+                  "placed": false,
+                  "canPlace": false
+                }
+              ],
+              "interactions": [
+                {
+                  "id": "greet",
+                  "action": "greet",
+                  "actorSlot": "kot-cat",
+                  "trigger": "manual",
+                  "amount": 0.8,
+                  "workBonus": 0,
+                  "active": false,
+                  "available": false,
+                  "readyAt": null
+                },
+                {
+                  "id": "brew",
+                  "action": "brew",
+                  "actorSlot": "kot-coffee",
+                  "trigger": "manual",
+                  "amount": 0.7,
+                  "workBonus": 3,
+                  "active": false,
+                  "available": false,
+                  "readyAt": null
+                },
+                {
+                  "id": "feed",
+                  "action": "feed",
+                  "actorSlot": "kot-duck",
+                  "trigger": "manual",
+                  "amount": 0.9,
+                  "workBonus": 0,
+                  "active": false,
+                  "available": false,
+                  "readyAt": null
+                },
+                {
+                  "id": "rock",
+                  "action": "rock",
+                  "actorSlot": "kot-chair",
+                  "trigger": "manual",
+                  "amount": 0.4,
+                  "workBonus": 4,
+                  "active": false,
+                  "available": false,
+                  "readyAt": null
+                },
+                {
+                  "id": "shelter",
+                  "action": "shelter",
+                  "actorSlot": "kot-leaf-house",
+                  "trigger": "manual",
+                  "amount": 0.6,
+                  "workBonus": 0,
+                  "active": false,
+                  "available": false,
+                  "readyAt": null
+                },
+                {
+                  "id": "coffee-time",
+                  "action": "brew",
+                  "actorSlot": "kot-coffee",
+                  "trigger": "idle",
+                  "amount": 0.7,
+                  "workBonus": 0,
+                  "active": false,
+                  "available": false,
+                  "readyAt": null
+                }
+              ]
+            }
+          ],
+          "events": [
+            {
+              "id": "duck-visit",
+              "meadowId": "test-meadow",
+              "unlocked": false,
+              "phase": "locked",
+              "dueAt": null,
+              "count": 0
+            },
+            {
+              "id": "rabbit-visit",
+              "meadowId": "kotoutro",
+              "unlocked": false,
+              "phase": "locked",
+              "dueAt": null,
+              "count": 0
+            },
+            {
+              "id": "friendship-picnic",
+              "meadowId": "kotoutro",
+              "unlocked": false,
+              "phase": "locked",
+              "dueAt": null,
+              "count": 0
+            }
+          ],
+          "visitors": [],
+          "memories": {}
+        },
+        "ui": {
+          "screen": "meadow",
+          "meadowId": "test-meadow",
+          "evening": false,
+          "selected": {
+            "test-meadow": "tree"
+          }
+        },
+        "craft": {
+          "itemId": "tree",
+          "sectionIndex": 6,
+          "sectionProgress": 0,
+          "ready": false,
+          "error": null
+        }
+      },
+      "points": {
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "item": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "sections": [
+          {
+            "id": "trunk",
+            "name": "Корни, ствол и основания ветвей",
+            "x": 0,
+            "y": 0
+          },
+          {
+            "id": "central-crown",
+            "name": "Верхняя и средняя цветущая крона",
+            "x": 0,
+            "y": 0
+          },
+          {
+            "id": "upper-left-crown",
+            "name": "Левая верхняя цветущая ветвь",
+            "x": 0,
+            "y": 0
+          },
+          {
+            "id": "lower-left-crown",
+            "name": "Левая нижняя цветущая ветвь",
+            "x": 0,
+            "y": 0
+          },
+          {
+            "id": "upper-right-crown",
+            "name": "Правая верхняя цветущая ветвь",
+            "x": 0,
+            "y": 0
+          },
+          {
+            "id": "lower-right-crown",
+            "name": "Правая нижняя цветущая ветвь",
+            "x": 0,
+            "y": 0
+          }
+        ],
+        "controls": {
+          "object-tree": {
+            "x": 28.9375,
+            "y": 190.765625,
+            "width": 133.875,
+            "height": 145
+          },
+          "object-rabbit": {
+            "x": 87.1171875,
+            "y": 359.859375,
+            "width": 125.984375,
+            "height": 230
+          },
+          "object-flower": {
+            "x": 206.015625,
+            "y": 432.6171875,
+            "width": 150,
+            "height": 165.171875
+          },
+          "scene-chooser": {
+            "x": 20,
+            "y": 51,
+            "width": 204.96875,
+            "height": 44
+          },
+          "lighting": {
+            "x": 322,
+            "y": 51,
+            "width": 48,
+            "height": 44
+          },
+          "open-memories": {
+            "x": 263.5,
+            "y": 107,
+            "width": 106.5,
+            "height": 44
+          },
+          "next-project": {
+            "x": 120,
+            "y": 681,
+            "width": 150,
+            "height": 50
+          },
+          "tab-workshop": {
+            "x": 18,
+            "y": 742,
+            "width": 116,
+            "height": 84
+          },
+          "tab-meadow": {
+            "x": 137,
+            "y": 742,
+            "width": 116,
+            "height": 84
+          },
+          "tab-projects": {
+            "x": 256,
+            "y": 742,
+            "width": 116,
+            "height": 84
+          }
+        }
+      },
+      "placed": [
+        {
+          "x": 28.9375,
+          "y": 190.765625,
+          "width": 133.875,
+          "height": 145
+        }
+      ]
+    },
+    {
+      "name": "07-settled",
+      "t": 33.987,
+      "snapshot": {
+        "state": {
+          "version": 2,
+          "lastTimestamp": 1794002067882,
+          "craftAuto": true,
+          "wallet": {
+            "yarn": 11.544853888888937
+          },
+          "project": null,
+          "owned": [
+            "rabbit",
+            "flower",
+            "tree"
+          ],
+          "placements": {
+            "test-meadow": {
+              "rabbit": "rabbit",
+              "flower": "flower",
+              "tree": "tree"
+            }
+          },
+          "upgrades": {},
+          "cooldowns": {
+            "test-meadow/pet": 1794002038483,
+            "test-meadow/water": 1794002040784,
+            "test-meadow/sniff": 1794002130784,
+            "test-meadow/sway": 1794002066566
+          },
+          "transactionSequence": 3,
+          "events": {},
+          "memories": {},
+          "accrual": {
+            "baseYarn": 11.435918333333381,
+            "baseWork": 0,
+            "elapsedMs": 1316,
+            "automatic": {},
+            "events": {}
+          }
+        },
+        "view": {
+          "wallet": {
+            "yarn": 11.544853888888937
+          },
+          "owned": [
+            "rabbit",
+            "flower",
+            "tree"
+          ],
+          "craftAuto": true,
+          "rates": {
+            "click": 2.8,
+            "idle": 1,
+            "yarnPerHour": 322
+          },
+          "project": null,
+          "projects": [
+            {
+              "itemId": "rabbit",
+              "yarnCost": 5,
+              "unlocked": true,
+              "canStart": false,
+              "canRecraft": true
+            },
+            {
+              "itemId": "flower",
+              "yarnCost": 5,
+              "unlocked": true,
+              "canStart": false,
+              "canRecraft": true
+            },
+            {
+              "itemId": "tree",
+              "yarnCost": 12,
+              "unlocked": true,
+              "canStart": false,
+              "canRecraft": true
+            },
+            {
+              "itemId": "house",
+              "yarnCost": 30,
+              "unlocked": true,
+              "canStart": false,
+              "canRecraft": false
+            },
+            {
+              "itemId": "butterfly",
+              "yarnCost": 36,
+              "unlocked": true,
+              "canStart": false,
+              "canRecraft": false
+            },
+            {
+              "itemId": "kot-cat",
+              "yarnCost": 10,
+              "unlocked": true,
+              "canStart": true,
+              "canRecraft": false
+            },
+            {
+              "itemId": "kot-coffee",
+              "yarnCost": 14,
+              "unlocked": false,
+              "canStart": false,
+              "canRecraft": false
+            },
+            {
+              "itemId": "kot-duck",
+              "yarnCost": 18,
+              "unlocked": false,
+              "canStart": false,
+              "canRecraft": false
+            },
+            {
+              "itemId": "kot-chair",
+              "yarnCost": 28,
+              "unlocked": false,
+              "canStart": false,
+              "canRecraft": false
+            },
+            {
+              "itemId": "kot-leaf-house",
+              "yarnCost": 34,
+              "unlocked": false,
+              "canStart": false,
+              "canRecraft": false
+            }
+          ],
+          "recipes": [
+            {
+              "recipeId": "invitation",
+              "yarnCost": 6,
+              "unlocked": false,
+              "canStart": false
+            },
+            {
+              "recipeId": "picnic-gift",
+              "yarnCost": 18,
+              "unlocked": false,
+              "canStart": false
+            }
+          ],
+          "upgrades": [
+            {
+              "id": "hook",
+              "target": "click",
+              "level": 0,
+              "cost": 2,
+              "current": 2.8,
+              "next": 3.15,
+              "maxed": false,
+              "canBuy": false
+            },
+            {
+              "id": "basket",
+              "target": "idle",
+              "level": 0,
+              "cost": 3,
+              "current": 1,
+              "next": 1.08,
+              "maxed": false,
+              "canBuy": false
+            }
+          ],
+          "meadows": [
+            {
+              "id": "test-meadow",
+              "unlocked": true,
+              "slots": [
+                {
+                  "id": "rabbit",
+                  "itemId": "rabbit",
+                  "x": 0.36,
+                  "y": 0.55,
+                  "scale": 1.85,
+                  "z": 3,
+                  "placed": true,
+                  "canPlace": false
+                },
+                {
+                  "id": "flower",
+                  "itemId": "flower",
+                  "x": 0.64,
+                  "y": 0.59,
+                  "scale": 1.05,
+                  "z": 4,
+                  "placed": true,
+                  "canPlace": false
+                },
+                {
+                  "id": "tree",
+                  "itemId": "tree",
+                  "x": 0.2,
+                  "y": 0.33,
+                  "scale": 1.4,
+                  "z": 1,
+                  "placed": true,
+                  "canPlace": false
+                },
+                {
+                  "id": "house",
+                  "itemId": "house",
+                  "x": 0.77,
+                  "y": 0.31,
+                  "scale": 1,
+                  "z": 0,
+                  "placed": false,
+                  "canPlace": false
+                },
+                {
+                  "id": "butterfly",
+                  "itemId": "butterfly",
+                  "x": 0.7,
+                  "y": 0.23,
+                  "scale": 0.4,
+                  "z": 5,
+                  "placed": false,
+                  "canPlace": false
+                }
+              ],
+              "interactions": [
+                {
+                  "id": "pet",
+                  "action": "pet",
+                  "actorSlot": "rabbit",
+                  "trigger": "manual",
+                  "amount": 0.7,
+                  "workBonus": 0,
+                  "active": true,
+                  "available": true,
+                  "readyAt": 1794002038483
+                },
+                {
+                  "id": "water",
+                  "action": "water",
+                  "actorSlot": "flower",
+                  "trigger": "manual",
+                  "amount": 0.6,
+                  "workBonus": 2,
+                  "active": true,
+                  "available": true,
+                  "readyAt": 1794002040784
+                },
+                {
+                  "id": "sway",
+                  "action": "sway",
+                  "actorSlot": "tree",
+                  "trigger": "manual",
+                  "amount": 0.8,
+                  "workBonus": 1,
+                  "active": true,
+                  "available": true,
+                  "readyAt": 1794002066566
+                },
+                {
+                  "id": "knock",
+                  "action": "knock",
+                  "actorSlot": "house",
+                  "trigger": "manual",
+                  "amount": 1.2,
+                  "workBonus": 0,
+                  "active": false,
+                  "available": false,
+                  "readyAt": null
+                },
+                {
+                  "id": "land",
+                  "action": "land",
+                  "actorSlot": "butterfly",
+                  "trigger": "manual",
+                  "amount": 0.8,
+                  "workBonus": 0,
+                  "active": false,
+                  "available": false,
+                  "readyAt": null
+                },
+                {
+                  "id": "sniff",
+                  "action": "sniff",
+                  "actorSlot": "rabbit",
+                  "trigger": "idle",
+                  "amount": 0.6,
+                  "workBonus": 0,
+                  "active": true,
+                  "available": false,
+                  "readyAt": 1794002130784
+                }
+              ]
+            },
+            {
+              "id": "kotoutro",
+              "unlocked": true,
+              "slots": [
+                {
+                  "id": "kot-cat",
+                  "itemId": "kot-cat",
+                  "x": 0.42,
+                  "y": 0.61,
+                  "scale": 1.2,
+                  "z": 4,
+                  "placed": false,
+                  "canPlace": false
+                },
+                {
+                  "id": "kot-coffee",
+                  "itemId": "kot-coffee",
+                  "x": 0.72,
+                  "y": 0.61,
+                  "scale": 0.65,
+                  "z": 5,
+                  "placed": false,
+                  "canPlace": false
+                },
+                {
+                  "id": "kot-duck",
+                  "itemId": "kot-duck",
+                  "x": 0.73,
+                  "y": 0.46,
+                  "scale": 0.65,
+                  "z": 2,
+                  "placed": false,
+                  "canPlace": false
+                },
+                {
+                  "id": "kot-chair",
+                  "itemId": "kot-chair",
+                  "x": 0.25,
+                  "y": 0.405,
+                  "scale": 0.8,
+                  "z": 1,
+                  "placed": false,
+                  "canPlace": false
+                },
+                {
+                  "id": "kot-leaf-house",
+                  "itemId": "kot-leaf-house",
+                  "x": 0.74,
+                  "y": 0.24,
+                  "scale": 0.75,
+                  "z": 0,
+                  "placed": false,
+                  "canPlace": false
+                }
+              ],
+              "interactions": [
+                {
+                  "id": "greet",
+                  "action": "greet",
+                  "actorSlot": "kot-cat",
+                  "trigger": "manual",
+                  "amount": 0.8,
+                  "workBonus": 0,
+                  "active": false,
+                  "available": false,
+                  "readyAt": null
+                },
+                {
+                  "id": "brew",
+                  "action": "brew",
+                  "actorSlot": "kot-coffee",
+                  "trigger": "manual",
+                  "amount": 0.7,
+                  "workBonus": 3,
+                  "active": false,
+                  "available": false,
+                  "readyAt": null
+                },
+                {
+                  "id": "feed",
+                  "action": "feed",
+                  "actorSlot": "kot-duck",
+                  "trigger": "manual",
+                  "amount": 0.9,
+                  "workBonus": 0,
+                  "active": false,
+                  "available": false,
+                  "readyAt": null
+                },
+                {
+                  "id": "rock",
+                  "action": "rock",
+                  "actorSlot": "kot-chair",
+                  "trigger": "manual",
+                  "amount": 0.4,
+                  "workBonus": 4,
+                  "active": false,
+                  "available": false,
+                  "readyAt": null
+                },
+                {
+                  "id": "shelter",
+                  "action": "shelter",
+                  "actorSlot": "kot-leaf-house",
+                  "trigger": "manual",
+                  "amount": 0.6,
+                  "workBonus": 0,
+                  "active": false,
+                  "available": false,
+                  "readyAt": null
+                },
+                {
+                  "id": "coffee-time",
+                  "action": "brew",
+                  "actorSlot": "kot-coffee",
+                  "trigger": "idle",
+                  "amount": 0.7,
+                  "workBonus": 0,
+                  "active": false,
+                  "available": false,
+                  "readyAt": null
+                }
+              ]
+            }
+          ],
+          "events": [
+            {
+              "id": "duck-visit",
+              "meadowId": "test-meadow",
+              "unlocked": false,
+              "phase": "locked",
+              "dueAt": null,
+              "count": 0
+            },
+            {
+              "id": "rabbit-visit",
+              "meadowId": "kotoutro",
+              "unlocked": false,
+              "phase": "locked",
+              "dueAt": null,
+              "count": 0
+            },
+            {
+              "id": "friendship-picnic",
+              "meadowId": "kotoutro",
+              "unlocked": false,
+              "phase": "locked",
+              "dueAt": null,
+              "count": 0
+            }
+          ],
+          "visitors": [],
+          "memories": {}
+        },
+        "ui": {
+          "screen": "meadow",
+          "meadowId": "test-meadow",
+          "evening": false,
+          "selected": {
+            "test-meadow": "tree"
+          }
+        },
+        "craft": {
+          "itemId": "tree",
+          "sectionIndex": 6,
+          "sectionProgress": 0,
+          "ready": false,
+          "error": null
+        }
+      },
+      "points": {
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "item": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "sections": [
+          {
+            "id": "trunk",
+            "name": "Корни, ствол и основания ветвей",
+            "x": 0,
+            "y": 0
+          },
+          {
+            "id": "central-crown",
+            "name": "Верхняя и средняя цветущая крона",
+            "x": 0,
+            "y": 0
+          },
+          {
+            "id": "upper-left-crown",
+            "name": "Левая верхняя цветущая ветвь",
+            "x": 0,
+            "y": 0
+          },
+          {
+            "id": "lower-left-crown",
+            "name": "Левая нижняя цветущая ветвь",
+            "x": 0,
+            "y": 0
+          },
+          {
+            "id": "upper-right-crown",
+            "name": "Правая верхняя цветущая ветвь",
+            "x": 0,
+            "y": 0
+          },
+          {
+            "id": "lower-right-crown",
+            "name": "Правая нижняя цветущая ветвь",
+            "x": 0,
+            "y": 0
+          }
+        ],
+        "controls": {
+          "object-tree": {
+            "x": 28.9375,
+            "y": 190.765625,
+            "width": 133.875,
+            "height": 145
+          },
+          "object-rabbit": {
+            "x": 87.1171875,
+            "y": 359.859375,
+            "width": 125.984375,
+            "height": 230
+          },
+          "object-flower": {
+            "x": 206.015625,
+            "y": 432.6171875,
+            "width": 150,
+            "height": 165.171875
+          },
+          "scene-chooser": {
+            "x": 20,
+            "y": 51,
+            "width": 204.96875,
+            "height": 44
+          },
+          "lighting": {
+            "x": 322,
+            "y": 51,
+            "width": 48,
+            "height": 44
+          },
+          "open-memories": {
+            "x": 263.5,
+            "y": 107,
+            "width": 106.5,
+            "height": 44
+          },
+          "next-project": {
+            "x": 120,
+            "y": 681,
+            "width": 150,
+            "height": 50
+          },
+          "tab-workshop": {
+            "x": 18,
+            "y": 742,
+            "width": 116,
+            "height": 84
+          },
+          "tab-meadow": {
+            "x": 137,
+            "y": 742,
+            "width": 116,
+            "height": 84
+          },
+          "tab-projects": {
+            "x": 256,
+            "y": 742,
+            "width": 116,
+            "height": 84
+          }
+        }
+      },
+      "placed": [
+        {
+          "x": 28.9375,
+          "y": 190.765625,
+          "width": 133.875,
+          "height": 145
+        }
+      ]
+    }
+  ],
+  "events": [
+    {
+      "event": "earned-neighbor",
+      "id": "rabbit",
+      "n": 52,
+      "t": 4.22
+    },
+    {
+      "event": "earned-neighbor",
+      "id": "flower",
+      "n": 52,
+      "t": 6.509
+    },
+    {
+      "event": "click",
+      "clicks": 1,
+      "normal": true,
+      "t": 6.866,
+      "work": 2.9499999999999997,
+      "craft": {
+        "itemId": "tree",
+        "sectionIndex": 0,
+        "sectionProgress": 0.08428571428571428,
+        "ready": false,
+        "error": null
+      }
+    },
+    {
+      "event": "click",
+      "clicks": 2,
+      "normal": true,
+      "t": 7.867,
+      "work": 6.7509999999999994,
+      "craft": {
+        "itemId": "tree",
+        "sectionIndex": 0,
+        "sectionProgress": 0.19288571428571427,
+        "ready": false,
+        "error": null
+      }
+    },
+    {
+      "event": "click",
+      "clicks": 3,
+      "normal": true,
+      "t": 8.888,
+      "work": 10.570999999999998,
+      "craft": {
+        "itemId": "tree",
+        "sectionIndex": 0,
+        "sectionProgress": 0.30202857142857137,
+        "ready": false,
+        "error": null
+      }
+    },
+    {
+      "event": "click",
+      "clicks": 4,
+      "normal": true,
+      "t": 9.884,
+      "work": 14.367999999999999,
+      "craft": {
+        "itemId": "tree",
+        "sectionIndex": 0,
+        "sectionProgress": 0.41051428571428566,
+        "ready": false,
+        "error": null
+      }
+    },
+    {
+      "event": "click",
+      "clicks": 5,
+      "normal": true,
+      "t": 10.898,
+      "work": 18.183,
+      "craft": {
+        "itemId": "tree",
+        "sectionIndex": 0,
+        "sectionProgress": 0.5195142857142857,
+        "ready": false,
+        "error": null
+      }
+    },
+    {
+      "event": "click",
+      "clicks": 6,
+      "normal": true,
+      "t": 11.901,
+      "work": 21.985,
+      "craft": {
+        "itemId": "tree",
+        "sectionIndex": 0,
+        "sectionProgress": 0.6281428571428571,
+        "ready": false,
+        "error": null
+      }
+    },
+    {
+      "event": "click",
+      "clicks": 7,
+      "normal": true,
+      "t": 12.917,
+      "work": 25.801,
+      "craft": {
+        "itemId": "tree",
+        "sectionIndex": 0,
+        "sectionProgress": 0.7371714285714285,
+        "ready": false,
+        "error": null
+      }
+    },
+    {
+      "event": "click",
+      "clicks": 8,
+      "normal": true,
+      "t": 13.931,
+      "work": 29.616,
+      "craft": {
+        "itemId": "tree",
+        "sectionIndex": 0,
+        "sectionProgress": 0.8461714285714286,
+        "ready": false,
+        "error": null
+      }
+    },
+    {
+      "event": "click",
+      "clicks": 9,
+      "normal": true,
+      "t": 14.937,
+      "work": 33.422,
+      "craft": {
+        "itemId": "tree",
+        "sectionIndex": 0,
+        "sectionProgress": 0.9549142857142856,
+        "ready": false,
+        "error": null
+      }
+    },
+    {
+      "event": "click",
+      "clicks": 10,
+      "normal": true,
+      "t": 15.941,
+      "work": 37.217999999999996,
+      "craft": {
+        "itemId": "tree",
+        "sectionIndex": 1,
+        "sectionProgress": 0.08801587301587288,
+        "ready": false,
+        "error": null
+      }
+    },
+    {
+      "event": "click",
+      "clicks": 11,
+      "normal": true,
+      "t": 16.953,
+      "work": 41.035,
+      "craft": {
+        "itemId": "tree",
+        "sectionIndex": 1,
+        "sectionProgress": 0.23948412698412685,
+        "ready": false,
+        "error": null
+      }
+    },
+    {
+      "event": "click",
+      "clicks": 12,
+      "normal": true,
+      "t": 17.967,
+      "work": 44.849999999999994,
+      "craft": {
+        "itemId": "tree",
+        "sectionIndex": 1,
+        "sectionProgress": 0.39087301587301565,
+        "ready": false,
+        "error": null
+      }
+    },
+    {
+      "event": "click",
+      "clicks": 13,
+      "normal": true,
+      "t": 18.971,
+      "work": 48.65299999999999,
+      "craft": {
+        "itemId": "tree",
+        "sectionIndex": 1,
+        "sectionProgress": 0.541785714285714,
+        "ready": false,
+        "error": null
+      }
+    },
+    {
+      "event": "click",
+      "clicks": 14,
+      "normal": true,
+      "t": 19.967,
+      "work": 52.450999999999986,
+      "craft": {
+        "itemId": "tree",
+        "sectionIndex": 1,
+        "sectionProgress": 0.6924999999999994,
+        "ready": false,
+        "error": null
+      }
+    },
+    {
+      "event": "click",
+      "clicks": 15,
+      "normal": true,
+      "t": 20.969,
+      "work": 56.249999999999986,
+      "craft": {
+        "itemId": "tree",
+        "sectionIndex": 1,
+        "sectionProgress": 0.8432539682539677,
+        "ready": false,
+        "error": null
+      }
+    },
+    {
+      "event": "click",
+      "clicks": 16,
+      "normal": true,
+      "t": 21.984,
+      "work": 60.066999999999986,
+      "craft": {
+        "itemId": "tree",
+        "sectionIndex": 1,
+        "sectionProgress": 0.9947222222222217,
+        "ready": false,
+        "error": null
+      }
+    },
+    {
+      "event": "click",
+      "clicks": 17,
+      "normal": false,
+      "t": 23,
+      "work": 63.88299999999998,
+      "craft": {
+        "itemId": "tree",
+        "sectionIndex": 2,
+        "sectionProgress": 0.17538095238095153,
+        "ready": false,
+        "error": null
+      }
+    },
+    {
+      "event": "click",
+      "clicks": 18,
+      "normal": false,
+      "t": 23.301,
+      "work": 66.98499999999999,
+      "craft": {
+        "itemId": "tree",
+        "sectionIndex": 2,
+        "sectionProgress": 0.32309523809523744,
+        "ready": false,
+        "error": null
+      }
+    },
+    {
+      "event": "click",
+      "clicks": 19,
+      "normal": false,
+      "t": 23.652,
+      "work": 70.13499999999998,
+      "craft": {
+        "itemId": "tree",
+        "sectionIndex": 2,
+        "sectionProgress": 0.473095238095237,
+        "ready": false,
+        "error": null
+      }
+    },
+    {
+      "event": "click",
+      "clicks": 20,
+      "normal": false,
+      "t": 23.918,
+      "work": 73.20099999999998,
+      "craft": {
+        "itemId": "tree",
+        "sectionIndex": 2,
+        "sectionProgress": 0.6190952380952371,
+        "ready": false,
+        "error": null
+      }
+    },
+    {
+      "event": "click",
+      "clicks": 21,
+      "normal": false,
+      "t": 24.236,
+      "work": 76.31799999999997,
+      "craft": {
+        "itemId": "tree",
+        "sectionIndex": 2,
+        "sectionProgress": 0.767523809523808,
+        "ready": false,
+        "error": null
+      }
+    },
+    {
+      "event": "click",
+      "clicks": 22,
+      "normal": false,
+      "t": 24.549,
+      "work": 79.42399999999996,
+      "craft": {
+        "itemId": "tree",
+        "sectionIndex": 2,
+        "sectionProgress": 0.9154285714285697,
+        "ready": true,
+        "error": null
+      }
+    },
+    {
+      "event": "click",
+      "clicks": 23,
+      "normal": false,
+      "t": 24.851,
+      "work": 82.53399999999996,
+      "craft": {
+        "itemId": "tree",
+        "sectionIndex": 3,
+        "sectionProgress": 0.06352380952380782,
+        "ready": false,
+        "error": null
+      }
+    },
+    {
+      "event": "click",
+      "clicks": 24,
+      "normal": false,
+      "t": 25.183,
+      "work": 85.65599999999996,
+      "craft": {
+        "itemId": "tree",
+        "sectionIndex": 3,
+        "sectionProgress": 0.2121904761904745,
+        "ready": true,
+        "error": null
+      }
+    },
+    {
+      "event": "click",
+      "clicks": 25,
+      "normal": false,
+      "t": 25.472,
+      "work": 88.75399999999996,
+      "craft": {
+        "itemId": "tree",
+        "sectionIndex": 3,
+        "sectionProgress": 0.35971428571428393,
+        "ready": false,
+        "error": null
+      }
+    },
+    {
+      "event": "click",
+      "clicks": 26,
+      "normal": false,
+      "t": 25.79,
+      "work": 91.86899999999996,
+      "craft": {
+        "itemId": "tree",
+        "sectionIndex": 3,
+        "sectionProgress": 0.5080476190476171,
+        "ready": false,
+        "error": null
+      }
+    },
+    {
+      "event": "click",
+      "clicks": 27,
+      "normal": false,
+      "t": 26.101,
+      "work": 94.98499999999996,
+      "craft": {
+        "itemId": "tree",
+        "sectionIndex": 3,
+        "sectionProgress": 0.6564285714285693,
+        "ready": false,
+        "error": null
+      }
+    },
+    {
+      "event": "click",
+      "clicks": 28,
+      "normal": false,
+      "t": 26.402,
+      "work": 98.08599999999996,
+      "craft": {
+        "itemId": "tree",
+        "sectionIndex": 3,
+        "sectionProgress": 0.8040952380952359,
+        "ready": false,
+        "error": null
+      }
+    },
+    {
+      "event": "click",
+      "clicks": 29,
+      "normal": false,
+      "t": 26.716,
+      "work": 101.19999999999995,
+      "craft": {
+        "itemId": "tree",
+        "sectionIndex": 3,
+        "sectionProgress": 0.9523809523809497,
+        "ready": false,
+        "error": null
+      }
+    },
+    {
+      "event": "click",
+      "clicks": 30,
+      "normal": false,
+      "t": 27.038,
+      "work": 104.31899999999995,
+      "craft": {
+        "itemId": "tree",
+        "sectionIndex": 4,
+        "sectionProgress": 0.1009047619047592,
+        "ready": false,
+        "error": null
+      }
+    },
+    {
+      "event": "click",
+      "clicks": 31,
+      "normal": false,
+      "t": 27.336,
+      "work": 107.41799999999995,
+      "craft": {
+        "itemId": "tree",
+        "sectionIndex": 4,
+        "sectionProgress": 0.24847619047618794,
+        "ready": false,
+        "error": null
+      }
+    },
+    {
+      "event": "click",
+      "clicks": 32,
+      "normal": false,
+      "t": 27.653,
+      "work": 110.53499999999994,
+      "craft": {
+        "itemId": "tree",
+        "sectionIndex": 4,
+        "sectionProgress": 0.3969047619047589,
+        "ready": false,
+        "error": null
+      }
+    },
+    {
+      "event": "click",
+      "clicks": 33,
+      "normal": false,
+      "t": 27.958,
+      "work": 113.63699999999994,
+      "craft": {
+        "itemId": "tree",
+        "sectionIndex": 4,
+        "sectionProgress": 0.5446190476190448,
+        "ready": false,
+        "error": null
+      }
+    },
+    {
+      "event": "click",
+      "clicks": 34,
+      "normal": false,
+      "t": 28.25,
+      "work": 116.73499999999994,
+      "craft": {
+        "itemId": "tree",
+        "sectionIndex": 4,
+        "sectionProgress": 0.6921428571428543,
+        "ready": false,
+        "error": null
+      }
+    },
+    {
+      "event": "click",
+      "clicks": 35,
+      "normal": false,
+      "t": 28.566,
+      "work": 119.84999999999994,
+      "craft": {
+        "itemId": "tree",
+        "sectionIndex": 4,
+        "sectionProgress": 0.8404761904761874,
+        "ready": false,
+        "error": null
+      }
+    },
+    {
+      "event": "click",
+      "clicks": 36,
+      "normal": false,
+      "t": 28.886,
+      "work": 122.96899999999994,
+      "craft": {
+        "itemId": "tree",
+        "sectionIndex": 4,
+        "sectionProgress": 0.9889999999999969,
+        "ready": false,
+        "error": null
+      }
+    },
+    {
+      "event": "click",
+      "clicks": 37,
+      "normal": false,
+      "t": 29.185,
+      "work": 126.06799999999994,
+      "craft": {
+        "itemId": "tree",
+        "sectionIndex": 5,
+        "sectionProgress": 0.13657142857142562,
+        "ready": false,
+        "error": null
+      }
+    },
+    {
+      "event": "click",
+      "clicks": 38,
+      "normal": false,
+      "t": 29.502,
+      "work": 129.18499999999995,
+      "craft": {
+        "itemId": "tree",
+        "sectionIndex": 5,
+        "sectionProgress": 0.28499999999999726,
+        "ready": false,
+        "error": null
+      }
+    },
+    {
+      "event": "click",
+      "clicks": 39,
+      "normal": false,
+      "t": 29.824,
+      "work": 132.30299999999997,
+      "craft": {
+        "itemId": "tree",
+        "sectionIndex": 5,
+        "sectionProgress": 0.43347619047618885,
+        "ready": false,
+        "error": null
+      }
+    },
+    {
+      "event": "click",
+      "clicks": 40,
+      "normal": false,
+      "t": 30.135,
+      "work": 135.41899999999998,
+      "craft": {
+        "itemId": "tree",
+        "sectionIndex": 5,
+        "sectionProgress": 0.5818571428571419,
+        "ready": false,
+        "error": null
+      }
+    },
+    {
+      "event": "click",
+      "clicks": 41,
+      "normal": false,
+      "t": 30.451,
+      "work": 138.533,
+      "craft": {
+        "itemId": "tree",
+        "sectionIndex": 5,
+        "sectionProgress": 0.7301428571428564,
+        "ready": false,
+        "error": null
+      }
+    },
+    {
+      "event": "click",
+      "clicks": 42,
+      "normal": false,
+      "t": 30.769,
+      "work": 141.652,
+      "craft": {
+        "itemId": "tree",
+        "sectionIndex": 5,
+        "sectionProgress": 0.8786666666666659,
+        "ready": false,
+        "error": null
+      }
+    },
+    {
+      "event": "click",
+      "clicks": 43,
+      "normal": false,
+      "t": 31.074,
+      "work": 144.20000000000002,
+      "craft": {
+        "itemId": "tree",
+        "sectionIndex": 6,
+        "sectionProgress": 0,
+        "ready": false,
+        "error": null
+      }
+    },
+    {
+      "event": "place",
+      "t": 32.285
+    }
+  ],
+  "errors": [],
+  "failure": null
+}

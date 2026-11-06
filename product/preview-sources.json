@@ -148,8 +148,23 @@
         "water-pressed.webp",
         "water.webp"
       ]
+    },
+    {
+      "commit": "c9fc175e0a51c06f95ffb3fc81dbbae42760f2ba",
+      "directory": "product/art-experiments/craft-feel-v1/exports",
+      "files": [
+        "meadow-day.webp"
+      ]
+    },
+    {
+      "commit": "fa6e120c62f44ffd34205e56f3dacb67afc34fa0",
+      "directory": "product/art-experiments/stage-integration-v1/exports",
+      "files": [
+        "pond-day-v1.webp"
+      ]
     }
   ],
   "sceneReview": true,
-  "gameplayReview": true
+  "gameplayReview": true,
+  "stagedReview": true
 }

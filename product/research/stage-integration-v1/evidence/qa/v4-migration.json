@@ -1,0 +1,10 @@
+{
+  "result": "PASS",
+  "fixture": "Technical old v3 full world, maximum upgrades, active paid invitation and missing historical craftAuto; fixed clock only for migration assertions",
+  "sourceYarn": 97576.70798336,
+  "importedYarn": 97577.01020558222,
+  "sourceWork": 33,
+  "importedWork": 41.5,
+  "owned": 10,
+  "oldRawUnchanged": true
+}

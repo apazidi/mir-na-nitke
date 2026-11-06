@@ -21,6 +21,8 @@ export function requirementsMet(state,definition={}){
 const unlocked=(s,c,d)=>requirementsMet(s,d)&&(!d.meadowId||requirementsMet(s,meadow(c,d.meadowId)));
 const active=(s,m,r)=>r.requires.every(id=>has(s.placements[m.id]??{},id))&&requirementsMet(s,r);
 const rate=(s,c,target)=>(target==='click'?c.clickWork:c.idleWorkPerSecond)+c.upgrades.filter(u=>u.target===target).reduce((n,u)=>n+(s.upgrades[u.id]??0)*u.amount,0);
+const craftRate=(s,c)=>s.craftAuto===false?0:rate(s,c,'idle');
+const recraftable=(s,c,id)=>(c.recraftableIds??[]).includes(id)&&s.owned.includes(id);
 const price=(s,u)=>u.baseCost*u.costMultiplier**(s.upgrades[u.id]??0);
 function incomeRate(s,c){return c.reserveYarnPerHour+c.meadows.reduce((n,m)=>n+(m.passive??[]).filter(p=>active(s,m,p)).reduce((sum,p)=>sum+p.ratePerHour,0),0);}
 function validateRequirements(c,d){
@@ -35,11 +37,13 @@ function validateWork(i){
 }
 export function validateConfig(c){
  for(const name of ['initialYarn','reserveYarnPerHour','clickWork','idleWorkPerSecond','maxOfflineMs'])number(c[name],name,name==='maxOfflineMs'||name==='reserveYarnPerHour');
+ if(c.defaultCraftAuto!==undefined&&typeof c.defaultCraftAuto!=='boolean')fail('Invalid default craft auto');
  for(const list of [c.items,c.meadows,c.upgrades,recipes(c),events(c)]){
   if(!Array.isArray(list))fail('Expected config arrays');const ids=new Set();
   for(const value of list){key(value.id);if(ids.has(value.id))fail('Duplicate ID');ids.add(value.id);}
  }
  if(!c.items.length)fail('No starter item');
+ if(c.recraftableIds!==undefined){if(!Array.isArray(c.recraftableIds)||new Set(c.recraftableIds).size!==c.recraftableIds.length)fail('Invalid recraftable IDs');for(const id of c.recraftableIds)item(c,id);}
  for(const i of c.items){validateWork(i);validateRequirements(c,i);if(i.meadowId)meadow(c,i.meadowId);}
  if(!c.items.some(i=>i.yarnCost<=c.initialYarn&&unlocked({placements:{},memories:{}},c,i)))fail('Starter unaffordable or locked');
  for(const u of c.upgrades){
@@ -86,7 +90,7 @@ function sync(s,c,at){
 }
 export function createInitialState(c,now){
  validateConfig(c);number(now,'Timestamp');
- const s={version:2,lastTimestamp:now,wallet:{yarn:c.initialYarn},project:null,owned:[],placements:{},upgrades:{},cooldowns:{},transactionSequence:0,events:{},memories:{}};
+ const s={version:2,lastTimestamp:now,craftAuto:c.defaultCraftAuto??true,wallet:{yarn:c.initialYarn},project:null,owned:[],placements:{},upgrades:{},cooldowns:{},transactionSequence:0,events:{},memories:{}};
  resetAccrual(s);sync(s,c,now);return s;
 }
 function credit(s,amount){number(amount,'Transaction amount');number(s.wallet.yarn+amount,'Wallet overflow');s.wallet.yarn+=amount;if(amount)s.transactionSequence++;}
@@ -124,18 +128,21 @@ export function advanceTime(state,now,c){
  settleEvents(s,c,now);
  const yarn=accruedYarn(s,c);
  number(yarn,'Wallet overflow');s.wallet.yarn=yarn;
- if(s.project)s.project.work=Math.min(projectDefinition(s,c).workUnits,s.accrual.baseWork+s.accrual.elapsedMs/1000*rate(s,c,'idle'));
+ if(s.project)s.project.work=Math.min(projectDefinition(s,c).workUnits,s.accrual.baseWork+s.accrual.elapsedMs/1000*craftRate(s,c));
  s.lastTimestamp=now;return s;
 }
 export function dispatch(state,action,c){
  const s=advanceTime(state,action.now,c);
  switch(action.type){
+  case 'setCraftAuto':if(typeof action.enabled!=='boolean')fail('Invalid craft auto choice');s.craftAuto=action.enabled;break;
   case 'startProject':{const i=item(c,action.itemId);if(s.project||s.owned.includes(i.id)||!unlocked(s,c,i))fail('Project unavailable');spend(s,i.yarnCost);s.project={itemId:i.id,work:0};break;}
+  case 'startRecraft':{const i=item(c,action.itemId);if(s.project||!recraftable(s,c,i.id))fail('Recraft unavailable');s.project={itemId:i.id,work:0,recraft:true};break;}
+  case 'cancelRecraft':if(!s.project?.recraft)fail('No recraft');s.project=null;break;
   case 'startRecipe':{const r=recipes(c).find(r=>r.id===action.recipeId)??fail('Unknown recipe');const e=events(c).find(e=>e.id===r.eventId);if(s.project||!unlocked(s,c,r)||!eventAvailable(s,e))fail('Recipe unavailable');spend(s,r.yarnCost);s.project={recipeId:r.id,work:0};break;}
   case 'click':if(!s.project)fail('No project');work(s,c,rate(s,c,'click'));break;
   case 'completeCraft':{
    if(!s.project||s.project.work<projectDefinition(s,c).workUnits)fail('Project incomplete');
-   if(s.project.recipeId){const r=projectDefinition(s,c),e=events(c).find(e=>e.id===r.eventId);if(!eventAvailable(s,e))fail('Event unavailable');schedule(s,e);}else s.owned.push(s.project.itemId);
+   if(s.project.recipeId){const r=projectDefinition(s,c),e=events(c).find(e=>e.id===r.eventId);if(!eventAvailable(s,e))fail('Event unavailable');schedule(s,e);}else if(!s.project.recraft)s.owned.push(s.project.itemId);
    s.project=null;break;
   }
   case 'buyUpgrade':{const u=c.upgrades.find(u=>u.id===action.upgradeId)??fail('Unknown upgrade');if(!requirementsMet(s,u)||(s.upgrades[u.id]??0)>=u.maxLevel)fail('Upgrade unavailable');spend(s,price(s,u));s.upgrades[u.id]=(s.upgrades[u.id]??0)+1;break;}
@@ -155,9 +162,9 @@ export function dispatch(state,action,c){
 }
 export function selectView(s,c){
  const project=projectDefinition(s,c),progress=project?s.project.work/project.workUnits:0;
- return copy({wallet:s.wallet,owned:s.owned,rates:{click:rate(s,c,'click'),idle:rate(s,c,'idle'),yarnPerHour:incomeRate(s,c)+c.meadows.reduce((n,m)=>n+rules(m).filter(r=>r.trigger==='idle'&&active(s,m,r)).reduce((t,r)=>t+r.amount*3600000/r.cooldownMs,0),0)},
-  project:project?{...s.project,progress,remaining:project.workUnits-s.project.work,etaSeconds:rate(s,c,'idle')?(project.workUnits-s.project.work)/rate(s,c,'idle'):null,stage:project.art.stages.findLastIndex(x=>x.at<=progress),canComplete:progress===1}:null,
-  projects:c.items.map(i=>({itemId:i.id,yarnCost:i.yarnCost,unlocked:unlocked(s,c,i),canStart:!s.project&&!s.owned.includes(i.id)&&unlocked(s,c,i)&&s.wallet.yarn>=i.yarnCost})),
+ return copy({wallet:s.wallet,owned:s.owned,craftAuto:s.craftAuto??true,rates:{click:rate(s,c,'click'),idle:rate(s,c,'idle'),yarnPerHour:incomeRate(s,c)+c.meadows.reduce((n,m)=>n+rules(m).filter(r=>r.trigger==='idle'&&active(s,m,r)).reduce((t,r)=>t+r.amount*3600000/r.cooldownMs,0),0)},
+  project:project?{...s.project,progress,remaining:project.workUnits-s.project.work,etaSeconds:craftRate(s,c)?(project.workUnits-s.project.work)/craftRate(s,c):null,stage:project.art.stages.findLastIndex(x=>x.at<=progress),canComplete:progress===1}:null,
+  projects:c.items.map(i=>({itemId:i.id,yarnCost:i.yarnCost,unlocked:unlocked(s,c,i),canStart:!s.project&&!s.owned.includes(i.id)&&unlocked(s,c,i)&&s.wallet.yarn>=i.yarnCost,canRecraft:!s.project&&recraftable(s,c,i.id)})),
   recipes:recipes(c).map(r=>({recipeId:r.id,yarnCost:r.yarnCost,unlocked:unlocked(s,c,r),canStart:!s.project&&unlocked(s,c,r)&&eventAvailable(s,events(c).find(e=>e.id===r.eventId))&&s.wallet.yarn>=r.yarnCost})),
   upgrades:c.upgrades.map(u=>({id:u.id,target:u.target,level:s.upgrades[u.id]??0,cost:price(s,u),current:rate(s,c,u.target),next:rate(s,c,u.target)+u.amount,maxed:(s.upgrades[u.id]??0)>=u.maxLevel,canBuy:requirementsMet(s,u)&&(s.upgrades[u.id]??0)<u.maxLevel&&s.wallet.yarn>=price(s,u)})),
   meadows:c.meadows.map(m=>({id:m.id,unlocked:requirementsMet(s,m),slots:m.slots.map(slot=>({...slot,placed:has(s.placements[m.id]??{},slot.id),canPlace:requirementsMet(s,m)&&s.owned.includes(slot.itemId)&&!Object.values(s.placements).some(p=>Object.values(p).includes(slot.itemId))})),interactions:rules(m).map(r=>({id:r.id,action:r.action,actorSlot:r.actorSlot,trigger:r.trigger,amount:r.amount,workBonus:r.workBonus??0,active:active(s,m,r),available:r.trigger==='manual'&&active(s,m,r)&&s.lastTimestamp>=(s.cooldowns[ruleKey(m,r)]??Infinity),readyAt:s.cooldowns[ruleKey(m,r)]??null}))})),
@@ -165,17 +172,30 @@ export function selectView(s,c){
   visitors:events(c).filter(e=>e.visitor&&s.events[e.id]?.phase==='visiting').map(e=>({eventId:e.id,...e.visitor,until:s.events[e.id].dueAt})),memories:s.memories});
 }
 export const serializeState=s=>JSON.stringify(s);
+/** Opt-in balance migration between known configs. Settle at the source rates
+ * once, retain the earned world, then start a new accrual interval at target rates.
+ * This is separate from the historic schema-v1 migration below. */
+export function migrateConfigState(state,fromConfig,toConfig,now){
+ validateConfig(toConfig);
+ const s=advanceTime(deserializeState(serializeState(state),fromConfig),now,fromConfig);
+ if(s.project)s.project.work=s.project.work/projectDefinition(s,fromConfig).workUnits*projectDefinition(s,toConfig).workUnits;
+ resetAccrual(s);
+ return deserializeState(serializeState(s),toConfig);
+}
 /** Explicit v1 migration; unknown IDs always fail. Legacy work ratios use migrationV1.workUnits. */
 export function deserializeState(json,c){
  validateConfig(c);const s=JSON.parse(json),legacy=s?.version===1;if(!s||![1,2].includes(s.version))fail('Unsupported save version');
+ // Saves written before the explicit toggle always ran automatic project work.
+ if(!has(s,'craftAuto'))s.craftAuto=true;else if(typeof s.craftAuto!=='boolean')fail('Invalid craft auto');
  number(s.lastTimestamp,'Timestamp');number(s.wallet?.yarn,'Wallet');integer(s.transactionSequence,'Sequence');
  if(!Array.isArray(s.owned)||new Set(s.owned).size!==s.owned.length)fail('Save shape');for(const id of s.owned)item(c,id);
  if(legacy){s.version=2;s.events={};s.memories={};}
  for(const field of ['placements','upgrades','cooldowns','events','memories'])if(!map(s[field]))fail('Save map');
  if(s.project!==null){
   if(!map(s.project)||Boolean(s.project.itemId)===Boolean(s.project.recipeId)||(legacy&&s.project.recipeId))fail('Invalid project');const p=projectDefinition(s,c);number(s.project.work,'Work');
+  if(has(s.project,'recraft')&&(s.project.recraft!==true||s.project.recipeId||legacy||!recraftable(s,c,s.project.itemId)))fail('Invalid recraft');
   const oldUnits=legacy?(c.migrationV1?.workUnits?.[s.project.itemId]??p.workUnits):p.workUnits;
-  if(s.project.work>oldUnits||s.owned.includes(s.project.itemId))fail('Invalid project');if(legacy)s.project.work=s.project.work/oldUnits*p.workUnits;
+  if(s.project.work>oldUnits||(!s.project.recraft&&s.owned.includes(s.project.itemId)))fail('Invalid project');if(legacy)s.project.work=s.project.work/oldUnits*p.workUnits;
  }
  const placed=new Set();for(const [id,slots]of Object.entries(s.placements)){const m=meadow(c,id);if(!map(slots))fail('Invalid placement');for(const [slotId,itemId]of Object.entries(slots)){if(!m.slots.some(x=>x.id===slotId&&x.itemId===itemId)||!s.owned.includes(itemId)||placed.has(itemId))fail('Invalid placement');placed.add(itemId);}}
  for(const [id,level]of Object.entries(s.upgrades)){const u=c.upgrades.find(x=>x.id===id);if(!u||!Number.isSafeInteger(level)||level<0||level>u.maxLevel)fail('Invalid upgrade');}
@@ -202,7 +222,7 @@ export function deserializeState(json,c){
   for(const [id,count]of Object.entries(s.accrual.events)){if(!events(c).some(e=>e.id===id))fail('Unknown accrual event');integer(count,'Accrual count');}
   for(const e of events(c))if(e.trigger==='automatic'&&requirementsMet(s,e)&&!has(s.events,e.id))fail('Missing event');
   if(s.wallet.yarn!==accruedYarn(s,c))fail('Accrual wallet mismatch');
-  if(s.project){const total=projectDefinition(s,c).workUnits;if(s.accrual.baseWork>total||s.project.work!==Math.min(total,s.accrual.baseWork+s.accrual.elapsedMs/1000*rate(s,c,'idle')))fail('Accrual work mismatch');}
+  if(s.project){const total=projectDefinition(s,c).workUnits;if(s.accrual.baseWork>total||s.project.work!==Math.min(total,s.accrual.baseWork+s.accrual.elapsedMs/1000*craftRate(s,c)))fail('Accrual work mismatch');}
   else if(s.accrual.baseWork!==0)fail('Accrual without project');
  }
  return copy(s);

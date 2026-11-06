@@ -1,0 +1,11 @@
+{
+  "runtimeSHA": "5cc9ef5af302908a4fce816134708bae31e97911",
+  "checks": [
+    "Old paid house outside selected4 completes once and is placed; owned world and old raw preserved",
+    "Three same-item recrafts reset stage0 and preserve exact full state; retained canvas survives navigation/ticks; final placement uses same bounds; reduced motion and responsive resize work",
+    "Reload after repeated completions is idempotent; no JS/HTTP errors or external requests",
+    "Corrupt v4 stays byte-identical while UI runs temporarily; valid v3 is not silently re-imported"
+  ],
+  "limits": "Independent technical fixture and real UI commands, not fresh-player fun or art acceptance",
+  "result": "PASS"
+}

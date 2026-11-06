@@ -1,0 +1,30 @@
+{
+  "width": 430,
+  "height": 932,
+  "clock": "Real browser time; public UI commands; no economy grants",
+  "projects": [
+    {
+      "id": "rabbit",
+      "manualClicks": 50,
+      "yarn": 27.06837499999999
+    },
+    {
+      "id": "flower",
+      "manualClicks": 52,
+      "yarn": 22.15435500000003
+    },
+    {
+      "id": "tree",
+      "manualClicks": 52,
+      "yarn": 10.304963888888912
+    },
+    {
+      "id": "kot-cat",
+      "manualClicks": 52,
+      "yarn": 0.5532972222222451
+    }
+  ],
+  "repeatVerified": true,
+  "autoPauseVerified": true,
+  "finalOwned": 4
+}
