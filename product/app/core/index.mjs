@@ -185,11 +185,15 @@ export function deserializeState(json,c){
  for(const [id,saved]of Object.entries(s.events)){
   const e=events(c).find(e=>e.id===id);if(!e||!map(saved)||!['waiting','visiting','resting','done','available'].includes(saved.phase))fail('Invalid event');integer(saved.count,'Event count');
   if(['done','available'].includes(saved.phase)){if(saved.dueAt!==null)fail('Unexpected event timer');}else number(saved.dueAt,'Event due');
-  if(saved.count!==(s.memories[id]?.count??0)||(!e.repeatable&&saved.count>1))fail('Event memory mismatch');
-  if((['visiting','resting','done','available'].includes(saved.phase)&&!saved.count)||(['resting','available'].includes(saved.phase)&&!e.repeatable))fail('Event phase mismatch');
-  if(!requirementsMet(s,e)||(e.trigger==='automatic'&&saved.phase==='waiting'&&saved.count)||(saved.dueAt!==null&&saved.dueAt<=s.lastTimestamp))fail('Invalid scheduled event');
+  if(saved.count!==(s.memories[id]?.count??0))fail('Event memory mismatch');
+  const validPhase=e.repeatable
+   ? saved.phase==='waiting'||(['visiting','resting','available'].includes(saved.phase)&&saved.count>0)
+   : (saved.phase==='waiting'&&saved.count===0)||(['visiting','done'].includes(saved.phase)&&saved.count===1);
+  if(!validPhase)fail('Event phase mismatch');
+  if(!requirementsMet(s,e)||(saved.dueAt!==null&&saved.dueAt<=s.lastTimestamp))fail('Invalid scheduled event');
  }
  for(const id of Object.keys(s.memories))if(!has(s.events,id))fail('Memory without event');
+ if(s.project?.recipeId){const r=projectDefinition(s,c),e=events(c).find(e=>e.id===r.eventId);if(!unlocked(s,c,r)||!eventAvailable(s,e))fail('Active recipe event unavailable');}
  if(legacy){sync(s,c,s.lastTimestamp);resetAccrual(s);}else{
   if(!map(s.accrual)||!map(s.accrual.automatic)||!map(s.accrual.events))fail('Missing accrual');
   for(const p of ['baseYarn','baseWork','elapsedMs'])number(s.accrual[p],'Accrual');

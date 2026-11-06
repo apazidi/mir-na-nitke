@@ -75,3 +75,14 @@ test('corrupt new state and unknown declarative references fail closed',()=>{
  for(const mutate of [s=>s.memories.unknown={firstAt:1,lastAt:1,count:1},s=>s.events['visit-rabbit'].count=3,s=>s.accrual.baseYarn+=20,s=>delete s.events['visit-duck'],s=>s.events['visit-rabbit'].phase='anything']){const bad=structuredClone(saved);mutate(bad);assert.throws(()=>core.deserializeState(core.serializeState(bad),c));}
  for(const mutate of [x=>x.items[1].requiresPlaced=[placed('first','missing')],x=>x.worldEvents[0].visitor.itemId='missing',x=>x.worldEvents[0].repeatable=true,x=>x.meadows[0].interactions[0].action='eval']){const bad=structuredClone(c);mutate(bad);assert.throws(()=>core.validateConfig(bad));}
 });
+test('save rejects replayed one-shot project events, terminal repeats and a blocked active recipe',()=>{
+ const once=structuredClone(c);once.worldEvents.find(e=>e.id==='gift').repeatable=false;
+ let s=core.advanceTime(all(),20000,once);s=act(s,'startRecipe',{recipeId:'picnic'},once);const working=structuredClone(s);
+ s=act(act(s,'click',{},once),'click',{},once);s=act(s,'completeCraft',{},once);s=core.advanceTime(s,30000,once);
+ assert.equal(s.events.gift.phase,'done');const replay=structuredClone(s);replay.events.gift.phase='waiting';replay.events.gift.dueAt=s.lastTimestamp+1000;
+ assert.throws(()=>core.deserializeState(core.serializeState(replay),once),/phase/);
+ let repeated=core.advanceTime(all(),20000,c);repeated=act(repeated,'startRecipe',{recipeId:'picnic'});repeated=act(act(repeated,'click'),'click');repeated=act(repeated,'completeCraft');repeated=core.advanceTime(repeated,30000,c);repeated.events.gift.phase='done';
+ assert.throws(()=>core.deserializeState(core.serializeState(repeated),c),/phase/);
+ working.events.gift={phase:'waiting',dueAt:working.lastTimestamp+2000,count:0};
+ assert.throws(()=>core.deserializeState(core.serializeState(working),once),/Active recipe/);
+});
