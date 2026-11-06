@@ -11,6 +11,7 @@ const sha256 = bytes => createHash('sha256').update(bytes).digest('hex');
 const git = (...args) => execFileSync('git', args, {cwd: root, maxBuffer: 32 * 1024 * 1024});
 const appRef = git('rev-parse', 'HEAD').toString().trim();
 const sources = JSON.parse(await readFile(path.join(root, 'product/preview-sources.json'), 'utf8'));
+const saveKey = sources.gameplayReview ? 'mir-na-nitke-gameplay-preview-v3' : 'mir-na-nitke-art-preview-v2';
 const files = new Map();
 const sourceFiles = new Map();
 const put = (name, bytes) => {
@@ -37,7 +38,8 @@ await copySource('product/ui/shell.css');
 await copySource('design-system/skin-v4.css');
 const html = files.get('product/ui/index.html').toString();
 const main = files.get('product/ui/main.mjs').toString();
-if (!/name="robots"[^>]*noindex/.test(html) || !main.includes(sources.label) || !main.includes('mir-na-nitke-art-preview-v2')) {
+const browserSource = [...sourceFiles.keys()].filter(name => name.endsWith('.mjs')).map(name => files.get(name).toString()).join('\n');
+if (!/name="robots"[^>]*noindex/.test(html) || !main.includes(sources.label) || !browserSource.includes(saveKey)) {
   throw Error('Review UI must declare noindex, unapproved artwork and an isolated save key');
 }
 for (const source of sources.sources) {
@@ -52,7 +54,7 @@ for (const source of sources.sources) {
   }
 }
 put('product/app/content/catalog.json', JSON.stringify({schemaVersion: 1, items: [], meadows: [], assets: []}, null, 2) + '\n');
-const entryQuery = 'mode=art-review&flower=review' + (sources.sceneReview ? '&scene=v2' : '');
+const entryQuery = 'mode=art-review&flower=review' + (sources.sceneReview ? '&scene=v2' : '') + (sources.gameplayReview ? '&gameplay=v3' : '');
 put('index.html', `<!doctype html>
 <html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow"><title>Мир на ниточке — техническое превью</title></head>
@@ -64,7 +66,8 @@ const manifest = {
   label: sources.label,
   productionContent: false,
   sceneReview: sources.sceneReview === true,
-  saveKey: 'mir-na-nitke-art-preview-v2',
+  gameplayReview: sources.gameplayReview === true,
+  saveKey,
   appSourceCommit: git('log', '-1', '--format=%H', '--', ...[...sourceFiles.keys()].sort()).toString().trim(),
   sourceFiles: Object.fromEntries([...sourceFiles].sort(([a], [b]) => a.localeCompare(b))),
   artSources: sources.sources,

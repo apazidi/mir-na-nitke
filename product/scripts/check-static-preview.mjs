@@ -40,7 +40,7 @@ try {
   assert.equal(manifestResponse.status, 200);
   const manifest = await manifestResponse.json();
   assert.equal(manifest.productionContent, false);
-  assert.equal(manifest.saveKey, 'mir-na-nitke-art-preview-v2');
+  assert.equal(manifest.saveKey, manifest.gameplayReview ? 'mir-na-nitke-gameplay-preview-v3' : 'mir-na-nitke-art-preview-v2');
   for (const file of manifest.files) {
     const response = await fetch(new URL(file.path, base));
     assert.equal(response.status, 200, file.path);
@@ -48,8 +48,37 @@ try {
     assert.equal(bytes.length, file.bytes, file.path);
     assert.equal(createHash('sha256').update(bytes).digest('hex'), file.sha256, file.path);
   }
-  let fullMeadowSave;
   const verifiedAssets = new Set(manifest.files.map(file => new URL(file.path, base).href));
+  if (manifest.gameplayReview) {
+    const {exercisePlayer} = await import('../ui/player-check.mjs');
+    for (const [width, height] of [[360, 800], [390, 844], [430, 932]]) {
+      const context = await browser.newContext({viewport: {width, height}});
+      const page = await context.newPage();
+      const errors = [];
+      page.on('pageerror', error => errors.push(error.message));
+      page.on('requestfailed', request => {
+        if (request.failure()?.errorText === 'net::ERR_ABORTED' && verifiedAssets.has(request.url())) return;
+        errors.push(request.url() + ': ' + request.failure()?.errorText);
+      });
+      page.on('response', response => { if (response.status() >= 400) errors.push(response.status() + ' ' + response.url()); });
+      page.on('request', request => {
+        if (/^https?:/.test(request.url()) && !request.url().startsWith(base.href)) errors.push('Outside bundle: ' + request.url());
+      });
+      await context.addInitScript(() => {
+        for (const key of ['mir-na-nitke-v1', 'mir-na-nitke-development-v1', 'mir-na-nitke-save']) {
+          if (localStorage.getItem(key) === null) localStorage.setItem(key, 'unrelated-save-sentinel');
+        }
+      });
+      await exercisePlayer(page, {url: base.href, evidenceDir: evidence, width, height, saveKey: manifest.saveKey, clock: true});
+      for (const key of ['mir-na-nitke-v1', 'mir-na-nitke-development-v1', 'mir-na-nitke-save']) {
+        assert.equal(await page.evaluate(key => localStorage.getItem(key), key), 'unrelated-save-sentinel');
+      }
+      assert.deepEqual(errors, []);
+      await context.close();
+    }
+    console.log(`Static two-meadow preview verified: ${base.href}; ${manifest.files.length} integrity checks; real UI commands with controlled test time at 360/390/430.`);
+  } else {
+  let fullMeadowSave;
   for (const [width, height] of [[360, 800], [390, 844], [430, 932]]) {
     const context = await browser.newContext({viewport: {width, height}});
     const page = await context.newPage();
@@ -191,6 +220,7 @@ try {
     }
   }
   console.log(`Static preview verified: ${base.href}; ${manifest.files.length} integrity checks; rabbit → yarn → flower → idle bonus → reload at 360/390/430.${manifest.sceneReview ? ' All five projects earned through real play; full day/evening scenes captured at all three sizes.' : ''}`);
+  }
 } finally {
   await browser.close();
   if (server) await new Promise(resolve => server.close(resolve));
