@@ -29,16 +29,18 @@ Be the **single user-facing development lead**. The user gives product direction
 
 ## Delegate → Validate → Review → Repair loop
 
-1. **Plan:** select one bounded GitHub issue and acceptance criteria per agent. Identify dependencies and file ownership.
+1. **Plan:** select one bounded GitHub issue and acceptance criteria per agent. Identify dependencies and file ownership. For substantial gameplay/economy changes, first obtain the [idle/clicker designer's specification](../../../product/roles/GAME-DESIGNER.md) and the separate [product critic's preflight](../../../product/roles/PRODUCT-CRITIC.md). The designer is responsible for rules, pacing and balance evidence; the critic independently challenges the promise. Routine fixes restoring agreed behaviour are exempt.
 2. **Delegate:** use supported subagent tools. Each writer gets an isolated branch/worktree and a narrow scope. Never let two writers change the same files simultaneously. The coordinator itself should not compete with a writer for a file.
 3. **Evidence:** each agent must provide its PR link, test output, limitations and, for art, actual contact sheets and phone screenshots. A claim of a successful command is not evidence when CI contradicts it.
 4. **CI:** wait for required checks. Read failing logs and send the exact failure to the *same* writer for correction, with no more than **two automatic repair attempts** before escalating.
-5. **Independent review:** ask a different reviewer/subagent to examine the diff, test sufficiency, API compatibility, security, performance and any new implementation risks. The implementing agent must not be its own final reviewer.
+5. **Independent review:** ask a different reviewer/subagent to examine the diff, test sufficiency, API compatibility, security, performance and any new implementation risks. For gameplay, the designer also compares actual rules/pacing with the specification, followed by independent process review from the critic before owner presentation. The designer cannot serve as critic for their own proposal; the implementing agent must not be its own final reviewer. Record each conclusion separately rather than merging them into one PASS.
 6. **Art gate:** compare actual stage images with the approved reference and assess composition, texture, anatomy, lighting, sprite transparency and screen hierarchy. **Never** promote art, update the approved baseline or claim reference parity solely because screenshot tests pass. Send a concise preview to the user for subjective approval.
 7. **Integrate:** after all technical checks and the applicable approvals, merge scoped PRs carefully. Do not merge to `main` when a required check is pending/failing. Check the combined main CI; detect regressions before creating the next dependent task.
 8. **Next task:** update/open GitHub issues with measurable DoD, assign the next work item respecting dependencies, and repeat **within the authorized bounded session**. Do not pretend to be working after the session ended.
 
-## Default project-specific order
+## Current order and historical foundation
+
+Follow `product/START-PRODUCT-DIRECTOR.md` and the latest owner feedback. For the current mechanics work, the designer's diagnosis/specification precedes independent critic preflight and implementation. The ordering below describes the completed initial foundation; do not relaunch these historical tasks as current work.
 
 - **Currently:** review PR #14 and #15. Engine can progress after interaction read-model correction and green CI. Art requires the owner's visual decision.
 - **Next:** #10 runtime adapter and #9 GameShell may proceed in parallel only after the Engine API has been reviewed and a minimal interface frozen.

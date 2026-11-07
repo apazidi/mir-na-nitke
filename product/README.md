@@ -8,6 +8,9 @@
 - [Одна точка запуска Codex](START-PRODUCT-DIRECTOR.md)
 - [Product vision + кандидаты первых восьми полянок](PRODUCT-VISION-5-10-SCENES.md)
 - [Product Director skill](../.agents/skills/game-product-director/SKILL.md)
+- [Game Designer — idle/clicker, баланс и прогрессия](roles/GAME-DESIGNER.md)
+- [Независимый Product Critic](roles/PRODUCT-CRITIC.md)
+- [Актуальное заключение по механике, 7 ноября 2026](research/idle-clicker-design-2026-11-07/README.md)
 - [Epic #17 — roadmap 5–10 полянок](https://github.com/apazidi/mir-na-nitke/issues/17)
 
 **Статус:** это роль и roadmap, а не уже работающий автономный сервис. Для постоянной работы между сессиями нужен отдельный агентный рантайм, согласование бюджета/прав и запуск.
@@ -20,7 +23,7 @@ This folder is the **new product**, developed without copying HTML/CSS from the 
 - [Ресурсная петля, экономика и PoC](architecture/RESOURCE-LOOP.md)
 - [Задача реализации #3](https://github.com/apazidi/mir-na-nitke/issues/3)
 
-Этот контракт **пока проектный**: в `product/app/` ещё нет рабочего движка, а новые поля `economy` / `reward` пока не внедрены в валидатор. Не выдавать документацию за готовую механику.
+Этот контракт описывает первоначальное проектное намерение, а не все фактические правила текущего превью. Движок уже реализован в `product/app/`; действующие правила v4 задаются также `product/ui/staged-catalog.mjs` и `product/ui/gameplay-catalog.mjs`. Не выдавать исторический пример schema за поддержанный формат: проверять код и валидатор. Последний механический аудит и процесс роли приведены выше.
 
 ## Contents
 
