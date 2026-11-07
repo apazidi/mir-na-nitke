@@ -1,0 +1,1502 @@
+{
+  "url": "https://apazidi.github.io/mir-na-nitke/play-preview/",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "method": "Headless Chromium scripted real-time public UI. Fresh context; no save injection, fake clock or work grants. Screens and work timeline are observation evidence; not a human enjoyment test.",
+  "events": [
+    {
+      "label": "01-empty",
+      "elapsedMs": 4930,
+      "state": {
+        "version": 2,
+        "lastTimestamp": 1794038274324,
+        "craftAuto": false,
+        "wallet": {
+          "yarn": 32.000005
+        },
+        "project": null,
+        "owned": [],
+        "placements": {},
+        "upgrades": {},
+        "cooldowns": {},
+        "transactionSequence": 0,
+        "events": {},
+        "memories": {},
+        "accrual": {
+          "baseYarn": 32,
+          "baseWork": 0,
+          "elapsedMs": 1,
+          "automatic": {},
+          "events": {}
+        }
+      },
+      "craft": {
+        "itemId": null,
+        "sectionIndex": null,
+        "sectionProgress": 0,
+        "ready": false,
+        "error": null
+      },
+      "availableProjects": [
+        "rabbit"
+      ],
+      "upgrades": [
+        {
+          "id": "hook",
+          "target": "click",
+          "level": 0,
+          "cost": 2,
+          "current": 2.8,
+          "next": 3.15,
+          "maxed": false,
+          "canBuy": false
+        },
+        {
+          "id": "basket",
+          "target": "idle",
+          "level": 0,
+          "cost": 3,
+          "current": 1,
+          "next": 1.08,
+          "maxed": false,
+          "canBuy": false
+        }
+      ]
+    },
+    {
+      "label": "02-held-before-release",
+      "elapsedMs": 8537,
+      "state": {
+        "version": 2,
+        "lastTimestamp": 1794038280889,
+        "craftAuto": false,
+        "wallet": {
+          "yarn": 27.032829999999997
+        },
+        "project": {
+          "itemId": "rabbit",
+          "work": 0
+        },
+        "owned": [],
+        "placements": {},
+        "upgrades": {},
+        "cooldowns": {},
+        "transactionSequence": 1,
+        "events": {},
+        "memories": {},
+        "accrual": {
+          "baseYarn": 27.019554999999997,
+          "baseWork": 0,
+          "elapsedMs": 2655,
+          "automatic": {},
+          "events": {}
+        }
+      },
+      "craft": {
+        "itemId": "rabbit",
+        "sectionIndex": 0,
+        "sectionProgress": 0,
+        "ready": true,
+        "error": null
+      },
+      "availableProjects": [],
+      "upgrades": [
+        {
+          "id": "hook",
+          "target": "click",
+          "level": 0,
+          "cost": 2,
+          "current": 2.8,
+          "next": 3.15,
+          "maxed": false,
+          "canBuy": false
+        },
+        {
+          "id": "basket",
+          "target": "idle",
+          "level": 0,
+          "cost": 3,
+          "current": 1,
+          "next": 1.08,
+          "maxed": false,
+          "canBuy": false
+        }
+      ]
+    },
+    {
+      "label": "03-held-after-release",
+      "elapsedMs": 8617,
+      "state": {
+        "version": 2,
+        "lastTimestamp": 1794038281585,
+        "craftAuto": false,
+        "wallet": {
+          "yarn": 27.036309999999997
+        },
+        "project": {
+          "itemId": "rabbit",
+          "work": 2.8
+        },
+        "owned": [],
+        "placements": {},
+        "upgrades": {},
+        "cooldowns": {},
+        "transactionSequence": 1,
+        "events": {},
+        "memories": {},
+        "accrual": {
+          "baseYarn": 27.036309999999997,
+          "baseWork": 2.8,
+          "elapsedMs": 0,
+          "automatic": {},
+          "events": {}
+        }
+      },
+      "craft": {
+        "itemId": "rabbit",
+        "sectionIndex": 0,
+        "sectionProgress": 0.1818181818181818,
+        "ready": false,
+        "error": null
+      },
+      "availableProjects": [],
+      "upgrades": [
+        {
+          "id": "hook",
+          "target": "click",
+          "level": 0,
+          "cost": 2,
+          "current": 2.8,
+          "next": 3.15,
+          "maxed": false,
+          "canBuy": false
+        },
+        {
+          "id": "basket",
+          "target": "idle",
+          "level": 0,
+          "cost": 3,
+          "current": 1,
+          "next": 1.08,
+          "maxed": false,
+          "canBuy": false
+        }
+      ]
+    },
+    {
+      "label": "04-before-away",
+      "elapsedMs": 10730,
+      "state": {
+        "version": 2,
+        "lastTimestamp": 1794038282892,
+        "craftAuto": true,
+        "wallet": {
+          "yarn": 27.042844999999996
+        },
+        "project": {
+          "itemId": "rabbit",
+          "work": 4.006
+        },
+        "owned": [],
+        "placements": {},
+        "upgrades": {},
+        "cooldowns": {},
+        "transactionSequence": 1,
+        "events": {},
+        "memories": {},
+        "accrual": {
+          "baseYarn": 27.036814999999997,
+          "baseWork": 2.8,
+          "elapsedMs": 1206,
+          "automatic": {},
+          "events": {}
+        }
+      },
+      "craft": {
+        "itemId": "rabbit",
+        "sectionIndex": 0,
+        "sectionProgress": 0.26012987012987016,
+        "ready": true,
+        "error": null
+      },
+      "availableProjects": [],
+      "upgrades": [
+        {
+          "id": "hook",
+          "target": "click",
+          "level": 0,
+          "cost": 2,
+          "current": 2.8,
+          "next": 3.15,
+          "maxed": false,
+          "canBuy": false
+        },
+        {
+          "id": "basket",
+          "target": "idle",
+          "level": 0,
+          "cost": 3,
+          "current": 1,
+          "next": 1.08,
+          "maxed": false,
+          "canBuy": false
+        }
+      ]
+    },
+    {
+      "label": "05-after-real-away",
+      "elapsedMs": 18393,
+      "state": {
+        "version": 2,
+        "lastTimestamp": 1794038289799,
+        "craftAuto": true,
+        "wallet": {
+          "yarn": 27.077379999999998
+        },
+        "project": {
+          "itemId": "rabbit",
+          "work": 10.913
+        },
+        "owned": [],
+        "placements": {},
+        "upgrades": {},
+        "cooldowns": {},
+        "transactionSequence": 1,
+        "events": {},
+        "memories": {},
+        "accrual": {
+          "baseYarn": 27.036814999999997,
+          "baseWork": 2.8,
+          "elapsedMs": 8113,
+          "automatic": {},
+          "events": {}
+        }
+      },
+      "craft": {
+        "itemId": "rabbit",
+        "sectionIndex": 0,
+        "sectionProgress": 0.7086363636363636,
+        "ready": true,
+        "error": null
+      },
+      "availableProjects": [],
+      "upgrades": [
+        {
+          "id": "hook",
+          "target": "click",
+          "level": 0,
+          "cost": 2,
+          "current": 2.8,
+          "next": 3.15,
+          "maxed": false,
+          "canBuy": false
+        },
+        {
+          "id": "basket",
+          "target": "idle",
+          "level": 0,
+          "cost": 3,
+          "current": 1,
+          "next": 1.08,
+          "maxed": false,
+          "canBuy": false
+        }
+      ]
+    },
+    {
+      "label": "rabbit-12-clicks",
+      "elapsedMs": 31229,
+      "state": {
+        "version": 2,
+        "lastTimestamp": 1794038304199,
+        "craftAuto": true,
+        "wallet": {
+          "yarn": 27.14937999999999
+        },
+        "project": {
+          "itemId": "rabbit",
+          "work": 58.91299999999998
+        },
+        "owned": [],
+        "placements": {},
+        "upgrades": {},
+        "cooldowns": {},
+        "transactionSequence": 1,
+        "events": {},
+        "memories": {},
+        "accrual": {
+          "baseYarn": 27.14937999999999,
+          "baseWork": 58.91299999999998,
+          "elapsedMs": 0,
+          "automatic": {},
+          "events": {}
+        }
+      },
+      "craft": {
+        "itemId": "rabbit",
+        "sectionIndex": 2,
+        "sectionProgress": 0.803228571428571,
+        "ready": false,
+        "error": null
+      },
+      "availableProjects": [],
+      "upgrades": [
+        {
+          "id": "hook",
+          "target": "click",
+          "level": 0,
+          "cost": 2,
+          "current": 2.8,
+          "next": 3.15,
+          "maxed": false,
+          "canBuy": false
+        },
+        {
+          "id": "basket",
+          "target": "idle",
+          "level": 0,
+          "cost": 3,
+          "current": 1,
+          "next": 1.08,
+          "maxed": false,
+          "canBuy": false
+        }
+      ]
+    },
+    {
+      "label": "rabbit-24-clicks",
+      "elapsedMs": 43962,
+      "state": {
+        "version": 2,
+        "lastTimestamp": 1794038316932,
+        "craftAuto": true,
+        "wallet": {
+          "yarn": 27.21304499999998
+        },
+        "project": {
+          "itemId": "rabbit",
+          "work": 105.24599999999995
+        },
+        "owned": [],
+        "placements": {},
+        "upgrades": {},
+        "cooldowns": {},
+        "transactionSequence": 1,
+        "events": {},
+        "memories": {},
+        "accrual": {
+          "baseYarn": 27.21304499999998,
+          "baseWork": 105.24599999999995,
+          "elapsedMs": 0,
+          "automatic": {},
+          "events": {}
+        }
+      },
+      "craft": {
+        "itemId": "rabbit",
+        "sectionIndex": 4,
+        "sectionProgress": 0.2048847926267254,
+        "ready": false,
+        "error": null
+      },
+      "availableProjects": [],
+      "upgrades": [
+        {
+          "id": "hook",
+          "target": "click",
+          "level": 0,
+          "cost": 2,
+          "current": 2.8,
+          "next": 3.15,
+          "maxed": false,
+          "canBuy": false
+        },
+        {
+          "id": "basket",
+          "target": "idle",
+          "level": 0,
+          "cost": 3,
+          "current": 1,
+          "next": 1.08,
+          "maxed": false,
+          "canBuy": false
+        }
+      ]
+    },
+    {
+      "label": "rabbit-complete",
+      "elapsedMs": 55835,
+      "state": {
+        "version": 2,
+        "lastTimestamp": 1794038328337,
+        "craftAuto": true,
+        "wallet": {
+          "yarn": 27.27006999999998
+        },
+        "project": {
+          "itemId": "rabbit",
+          "work": 144.20000000000002
+        },
+        "owned": [],
+        "placements": {},
+        "upgrades": {},
+        "cooldowns": {},
+        "transactionSequence": 1,
+        "events": {},
+        "memories": {},
+        "accrual": {
+          "baseYarn": 27.267289999999978,
+          "baseWork": 144.09499999999997,
+          "elapsedMs": 556,
+          "automatic": {},
+          "events": {}
+        }
+      },
+      "craft": {
+        "itemId": "rabbit",
+        "sectionIndex": 6,
+        "sectionProgress": 0,
+        "ready": true,
+        "error": null
+      },
+      "availableProjects": [],
+      "upgrades": [
+        {
+          "id": "hook",
+          "target": "click",
+          "level": 0,
+          "cost": 2,
+          "current": 2.8,
+          "next": 3.15,
+          "maxed": false,
+          "canBuy": false
+        },
+        {
+          "id": "basket",
+          "target": "idle",
+          "level": 0,
+          "cost": 3,
+          "current": 1,
+          "next": 1.08,
+          "maxed": false,
+          "canBuy": false
+        }
+      ]
+    },
+    {
+      "label": "rabbit-placed",
+      "elapsedMs": 55998,
+      "state": {
+        "version": 2,
+        "lastTimestamp": 1794038328915,
+        "craftAuto": true,
+        "wallet": {
+          "yarn": 27.272959999999976
+        },
+        "project": null,
+        "owned": [
+          "rabbit"
+        ],
+        "placements": {
+          "test-meadow": {
+            "rabbit": "rabbit"
+          }
+        },
+        "upgrades": {},
+        "cooldowns": {
+          "test-meadow/pet": 1794038328915
+        },
+        "transactionSequence": 1,
+        "events": {},
+        "memories": {},
+        "accrual": {
+          "baseYarn": 27.272959999999976,
+          "baseWork": 0,
+          "elapsedMs": 0,
+          "automatic": {},
+          "events": {}
+        }
+      },
+      "craft": {
+        "itemId": "rabbit",
+        "sectionIndex": 6,
+        "sectionProgress": 0,
+        "ready": false,
+        "error": null
+      },
+      "availableProjects": [
+        "flower"
+      ],
+      "upgrades": [
+        {
+          "id": "hook",
+          "target": "click",
+          "level": 0,
+          "cost": 2,
+          "current": 2.8,
+          "next": 3.15,
+          "maxed": false,
+          "canBuy": false
+        },
+        {
+          "id": "basket",
+          "target": "idle",
+          "level": 0,
+          "cost": 3,
+          "current": 1,
+          "next": 1.08,
+          "maxed": false,
+          "canBuy": false
+        }
+      ]
+    },
+    {
+      "label": "flower-12-clicks",
+      "elapsedMs": 68830,
+      "state": {
+        "version": 2,
+        "lastTimestamp": 1794038341798,
+        "craftAuto": true,
+        "wallet": {
+          "yarn": 22.65944999999997
+        },
+        "project": {
+          "itemId": "flower",
+          "work": 46.365999999999985
+        },
+        "owned": [
+          "rabbit"
+        ],
+        "placements": {
+          "test-meadow": {
+            "rabbit": "rabbit"
+          }
+        },
+        "upgrades": {},
+        "cooldowns": {
+          "test-meadow/pet": 1794038328915
+        },
+        "transactionSequence": 2,
+        "events": {},
+        "memories": {},
+        "accrual": {
+          "baseYarn": 22.65944999999997,
+          "baseWork": 46.365999999999985,
+          "elapsedMs": 0,
+          "automatic": {},
+          "events": {}
+        }
+      },
+      "craft": {
+        "itemId": "flower",
+        "sectionIndex": 2,
+        "sectionProgress": 0.004742857142856697,
+        "ready": false,
+        "error": null
+      },
+      "availableProjects": [],
+      "upgrades": [
+        {
+          "id": "hook",
+          "target": "click",
+          "level": 0,
+          "cost": 2,
+          "current": 2.8,
+          "next": 3.15,
+          "maxed": false,
+          "canBuy": false
+        },
+        {
+          "id": "basket",
+          "target": "idle",
+          "level": 0,
+          "cost": 3,
+          "current": 1,
+          "next": 1.08,
+          "maxed": false,
+          "canBuy": false
+        }
+      ]
+    },
+    {
+      "label": "flower-24-clicks",
+      "elapsedMs": 81480,
+      "state": {
+        "version": 2,
+        "lastTimestamp": 1794038354449,
+        "craftAuto": true,
+        "wallet": {
+          "yarn": 23.03897999999997
+        },
+        "project": {
+          "itemId": "flower",
+          "work": 92.61699999999996
+        },
+        "owned": [
+          "rabbit"
+        ],
+        "placements": {
+          "test-meadow": {
+            "rabbit": "rabbit"
+          }
+        },
+        "upgrades": {},
+        "cooldowns": {
+          "test-meadow/pet": 1794038328915
+        },
+        "transactionSequence": 2,
+        "events": {},
+        "memories": {},
+        "accrual": {
+          "baseYarn": 23.03897999999997,
+          "baseWork": 92.61699999999996,
+          "elapsedMs": 0,
+          "automatic": {},
+          "events": {}
+        }
+      },
+      "craft": {
+        "itemId": "flower",
+        "sectionIndex": 4,
+        "sectionProgress": 0.006199999999998797,
+        "ready": false,
+        "error": null
+      },
+      "availableProjects": [],
+      "upgrades": [
+        {
+          "id": "hook",
+          "target": "click",
+          "level": 0,
+          "cost": 2,
+          "current": 2.8,
+          "next": 3.15,
+          "maxed": false,
+          "canBuy": false
+        },
+        {
+          "id": "basket",
+          "target": "idle",
+          "level": 0,
+          "cost": 3,
+          "current": 1,
+          "next": 1.08,
+          "maxed": false,
+          "canBuy": false
+        }
+      ]
+    },
+    {
+      "label": "flower-complete",
+      "elapsedMs": 96285,
+      "state": {
+        "version": 2,
+        "lastTimestamp": 1794038369249,
+        "craftAuto": true,
+        "wallet": {
+          "yarn": 23.482979999999966
+        },
+        "project": {
+          "itemId": "flower",
+          "work": 144.20000000000002
+        },
+        "owned": [
+          "rabbit"
+        ],
+        "placements": {
+          "test-meadow": {
+            "rabbit": "rabbit"
+          }
+        },
+        "upgrades": {},
+        "cooldowns": {
+          "test-meadow/pet": 1794038328915
+        },
+        "transactionSequence": 2,
+        "events": {},
+        "memories": {},
+        "accrual": {
+          "baseYarn": 23.482979999999966,
+          "baseWork": 144.20000000000002,
+          "elapsedMs": 0,
+          "automatic": {},
+          "events": {}
+        }
+      },
+      "craft": {
+        "itemId": "flower",
+        "sectionIndex": 6,
+        "sectionProgress": 0,
+        "ready": false,
+        "error": null
+      },
+      "availableProjects": [],
+      "upgrades": [
+        {
+          "id": "hook",
+          "target": "click",
+          "level": 0,
+          "cost": 2,
+          "current": 2.8,
+          "next": 3.15,
+          "maxed": false,
+          "canBuy": false
+        },
+        {
+          "id": "basket",
+          "target": "idle",
+          "level": 0,
+          "cost": 3,
+          "current": 1,
+          "next": 1.08,
+          "maxed": false,
+          "canBuy": false
+        }
+      ]
+    },
+    {
+      "label": "flower-placed",
+      "elapsedMs": 96462,
+      "state": {
+        "version": 2,
+        "lastTimestamp": 1794038369399,
+        "craftAuto": true,
+        "wallet": {
+          "yarn": 23.487479999999966
+        },
+        "project": null,
+        "owned": [
+          "rabbit",
+          "flower"
+        ],
+        "placements": {
+          "test-meadow": {
+            "rabbit": "rabbit",
+            "flower": "flower"
+          }
+        },
+        "upgrades": {},
+        "cooldowns": {
+          "test-meadow/pet": 1794038328915,
+          "test-meadow/water": 1794038369399,
+          "test-meadow/sniff": 1794038459399
+        },
+        "transactionSequence": 2,
+        "events": {},
+        "memories": {},
+        "accrual": {
+          "baseYarn": 23.487479999999966,
+          "baseWork": 0,
+          "elapsedMs": 0,
+          "automatic": {},
+          "events": {}
+        }
+      },
+      "craft": {
+        "itemId": "flower",
+        "sectionIndex": 6,
+        "sectionProgress": 0,
+        "ready": false,
+        "error": null
+      },
+      "availableProjects": [
+        "tree"
+      ],
+      "upgrades": [
+        {
+          "id": "hook",
+          "target": "click",
+          "level": 0,
+          "cost": 2,
+          "current": 2.8,
+          "next": 3.15,
+          "maxed": false,
+          "canBuy": false
+        },
+        {
+          "id": "basket",
+          "target": "idle",
+          "level": 0,
+          "cost": 3,
+          "current": 1,
+          "next": 1.08,
+          "maxed": false,
+          "canBuy": false
+        }
+      ]
+    },
+    {
+      "label": "tree-12-clicks",
+      "elapsedMs": 109213,
+      "state": {
+        "version": 2,
+        "lastTimestamp": 1794038382182,
+        "craftAuto": true,
+        "wallet": {
+          "yarn": 12.155036666666637
+        },
+        "project": {
+          "itemId": "tree",
+          "work": 46.29999999999999
+        },
+        "owned": [
+          "rabbit",
+          "flower"
+        ],
+        "placements": {
+          "test-meadow": {
+            "rabbit": "rabbit",
+            "flower": "flower"
+          }
+        },
+        "upgrades": {},
+        "cooldowns": {
+          "test-meadow/pet": 1794038328915,
+          "test-meadow/water": 1794038369399,
+          "test-meadow/sniff": 1794038459399
+        },
+        "transactionSequence": 3,
+        "events": {},
+        "memories": {},
+        "accrual": {
+          "baseYarn": 12.155036666666637,
+          "baseWork": 46.29999999999999,
+          "elapsedMs": 0,
+          "automatic": {},
+          "events": {}
+        }
+      },
+      "craft": {
+        "itemId": "tree",
+        "sectionIndex": 1,
+        "sectionProgress": 0.44841269841269804,
+        "ready": false,
+        "error": null
+      },
+      "availableProjects": [],
+      "upgrades": [
+        {
+          "id": "hook",
+          "target": "click",
+          "level": 0,
+          "cost": 2,
+          "current": 2.8,
+          "next": 3.15,
+          "maxed": false,
+          "canBuy": false
+        },
+        {
+          "id": "basket",
+          "target": "idle",
+          "level": 0,
+          "cost": 3,
+          "current": 1,
+          "next": 1.08,
+          "maxed": false,
+          "canBuy": false
+        }
+      ]
+    },
+    {
+      "label": "tree-24-clicks",
+      "elapsedMs": 121965,
+      "state": {
+        "version": 2,
+        "lastTimestamp": 1794038394933,
+        "craftAuto": true,
+        "wallet": {
+          "yarn": 12.820922222222192
+        },
+        "project": {
+          "itemId": "tree",
+          "work": 92.65099999999995
+        },
+        "owned": [
+          "rabbit",
+          "flower"
+        ],
+        "placements": {
+          "test-meadow": {
+            "rabbit": "rabbit",
+            "flower": "flower"
+          }
+        },
+        "upgrades": {},
+        "cooldowns": {
+          "test-meadow/pet": 1794038328915,
+          "test-meadow/water": 1794038369399,
+          "test-meadow/sniff": 1794038459399
+        },
+        "transactionSequence": 3,
+        "events": {},
+        "memories": {},
+        "accrual": {
+          "baseYarn": 12.820922222222192,
+          "baseWork": 92.65099999999995,
+          "elapsedMs": 0,
+          "automatic": {},
+          "events": {}
+        }
+      },
+      "craft": {
+        "itemId": "tree",
+        "sectionIndex": 3,
+        "sectionProgress": 0.5452857142857119,
+        "ready": false,
+        "error": null
+      },
+      "availableProjects": [],
+      "upgrades": [
+        {
+          "id": "hook",
+          "target": "click",
+          "level": 0,
+          "cost": 2,
+          "current": 2.8,
+          "next": 3.15,
+          "maxed": false,
+          "canBuy": false
+        },
+        {
+          "id": "basket",
+          "target": "idle",
+          "level": 0,
+          "cost": 3,
+          "current": 1,
+          "next": 1.08,
+          "maxed": false,
+          "canBuy": false
+        }
+      ]
+    },
+    {
+      "label": "tree-complete",
+      "elapsedMs": 136818,
+      "state": {
+        "version": 2,
+        "lastTimestamp": 1794038409782,
+        "craftAuto": true,
+        "wallet": {
+          "yarn": 13.596369999999975
+        },
+        "project": {
+          "itemId": "tree",
+          "work": 144.20000000000002
+        },
+        "owned": [
+          "rabbit",
+          "flower"
+        ],
+        "placements": {
+          "test-meadow": {
+            "rabbit": "rabbit",
+            "flower": "flower"
+          }
+        },
+        "upgrades": {},
+        "cooldowns": {
+          "test-meadow/pet": 1794038328915,
+          "test-meadow/water": 1794038369399,
+          "test-meadow/sniff": 1794038459399
+        },
+        "transactionSequence": 3,
+        "events": {},
+        "memories": {},
+        "accrual": {
+          "baseYarn": 13.596369999999975,
+          "baseWork": 144.20000000000002,
+          "elapsedMs": 0,
+          "automatic": {},
+          "events": {}
+        }
+      },
+      "craft": {
+        "itemId": "tree",
+        "sectionIndex": 6,
+        "sectionProgress": 0,
+        "ready": false,
+        "error": null
+      },
+      "availableProjects": [],
+      "upgrades": [
+        {
+          "id": "hook",
+          "target": "click",
+          "level": 0,
+          "cost": 2,
+          "current": 2.8,
+          "next": 3.15,
+          "maxed": false,
+          "canBuy": false
+        },
+        {
+          "id": "basket",
+          "target": "idle",
+          "level": 0,
+          "cost": 3,
+          "current": 1,
+          "next": 1.08,
+          "maxed": false,
+          "canBuy": false
+        }
+      ]
+    },
+    {
+      "label": "tree-placed",
+      "elapsedMs": 136974,
+      "state": {
+        "version": 2,
+        "lastTimestamp": 1794038409915,
+        "craftAuto": true,
+        "wallet": {
+          "yarn": 13.60331555555553
+        },
+        "project": null,
+        "owned": [
+          "rabbit",
+          "flower",
+          "tree"
+        ],
+        "placements": {
+          "test-meadow": {
+            "rabbit": "rabbit",
+            "flower": "flower",
+            "tree": "tree"
+          }
+        },
+        "upgrades": {},
+        "cooldowns": {
+          "test-meadow/pet": 1794038328915,
+          "test-meadow/water": 1794038369399,
+          "test-meadow/sniff": 1794038459399,
+          "test-meadow/sway": 1794038409915
+        },
+        "transactionSequence": 3,
+        "events": {},
+        "memories": {},
+        "accrual": {
+          "baseYarn": 13.60331555555553,
+          "baseWork": 0,
+          "elapsedMs": 0,
+          "automatic": {},
+          "events": {}
+        }
+      },
+      "craft": {
+        "itemId": "tree",
+        "sectionIndex": 6,
+        "sectionProgress": 0,
+        "ready": false,
+        "error": null
+      },
+      "availableProjects": [
+        "kot-cat"
+      ],
+      "upgrades": [
+        {
+          "id": "hook",
+          "target": "click",
+          "level": 0,
+          "cost": 2,
+          "current": 2.8,
+          "next": 3.15,
+          "maxed": false,
+          "canBuy": false
+        },
+        {
+          "id": "basket",
+          "target": "idle",
+          "level": 0,
+          "cost": 3,
+          "current": 1,
+          "next": 1.08,
+          "maxed": false,
+          "canBuy": false
+        }
+      ]
+    },
+    {
+      "label": "kot-cat-12-clicks",
+      "elapsedMs": 149811,
+      "state": {
+        "version": 2,
+        "lastTimestamp": 1794038422782,
+        "craftAuto": true,
+        "wallet": {
+          "yarn": 4.668417222222197
+        },
+        "project": {
+          "itemId": "kot-cat",
+          "work": 46.31599999999999
+        },
+        "owned": [
+          "rabbit",
+          "flower",
+          "tree"
+        ],
+        "placements": {
+          "test-meadow": {
+            "rabbit": "rabbit",
+            "flower": "flower",
+            "tree": "tree"
+          }
+        },
+        "upgrades": {},
+        "cooldowns": {
+          "test-meadow/pet": 1794038328915,
+          "test-meadow/water": 1794038369399,
+          "test-meadow/sniff": 1794038459399,
+          "test-meadow/sway": 1794038409915
+        },
+        "transactionSequence": 4,
+        "events": {},
+        "memories": {},
+        "accrual": {
+          "baseYarn": 4.668417222222197,
+          "baseWork": 46.31599999999999,
+          "elapsedMs": 0,
+          "automatic": {},
+          "events": {}
+        }
+      },
+      "craft": {
+        "itemId": "kot-cat",
+        "sectionIndex": 1,
+        "sectionProgress": 0.8433142857142853,
+        "ready": false,
+        "error": null
+      },
+      "availableProjects": [],
+      "upgrades": [
+        {
+          "id": "hook",
+          "target": "click",
+          "level": 0,
+          "cost": 2,
+          "current": 2.8,
+          "next": 3.15,
+          "maxed": false,
+          "canBuy": false
+        },
+        {
+          "id": "basket",
+          "target": "idle",
+          "level": 0,
+          "cost": 3,
+          "current": 1,
+          "next": 1.08,
+          "maxed": false,
+          "canBuy": false
+        }
+      ]
+    },
+    {
+      "label": "kot-cat-24-clicks",
+      "elapsedMs": 162631,
+      "state": {
+        "version": 2,
+        "lastTimestamp": 1794038435600,
+        "craftAuto": true,
+        "wallet": {
+          "yarn": 5.729462777777752
+        },
+        "project": {
+          "itemId": "kot-cat",
+          "work": 92.73399999999997
+        },
+        "owned": [
+          "rabbit",
+          "flower",
+          "tree"
+        ],
+        "placements": {
+          "test-meadow": {
+            "rabbit": "rabbit",
+            "flower": "flower",
+            "tree": "tree"
+          }
+        },
+        "upgrades": {},
+        "cooldowns": {
+          "test-meadow/pet": 1794038328915,
+          "test-meadow/water": 1794038369399,
+          "test-meadow/sniff": 1794038459399,
+          "test-meadow/sway": 1794038409915
+        },
+        "transactionSequence": 4,
+        "events": {},
+        "memories": {},
+        "accrual": {
+          "baseYarn": 5.729462777777752,
+          "baseWork": 92.73399999999997,
+          "elapsedMs": 0,
+          "automatic": {},
+          "events": {}
+        }
+      },
+      "craft": {
+        "itemId": "kot-cat",
+        "sectionIndex": 3,
+        "sectionProgress": 0.24932773109243567,
+        "ready": false,
+        "error": null
+      },
+      "availableProjects": [],
+      "upgrades": [
+        {
+          "id": "hook",
+          "target": "click",
+          "level": 0,
+          "cost": 2,
+          "current": 2.8,
+          "next": 3.15,
+          "maxed": false,
+          "canBuy": false
+        },
+        {
+          "id": "basket",
+          "target": "idle",
+          "level": 0,
+          "cost": 3,
+          "current": 1,
+          "next": 1.08,
+          "maxed": false,
+          "canBuy": false
+        }
+      ]
+    },
+    {
+      "label": "kot-cat-complete",
+      "elapsedMs": 177451,
+      "state": {
+        "version": 2,
+        "lastTimestamp": 1794038450416,
+        "craftAuto": true,
+        "wallet": {
+          "yarn": 6.955898333333308
+        },
+        "project": {
+          "itemId": "kot-cat",
+          "work": 144.20000000000002
+        },
+        "owned": [
+          "rabbit",
+          "flower",
+          "tree"
+        ],
+        "placements": {
+          "test-meadow": {
+            "rabbit": "rabbit",
+            "flower": "flower",
+            "tree": "tree"
+          }
+        },
+        "upgrades": {},
+        "cooldowns": {
+          "test-meadow/pet": 1794038328915,
+          "test-meadow/water": 1794038369399,
+          "test-meadow/sniff": 1794038459399,
+          "test-meadow/sway": 1794038409915
+        },
+        "transactionSequence": 4,
+        "events": {},
+        "memories": {},
+        "accrual": {
+          "baseYarn": 6.955898333333308,
+          "baseWork": 144.20000000000002,
+          "elapsedMs": 0,
+          "automatic": {},
+          "events": {}
+        }
+      },
+      "craft": {
+        "itemId": "kot-cat",
+        "sectionIndex": 6,
+        "sectionProgress": 0,
+        "ready": false,
+        "error": null
+      },
+      "availableProjects": [],
+      "upgrades": [
+        {
+          "id": "hook",
+          "target": "click",
+          "level": 0,
+          "cost": 2,
+          "current": 2.8,
+          "next": 3.15,
+          "maxed": false,
+          "canBuy": false
+        },
+        {
+          "id": "basket",
+          "target": "idle",
+          "level": 0,
+          "cost": 3,
+          "current": 1,
+          "next": 1.08,
+          "maxed": false,
+          "canBuy": false
+        }
+      ]
+    },
+    {
+      "label": "kot-cat-placed",
+      "elapsedMs": 177629,
+      "state": {
+        "version": 2,
+        "lastTimestamp": 1794038450566,
+        "craftAuto": true,
+        "wallet": {
+          "yarn": 6.968314999999975
+        },
+        "project": null,
+        "owned": [
+          "rabbit",
+          "flower",
+          "tree",
+          "kot-cat"
+        ],
+        "placements": {
+          "test-meadow": {
+            "rabbit": "rabbit",
+            "flower": "flower",
+            "tree": "tree"
+          },
+          "kotoutro": {
+            "kot-cat": "kot-cat"
+          }
+        },
+        "upgrades": {},
+        "cooldowns": {
+          "test-meadow/pet": 1794038328915,
+          "test-meadow/water": 1794038369399,
+          "test-meadow/sniff": 1794038459399,
+          "test-meadow/sway": 1794038409915,
+          "kotoutro/greet": 1794038450566
+        },
+        "transactionSequence": 4,
+        "events": {},
+        "memories": {},
+        "accrual": {
+          "baseYarn": 6.968314999999975,
+          "baseWork": 0,
+          "elapsedMs": 0,
+          "automatic": {},
+          "events": {}
+        }
+      },
+      "craft": {
+        "itemId": "kot-cat",
+        "sectionIndex": 6,
+        "sectionProgress": 0,
+        "ready": false,
+        "error": null
+      },
+      "availableProjects": [],
+      "upgrades": [
+        {
+          "id": "hook",
+          "target": "click",
+          "level": 0,
+          "cost": 2,
+          "current": 2.8,
+          "next": 3.15,
+          "maxed": false,
+          "canBuy": true
+        },
+        {
+          "id": "basket",
+          "target": "idle",
+          "level": 0,
+          "cost": 3,
+          "current": 1,
+          "next": 1.08,
+          "maxed": false,
+          "canBuy": true
+        }
+      ]
+    },
+    {
+      "label": "projects-after-four",
+      "elapsedMs": 177771,
+      "state": {
+        "version": 2,
+        "lastTimestamp": 1794038450566,
+        "craftAuto": true,
+        "wallet": {
+          "yarn": 6.968314999999975
+        },
+        "project": null,
+        "owned": [
+          "rabbit",
+          "flower",
+          "tree",
+          "kot-cat"
+        ],
+        "placements": {
+          "test-meadow": {
+            "rabbit": "rabbit",
+            "flower": "flower",
+            "tree": "tree"
+          },
+          "kotoutro": {
+            "kot-cat": "kot-cat"
+          }
+        },
+        "upgrades": {},
+        "cooldowns": {
+          "test-meadow/pet": 1794038328915,
+          "test-meadow/water": 1794038369399,
+          "test-meadow/sniff": 1794038459399,
+          "test-meadow/sway": 1794038409915,
+          "kotoutro/greet": 1794038450566
+        },
+        "transactionSequence": 4,
+        "events": {},
+        "memories": {},
+        "accrual": {
+          "baseYarn": 6.968314999999975,
+          "baseWork": 0,
+          "elapsedMs": 0,
+          "automatic": {},
+          "events": {}
+        }
+      },
+      "craft": {
+        "itemId": "kot-cat",
+        "sectionIndex": 6,
+        "sectionProgress": 0,
+        "ready": false,
+        "error": null
+      },
+      "availableProjects": [],
+      "upgrades": [
+        {
+          "id": "hook",
+          "target": "click",
+          "level": 0,
+          "cost": 2,
+          "current": 2.8,
+          "next": 3.15,
+          "maxed": false,
+          "canBuy": true
+        },
+        {
+          "id": "basket",
+          "target": "idle",
+          "level": 0,
+          "cost": 3,
+          "current": 1,
+          "next": 1.08,
+          "maxed": false,
+          "canBuy": true
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "result": "COMPLETED"
+}

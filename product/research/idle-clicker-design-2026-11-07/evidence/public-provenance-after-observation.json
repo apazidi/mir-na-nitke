@@ -1,0 +1,10 @@
+{
+  "checkedAt": "2026-11-07T08:07:57.295Z",
+  "url": "https://apazidi.github.io/mir-na-nitke/play-preview/preview-manifest.json",
+  "appSourceCommit": "e2b137657278cec06b0f202a861f1a2d7018bfca",
+  "saveKey": "mir-na-nitke-gameplay-preview-v4",
+  "manifestSHA256": "7b35eab8b138974520fc5a3b3e0e34706689d6763bb8adf12f859aff90943524",
+  "matchesCheckout": true,
+  "limits": "Verifies manifest identity, not all remote file bytes; this is not a gameplay or human-experience check.",
+  "relationshipToCapture": "Separate check AFTER the first browser observation. The original capture did not collect a manifest; this later check is not claimed to have occurred at capture time."
+}

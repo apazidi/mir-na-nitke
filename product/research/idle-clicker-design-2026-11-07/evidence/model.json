@@ -1,0 +1,1000 @@
+{
+  "referenceBaseline": "e7bcbf5d79e41321ef0c805bf8c61403bf04a377",
+  "actualHead": "e7bcbf5d79e41321ef0c805bf8c61403bf04a377",
+  "sourceFormat": "UTF-8 canonical LF",
+  "sourceMatchesReference": true,
+  "sourceFiles": [
+    {
+      "path": "product/app/core/index.mjs",
+      "sha256": "525a27fde03085ef7ed601a1d2245727d065e0661a58e36b326d5efa8dae86e1",
+      "referenceSHA256": "525a27fde03085ef7ed601a1d2245727d065e0661a58e36b326d5efa8dae86e1"
+    },
+    {
+      "path": "product/ui/staged-catalog.mjs",
+      "sha256": "f838cb06220ddb7faaa7370956303c5b1d7d39c18f1a509bc846254f90cb8dfb",
+      "referenceSHA256": "f838cb06220ddb7faaa7370956303c5b1d7d39c18f1a509bc846254f90cb8dfb"
+    },
+    {
+      "path": "product/ui/gameplay-catalog.mjs",
+      "sha256": "3582a4f3bb2d442a0b4a70f646ad39beb0d189abf1b416c0fe1cb1208921657a",
+      "referenceSHA256": "3582a4f3bb2d442a0b4a70f646ad39beb0d189abf1b416c0fe1cb1208921657a"
+    },
+    {
+      "path": "product/ui/dev-catalog.mjs",
+      "sha256": "0cde75c784a37c47c3ea32a82c234b0aabfe38e5bc5029b1a2c7b84ee797c05b",
+      "referenceSHA256": "0cde75c784a37c47c3ea32a82c234b0aabfe38e5bc5029b1a2c7b84ee797c05b"
+    }
+  ],
+  "scriptSHA256": "ef6acc9a5f71085254755768a160f4b9313d7362e82ae26f78f37c82faa870c9",
+  "method": "Deterministic actual-core simulation. No UI latency, navigation time, interaction rewards or upgrades in journey paths. Clicks at evenly spaced intervals; first click after 1/hz seconds. This is not human behaviour or retention measurement.",
+  "configSHA256": "080ee66dbe070e10874ce05bc732f0531e68ee0e5fc11a766a51ae914a8f36ac",
+  "config": {
+    "initialYarn": 32,
+    "clickWork": 2.8,
+    "autoWorkPerSecond": 1,
+    "autoDefault": false,
+    "maxOfflineHours": 8,
+    "reserveYarnPerHour": 18
+  },
+  "items": [
+    {
+      "id": "rabbit",
+      "cost": 5,
+      "work": 144.20000000000002,
+      "baseAutoSeconds": 144.20000000000002,
+      "baseManualClicks": 52,
+      "sections": [
+        0.44,
+        0.44,
+        1,
+        1,
+        0.62,
+        0.62
+      ],
+      "requires": [],
+      "passiveIncomePerHour": 90
+    },
+    {
+      "id": "flower",
+      "cost": 5,
+      "work": 144.20000000000002,
+      "baseAutoSeconds": 144.20000000000002,
+      "baseManualClicks": 52,
+      "sections": [
+        1,
+        0.32,
+        1,
+        0.32,
+        1,
+        0.48
+      ],
+      "requires": [
+        {
+          "meadowId": "test-meadow",
+          "slotId": "rabbit"
+        }
+      ],
+      "passiveIncomePerHour": 80
+    },
+    {
+      "id": "tree",
+      "cost": 12,
+      "work": 144.20000000000002,
+      "baseAutoSeconds": 144.20000000000002,
+      "baseManualClicks": 52,
+      "sections": [
+        1,
+        0.72,
+        0.6,
+        0.6,
+        0.6,
+        0.6
+      ],
+      "requires": [
+        {
+          "meadowId": "test-meadow",
+          "slotId": "flower"
+        }
+      ],
+      "passiveIncomePerHour": 110
+    },
+    {
+      "id": "house",
+      "cost": 30,
+      "work": 180,
+      "baseAutoSeconds": 180,
+      "baseManualClicks": 65,
+      "sections": null,
+      "requires": [
+        {
+          "meadowId": "test-meadow",
+          "slotId": "tree"
+        }
+      ],
+      "passiveIncomePerHour": 140
+    },
+    {
+      "id": "butterfly",
+      "cost": 36,
+      "work": 200,
+      "baseAutoSeconds": 200,
+      "baseManualClicks": 72,
+      "sections": null,
+      "requires": [
+        {
+          "meadowId": "test-meadow",
+          "slotId": "tree"
+        }
+      ],
+      "passiveIncomePerHour": 100
+    },
+    {
+      "id": "kot-cat",
+      "cost": 10,
+      "work": 144.20000000000002,
+      "baseAutoSeconds": 144.20000000000002,
+      "baseManualClicks": 52,
+      "sections": [
+        0.48,
+        1,
+        1,
+        0.68,
+        0.48,
+        0.48
+      ],
+      "requires": [],
+      "passiveIncomePerHour": 110
+    },
+    {
+      "id": "kot-coffee",
+      "cost": 14,
+      "work": 90,
+      "baseAutoSeconds": 90,
+      "baseManualClicks": 33,
+      "sections": null,
+      "requires": [
+        {
+          "meadowId": "kotoutro",
+          "slotId": "kot-cat"
+        }
+      ],
+      "passiveIncomePerHour": 80
+    },
+    {
+      "id": "kot-duck",
+      "cost": 18,
+      "work": 100,
+      "baseAutoSeconds": 100,
+      "baseManualClicks": 36,
+      "sections": null,
+      "requires": [
+        {
+          "meadowId": "kotoutro",
+          "slotId": "kot-coffee"
+        }
+      ],
+      "passiveIncomePerHour": 100
+    },
+    {
+      "id": "kot-chair",
+      "cost": 28,
+      "work": 160,
+      "baseAutoSeconds": 160,
+      "baseManualClicks": 58,
+      "sections": null,
+      "requires": [
+        {
+          "meadowId": "kotoutro",
+          "slotId": "kot-duck"
+        }
+      ],
+      "passiveIncomePerHour": 120
+    },
+    {
+      "id": "kot-leaf-house",
+      "cost": 34,
+      "work": 190,
+      "baseAutoSeconds": 190,
+      "baseManualClicks": 68,
+      "sections": null,
+      "requires": [
+        {
+          "meadowId": "kotoutro",
+          "slotId": "kot-duck"
+        }
+      ],
+      "passiveIncomePerHour": 140
+    }
+  ],
+  "totalItemCost": 192,
+  "upgrades": [
+    {
+      "id": "hook",
+      "target": "click",
+      "unlock": [
+        {
+          "meadowId": "kotoutro",
+          "slotId": "kot-cat"
+        }
+      ],
+      "totalCostToMax": 890.1168,
+      "level0Cost": 2,
+      "level9To10Cost": 396.7186,
+      "baseRate": 2.8,
+      "maxRate": 6.3,
+      "firstRelativeIncrease": 0.125
+    },
+    {
+      "id": "basket",
+      "target": "idle",
+      "unlock": [
+        {
+          "meadowId": "kotoutro",
+          "slotId": "kot-cat"
+        }
+      ],
+      "totalCostToMax": 1335.1752,
+      "level0Cost": 3,
+      "level9To10Cost": 595.0779,
+      "baseRate": 1,
+      "maxRate": 1.8,
+      "firstRelativeIncrease": 0.08
+    }
+  ],
+  "fullWorldIncomePerHour": 1140,
+  "scenarios": [
+    {
+      "auto": false,
+      "hz": 1,
+      "returnSeconds": 0,
+      "route": [
+        "rabbit",
+        "flower",
+        "tree",
+        "kot-cat"
+      ],
+      "seconds": 208,
+      "clicks": 208,
+      "steps": [
+        {
+          "id": "rabbit",
+          "clicks": 52,
+          "affordabilityWaitSeconds": 0,
+          "workSeconds": 52,
+          "totalStepSeconds": 52,
+          "yarn": 27.26,
+          "incomePerHour": 108,
+          "availableProjects": [
+            "flower"
+          ],
+          "availableUpgrades": []
+        },
+        {
+          "id": "flower",
+          "clicks": 52,
+          "affordabilityWaitSeconds": 0,
+          "workSeconds": 52,
+          "totalStepSeconds": 52,
+          "yarn": 23.82,
+          "incomePerHour": 212,
+          "availableProjects": [
+            "tree"
+          ],
+          "availableUpgrades": []
+        },
+        {
+          "id": "tree",
+          "clicks": 52,
+          "affordabilityWaitSeconds": 0,
+          "workSeconds": 52,
+          "totalStepSeconds": 52,
+          "yarn": 14.5356,
+          "incomePerHour": 322,
+          "availableProjects": [
+            "kot-cat"
+          ],
+          "availableUpgrades": []
+        },
+        {
+          "id": "kot-cat",
+          "clicks": 52,
+          "affordabilityWaitSeconds": 0,
+          "workSeconds": 52,
+          "totalStepSeconds": 52,
+          "yarn": 9.44,
+          "incomePerHour": 432,
+          "availableProjects": [],
+          "availableUpgrades": [
+            "hook",
+            "basket"
+          ]
+        }
+      ]
+    },
+    {
+      "auto": true,
+      "hz": 1,
+      "returnSeconds": 0,
+      "route": [
+        "rabbit",
+        "flower",
+        "tree",
+        "kot-cat"
+      ],
+      "seconds": 152,
+      "clicks": 152,
+      "steps": [
+        {
+          "id": "rabbit",
+          "clicks": 38,
+          "affordabilityWaitSeconds": 0,
+          "workSeconds": 38,
+          "totalStepSeconds": 38,
+          "yarn": 27.19,
+          "incomePerHour": 108,
+          "availableProjects": [
+            "flower"
+          ],
+          "availableUpgrades": []
+        },
+        {
+          "id": "flower",
+          "clicks": 38,
+          "affordabilityWaitSeconds": 0,
+          "workSeconds": 38,
+          "totalStepSeconds": 38,
+          "yarn": 23.33,
+          "incomePerHour": 212,
+          "availableProjects": [
+            "tree"
+          ],
+          "availableUpgrades": []
+        },
+        {
+          "id": "tree",
+          "clicks": 38,
+          "affordabilityWaitSeconds": 0,
+          "workSeconds": 38,
+          "totalStepSeconds": 38,
+          "yarn": 13.3144,
+          "incomePerHour": 322,
+          "availableProjects": [
+            "kot-cat"
+          ],
+          "availableUpgrades": []
+        },
+        {
+          "id": "kot-cat",
+          "clicks": 38,
+          "affordabilityWaitSeconds": 0,
+          "workSeconds": 38,
+          "totalStepSeconds": 38,
+          "yarn": 6.46,
+          "incomePerHour": 432,
+          "availableProjects": [],
+          "availableUpgrades": [
+            "hook",
+            "basket"
+          ]
+        }
+      ]
+    },
+    {
+      "auto": true,
+      "hz": 2,
+      "returnSeconds": 0,
+      "route": [
+        "rabbit",
+        "flower",
+        "tree",
+        "kot-cat"
+      ],
+      "seconds": 88,
+      "clicks": 176,
+      "steps": [
+        {
+          "id": "rabbit",
+          "clicks": 44,
+          "affordabilityWaitSeconds": 0,
+          "workSeconds": 22,
+          "totalStepSeconds": 22,
+          "yarn": 27.11,
+          "incomePerHour": 108,
+          "availableProjects": [
+            "flower"
+          ],
+          "availableUpgrades": []
+        },
+        {
+          "id": "flower",
+          "clicks": 44,
+          "affordabilityWaitSeconds": 0,
+          "workSeconds": 22,
+          "totalStepSeconds": 22,
+          "yarn": 22.77,
+          "incomePerHour": 212,
+          "availableProjects": [
+            "tree"
+          ],
+          "availableUpgrades": []
+        },
+        {
+          "id": "tree",
+          "clicks": 44,
+          "affordabilityWaitSeconds": 0,
+          "workSeconds": 22,
+          "totalStepSeconds": 22,
+          "yarn": 11.9189,
+          "incomePerHour": 322,
+          "availableProjects": [
+            "kot-cat"
+          ],
+          "availableUpgrades": []
+        },
+        {
+          "id": "kot-cat",
+          "clicks": 44,
+          "affordabilityWaitSeconds": 0,
+          "workSeconds": 22,
+          "totalStepSeconds": 22,
+          "yarn": 3.74,
+          "incomePerHour": 432,
+          "availableProjects": [],
+          "availableUpgrades": [
+            "hook",
+            "basket"
+          ]
+        }
+      ]
+    },
+    {
+      "auto": true,
+      "hz": 10,
+      "returnSeconds": 0,
+      "route": [
+        "rabbit",
+        "flower",
+        "tree",
+        "kot-cat"
+      ],
+      "seconds": 20,
+      "clicks": 200,
+      "steps": [
+        {
+          "id": "rabbit",
+          "clicks": 50,
+          "affordabilityWaitSeconds": 0,
+          "workSeconds": 5,
+          "totalStepSeconds": 5,
+          "yarn": 27.025,
+          "incomePerHour": 108,
+          "availableProjects": [
+            "flower"
+          ],
+          "availableUpgrades": []
+        },
+        {
+          "id": "flower",
+          "clicks": 50,
+          "affordabilityWaitSeconds": 0,
+          "workSeconds": 5,
+          "totalStepSeconds": 5,
+          "yarn": 22.175,
+          "incomePerHour": 212,
+          "availableProjects": [
+            "tree"
+          ],
+          "availableUpgrades": []
+        },
+        {
+          "id": "tree",
+          "clicks": 50,
+          "affordabilityWaitSeconds": 0,
+          "workSeconds": 5,
+          "totalStepSeconds": 5,
+          "yarn": 10.4361,
+          "incomePerHour": 322,
+          "availableProjects": [
+            "kot-cat"
+          ],
+          "availableUpgrades": []
+        },
+        {
+          "id": "kot-cat",
+          "clicks": 50,
+          "affordabilityWaitSeconds": 0,
+          "workSeconds": 5,
+          "totalStepSeconds": 5,
+          "yarn": 0.85,
+          "incomePerHour": 432,
+          "availableProjects": [],
+          "availableUpgrades": []
+        }
+      ]
+    },
+    {
+      "auto": true,
+      "hz": 0,
+      "returnSeconds": 0,
+      "route": [
+        "rabbit",
+        "flower",
+        "tree",
+        "kot-cat"
+      ],
+      "seconds": 576.804,
+      "clicks": 0,
+      "steps": [
+        {
+          "id": "rabbit",
+          "clicks": 0,
+          "affordabilityWaitSeconds": 0,
+          "workSeconds": 144.201,
+          "totalStepSeconds": 144.201,
+          "yarn": 27.721,
+          "incomePerHour": 108,
+          "availableProjects": [
+            "flower"
+          ],
+          "availableUpgrades": []
+        },
+        {
+          "id": "flower",
+          "clicks": 0,
+          "affordabilityWaitSeconds": 0,
+          "workSeconds": 144.201,
+          "totalStepSeconds": 144.201,
+          "yarn": 27.047,
+          "incomePerHour": 212,
+          "availableProjects": [
+            "tree"
+          ],
+          "availableUpgrades": []
+        },
+        {
+          "id": "tree",
+          "clicks": 0,
+          "affordabilityWaitSeconds": 0,
+          "workSeconds": 144.201,
+          "totalStepSeconds": 144.201,
+          "yarn": 23.1775,
+          "incomePerHour": 322,
+          "availableProjects": [
+            "kot-cat"
+          ],
+          "availableUpgrades": []
+        },
+        {
+          "id": "kot-cat",
+          "clicks": 0,
+          "affordabilityWaitSeconds": 0,
+          "workSeconds": 144.201,
+          "totalStepSeconds": 144.201,
+          "yarn": 26.3142,
+          "incomePerHour": 432,
+          "availableProjects": [
+            "kot-coffee"
+          ],
+          "availableUpgrades": [
+            "hook",
+            "basket"
+          ]
+        }
+      ]
+    },
+    {
+      "auto": true,
+      "hz": 0,
+      "returnSeconds": 1800,
+      "route": [
+        "rabbit",
+        "flower",
+        "tree",
+        "kot-cat"
+      ],
+      "seconds": 7200,
+      "clicks": 0,
+      "steps": [
+        {
+          "id": "rabbit",
+          "clicks": 0,
+          "affordabilityWaitSeconds": 0,
+          "workSeconds": 1800,
+          "totalStepSeconds": 1800,
+          "yarn": 36,
+          "incomePerHour": 108,
+          "availableProjects": [
+            "flower"
+          ],
+          "availableUpgrades": []
+        },
+        {
+          "id": "flower",
+          "clicks": 0,
+          "affordabilityWaitSeconds": 0,
+          "workSeconds": 1800,
+          "totalStepSeconds": 1800,
+          "yarn": 85,
+          "incomePerHour": 212,
+          "availableProjects": [
+            "tree"
+          ],
+          "availableUpgrades": []
+        },
+        {
+          "id": "tree",
+          "clicks": 0,
+          "affordabilityWaitSeconds": 0,
+          "workSeconds": 1800,
+          "totalStepSeconds": 1800,
+          "yarn": 179,
+          "incomePerHour": 322,
+          "availableProjects": [
+            "house",
+            "butterfly",
+            "kot-cat"
+          ],
+          "availableUpgrades": []
+        },
+        {
+          "id": "kot-cat",
+          "clicks": 0,
+          "affordabilityWaitSeconds": 0,
+          "workSeconds": 1800,
+          "totalStepSeconds": 1800,
+          "yarn": 330,
+          "incomePerHour": 432,
+          "availableProjects": [
+            "house",
+            "butterfly",
+            "kot-coffee"
+          ],
+          "availableUpgrades": [
+            "hook",
+            "basket"
+          ]
+        }
+      ]
+    },
+    {
+      "auto": true,
+      "hz": 1,
+      "returnSeconds": 0,
+      "route": [
+        "rabbit",
+        "flower",
+        "tree",
+        "kot-cat",
+        "kot-coffee",
+        "kot-duck",
+        "house",
+        "butterfly",
+        "kot-chair",
+        "kot-leaf-house"
+      ],
+      "seconds": 976,
+      "clicks": 396,
+      "steps": [
+        {
+          "id": "rabbit",
+          "clicks": 38,
+          "affordabilityWaitSeconds": 0,
+          "workSeconds": 38,
+          "totalStepSeconds": 38,
+          "yarn": 27.19,
+          "incomePerHour": 108,
+          "availableProjects": [
+            "flower"
+          ],
+          "availableUpgrades": []
+        },
+        {
+          "id": "flower",
+          "clicks": 38,
+          "affordabilityWaitSeconds": 0,
+          "workSeconds": 38,
+          "totalStepSeconds": 38,
+          "yarn": 23.33,
+          "incomePerHour": 212,
+          "availableProjects": [
+            "tree"
+          ],
+          "availableUpgrades": []
+        },
+        {
+          "id": "tree",
+          "clicks": 38,
+          "affordabilityWaitSeconds": 0,
+          "workSeconds": 38,
+          "totalStepSeconds": 38,
+          "yarn": 13.3144,
+          "incomePerHour": 322,
+          "availableProjects": [
+            "kot-cat"
+          ],
+          "availableUpgrades": []
+        },
+        {
+          "id": "kot-cat",
+          "clicks": 38,
+          "affordabilityWaitSeconds": 0,
+          "workSeconds": 38,
+          "totalStepSeconds": 38,
+          "yarn": 6.46,
+          "incomePerHour": 432,
+          "availableProjects": [],
+          "availableUpgrades": [
+            "hook",
+            "basket"
+          ]
+        },
+        {
+          "id": "kot-coffee",
+          "clicks": 24,
+          "affordabilityWaitSeconds": 62,
+          "workSeconds": 24,
+          "totalStepSeconds": 86,
+          "yarn": 2.8067,
+          "incomePerHour": 540,
+          "availableProjects": [],
+          "availableUpgrades": [
+            "hook"
+          ]
+        },
+        {
+          "id": "kot-duck",
+          "clicks": 27,
+          "affordabilityWaitSeconds": 103,
+          "workSeconds": 27,
+          "totalStepSeconds": 130,
+          "yarn": 4.3289,
+          "incomePerHour": 640,
+          "availableProjects": [],
+          "availableUpgrades": [
+            "hook",
+            "basket"
+          ]
+        },
+        {
+          "id": "house",
+          "clicks": 48,
+          "affordabilityWaitSeconds": 137,
+          "workSeconds": 48,
+          "totalStepSeconds": 185,
+          "yarn": 9.1456,
+          "incomePerHour": 780,
+          "availableProjects": [],
+          "availableUpgrades": [
+            "hook",
+            "basket"
+          ]
+        },
+        {
+          "id": "butterfly",
+          "clicks": 53,
+          "affordabilityWaitSeconds": 127,
+          "workSeconds": 53,
+          "totalStepSeconds": 180,
+          "yarn": 12.1456,
+          "incomePerHour": 880,
+          "availableProjects": [],
+          "availableUpgrades": [
+            "hook",
+            "basket"
+          ]
+        },
+        {
+          "id": "kot-chair",
+          "clicks": 42,
+          "affordabilityWaitSeconds": 64,
+          "workSeconds": 43,
+          "totalStepSeconds": 107,
+          "yarn": 10.0556,
+          "incomePerHour": 1000,
+          "availableProjects": [],
+          "availableUpgrades": [
+            "hook",
+            "basket"
+          ]
+        },
+        {
+          "id": "kot-leaf-house",
+          "clicks": 50,
+          "affordabilityWaitSeconds": 86,
+          "workSeconds": 50,
+          "totalStepSeconds": 136,
+          "yarn": 14.4689,
+          "incomePerHour": 1140,
+          "availableProjects": [],
+          "availableUpgrades": [
+            "hook",
+            "basket"
+          ]
+        }
+      ]
+    }
+  ],
+  "offlines": [
+    {
+      "label": "empty",
+      "seconds": 300,
+      "yarnGain": 1.5,
+      "workGain": 144.2,
+      "ownedBefore": 0,
+      "ownedAfter": 0,
+      "project": {
+        "itemId": "rabbit",
+        "work": 144.20000000000002
+      },
+      "memories": []
+    },
+    {
+      "label": "empty",
+      "seconds": 1800,
+      "yarnGain": 9,
+      "workGain": 144.2,
+      "ownedBefore": 0,
+      "ownedAfter": 0,
+      "project": {
+        "itemId": "rabbit",
+        "work": 144.20000000000002
+      },
+      "memories": []
+    },
+    {
+      "label": "empty",
+      "seconds": 3600,
+      "yarnGain": 18,
+      "workGain": 144.2,
+      "ownedBefore": 0,
+      "ownedAfter": 0,
+      "project": {
+        "itemId": "rabbit",
+        "work": 144.20000000000002
+      },
+      "memories": []
+    },
+    {
+      "label": "empty",
+      "seconds": 28800,
+      "yarnGain": 144,
+      "workGain": 144.2,
+      "ownedBefore": 0,
+      "ownedAfter": 0,
+      "project": {
+        "itemId": "rabbit",
+        "work": 144.20000000000002
+      },
+      "memories": []
+    },
+    {
+      "label": "empty",
+      "seconds": 86400,
+      "yarnGain": 144,
+      "workGain": 144.2,
+      "ownedBefore": 0,
+      "ownedAfter": 0,
+      "project": {
+        "itemId": "rabbit",
+        "work": 144.20000000000002
+      },
+      "memories": []
+    },
+    {
+      "label": "four-placed",
+      "seconds": 300,
+      "yarnGain": 36.4,
+      "workGain": 0,
+      "ownedBefore": 4,
+      "ownedAfter": 4,
+      "project": null,
+      "memories": []
+    },
+    {
+      "label": "four-placed",
+      "seconds": 1800,
+      "yarnGain": 216,
+      "workGain": 0,
+      "ownedBefore": 4,
+      "ownedAfter": 4,
+      "project": null,
+      "memories": []
+    },
+    {
+      "label": "four-placed",
+      "seconds": 3600,
+      "yarnGain": 432,
+      "workGain": 0,
+      "ownedBefore": 4,
+      "ownedAfter": 4,
+      "project": null,
+      "memories": []
+    },
+    {
+      "label": "four-placed",
+      "seconds": 28800,
+      "yarnGain": 3456,
+      "workGain": 0,
+      "ownedBefore": 4,
+      "ownedAfter": 4,
+      "project": null,
+      "memories": []
+    },
+    {
+      "label": "four-placed",
+      "seconds": 86400,
+      "yarnGain": 3456,
+      "workGain": 0,
+      "ownedBefore": 4,
+      "ownedAfter": 4,
+      "project": null,
+      "memories": []
+    },
+    {
+      "label": "full-world",
+      "seconds": 300,
+      "yarnGain": 94.5667,
+      "workGain": 0,
+      "ownedBefore": 10,
+      "ownedAfter": 10,
+      "project": null,
+      "memories": [
+        "duck-visit"
+      ]
+    },
+    {
+      "label": "full-world",
+      "seconds": 1800,
+      "yarnGain": 570,
+      "workGain": 0,
+      "ownedBefore": 10,
+      "ownedAfter": 10,
+      "project": null,
+      "memories": [
+        "duck-visit"
+      ]
+    },
+    {
+      "label": "full-world",
+      "seconds": 3600,
+      "yarnGain": 1140,
+      "workGain": 0,
+      "ownedBefore": 10,
+      "ownedAfter": 10,
+      "project": null,
+      "memories": [
+        "duck-visit"
+      ]
+    },
+    {
+      "label": "full-world",
+      "seconds": 28800,
+      "yarnGain": 9120,
+      "workGain": 0,
+      "ownedBefore": 10,
+      "ownedAfter": 10,
+      "project": null,
+      "memories": [
+        "duck-visit"
+      ]
+    },
+    {
+      "label": "full-world",
+      "seconds": 86400,
+      "yarnGain": 9120,
+      "workGain": 0,
+      "ownedBefore": 10,
+      "ownedAfter": 10,
+      "project": null,
+      "memories": [
+        "duck-visit"
+      ]
+    }
+  ],
+  "notes": [
+    "No hold-to-repeat handler in current UI; pointerHeld only defers DOM rerender. No crafting-click cooldown in core; clicking faster can always increase rate.",
+    "A completed project remains pending until explicit completeCraft/placeItem; time does not start a next project.",
+    "Initial 32 guarantees the directed four-item path with no upgrade tradeoff until Cat. Other unlocked branches (House/Butterfly after Tree) can compete for yarn; early choice is limited, not globally absent.",
+    "Income events still settle while away; no automatic earning of a new owned item occurs."
+  ]
+}
