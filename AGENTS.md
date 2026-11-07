@@ -17,6 +17,8 @@ The project's ONE user-facing lead is `.agents/skills/game-product-director/SKIL
 
 This repository contains **historical prototypes** (root, `v3*`, `v4*`) and the **new production foundation** in `product/`. Historical routes are frozen unless the user explicitly requests a fix to one of them. Never copy their HTML/CSS wholesale into the new product.
 
+**Latest owner request, 2026-11-07:** the integrated version is better, but the game mechanics still need work. Introduce a dedicated [idle/clicker Game Designer](product/roles/GAME-DESIGNER.md), invoked as `idle_game_designer`, for diagnosis, progression/economy modelling and experiment specifications. The director remains the single lead. Before substantial gameplay/economy work, obtain a concrete designer specification and the separate critic's preflight; after implementation, check the actual behaviour against that specification and obtain independent process/art/technical review before owner presentation. The designer must not approve their own proposal as critic. Routine fixes restoring agreed behaviour do not need a new design cycle. The first [mechanics audit](product/research/idle-clicker-design-2026-11-07/README.md) is research, not authorization to ship a new economy. Preserve the liked staged appearance and keep #32 open until supported by player evidence.
+
 ## Product rules
 
 1. Read `product/architecture/CONTENT-CONTRACT.md`, `product/architecture/UI-ASSET-POLICY.md`, and `design-system/DESIGN-CONTRACT.md` before producing product content or changing the game UI.
