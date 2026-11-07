@@ -1,0 +1,25 @@
+{
+  "status": "draft",
+  "revision": 2,
+  "artboard": [1024,1820],
+  "sourceCanvas": [1024,1536],
+  "sources": {
+    "hero": "hero-v2.png",
+    "body": "body-v2.png",
+    "cup": "cup-v2.png",
+    "workshop": "workshop-v2.png",
+    "day": "meadow-day.png",
+    "evening": "meadow-evening.png"
+  },
+  "placement": {"left":92,"top":286,"width":840,"height":1260,"contact":[512,1425]},
+  "preserveHeroBelow": 1220,
+  "headMaskPath": "M 0 650 L 240 650 Q 265 485 475 456 Q 690 420 830 620 L 1024 650 L 1024 1536 L 0 1536 Z",
+  "stages": [
+    {"progress":0,"source":"empty"},
+    {"progress":25,"source":"cup"},
+    {"progress":50,"source":"body"},
+    {"progress":75,"source":"heroWithoutEars"},
+    {"progress":100,"source":"hero"}
+  ],
+  "meadowPlacement": {"scale":0.65,"contact":[512,1430]}
+}
