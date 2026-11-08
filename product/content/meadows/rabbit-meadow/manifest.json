@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "kind": "meadow",
+  "id": "rabbit-meadow",
+  "status": "draft",
+  "displayName": "Кроличья полянка",
+  "description": "Первая композиция. Кролик, цветок и три будущих изделия постепенно оживляют полянку.",
+  "art": {
+    "styleId": "crochet-diorama-v1",
+    "logicalSize": [
+      1024,
+      1820
+    ],
+    "backgroundDay": "art/meadow-day.webp",
+    "backgroundEvening": "art/meadow-evening.webp"
+  },
+  "slots": [
+    {
+      "id": "rabbit",
+      "itemId": "bunny",
+      "x": 0.42,
+      "y": 0.67,
+      "scale": 1,
+      "z": 4
+    },
+    {
+      "id": "flower",
+      "itemId": "crochet-flower",
+      "x": 0.74,
+      "y": 0.72,
+      "scale": 0.67,
+      "z": 5
+    },
+    {
+      "id": "tree",
+      "itemId": "knitted-tree",
+      "x": 0.2,
+      "y": 0.35,
+      "scale": 1,
+      "z": 2
+    },
+    {
+      "id": "house",
+      "itemId": "tiny-house",
+      "x": 0.77,
+      "y": 0.44,
+      "scale": 0.8,
+      "z": 3
+    },
+    {
+      "id": "butterfly",
+      "itemId": "butterfly",
+      "x": 0.76,
+      "y": 0.25,
+      "scale": 0.7,
+      "z": 6
+    }
+  ],
+  "interactions": [
+    {
+      "id": "pet-rabbit",
+      "requires": [
+        "rabbit"
+      ],
+      "actorSlot": "rabbit",
+      "action": "pet"
+    },
+    {
+      "id": "rabbit-sniffs-flower",
+      "requires": [
+        "rabbit",
+        "flower"
+      ],
+      "actorSlot": "rabbit",
+      "action": "sniff"
+    },
+    {
+      "id": "house-glows",
+      "requires": [
+        "house"
+      ],
+      "actorSlot": "house",
+      "action": "glow"
+    },
+    {
+      "id": "butterfly-lands",
+      "requires": [
+        "butterfly",
+        "flower"
+      ],
+      "actorSlot": "butterfly",
+      "action": "land"
+    }
+  ],
+  "neighbors": [],
+  "plannedNeighbors": [
+    "autumn-garden"
+  ]
+}
