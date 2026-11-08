@@ -1,0 +1,152 @@
+{
+  "revision": 2,
+  "status": "draft",
+  "exporter": "Node/Sharp",
+  "node": "v20.10.0",
+  "sharp": {
+    "aom": "3.15.1",
+    "archive": "3.8.9",
+    "cairo": "1.18.6",
+    "cgif": "0.5.4",
+    "exif": "0.6.26",
+    "expat": "2.8.5",
+    "ffi": "3.8.0",
+    "fontconfig": "2.18.3",
+    "freetype": "2.14.3",
+    "fribidi": "1.0.17",
+    "glib": "2.90.0",
+    "harfbuzz": "14.5.0",
+    "heif": "1.23.5",
+    "highway": "1.4.0",
+    "imagequant": "2.4.1",
+    "lcms": "2.19.1",
+    "mozjpeg": "0826579",
+    "pango": "1.58.2",
+    "pixman": "0.46.4",
+    "png": "1.6.58",
+    "proxy-libintl": "0.5",
+    "rsvg": "2.63.2",
+    "tiff": "4.7.2",
+    "uhdr": "2.0.2",
+    "vips": "8.18.7",
+    "webp": "1.6.0",
+    "xml2": "2.15.4",
+    "zlib-ng": "2.3.3",
+    "sharp": "0.35.5"
+  },
+  "sourceReport": [
+    {
+      "id": "hero",
+      "file": "hero-v2.png",
+      "sha256": "bbfec82aedddb645ee6ba48ca8e02b1b82b82f7f94e973a2aa0ed2001de0ed9d"
+    },
+    {
+      "id": "body",
+      "file": "body-v2.png",
+      "sha256": "d723814f434374ac80674c373321b53336888b31e3f6d634298e0b5ffdb7b2c4"
+    },
+    {
+      "id": "cup",
+      "file": "cup-v2.png",
+      "sha256": "6b3f7cdec782c94d4a7938cc5e48e9c8f804e310aea0ee86473b6596e983b0bc"
+    },
+    {
+      "id": "workshop",
+      "file": "workshop-v2.png",
+      "sha256": "b48b27f9cdfdefa8d9c58c5710fbaa3a8e0331a66dd496e2a8c15f7b19cf54fc"
+    },
+    {
+      "id": "day",
+      "file": "meadow-day.png",
+      "sha256": "60179cad58a7cc54585be891fd45df9a0cb6217ff467c2a2700abd54e9d3f85e"
+    },
+    {
+      "id": "evening",
+      "file": "meadow-evening.png",
+      "sha256": "3129739fb9ae977cd265330826c732aa8f4f9acba9140625b7d343771fb77c6b"
+    }
+  ],
+  "contactAnchor": [
+    512,
+    1425
+  ],
+  "preservedContactPatch": {
+    "fromY": 1220,
+    "sha256": "0b4e89e076737e551ff4efba56386275b03ed055616258db07be03a0c815c869"
+  },
+  "heroAlpha": {
+    "visible": 652639,
+    "transparent": 841099,
+    "bounds": [
+      128,
+      67,
+      856,
+      1392
+    ]
+  },
+  "exports": [
+    {
+      "file": "stage-000.webp",
+      "width": 1024,
+      "height": 1820,
+      "bytes": 440466,
+      "sha256": "1781ecf439989d9984d0fc97979c5b7860a603eb22d045b2d9fb4c14687dec6d"
+    },
+    {
+      "file": "stage-025.webp",
+      "width": 1024,
+      "height": 1820,
+      "bytes": 427618,
+      "sha256": "33f3b9ea9ccddb1b9e09b8a2c451d1ae8363d73bf59d615af1ad4181bf85ea30"
+    },
+    {
+      "file": "stage-050.webp",
+      "width": 1024,
+      "height": 1820,
+      "bytes": 425206,
+      "sha256": "b428cccfc014660c40efccd6bb1b1e6e6be213376e649056692e0717541bde6e"
+    },
+    {
+      "file": "stage-075.webp",
+      "width": 1024,
+      "height": 1820,
+      "bytes": 458508,
+      "sha256": "0984a154bc6618653fedf2dfd6d977b4d63a787a0f905ed7deab5f367de66f13"
+    },
+    {
+      "file": "stage-100.webp",
+      "width": 1024,
+      "height": 1820,
+      "bytes": 477250,
+      "sha256": "4cdcfdce28d6ab47873942533bb046c939ed5d56a9bedaa36731e86dfdd37748"
+    },
+    {
+      "file": "golden-frame.webp",
+      "width": 1024,
+      "height": 1820,
+      "bytes": 477250,
+      "sha256": "4cdcfdce28d6ab47873942533bb046c939ed5d56a9bedaa36731e86dfdd37748"
+    },
+    {
+      "file": "finished-sprite.webp",
+      "width": 1024,
+      "height": 1820,
+      "bytes": 234578,
+      "sha256": "f2b16b65a25c73c0f7f9d45ef73a4e30429e731598c8a65188f81f9c9576aab6"
+    },
+    {
+      "file": "meadow-day.webp",
+      "width": 1024,
+      "height": 1820,
+      "bytes": 302328,
+      "sha256": "36dec3c28772e51935ed5e90fa4a86659385ec9ca934f08a60bb1a41038d9e48"
+    },
+    {
+      "file": "meadow-evening.webp",
+      "width": 1024,
+      "height": 1820,
+      "bytes": 317562,
+      "sha256": "aa419363a9bd8732e377d5f5b9eea8e9e68a225ef36bfbeb6fcc36a1b365be8e"
+    }
+  ]
+}
