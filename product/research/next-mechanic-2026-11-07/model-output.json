@@ -1,0 +1,304 @@
+{
+  "kind": "arithmetic-only; proposed A2; no browser or player test",
+  "baseCommit": "8ceeaf0249c810539beb3ab78c92eabea06b4e9a",
+  "base": {
+    "click": 2.8,
+    "auto": 1
+  },
+  "maximum": {
+    "click": 6.3,
+    "auto": 1.8
+  },
+  "proposed": {
+    "partYarn": 2,
+    "partWork": 36,
+    "remainderYarn": 4,
+    "remainderWork": 108.2,
+    "directYarn": 6,
+    "directWork": 144.2,
+    "capacity": 2
+  },
+  "schedules": [
+    {
+      "level": "base",
+      "hz": 1,
+      "autoOn": false,
+      "continuousTotalSeconds": 51.5,
+      "part": {
+        "seconds": 13,
+        "taps": 13
+      },
+      "remainder": {
+        "seconds": 39,
+        "taps": 39
+      },
+      "direct": {
+        "seconds": 52,
+        "taps": 52
+      },
+      "prepared": {
+        "seconds": 52,
+        "taps": 52
+      },
+      "overheadSeconds": 0
+    },
+    {
+      "level": "base",
+      "hz": 1,
+      "autoOn": true,
+      "continuousTotalSeconds": 37.947368,
+      "part": {
+        "seconds": 10,
+        "taps": 10
+      },
+      "remainder": {
+        "seconds": 29,
+        "taps": 29
+      },
+      "direct": {
+        "seconds": 38,
+        "taps": 38
+      },
+      "prepared": {
+        "seconds": 39,
+        "taps": 39
+      },
+      "overheadSeconds": 1
+    },
+    {
+      "level": "base",
+      "hz": 10,
+      "autoOn": false,
+      "continuousTotalSeconds": 5.15,
+      "part": {
+        "seconds": 1.3,
+        "taps": 13
+      },
+      "remainder": {
+        "seconds": 3.9,
+        "taps": 39
+      },
+      "direct": {
+        "seconds": 5.2,
+        "taps": 52
+      },
+      "prepared": {
+        "seconds": 5.2,
+        "taps": 52
+      },
+      "overheadSeconds": 0
+    },
+    {
+      "level": "base",
+      "hz": 10,
+      "autoOn": true,
+      "continuousTotalSeconds": 4.972414,
+      "part": {
+        "seconds": 1.3,
+        "taps": 13
+      },
+      "remainder": {
+        "seconds": 3.8,
+        "taps": 38
+      },
+      "direct": {
+        "seconds": 5,
+        "taps": 50
+      },
+      "prepared": {
+        "seconds": 5.1,
+        "taps": 51
+      },
+      "overheadSeconds": 0.1
+    },
+    {
+      "level": "maximum",
+      "hz": 1,
+      "autoOn": false,
+      "continuousTotalSeconds": 22.888889,
+      "part": {
+        "seconds": 6,
+        "taps": 6
+      },
+      "remainder": {
+        "seconds": 18,
+        "taps": 18
+      },
+      "direct": {
+        "seconds": 23,
+        "taps": 23
+      },
+      "prepared": {
+        "seconds": 24,
+        "taps": 24
+      },
+      "overheadSeconds": 1
+    },
+    {
+      "level": "maximum",
+      "hz": 1,
+      "autoOn": true,
+      "continuousTotalSeconds": 17.802469,
+      "part": {
+        "seconds": 5,
+        "taps": 5
+      },
+      "remainder": {
+        "seconds": 14,
+        "taps": 14
+      },
+      "direct": {
+        "seconds": 18,
+        "taps": 18
+      },
+      "prepared": {
+        "seconds": 19,
+        "taps": 19
+      },
+      "overheadSeconds": 1
+    },
+    {
+      "level": "maximum",
+      "hz": 10,
+      "autoOn": false,
+      "continuousTotalSeconds": 2.288889,
+      "part": {
+        "seconds": 0.6,
+        "taps": 6
+      },
+      "remainder": {
+        "seconds": 1.8,
+        "taps": 18
+      },
+      "direct": {
+        "seconds": 2.3,
+        "taps": 23
+      },
+      "prepared": {
+        "seconds": 2.4,
+        "taps": 24
+      },
+      "overheadSeconds": 0.1
+    },
+    {
+      "level": "maximum",
+      "hz": 10,
+      "autoOn": true,
+      "continuousTotalSeconds": 2.225309,
+      "part": {
+        "seconds": 0.6,
+        "taps": 6
+      },
+      "remainder": {
+        "seconds": 1.7,
+        "taps": 17
+      },
+      "direct": {
+        "seconds": 2.3,
+        "taps": 23
+      },
+      "prepared": {
+        "seconds": 2.3,
+        "taps": 23
+      },
+      "overheadSeconds": 0
+    }
+  ],
+  "absence": [
+    {
+      "seconds": 0,
+      "completed": 0,
+      "currentPartWork": 0,
+      "paidYarn": 4,
+      "stopped": false
+    },
+    {
+      "seconds": 20,
+      "completed": 0,
+      "currentPartWork": 20,
+      "paidYarn": 4,
+      "stopped": false
+    },
+    {
+      "seconds": 36,
+      "completed": 1,
+      "currentPartWork": 0,
+      "paidYarn": 4,
+      "stopped": false
+    },
+    {
+      "seconds": 60,
+      "completed": 1,
+      "currentPartWork": 24,
+      "paidYarn": 4,
+      "stopped": false
+    },
+    {
+      "seconds": 72,
+      "completed": 2,
+      "currentPartWork": 0,
+      "paidYarn": 4,
+      "stopped": true
+    },
+    {
+      "seconds": 900,
+      "completed": 2,
+      "currentPartWork": 0,
+      "paidYarn": 4,
+      "stopped": true
+    },
+    {
+      "seconds": 3600,
+      "completed": 2,
+      "currentPartWork": 0,
+      "paidYarn": 4,
+      "stopped": true
+    },
+    {
+      "seconds": 28800,
+      "completed": 2,
+      "currentPartWork": 0,
+      "paidYarn": 4,
+      "stopped": true
+    }
+  ],
+  "pureAuto": {
+    "base": {
+      "partSeconds": 36,
+      "planTwoSeconds": 72,
+      "remainderSeconds": 108.2,
+      "directAndPreparedTotalSeconds": 144.2
+    },
+    "maximum": {
+      "partSeconds": 20,
+      "planTwoSeconds": 40,
+      "remainderSeconds": 60.111111,
+      "directAndPreparedTotalSeconds": 80.111111
+    }
+  },
+  "finiteCost": {
+    "twoAccessoriesYarn": 12,
+    "twoAccessoriesWork": 288.4,
+    "permanentExtraIncome": 0,
+    "existingAllItemsYarn": 192,
+    "existingAllUpgradesYarn": 2225.292
+  },
+  "incomeContext": {
+    "ratesAreMeanEquivalentIncludingDiscreteIdlePayouts": true,
+    "afterFourPerHour": 432,
+    "fullWorldPerHour": 1140,
+    "fullWorldEightHoursMean": 9120,
+    "zeroWalletMeanEstimateSecondsForPartAfterFour": 16.666667,
+    "zeroWalletMeanEstimateSecondsForWholeAfterFour": 50,
+    "afterFourContinuousOnlyPerHour": 408,
+    "zeroWalletNoSniffSecondsForPart": 17.647059,
+    "zeroWalletNoSniffSecondsForWhole": 52.941176
+  },
+  "limitations": [
+    "No engine state machine or timing simulation",
+    "No interactions, human latency, rendering or network",
+    "Nominal work equality is not equality of taps or actual completion time",
+    "T/C must use identical boundaries and timing rules",
+    "No inference of fun, retention or economic sustainability"
+  ]
+}
