@@ -21,6 +21,8 @@ This repository contains **historical prototypes** (root, `v3*`, `v4*`) and the 
 
 ## Product rules
 
+**Current bounded task, started 2026-11-07 and resumed 2026-11-12:** the owner explicitly asked the game designer and critic to develop the next mechanic into an internal document and said **do not change the game yet**. Follow [#43](https://github.com/apazidi/mir-na-nitke/issues/43) and [the specification](product/research/next-mechanic-2026-11-07/README.md). Only design documents, isolated research calculations and review records are in scope. Do not change runtime, UI, catalogs, saves, art or shipped game bundles; do not implement a playable prototype. A positive design preflight means readiness for a future bounded experiment, not authorization to implement during this task. This explicit owner boundary takes precedence over general autonomous progression guidance.
+
 1. Read `product/architecture/CONTENT-CONTRACT.md`, `product/architecture/UI-ASSET-POLICY.md`, and `design-system/DESIGN-CONTRACT.md` before producing product content or changing the game UI.
 2. Use the repository skills in `.agents/skills/`: `create-knit-item` for new knitted items, `create-meadow` for five-item meadows, and `create-crochet-art` for high-fidelity stage art, golden-frame and finished-sprite production.
 3. Content agents may only change their **own** `product/content/items/<id>/` or `product/content/meadows/<id>/` directory. Do not modify `product/app/`, `design-system/`, other content packages, shared manifests, or the legacy game. Engine changes require a separately reviewed task.
