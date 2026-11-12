@@ -1,5 +1,7 @@
 # Мир на ниточке — repository agent guidance
 
+**Owner authorization, 2026-11-12 (supersedes the earlier docs-only boundary):** «так разрешаю игру менять, прежнее поручение было о том, что давайте подключим геймдизайнера и тогда уже спланируем роадмап. команда — работаем :-)». Proceed with bounded A2 implementation using the existing independent PROTOTYPE-WORTHY specification. The earlier #43 restriction below is historical, not a current prohibition on code. Preserve independent designer/process/art/technical checks, the approved visual direction and draft isolation; authorization to implement is not approval of enjoyment or release. Current sequence and evidence: `product/ROADMAP-1.0.md`.
+
 ## Product leadership (canonical entrypoint)
 
 The project's ONE user-facing lead is `.agents/skills/game-product-director/SKILL.md`. Read `product/PRODUCT-VISION-5-10-SCENES.md` first. The Product Director is responsible for creative product discovery, gameplay and economy evolution, planning and delivering **5–10 complete meadows** (five craftable slots each), prioritization, subagent delegation, independent QA, art-direction fidelity and playable milestones. Do not reduce this role to issue dispatch. 
