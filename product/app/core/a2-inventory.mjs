@@ -10,7 +10,7 @@ export function createA2Inventory() {
 }
 
 export function occupiedA2Slots(state) {
-  return state.parts.filter(part => part.status !== 'consumed').length;
+  return state.parts.filter(part => ['planned', 'free', 'reserved'].includes(part.status)).length;
 }
 
 function requireId(value) {
@@ -52,6 +52,19 @@ export function applyA2Inventory(state, event) {
         throw new Error('No capacity for plan');
       }
       next.parts.push(...ids.map(partId => ({ partId, status: 'planned', jobId: event.jobId })));
+      break;
+    }
+    case 'planUnitsCancelled': {
+      // The aggregate proved that every cancelled unit has zero work.
+      if (!Array.isArray(event.partIds) || !event.partIds.length || new Set(event.partIds).size !== event.partIds.length) {
+        throw new Error('Expected distinct cancelled units');
+      }
+      for (const partId of event.partIds) {
+        const unit = next.parts.find(entry => entry.partId === partId);
+        if (!unit || unit.status !== 'planned' || unit.jobId !== event.jobId) throw new Error('Unknown planned part');
+        // Keep the ID as a tombstone: cancellation must not permit ID reuse.
+        unit.status = 'cancelled';
+      }
       break;
     }
     case 'motifFinished':
