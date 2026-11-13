@@ -1,5 +1,7 @@
 # Мир на ниточке — repository agent guidance
 
+**Latest owner feedback, 2026-11-13:** the published game remains beautiful but uninteresting; restart, meadow connections, basket terminology and fractional/excess yarn are unclear. Follow [#50](https://github.com/apazidi/mir-na-nitke/issues/50), [the feedback](product/reviews/owner-feedback-2026-11-13.md) and current ROADMAP. This is new evidence requiring designer/critic reassessment; do not automatically continue A2 because draft modules exist. The clarity increment has bounded preflight, not an enjoyment claim. The Cat+Coffee queue remains REWORK. Review actual first entry, return and a rich completed save before presenting the changed experience; technical PASS does not substitute for product review. Existing authorization and quota limits remain in force.
+
 **Owner authorization, 2026-11-12 (supersedes the earlier docs-only boundary):** «так разрешаю игру менять, прежнее поручение было о том, что давайте подключим геймдизайнера и тогда уже спланируем роадмап. команда — работаем :-)». Proceed with bounded A2 implementation using the existing independent PROTOTYPE-WORTHY specification. The earlier #43 restriction below is historical, not a current prohibition on code. Preserve independent designer/process/art/technical checks, the approved visual direction and draft isolation; authorization to implement is not approval of enjoyment or release. Current sequence and evidence: `product/ROADMAP-1.0.md`.
 
 ## Product leadership (canonical entrypoint)
