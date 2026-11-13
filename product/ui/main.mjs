@@ -1,4 +1,6 @@
 import {createSession} from '../app/ui/session.mjs';
+import {acquireSaveWriter} from '../app/ui/save-writer.mjs';
+import {showSaveBlocked} from './save-blocked.mjs';
 import {loadRuntimeCatalog, selectStage, placementLayout} from '../app/content/index.mjs';
 import {developmentCatalog} from './dev-catalog.mjs';
 import {startGameplay} from './gameplay.mjs';
@@ -102,9 +104,12 @@ try {
  if (!catalog.items.length || !catalog.meadows.length) {
   app.replaceChildren(el('h1', 'Мир на ниточке'), el('p', 'Готовые полянки ещё проходят художественную приёмку.'), el('p', 'Игровая сборка не подменяет их черновыми пакетами.'));
  } else {
-  let storage;
-  try { storage = localStorage; } catch { notice = 'Хранилище браузера недоступно. Прогресс сохранится только в этой вкладке.'; }
-  const session = createSession(config, {storage, key: mode === 'art-review' ? 'mir-na-nitke-art-preview-v2' : dev ? 'mir-na-nitke-development-v1' : 'mir-na-nitke-v1', onNotice: text => { notice = text; }});
+  const writer = await acquireSaveWriter({onLost: reason => showSaveBlocked(app, reason)});
+  if (!writer.active) { showSaveBlocked(app, writer.reason); } else {
+  const storage = writer.storage;
+  if (writer.mode === 'temporary') notice = 'Хранилище браузера недоступно. Прогресс сохранится только в этой вкладке.';
+  const session = createSession(config, {storage, key: mode === 'art-review' ? 'mir-na-nitke-art-preview-v2' : dev ? 'mir-na-nitke-development-v1' : 'mir-na-nitke-v1', isActive:()=>writer.active, onPersistenceUnavailable:()=>writer.isolate(), onNotice: text => { notice = text; }});
+  writer.setFlush(()=>session.tick());
   const itemById = id => catalog.items.find(item => item.id === id);
   const currentItem = () => itemById(session.view.project?.itemId);
   function act(action) {
@@ -176,6 +181,7 @@ try {
    panel.append(details, el('p', 'Черновой скин: изображения постоянных кнопок ещё не утверждены. Темп игры ускорен для демо.', 'drawer-note')); world.append(panel);
   }
   function render() {
+   if(!writer.active)return;
    const focusKey = document.activeElement?.dataset.focusKey;
    const scrollTop = app.querySelector('.project-drawer')?.scrollTop ?? 0;
    sequence = 0;
@@ -259,6 +265,7 @@ try {
   }
   render();
   setInterval(() => {
+   if(!writer.active)return;
    const beforeItem = currentItem(), beforeProgress = session.view.project?.progress;
    const {before, state} = session.tick();
    if (beforeItem && selectStage(beforeItem, beforeProgress)?.image !== selectStage(beforeItem, session.view.project?.progress)?.image) {
@@ -287,7 +294,8 @@ try {
     else if(!event.shiftKey&&active===last){event.preventDefault();first?.focus();}
    }
   });
-  document.addEventListener('visibilitychange', () => { session.tick(); render(); }); window.addEventListener('pagehide', () => session.tick());
+  document.addEventListener('visibilitychange', () => { if(writer.active){session.tick();render();} });
+  }
  }
 } catch (error) {
  app.replaceChildren(el('h1', 'Не удалось открыть игру'), el('p', 'Проверьте сборку каталога и доступ к файлам. Ваше сохранение не изменено.'), el('pre', error.message));
