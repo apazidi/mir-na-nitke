@@ -5,7 +5,7 @@ export type ManualAction='pet'|'sniff'|'water'|'sway'|'knock'|'glow'|'land'|'gre
 export const MANUAL_ACTIONS:readonly ManualAction[];
 export interface Interaction extends Requirements {id:string;requires:string[];actorSlot?:string;action:ManualAction;trigger:'manual'|'idle';amount:number;cooldownMs:number;workBonus?:number}
 export interface Meadow extends Requirements {id:string;slots:{id:string;itemId:string}[];passive?:({id:string;requires:string[];ratePerHour:number}&Requirements)[];interactions?:Interaction[]}
-export interface Upgrade extends Requirements {id:string;target:'click'|'idle';baseCost:number;costMultiplier:number;amount:number;maxLevel:number}
+export interface Upgrade extends Requirements {id:string;target:'click'|'idle';baseCost:number;costMultiplier:number;amount:number;maxLevel:number;wholeYarnPrice?:boolean}
 export interface Visitor {itemId:string;meadowId:string;x:number;y:number;scale:number;z?:number}
 export interface WorldEvent extends Requirements {id:string;trigger:'automatic'|'project';delayMs:number;visitMs:number;cooldownMs?:number;repeatable?:boolean;rewardYarn?:number;visitor?:Visitor}
 export interface Recipe extends Item {eventId:string}

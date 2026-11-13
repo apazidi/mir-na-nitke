@@ -23,7 +23,7 @@ const active=(s,m,r)=>r.requires.every(id=>has(s.placements[m.id]??{},id))&&requ
 const rate=(s,c,target)=>(target==='click'?c.clickWork:c.idleWorkPerSecond)+c.upgrades.filter(u=>u.target===target).reduce((n,u)=>n+(s.upgrades[u.id]??0)*u.amount,0);
 const craftRate=(s,c)=>s.craftAuto===false?0:rate(s,c,'idle');
 const recraftable=(s,c,id)=>(c.recraftableIds??[]).includes(id)&&s.owned.includes(id);
-const price=(s,u)=>u.baseCost*u.costMultiplier**(s.upgrades[u.id]??0);
+const price=(s,u)=>{const value=u.baseCost*u.costMultiplier**(s.upgrades[u.id]??0);return u.wholeYarnPrice?Math.ceil(value):value;};
 function incomeRate(s,c){return c.reserveYarnPerHour+c.meadows.reduce((n,m)=>n+(m.passive??[]).filter(p=>active(s,m,p)).reduce((sum,p)=>sum+p.ratePerHour,0),0);}
 function validateRequirements(c,d){
  if(d.requiresPlaced!==undefined){if(!Array.isArray(d.requiresPlaced))fail('Placed requirements');for(const p of d.requiresPlaced)if(!meadow(c,p.meadowId).slots.some(s=>s.id===p.slotId))fail('Unknown required slot');}
@@ -47,6 +47,7 @@ export function validateConfig(c){
  for(const i of c.items){validateWork(i);validateRequirements(c,i);if(i.meadowId)meadow(c,i.meadowId);}
  if(!c.items.some(i=>i.yarnCost<=c.initialYarn&&unlocked({placements:{},memories:{}},c,i)))fail('Starter unaffordable or locked');
  for(const u of c.upgrades){
+  if(u.wholeYarnPrice!==undefined&&typeof u.wholeYarnPrice!=='boolean')fail('Invalid whole yarn price');
   if(!['click','idle'].includes(u.target))fail('Upgrade target');
   for(const p of ['baseCost','costMultiplier','amount','maxLevel'])number(u[p],p,true);
   if(!Number.isSafeInteger(u.maxLevel)||u.costMultiplier<1)fail('Upgrade bounds');number(u.baseCost*u.costMultiplier**(u.maxLevel-1),'Maximum price');validateRequirements(c,u);

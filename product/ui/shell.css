@@ -152,3 +152,19 @@ button:focus-visible{outline:3px solid #fff7d7;outline-offset:2px}
 .gameplay-v4 .workshop-item{object-fit:contain!important;left:calc(50% - 85px)!important;top:calc(65% - 230px)!important;width:170px!important;height:230px!important}
 .gameplay-v4 .recipe-label{top:44%;max-width:230px;margin:auto}
 .gameplay-v4 .staged-project-actions{display:grid;gap:4px;max-width:45%;flex-shrink:0}
+/* Player orientation uses the existing parchment controls and location art. */
+.design-v4.gameplay-v4 .lighting{position:static;flex-shrink:0;width:48px;margin:0}
+.gameplay-v4 .app-header .place-title{font-size:13px;flex-shrink:0}
+.gameplay-v4 .yarn-wallet{font-size:11px;white-space:normal;text-align:center}
+.gameplay-v4 .game-menu{position:absolute;z-index:24;top:75px;left:12px;font-size:11px;padding:5px 14px;min-height:44px}
+.gameplay-v4 .workshop-tools,.gameplay-v4 .memory-tools{top:75px}
+.gameplay-v4 .staged-cancel{top:125px}
+.world-map{display:flex;flex-direction:column;align-items:center;gap:8px;padding:5px 0}
+.map-place{display:grid;grid-template-columns:80px 1fr;align-items:center;gap:6px 10px;width:100%;padding:10px;border:1px solid #c9a578;border-radius:18px;background:#fff1d8}
+.map-landscape{grid-row:span 3;width:80px;height:82px;object-fit:cover;border-radius:14px}
+.map-place strong{font:700 15px Georgia,serif}.map-place small{font-size:11px}
+.map-place .button,.map-requirement{grid-column:1/-1}
+.map-current{font-size:10px;font-weight:700;color:#536333}
+.map-path{margin:0;border-left:3px dashed #ad8051;padding:10px 12px;max-width:90%;font-size:11px}
+.map-locked .map-landscape{filter:saturate(.4)}
+.map-requirement[data-done=true]{color:#52623c}

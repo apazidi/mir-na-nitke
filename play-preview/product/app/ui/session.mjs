@@ -32,7 +32,20 @@ export function createSession(config, {storage, key='mir-na-nitke-v1', legacyKey
   function persist(){ if(blockedSave||!isActive())return; try{storage?.setItem(key,core.serializeState(state));}catch{blockedSave=true;onPersistenceUnavailable();onNotice('Не удалось сохранить. Прогресс доступен только в этой вкладке. Оставьте её открытой.');} }
   function tick(){ const before=state;if(!isActive())return {before,state,report:null}; state=core.advanceTime(state,now(),config); persist(); return {before,state,report:summarizeAdvance(before,state,config)}; }
   const initial=tick();let awayReport=importedReport??initial.report;
+  const restarted=new Set(),backupKey=key+'-restart-backup';
   return {get state(){return state;},get view(){return core.selectView(state,config);},get imported(){return imported;},tick,
+    get canRestart(){return isActive()&&!blockedSave&&Boolean(storage);},
+    restart(requestId){
+      if(!isActive()||blockedSave||!storage||typeof requestId!=='string'||!requestId)return false;
+      if(restarted.has(requestId))return true;
+      // Prepare both snapshots without mutating the live world. localStorage writes
+      // are atomic per key; a failed backup/new-save write leaves the old world live.
+      const timestamp=now(),previous=core.advanceTime(state,timestamp,config),fresh=core.createInitialState(config,timestamp);
+      try{storage.setItem(backupKey,core.serializeState(previous));storage.setItem(key,core.serializeState(fresh));}
+      catch{onNotice('Не удалось начать заново. Прежняя игра сохранена; можно продолжить её.');return false;}
+      state=fresh;awayReport=null;imported=false;restarted.add(requestId);return true;
+    },
+    exportRestartBackup(){try{return isActive()?storage?.getItem(backupKey)??null:null;}catch{return null;}},
     takeAwayReport(){const report=awayReport;awayReport=null;return report;},
     act(action){if(!isActive())return false;tick();try{state=core.dispatch(state,{...action,now:state.lastTimestamp},config);persist();return true;}catch(error){onNotice(error.message);return false;}},
     exportSave(){tick();return core.serializeState(state);}
