@@ -70,6 +70,9 @@ jobs:
         run: |
           npm --prefix product run build
           PLAYWRIGHT_MODULE="$RUNNER_TEMP/mir-browser/node_modules/playwright/index.mjs" node product/ui/browser-check.mjs
+      - name: Check exclusive browser save writer
+        run: |
+          PLAYWRIGHT_MODULE="$RUNNER_TEMP/mir-browser/node_modules/playwright/index.mjs" node product/ui/save-writer-browser-check.mjs
       - name: Fetch pinned draft artwork without promoting content
         run: |
           git fetch --no-tags origin 56a748cc0de532b40a1b9a0927ff1d900406d85b 0dbd5e2e2df90d54e6fe9cb45ff5da5e3955b7f4

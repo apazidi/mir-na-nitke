@@ -2,7 +2,8 @@ import * as core from '../core/index.mjs';
 /** Browser host: commit elapsed time before attempting a possibly rejected command.
  * legacyMigration='config' opts into rich-world balance migration; default 'v1'
  * keeps the historical v2-key to v3-key schema bridge. Never writes legacyKey. */
-export function createSession(config, {storage, key='mir-na-nitke-v1', legacyKey, legacyConfig, legacyMigration='v1', now=Date.now, onNotice=()=>{}}={}) {
+export function createSession(config, {storage, key='mir-na-nitke-v1', legacyKey, legacyConfig, legacyMigration='v1', now=Date.now, onNotice=()=>{}, isActive=()=>true, onPersistenceUnavailable=()=>{}}={}) {
+  if(!isActive())throw Error('Save writer inactive');
   let state;
   let blockedSave=false,imported=false,importedReport=null;
   try {
@@ -27,13 +28,13 @@ export function createSession(config, {storage, key='mir-na-nitke-v1', legacyKey
       imported=true;
     }else state=core.createInitialState(config,now());
   }
-  catch { blockedSave=true; importedReport=null; state=core.createInitialState(config,now()); onNotice('Сохранение недоступно или несовместимо. Игра работает временно; исходное сохранение не перезаписывается.'); }
-  function persist(){ if(blockedSave)return; try{storage?.setItem(key,core.serializeState(state));}catch{onNotice('Не удалось сохранить. Оставьте эту вкладку открытой.');} }
-  function tick(){ const before=state; state=core.advanceTime(state,now(),config); persist(); return {before,state,report:summarizeAdvance(before,state,config)}; }
+  catch { blockedSave=true; importedReport=null; onPersistenceUnavailable(); state=core.createInitialState(config,now()); onNotice('Сохранение недоступно или несовместимо. Игра работает только в этой вкладке; исходное сохранение не перезаписывается.'); }
+  function persist(){ if(blockedSave||!isActive())return; try{storage?.setItem(key,core.serializeState(state));}catch{blockedSave=true;onPersistenceUnavailable();onNotice('Не удалось сохранить. Прогресс доступен только в этой вкладке. Оставьте её открытой.');} }
+  function tick(){ const before=state;if(!isActive())return {before,state,report:null}; state=core.advanceTime(state,now(),config); persist(); return {before,state,report:summarizeAdvance(before,state,config)}; }
   const initial=tick();let awayReport=importedReport??initial.report;
   return {get state(){return state;},get view(){return core.selectView(state,config);},get imported(){return imported;},tick,
     takeAwayReport(){const report=awayReport;awayReport=null;return report;},
-    act(action){tick();try{state=core.dispatch(state,{...action,now:state.lastTimestamp},config);persist();return true;}catch(error){onNotice(error.message);return false;}},
+    act(action){if(!isActive())return false;tick();try{state=core.dispatch(state,{...action,now:state.lastTimestamp},config);persist();return true;}catch(error){onNotice(error.message);return false;}},
     exportSave(){tick();return core.serializeState(state);}
   };
 }
