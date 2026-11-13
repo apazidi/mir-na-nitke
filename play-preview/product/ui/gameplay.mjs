@@ -4,6 +4,7 @@ import {showSaveBlocked} from './save-blocked.mjs';
 import {selectStage,placementLayout} from '../app/content/index.mjs';
 import {gameplayCatalog,GAMEPLAY_SAVE_KEY,LEGACY_SAVE_KEY} from './gameplay-catalog.mjs';
 import {el,viewTools,duration,amount} from './view-tools.mjs';
+import {yarnAmount,nextGoal} from './player-guidance.mjs';
 import {fitSpriteHitArea} from './sprite-hit.mjs';
 import {stagedCatalog,STAGED_SAVE_KEY,STAGED_LEGACY_KEY,SECTION_WEIGHTS} from './staged-catalog.mjs';
 import {createStagedRenderer} from './staged-renderer.mjs';
@@ -20,7 +21,9 @@ export async function startGameplay({staged=false}={}){
  const session=createSession(config,{storage,key:saveKey,legacyKey:staged?STAGED_LEGACY_KEY:LEGACY_SAVE_KEY,legacyConfig:runtime.legacyConfig,legacyMigration:staged?'config':'v1',isActive:()=>writer.active,onPersistenceUnavailable:()=>writer.isolate(),onNotice:text=>{notice=text;}});
  writer.setFlush(()=>session.tick());
  const defaults={screen:'workshop',meadowId:'test-meadow',evening:false,selected:{}};
+ let restartRequest=null,restartError='';
  let ui={...defaults};try{const saved=JSON.parse(storage?.getItem(saveKey+'-ui')??'null');if(saved)ui={...defaults,...saved,selected:saved.selected??{}};}catch{}
+ if(staged&&session.state.transactionSequence===0&&!session.state.project&&!session.state.owned.length)ui=structuredClone(defaults);
  if(!['workshop','meadow'].includes(ui.screen))ui.screen='workshop';if(!session.view.meadows.some(m=>m.id===ui.meadowId&&m.unlocked))ui.meadowId='test-meadow';
  if(staged&&ui.screen==='workshop'&&session.state.project){const p=session.state.project;ui.meadowId=(p.recipeId?config.recipes.find(i=>i.id===p.recipeId):catalog.items.find(i=>i.id===p.itemId)).meadowId;}
  let pointerHeld=false;if(staged){document.addEventListener('pointerdown',()=>{pointerHeld=true;},true);for(const type of ['pointerup','pointercancel'])document.addEventListener(type,()=>{pointerHeld=false;},true);}
@@ -43,6 +46,8 @@ export async function startGameplay({staged=false}={}){
  const navigate=(screen,meadowId=ui.meadowId)=>{ui.screen=screen;ui.meadowId=staged&&screen==='workshop'&&definition()?definition().meadowId:meadowId;drawer=null;replay=null;saveUI();render();};
  const openDrawer=kind=>{drawerOpener=document.activeElement?.dataset.focusKey??'tab-projects';drawer=kind;render('close-drawer');};
  const closeDrawer=()=>{drawer=null;away=null;render(drawerOpener);};
+ const rewardText=value=>staged&&!Number.isInteger(value)?'Пряжа пополняется':'+'+amount(value)+' пряжи';
+ const downloadBackup=()=>{const raw=session.exportRestartBackup();if(!raw)return;const href=URL.createObjectURL(new Blob([raw],{type:'application/json'})),link=document.createElement('a');link.href=href;link.download='mir-na-nitke-before-restart.json';link.click();setTimeout(()=>URL.revokeObjectURL(href),1000);};
  const savedSeconds=(work,view=session.view)=>Math.min(work,view.project?.remaining??work)/view.rates.idle;
  function act(action,event){
   const before=definition(),previous=structuredClone(session.view),start=performance.now();
@@ -68,7 +73,7 @@ export async function startGameplay({staged=false}={}){
   }
   if(action.type==='interact'){
    const m=byMeadow(action.meadowId),r=m.interactions.find(r=>r.id===action.interactionId);ui.selected[m.id]=r.actorSlot;
-   const benefit='+'+amount(r.amount)+' пряжи'+(r.workBonus&&previous.project?' · −'+amount(savedSeconds(r.workBonus,previous))+' с вязания':'');
+   const benefit=rewardText(r.amount)+(r.workBonus&&previous.project?' · −'+amount(savedSeconds(r.workBonus,previous))+' с вязания':'');
    announce(m.id,r.action,reactionText[r.action]+' · '+benefit,r.requires);
   }
   if(action.type==='buyUpgrade'){const u=session.view.upgrades.find(u=>u.id===action.upgradeId);announce('workshop','upgrade',u.target==='click'?'Каждое касание экономит до '+amount(u.current/session.view.rates.idle)+' с':'Самостоятельная вязка: темп ×'+amount(u.current/config.idleWorkPerSecond));}
@@ -106,11 +111,41 @@ export async function startGameplay({staged=false}={}){
  function drawerPanel(world,view,meadow,meadowView){
   const shade=button('Закрыть',closeDrawer,{cls:'drawer-shade',key:'shade'});shade.tabIndex=-1;world.append(shade);
   const panel=el('section',undefined,'project-drawer');panel.id='projects-drawer';panel.setAttribute('role','dialog');panel.setAttribute('aria-modal','true');
-  const titles={projects:'Корзинка проектов',map:'Тропинки между полянками',upgrades:'Мастерская помогает',memories:'Тёплые воспоминания',return:'Пока вас не было'};
+  const titles={projects:staged?'Проекты':'Корзинка проектов',map:staged?'Карта полянок':'Тропинки между полянками',upgrades:staged?'Улучшения':'Мастерская помогает',memories:'Тёплые воспоминания',return:'Пока вас не было',game:'Игра и сохранение',restart:'Начать заново?'};
   panel.setAttribute('aria-label',titles[drawer]);const head=el('div',undefined,'drawer-heading');head.append(el('h2',titles[drawer]),button('Закрыть',closeDrawer,{key:'close-drawer'}));panel.append(head);
   const list=el('div',undefined,'project-list');
   const row=(title,detail,control)=>{const n=el('div',undefined,'project-row'),copy=el('span',undefined,'row-copy');copy.append(el('strong',title),el('small',detail));n.append(copy);if(control)n.append(control);list.append(n);return n;};
-  if(drawer==='map')for(const m of view.meadows){const source=byMeadow(m.id);row(source.displayName,m.unlocked?m.slots.filter(s=>s.placed).length+' из 5 жителей':source.unlockHint,button(m.unlocked?'Перейти':'Закрыто',()=>navigate('meadow',m.id),{disabled:!m.unlocked,key:'scene-'+m.id}));}
+  if(drawer==='map'){
+   if(staged){
+    panel.append(el('p','Один мир, две полянки. Мастерская создаёт изделия для обеих.','drawer-note'));
+    const map=el('div',undefined,'world-map');
+    for(const [index,m]of view.meadows.entries()){
+     const source=byMeadow(m.id),node=el('section',undefined,'map-place'+(m.unlocked?'':' map-locked'));node.dataset.mapPlace=m.id;
+     node.append(image(assetUrl(source,source.art.backgroundDay),'','map-landscape'),el('strong',source.displayName));
+     if(ui.meadowId===m.id)node.append(el('span',ui.screen==='workshop'?'Выбрана для работы':'Вы здесь','map-current'));
+     node.append(el('small',m.slots.filter(s=>s.placed).length+' из 5 изделий'));
+     for(const req of source.requiresPlaced??[]){const done=Boolean(session.state.placements[req.meadowId]?.[req.slotId]);const line=el('small',(done?'Готово: ':'Нужно разместить: ')+byId(req.slotId).displayName,'map-requirement');line.dataset.done=String(done);node.append(line);}
+     node.append(button(m.unlocked?'Перейти':'Пока закрыто',()=>navigate('meadow',m.id),{disabled:!m.unlocked,key:'scene-'+m.id}));map.append(node);
+     if(index<view.meadows.length-1)map.append(el('p',view.meadows[1].unlocked?'Тропинка открыта':'Кролик → Цветок → Дерево откроют тропинку','map-path'));
+    }
+    list.append(map,el('p','Уточка заглядывает с приветом после Котика, Кофе и Уточки у пруда. Приглашение в «Проектах» отправит кролика в гости.','drawer-note'),el('p',nextGoal(view,config),'drawer-note'));
+   }else for(const m of view.meadows){const source=byMeadow(m.id);row(source.displayName,m.unlocked?m.slots.filter(s=>s.placed).length+' из 5 жителей':source.unlockHint,button(m.unlocked?'Перейти':'Закрыто',()=>navigate('meadow',m.id),{disabled:!m.unlocked,key:'scene-'+m.id}));}
+  }
+  if(drawer==='game'){
+   list.append(el('p','Пряжа — материал для изделий и улучшений. Показаны целые доступные единицы; небольшие поступления накапливаются до следующей единицы.','drawer-note'),el('p',nextGoal(view,config),'drawer-note'));
+   list.append(button('Начать заново',()=>{restartError='';restartRequest=crypto.randomUUID();openDrawer('restart');},{disabled:!session.canRestart,key:'request-restart'}));
+   if(!session.canRestart)list.append(el('p','Сейчас игра хранится только в этой вкладке. Оставьте её открытой: безопасный перезапуск недоступен, пока хранилище браузера не работает.','drawer-note'));
+   if(session.exportRestartBackup())list.append(button('Скачать предыдущее прохождение',downloadBackup,{key:'download-backup'}));
+  }
+  if(drawer==='restart'){
+   if(restartError){const error=el('p',restartError,'drawer-note');error.setAttribute('role','alert');list.append(error);}
+   list.append(el('p','Начнётся новый мир: без готовых изделий, улучшений и текущей работы, со стартовыми 32 единицами пряжи. Перед этим сохраним копию текущего прохождения: её можно скачать в меню «Игра». Новая копия заменит предыдущую. Другие версии игры не изменятся.','return-copy'));
+   list.append(button('Отмена',()=>{restartRequest=null;restartError='';openDrawer('game');},{key:'cancel-restart'}),button('Сохранить копию и начать',()=>{
+    if(drawer!=='restart'||!restartRequest)return;const id=restartRequest;restartRequest=null;restartError='';
+    if(!session.restart(id)){restartError=notice||'Перезапуск недоступен. Прежний мир не изменён.';notice='';restartRequest=crypto.randomUUID();render();return;}
+    ui=structuredClone(defaults);away=null;replay=null;hiddenState=null;reactions=[];pulse=null;notice='';drawer=null;projectStarted=Date.now();saveUI();render('next-project');
+   },{key:'confirm-restart'}));
+  }
   if(drawer==='projects'){
    panel.append(button(meadow.displayName+' · сменить',()=>openDrawer('map'),{key:'project-scene'}));
    for(const p of view.projects.filter(p=>byId(p.itemId).meadowId===meadow.id)){
@@ -129,9 +164,10 @@ export async function startGameplay({staged=false}={}){
    for(const [id,memory]of Object.entries(view.memories)){const event=config.worldEvents.find(e=>e.id===id);row(event.memoryText,'Встреч: '+memory.count,button('Вспомнить',()=>{replay={eventId:id,until:Date.now()+12000};ui.screen='meadow';ui.meadowId=event.visitor.meadowId;drawer=null;render();},{key:'memory-'+id}));}
   }
   if(drawer==='return'&&away){
-   list.append(el('p','За '+duration(away.elapsedMs/1000)+' отсутствия: +'+amount(away.yarn)+' пряжи.'+(away.work?(view.project?.canComplete?' Изделие довязалось и ждёт вас.':' Изделие стало ближе к завершению.'):'')+' Уже сохранено.','return-copy'));
+   list.append(el('p','За '+duration(away.elapsedMs/1000)+' отсутствия: '+(staged?'сейчас доступно '+yarnAmount(view.wallet.yarn)+' ед. пряжи.':'+'+amount(away.yarn)+' пряжи.')+(away.work?(view.project?.canComplete?' Изделие довязалось и ждёт вас.':' Изделие стало ближе к завершению.'):'')+' Уже сохранено.','return-copy'));
    if(away.elapsedMs>away.productionMs)list.append(el('p','Производство учтено за первые 8 часов. Встречи завершались в своё время.','drawer-note'));
    for(const id of away.memories){const event=config.worldEvents.find(e=>e.id===id);row(event.memoryText,'Встреча сохранена в воспоминаниях',button('Вспомнить',()=>{replay={eventId:id,until:Date.now()+12000};ui.screen='meadow';ui.meadowId=event.visitor.meadowId;away=null;drawer=null;render();},{key:'return-memory-'+id}));}
+   if(staged)list.append(el('p',nextGoal(view,config),'return-copy'));
    list.append(button('Продолжить',closeDrawer,{key:'continue-return'}));
   }
   panel.append(list,el('p','TECHNICAL PREVIEW · арт не утверждён. Темп — проверяемая гипотеза.','drawer-note'));world.append(panel);
@@ -156,7 +192,7 @@ export async function startGameplay({staged=false}={}){
     if(staged&&stagedArt.has(project.id))requestAnimationFrame(()=>{const art=stagedArt.get(project.id),{scale,x,y}=stagedFit(project.id,art,world.clientWidth,world.clientHeight),[l,t,w,h]=art.visibleBounds;Object.assign(tap.style,{left:x+l*scale+'px',top:y+t*scale+'px',right:'auto',width:w*scale+'px',height:h*scale+'px'});});
     if(!view.project.canComplete&&!staged)world.append(workingYarn());
     if(session.state.project.recipeId)world.append(el('p',project.displayName+' · '+project.benefit,'recipe-label'));
-   }else world.append(el('p','Новая работа ждёт в корзинке','world-message compact-message'));
+   }else world.append(el('p',staged?nextGoal(view,config):'Новая работа ждёт в корзинке',staged&&view.owned.length?'story-note next-goal-note':'world-message compact-message'));
   }else{
    stagedRenderer?.detach();
    world.append(image(assetUrl(meadow,meadow.art[ui.evening?'backgroundEvening':'backgroundDay']),'','meadow-back scene-art'));
@@ -170,9 +206,10 @@ export async function startGameplay({staged=false}={}){
    const gone=meadowView.slots.find(s=>s.placed&&travelling.has(s.itemId));if(gone)absenceText=byId(gone.itemId).displayName+' гостит у друзей';
   }
   const header=el('header',undefined,'app-header');
-  header.append(button(ui.screen==='workshop'?'Мастерская':meadow.displayName+' ▾',()=>openDrawer('map'),{cls:'place-title',key:'scene-chooser'}),el('span',amount(view.wallet.yarn)+' пряжи','yarn-wallet'),button(ui.evening?'День':'Вечер',()=>{ui.evening=!ui.evening;saveUI();render();},{cls:'button lighting',key:'lighting'}));world.append(header);
-  if(ui.screen==='workshop')world.append(button('Крючок и корзинка',()=>openDrawer('upgrades'),{cls:'button workshop-tools',key:'open-upgrades'}));
+  header.append(button(staged?'Карта':ui.screen==='workshop'?'Мастерская':meadow.displayName+' ▾',()=>openDrawer('map'),{cls:'place-title',key:'scene-chooser'}),el('span',(staged?yarnAmount(view.wallet.yarn)+' ед.':amount(view.wallet.yarn))+' пряжи','yarn-wallet'),button(ui.evening?'День':'Вечер',()=>{ui.evening=!ui.evening;saveUI();render();},{cls:'button lighting',key:'lighting'}));world.append(header);
+  if(ui.screen==='workshop')world.append(button(staged?'Улучшения':'Крючок и корзинка',()=>openDrawer('upgrades'),{cls:'button workshop-tools',key:'open-upgrades'}));
   else world.append(button('Воспоминания'+(Object.keys(view.memories).length?' · '+Object.keys(view.memories).length:''),()=>openDrawer('memories'),{cls:'button memory-tools',key:'open-memories'}));
+  if(staged)world.append(button('Игра',()=>openDrawer('game'),{cls:'button game-menu',key:'game-menu'}));
   if(!staged&&pulse&&Date.now()-pulse.at<650&&ui.screen==='workshop'){
    const stitch=el('span','−'+amount(pulse.seconds)+' с','stitch-pulse');stitch.style.left=pulse.x+'%';stitch.style.top=pulse.y+'%';stitch.style.animationDelay=-(Date.now()-pulse.at)+'ms';stitch.setAttribute('aria-hidden','true');world.append(stitch);
   }
@@ -199,7 +236,7 @@ export async function startGameplay({staged=false}={}){
     else if(next){const item=byId(next.itemId);dock.append(el('p',item.displayName+' · '+next.yarnCost+' пряжи · '+item.benefit,'action-hint'),button('Начать',()=>act({type:'startProject',itemId:item.id}),{cls:'button primary',key:'next-project',disabled:!next.canStart,art:true}));if(!next.canStart)dock.append(el('small','Нужно ещё '+amount(Math.max(0,next.yarnCost-view.wallet.yarn))+' · полянки дают '+amount(view.rates.yarnPerHour)+'/ч','income-hint'));}
     else {const recipe=view.recipes.find(r=>r.unlocked&&view.events.find(e=>e.id===config.recipes.find(x=>x.id===r.recipeId).eventId).phase!=='done');
      if(recipe){const source=config.recipes.find(r=>r.id===recipe.recipeId);dock.append(el('p',source.displayName+' · '+source.yarnCost+' пряжи · '+source.benefit,'action-hint'),button('Начать',()=>act({type:'startRecipe',recipeId:recipe.recipeId}),{cls:'button primary',key:'next-recipe',disabled:!recipe.canStart,art:true}));}
-     else dock.append(el('p','Все жители здесь дома. Новые встречи — в корзинке проектов.','action-hint'));
+     else dock.append(el('p',staged?nextGoal(view,config):'Все жители здесь дома. Новые встречи — в корзинке проектов.','action-hint'));
     }
    }else{
     const ready=meadowView.slots.find(s=>s.canPlace&&!s.placed);
@@ -209,7 +246,7 @@ export async function startGameplay({staged=false}={}){
     else{
      const selected=ui.selected[meadow.id],rules=meadowView.interactions.filter(r=>r.trigger==='manual'&&r.active&&!view.visitors.some(v=>v.itemId===r.actorSlot));
      const rule=rules.find(r=>r.actorSlot===selected)??rules[0];
-     if(rule){const source=meadow.interactions.find(r=>r.id===rule.id);dock.append(el('p',byId(rule.actorSlot).displayName+' · +'+amount(rule.amount)+' пряжи'+(rule.workBonus&&view.project?' · −'+amount(savedSeconds(rule.workBonus,view))+' с вязания':'')+(rule.available?'':' · через '+duration((rule.readyAt-session.state.lastTimestamp)/1000)),'action-hint'),button(source.label,()=>act({type:'interact',meadowId:meadow.id,interactionId:rule.id}),{cls:'button primary contextual-action',key:'context-action',disabled:!rule.available,art:true}));}
+     if(rule){const source=meadow.interactions.find(r=>r.id===rule.id);dock.append(el('p',byId(rule.actorSlot).displayName+' · '+rewardText(rule.amount)+(rule.workBonus&&view.project?' · −'+amount(savedSeconds(rule.workBonus,view))+' с вязания':'')+(rule.available?'':' · через '+duration((rule.readyAt-session.state.lastTimestamp)/1000)),'action-hint'),button(source.label,()=>act({type:'interact',meadowId:meadow.id,interactionId:rule.id}),{cls:'button primary contextual-action',key:'context-action',disabled:!rule.available,art:true}));}
      else dock.append(el('p','Первый проект ждёт в мастерской','action-hint'));
     }
    }
@@ -217,7 +254,8 @@ export async function startGameplay({staged=false}={}){
   }
   const nav=el('nav',undefined,'tabs'+(runtime.buttonArt?' art-tabs':''));nav.setAttribute('aria-label','Места и проекты');
   for(const [id,label]of [['workshop','Мастерская'],['meadow','Полянка']]){const n=button(label,()=>navigate(id),{cls:'tab '+(!drawer&&ui.screen===id?'selected':''),key:'tab-'+id,art:true});if(!drawer&&ui.screen===id)n.setAttribute('aria-current','page');nav.append(n);}
-  const projects=button('Проекты',()=>drawer?closeDrawer():openDrawer('projects'),{cls:'tab '+(drawer?'selected':''),key:'tab-projects',art:true});projects.setAttribute('aria-expanded',String(Boolean(drawer)));projects.setAttribute('aria-controls','projects-drawer');nav.append(projects);world.append(nav);
+  const showingProjects=staged?drawer==='projects':Boolean(drawer);
+  const projects=button('Проекты',()=>showingProjects?closeDrawer():openDrawer('projects'),{cls:'tab '+(showingProjects?'selected':''),key:'tab-projects',art:true});projects.setAttribute('aria-expanded',String(showingProjects));projects.setAttribute('aria-controls','projects-drawer');nav.append(projects);world.append(nav);
   if(notice){const n=el('p',notice,'notice');n.setAttribute('role','status');world.append(n);}
   if(drawer)for(const child of world.children)if(!child.classList.contains('project-drawer')&&!child.classList.contains('drawer-shade'))child.inert=true;
   section.append(world);app.append(section);stagedRenderer?.refresh();if(drawer)app.querySelector('.project-drawer').scrollTop=scroll;if(focused)([...app.querySelectorAll('[data-focus-key]')].find(n=>n.dataset.focusKey===focused)??app.querySelector('[data-focus-key="tab-projects"]'))?.focus({preventScroll:true});
@@ -226,7 +264,7 @@ export async function startGameplay({staged=false}={}){
  setInterval(()=>{
   if(!writer.active)return;
   const {before,state}=session.tick();
-  for(const m of config.meadows)for(const r of m.interactions.filter(r=>r.trigger==='idle')){const id=m.id+'/'+r.id;if(before.cooldowns[id]!==undefined&&state.cooldowns[id]>before.cooldowns[id])announce(m.id,r.action,r.label+' · +'+amount(r.amount)+' пряжи',r.requires);}
+  for(const m of config.meadows)for(const r of m.interactions.filter(r=>r.trigger==='idle')){const id=m.id+'/'+r.id;if(before.cooldowns[id]!==undefined&&state.cooldowns[id]>before.cooldowns[id])announce(m.id,r.action,r.label+' · '+rewardText(r.amount),r.requires);}
   for(const [id,memory]of Object.entries(state.memories))if(memory.count>(before.memories[id]?.count??0)){const source=config.worldEvents.find(e=>e.id===id);announce(source.visitor.meadowId,'visit',source.visitText);}
   if(!pointerHeld)render();
  },1000);

@@ -22,7 +22,7 @@ export function stagedCatalog(){
  const runtime=gameplayCatalog(true),c=runtime.config;
  for(const item of c.items)if(SECTION_WEIGHTS[item.id])item.workUnits=SECTION_WEIGHTS[item.id].reduce((a,b)=>a+b,0)*WORK_PER_WEIGHT;
  Object.assign(c,{initialYarn:32,clickWork:2.8,idleWorkPerSecond:1,defaultCraftAuto:false,recraftableIds:Object.keys(SECTION_WEIGHTS)});
- c.upgrades.forEach(u=>{u.amount=u.target==='click'?.35:.08;u.requiresPlaced=[{meadowId:'kotoutro',slotId:'kot-cat'}];});
+ c.upgrades.forEach(u=>{u.amount=u.target==='click'?.35:.08;u.wholeYarnPrice=true;u.displayName=u.target==='click'?'Удобный крючок':'Автовязка';u.requiresPlaced=[{meadowId:'kotoutro',slotId:'kot-cat'}];});
  for(const [n,m]of c.meadows.entries()){
   const path=n?'./art-experiments/stage-integration-v1/exports/pond-day-v1.webp':'./art-experiments/craft-feel-v1/exports/meadow-day.webp';
   m.art.backgroundDay=path;m.art.backgroundEvening=path;
