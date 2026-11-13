@@ -1,4 +1,6 @@
 import {createSession,summarizeAdvance} from '../app/ui/session.mjs';
+import {acquireSaveWriter} from '../app/ui/save-writer.mjs';
+import {showSaveBlocked} from './save-blocked.mjs';
 import {selectStage,placementLayout} from '../app/content/index.mjs';
 import {gameplayCatalog,GAMEPLAY_SAVE_KEY,LEGACY_SAVE_KEY} from './gameplay-catalog.mjs';
 import {el,viewTools,duration,amount} from './view-tools.mjs';
@@ -11,8 +13,12 @@ import {fitStagedSprite,stagedFit} from './staged-layout.mjs';
 export async function startGameplay({staged=false}={}){
  const app=document.querySelector('#app'),params=new URLSearchParams(location.search);
  const runtime=staged?stagedCatalog():gameplayCatalog(params.get('mode')==='art-review'),{catalog,config,assetUrl}=runtime,saveKey=staged?STAGED_SAVE_KEY:GAMEPLAY_SAVE_KEY;
- let notice='',storage;try{storage=localStorage;}catch{notice='Прогресс доступен только в этой вкладке.';}
- const session=createSession(config,{storage,key:saveKey,legacyKey:staged?STAGED_LEGACY_KEY:LEGACY_SAVE_KEY,legacyConfig:runtime.legacyConfig,legacyMigration:staged?'config':'v1',onNotice:text=>{notice=text;}});
+ const writer=await acquireSaveWriter({onLost:reason=>showSaveBlocked(app,reason)});
+ if(!writer.active){showSaveBlocked(app,writer.reason);return;}
+ let notice=writer.mode==='temporary'?'Хранилище браузера недоступно. Прогресс доступен только в этой вкладке.':'';
+ const storage=writer.storage;
+ const session=createSession(config,{storage,key:saveKey,legacyKey:staged?STAGED_LEGACY_KEY:LEGACY_SAVE_KEY,legacyConfig:runtime.legacyConfig,legacyMigration:staged?'config':'v1',isActive:()=>writer.active,onPersistenceUnavailable:()=>writer.isolate(),onNotice:text=>{notice=text;}});
+ writer.setFlush(()=>session.tick());
  const defaults={screen:'workshop',meadowId:'test-meadow',evening:false,selected:{}};
  let ui={...defaults};try{const saved=JSON.parse(storage?.getItem(saveKey+'-ui')??'null');if(saved)ui={...defaults,...saved,selected:saved.selected??{}};}catch{}
  if(!['workshop','meadow'].includes(ui.screen))ui.screen='workshop';if(!session.view.meadows.some(m=>m.id===ui.meadowId&&m.unlocked))ui.meadowId='test-meadow';
@@ -20,16 +26,19 @@ export async function startGameplay({staged=false}={}){
  let pointerHeld=false;if(staged){document.addEventListener('pointerdown',()=>{pointerHeld=true;},true);for(const type of ['pointerup','pointercancel'])document.addEventListener(type,()=>{pointerHeld=false;},true);}
  let away=session.takeAwayReport(),drawer=away?'return':null,drawerOpener='tab-projects',replay=null,hiddenState=null,projectStarted=Date.now(),reactions=[],pulse=null;
  const {image,button,preload}=viewTools(runtime.buttonArt,text=>{notice=text;});await preload();
+ if(!writer.active)return;
  app.classList.add('gameplay-v3');app.classList.toggle('scene-v2',Boolean(runtime.buttonArt));app.dataset.gameplay=staged?'v4':'v3';app.classList.toggle('gameplay-v4',staged);
  const stagedRenderer=staged?createStagedRenderer(text=>{notice=text;render();}):null,finishedSprites=new Map(),stagedArt=new Map();
  if(staged)await Promise.all(Object.keys(SECTION_WEIGHTS).map(async id=>{try{const art=await loadStagedArt(catalog.items.find(i=>i.id===id));stagedArt.set(id,art);finishedSprites.set(id,art.finishedUrl);}catch{notice='Часть изделий недоступна. Попробуйте обновить страницу.';}}));
  if(staged)await Promise.all(catalog.meadows.map(async m=>{try{const img=new Image();img.src=assetUrl(m,m.art.backgroundDay);await img.decode();}catch{notice='Фон недоступен. Попробуйте обновить страницу.';}}));
+ if(!writer.active)return;
  if(staged)window.__stagedGameplay=Object.freeze({snapshot:()=>structuredClone({state:session.state,view:session.view,ui,craft:stagedRenderer.snapshot()}),points:()=>({...stagedRenderer.points(),controls:Object.fromEntries([...app.querySelectorAll('[data-focus-key]')].map(n=>{const r=n.getBoundingClientRect();return [n.dataset.focusKey,{x:r.x,y:r.y,width:r.width,height:r.height}];}))})});
  const announcer=el('p','','sr-only');announcer.setAttribute('role','status');announcer.setAttribute('aria-live','polite');document.body.append(announcer);
  const byId=id=>catalog.items.find(i=>i.id===id),byMeadow=id=>catalog.meadows.find(m=>m.id===id);
  const reactionText={pet:'Кролик приподнялся к ладони',water:'На цветок упали капельки',sway:'Веточка тихо качнулась',knock:'В окошке зажёгся свет',land:'Бабочка опустилась поближе',greet:'Котик сонно потянулся',brew:'Над чашкой поднялся пар',feed:'Уточка склёвывает угощение',rock:'Кресло мягко покачалось',shelter:'В листовом домике зажёгся свет',sniff:'Кролик нюхает цветок'};
  const definition=()=>session.state.project?.recipeId?config.recipes.find(r=>r.id===session.state.project.recipeId):byId(session.state.project?.itemId);
  const saveUI=()=>{try{storage?.setItem(saveKey+'-ui',JSON.stringify(ui));}catch{}};
+ writer.setFlush(()=>{session.tick();saveUI();});
  const announce=(scope,kind,text,slots=[])=>{reactions.push({scope,kind,text,slots,at:Date.now()});reactions=reactions.slice(-12);announcer.textContent=text;};
  const navigate=(screen,meadowId=ui.meadowId)=>{ui.screen=screen;ui.meadowId=staged&&screen==='workshop'&&definition()?definition().meadowId:meadowId;drawer=null;replay=null;saveUI();render();};
  const openDrawer=kind=>{drawerOpener=document.activeElement?.dataset.focusKey??'tab-projects';drawer=kind;render('close-drawer');};
@@ -129,6 +138,7 @@ export async function startGameplay({staged=false}={}){
  }
  function nextStaged(view){return Object.keys(SECTION_WEIGHTS).map(id=>view.projects.find(p=>p.itemId===id)).find(p=>p&&!view.owned.includes(p.itemId)&&p.unlocked);}
  function render(focusOverride){
+  if(!writer.active)return;
   const focused=focusOverride??document.activeElement?.dataset.focusKey,scroll=app.querySelector('.project-drawer')?.scrollTop??0,view=session.view;
   const meadow=byMeadow(ui.meadowId),meadowView=view.meadows.find(m=>m.id===meadow.id),project=definition(),scope=ui.screen==='workshop'?'workshop':meadow.id;
   let absenceText='';
@@ -214,12 +224,12 @@ export async function startGameplay({staged=false}={}){
  }
  render(drawer?'close-drawer':undefined);
  setInterval(()=>{
+  if(!writer.active)return;
   const {before,state}=session.tick();
   for(const m of config.meadows)for(const r of m.interactions.filter(r=>r.trigger==='idle')){const id=m.id+'/'+r.id;if(before.cooldowns[id]!==undefined&&state.cooldowns[id]>before.cooldowns[id])announce(m.id,r.action,r.label+' · +'+amount(r.amount)+' пряжи',r.requires);}
   for(const [id,memory]of Object.entries(state.memories))if(memory.count>(before.memories[id]?.count??0)){const source=config.worldEvents.find(e=>e.id===id);announce(source.visitor.meadowId,'visit',source.visitText);}
   if(!pointerHeld)render();
  },1000);
  document.addEventListener('keydown',event=>{if(!drawer)return;if(event.key==='Escape'){event.preventDefault();closeDrawer();}if(event.key==='Tab'){const controls=[...app.querySelectorAll('.project-drawer button:not(:disabled)')],first=controls[0],last=controls.at(-1);if(event.shiftKey&&document.activeElement===first){event.preventDefault();last?.focus();}else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first?.focus();}}});
- document.addEventListener('visibilitychange',()=>{if(document.hidden){hiddenState=structuredClone(session.state);session.tick();}else{const {state}=session.tick();if(hiddenState){away=summarizeAdvance(hiddenState,state,config);if(away)drawer='return';hiddenState=null;}render(drawer?'close-drawer':undefined);}});
- window.addEventListener('pagehide',()=>{session.tick();saveUI();});
+ document.addEventListener('visibilitychange',()=>{if(!writer.active)return;if(document.hidden){hiddenState=structuredClone(session.state);session.tick();}else{const {state}=session.tick();if(hiddenState){away=summarizeAdvance(hiddenState,state,config);if(away)drawer='return';hiddenState=null;}render(drawer?'close-drawer':undefined);}});
 }
