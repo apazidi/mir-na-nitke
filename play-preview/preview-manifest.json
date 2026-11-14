@@ -6,28 +6,36 @@
   "gameplayReview": true,
   "stagedReview": true,
   "saveKey": "mir-na-nitke-gameplay-preview-v4",
-  "appSourceCommit": "310d37641c2e4e03df02e98a10758d271920fa83",
+  "appSourceCommit": "7a20ec4a811246483bef9ac6d2ff43ac9efd0aac",
   "sourceFiles": {
     "design-system/skin-v4.css": "e4f36c8097902532bbafde6589a5d916965f2b8881fd93a934d847b07d982b4c",
     "product/app/content/index.mjs": "00b9669ff7929c556b0b22b0dc1d54a8a717f80898af6668c6f674ae76033dff",
     "product/app/core/index.mjs": "b3b7b0bbc0cc91243cfde15543ac9ac6b2284954caf5cc55ce38cabe25bb75e6",
+    "product/app/core/pattern.mjs": "699b5ecade2b81d7168eb0499dd06a51d7e49871f20dfa6fae011ea0e130b519",
+    "product/app/ui/pattern-session.mjs": "624617a318339748db73d9d9e41ad8f10f718fc13eb70eb91dcbcea9c7ee18cf",
     "product/app/ui/save-writer.mjs": "bd0a7bbd76f5249838f5c60e30005ee6bc296f4f3a8a36d82b5046435e3861e2",
-    "product/app/ui/session.mjs": "f7acf6f667a8d6c1d677b8cee3f84976c91855190d40d08467b94ec60b3aa346",
+    "product/app/ui/session.mjs": "d928005b4a91c2795af389b9b68f39fe735abc33a24ee3be1866b3f99414700d",
+    "product/art-experiments/pattern-v1/art.mjs": "657b05faee7df4ef56c521b74903e1355d906e27e6e869d938250e688efbcc0f",
+    "product/art-experiments/pattern-v1/exports/doily.png": "1a070b7d7a1ae80c72425aeafbb7e2dde0eb043eeaefe593bbf3ef3195334b20",
+    "product/art-experiments/pattern-v1/exports/motif.png": "f92b8ad1da72b07d617834b1807f8e1adc29570bab856a1adbadce2e00e4bc8c",
+    "product/art-experiments/pattern-v1/exports/scarf.png": "76c0006d8cc8cc9c5611283cb0a70971242ce6d07810fcf10c1ff925c8bca9a1",
     "product/ui/dev-catalog.mjs": "0cde75c784a37c47c3ea32a82c234b0aabfe38e5bc5029b1a2c7b84ee797c05b",
     "product/ui/gameplay-catalog.mjs": "3582a4f3bb2d442a0b4a70f646ad39beb0d189abf1b416c0fe1cb1208921657a",
-    "product/ui/gameplay.mjs": "ad859ce760100422ef76a1f72cf8afe85392e0e7889082734111da1dd36c4213",
+    "product/ui/gameplay.mjs": "8c8e0996045f5413b5669d89c607aa279ada6b8675b35687b3d465403b3011bb",
     "product/ui/index.html": "a0c11afe2326ccd9bc123d5fd75403be00a2943e3b328344958514a2c0542dc5",
-    "product/ui/main.mjs": "33296bb25088d9e933b7e43e38937bd2c01382229497606b40aec42456f51b73",
+    "product/ui/main.mjs": "c51e0c4b7df377f8f6d60e04deb5db3f8a0645df00693f996ae550b24cca86d2",
+    "product/ui/pattern-catalog.mjs": "2b8061099b69bf00aa6de46697da785fabbf4d907381783bff1ef5fb2b27a25c",
+    "product/ui/pattern-view.mjs": "f3270a8c97f3d738e7d931491c8bc5149c7c426cfa9c39346b80ab9435cc46bd",
     "product/ui/player-guidance.mjs": "e9548dcbf9abc6be88a0cdf2c7ab1275cdb2c0c6561b3c465ab3047251556f60",
     "product/ui/save-blocked.mjs": "396a431830f69182955d4f65342bdda5eb7afbd27b8f0256faeb2482dad7e28a",
-    "product/ui/shell.css": "e67d22a0c5a9ec168f2e04b2a2be76283ee181bb9ecd72eea0b04c2cd65b4fe6",
+    "product/ui/shell.css": "a08e9d456e429db1a4ad57892b2c82e1378c3189aa7b6f4a494531114c6bdef8",
     "product/ui/sprite-hit.mjs": "882dd3bcf6de10ddcff144f823f0c8978179890197fc5cf8f3d279ad41d97099",
-    "product/ui/staged-art.mjs": "de12fbb8c4efcf924ac5c187f7fda3de28bb3a8cfff4ee6767786919587a2a42",
+    "product/ui/staged-art.mjs": "0f4f18eae3aa986b0b4f53017f59512f8fef66ef8cfcc8ed28579a415d7b4952",
     "product/ui/staged-catalog.mjs": "85b8853ad2844ba9f1ffd68f8407ca38ded7fe0eca7348f303c4aa6caf175228",
     "product/ui/staged-flower.mjs": "97b8a4c2155fbeffff9c69949007b7cbc230e36bc29be91eed11ab76a4fb9345",
-    "product/ui/staged-layout.mjs": "2545d1133e4b8f503f5493435cdcbd9e6369fbf96d7b2a4c2c72bbb3d30996bd",
+    "product/ui/staged-layout.mjs": "018465927fd13236f143205d965de90664a2723d767e2733c59f24f0aefaab1e",
     "product/ui/staged-plan.json": "db387c55e0981d17dd7d52b0ccd8a71b38f1fb631cde2f4a4ee3a0eeeb430412",
-    "product/ui/staged-renderer.mjs": "13d30d37ba2711b5c9a309caea75655724c499518fb185b0025f175b56a2f002",
+    "product/ui/staged-renderer.mjs": "f5d14222be7d9f1d53da3b8aa2fd6261e795c91b80753531c24a335033af867f",
     "product/ui/view-tools.mjs": "508a6adde7d94c068717753c2dd7be8860a19edad7b7de73b1dcdb8ae451b980"
   },
   "artSources": [
@@ -220,14 +228,24 @@
       "sha256": "b3b7b0bbc0cc91243cfde15543ac9ac6b2284954caf5cc55ce38cabe25bb75e6"
     },
     {
+      "path": "product/app/core/pattern.mjs",
+      "bytes": 6723,
+      "sha256": "699b5ecade2b81d7168eb0499dd06a51d7e49871f20dfa6fae011ea0e130b519"
+    },
+    {
+      "path": "product/app/ui/pattern-session.mjs",
+      "bytes": 1396,
+      "sha256": "624617a318339748db73d9d9e41ad8f10f718fc13eb70eb91dcbcea9c7ee18cf"
+    },
+    {
       "path": "product/app/ui/save-writer.mjs",
       "bytes": 3704,
       "sha256": "bd0a7bbd76f5249838f5c60e30005ee6bc296f4f3a8a36d82b5046435e3861e2"
     },
     {
       "path": "product/app/ui/session.mjs",
-      "bytes": 5304,
-      "sha256": "f7acf6f667a8d6c1d677b8cee3f84976c91855190d40d08467b94ec60b3aa346"
+      "bytes": 6148,
+      "sha256": "d928005b4a91c2795af389b9b68f39fe735abc33a24ee3be1866b3f99414700d"
     },
     {
       "path": "product/art-experiments/craft-feel-v1/exports/meadow-day.webp",
@@ -503,6 +521,26 @@
       "path": "product/art-experiments/kotoutro-v1/ui/water.webp",
       "bytes": 56936,
       "sha256": "28ad3638b18b4081a39e0ab95d73b84fe05ea64e0e6df52c129e6300ef1c0e02"
+    },
+    {
+      "path": "product/art-experiments/pattern-v1/art.mjs",
+      "bytes": 3209,
+      "sha256": "657b05faee7df4ef56c521b74903e1355d906e27e6e869d938250e688efbcc0f"
+    },
+    {
+      "path": "product/art-experiments/pattern-v1/exports/doily.png",
+      "bytes": 2677227,
+      "sha256": "1a070b7d7a1ae80c72425aeafbb7e2dde0eb043eeaefe593bbf3ef3195334b20"
+    },
+    {
+      "path": "product/art-experiments/pattern-v1/exports/motif.png",
+      "bytes": 2227284,
+      "sha256": "f92b8ad1da72b07d617834b1807f8e1adc29570bab856a1adbadce2e00e4bc8c"
+    },
+    {
+      "path": "product/art-experiments/pattern-v1/exports/scarf.png",
+      "bytes": 2329665,
+      "sha256": "76c0006d8cc8cc9c5611283cb0a70971242ce6d07810fcf10c1ff925c8bca9a1"
     },
     {
       "path": "product/art-experiments/rabbit-v1/exports/finished-sprite.webp",
@@ -796,8 +834,8 @@
     },
     {
       "path": "product/ui/gameplay.mjs",
-      "bytes": 40024,
-      "sha256": "ad859ce760100422ef76a1f72cf8afe85392e0e7889082734111da1dd36c4213"
+      "bytes": 43577,
+      "sha256": "8c8e0996045f5413b5669d89c607aa279ada6b8675b35687b3d465403b3011bb"
     },
     {
       "path": "product/ui/index.html",
@@ -806,8 +844,18 @@
     },
     {
       "path": "product/ui/main.mjs",
-      "bytes": 23548,
-      "sha256": "33296bb25088d9e933b7e43e38937bd2c01382229497606b40aec42456f51b73"
+      "bytes": 23759,
+      "sha256": "c51e0c4b7df377f8f6d60e04deb5db3f8a0645df00693f996ae550b24cca86d2"
+    },
+    {
+      "path": "product/ui/pattern-catalog.mjs",
+      "bytes": 994,
+      "sha256": "2b8061099b69bf00aa6de46697da785fabbf4d907381783bff1ef5fb2b27a25c"
+    },
+    {
+      "path": "product/ui/pattern-view.mjs",
+      "bytes": 6374,
+      "sha256": "f3270a8c97f3d738e7d931491c8bc5149c7c426cfa9c39346b80ab9435cc46bd"
     },
     {
       "path": "product/ui/player-guidance.mjs",
@@ -821,8 +869,8 @@
     },
     {
       "path": "product/ui/shell.css",
-      "bytes": 21334,
-      "sha256": "e67d22a0c5a9ec168f2e04b2a2be76283ee181bb9ecd72eea0b04c2cd65b4fe6"
+      "bytes": 21874,
+      "sha256": "a08e9d456e429db1a4ad57892b2c82e1378c3189aa7b6f4a494531114c6bdef8"
     },
     {
       "path": "product/ui/sprite-hit.mjs",
@@ -831,8 +879,8 @@
     },
     {
       "path": "product/ui/staged-art.mjs",
-      "bytes": 3806,
-      "sha256": "de12fbb8c4efcf924ac5c187f7fda3de28bb3a8cfff4ee6767786919587a2a42"
+      "bytes": 3828,
+      "sha256": "0f4f18eae3aa986b0b4f53017f59512f8fef66ef8cfcc8ed28579a415d7b4952"
     },
     {
       "path": "product/ui/staged-catalog.mjs",
@@ -846,8 +894,8 @@
     },
     {
       "path": "product/ui/staged-layout.mjs",
-      "bytes": 1181,
-      "sha256": "2545d1133e4b8f503f5493435cdcbd9e6369fbf96d7b2a4c2c72bbb3d30996bd"
+      "bytes": 1204,
+      "sha256": "018465927fd13236f143205d965de90664a2723d767e2733c59f24f0aefaab1e"
     },
     {
       "path": "product/ui/staged-plan.json",
@@ -856,8 +904,8 @@
     },
     {
       "path": "product/ui/staged-renderer.mjs",
-      "bytes": 6492,
-      "sha256": "13d30d37ba2711b5c9a309caea75655724c499518fb185b0025f175b56a2f002"
+      "bytes": 6972,
+      "sha256": "f5d14222be7d9f1d53da3b8aa2fd6261e795c91b80753531c24a335033af867f"
     },
     {
       "path": "product/ui/view-tools.mjs",
