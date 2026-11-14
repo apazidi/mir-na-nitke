@@ -76,6 +76,9 @@ jobs:
       - name: Check player restart, map and resource clarity
         run: |
           PLAYWRIGHT_MODULE="$RUNNER_TEMP/mir-browser/node_modules/playwright/index.mjs" node product/ui/player-clarity-browser-check.mjs
+      - name: Check isolated pattern investment and save boundaries
+        run: |
+          PLAYWRIGHT_MODULE="$RUNNER_TEMP/mir-browser/node_modules/playwright/index.mjs" node product/ui/pattern-browser-check.mjs
       - name: Fetch pinned draft artwork without promoting content
         run: |
           git fetch --no-tags origin 56a748cc0de532b40a1b9a0927ff1d900406d85b 0dbd5e2e2df90d54e6fe9cb45ff5da5e3955b7f4
@@ -128,6 +131,12 @@ jobs:
         with:
           name: product-static-pages-preview
           path: product/preview-evidence/*.png
+          retention-days: 15
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pattern-study-mobile-evidence
+          path: product/preview-evidence/pattern/
           retention-days: 15
 
   public-stage-preview:

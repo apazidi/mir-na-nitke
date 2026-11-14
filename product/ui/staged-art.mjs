@@ -16,7 +16,7 @@ async function load(item){
  let sections,w,h;
  if(item.id==='flower'){sections=await loadFlowerSections();w=1024;h=1820;}
  else {
-  const plan=(await plans()).find(p=>p.id===item.id);if(!plan)throw Error('No semantic plan: '+item.id);
+  const plan=item.art.sectionPlan??(await plans()).find(p=>p.id===item.id);if(!plan)throw Error('No semantic plan: '+item.id);
   const source=new Image();source.src=new URL(item.art.finishedSprite,new URL('../',import.meta.url)).href;await source.decode();w=source.naturalWidth;h=source.naturalHeight;
   const full=canvas(w,h),ctx=full.getContext('2d',{willReadFrequently:true});ctx.drawImage(source,0,0);const pixels=ctx.getImageData(0,0,w,h),owners=new Uint8Array(w*h).fill(255),layers=new Map();
   for(const id of plan.ownershipPriority){const section=plan.sections.find(s=>s.id===id),mask=canvas(w,h),m=mask.getContext('2d',{willReadFrequently:true});

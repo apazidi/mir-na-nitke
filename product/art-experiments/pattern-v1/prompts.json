@@ -1,0 +1,19 @@
+{
+  "tool": "built-in image_gen",
+  "date": "2026-11-14",
+  "assets": [
+    {
+      "file": "scarf.png",
+      "prompt": "Create a single finished transparent game sprite: a tiny premium hand-crocheted sage green scarf for a round amigurumi rabbit. No rabbit or mannequin. Front view with slight three-quarter volume, a wide soft curved collar band across the upper third, crossing naturally at front, with two short broad hanging scarf tails below. On the left tail a single small ivory five-petal crochet daisy with honey-gold circular center; on the right tail the same daisy. Thick clearly legible yarn stitches, soft wool microfibers, sculptural crochet texture matching an expensive storybook amigurumi diorama. Warm sunlight from upper left, gentle occlusion only within object; no cast ground shadow. Scarf silhouette compact and roughly square but wider than tall. The rear collar is hidden, open space above collar must be transparent, nothing inside or around scarf. Soft sage and ivory with muted honey accents, not neon. Center the one scarf with generous transparent margin, no words, no characters, no framing, no floor or props. Intended as clean alpha overlay over a rabbit's neck. Finished artwork master, consistent fixed camera for later staged reveal."
+    },
+    {
+      "file": "doily.png",
+      "prompt": "Create one premium handcrafted crochet game asset on transparent background: a small round scalloped sage-green doily with a single large ivory FIVE-petal daisy and honey-gold round center as its central design. Match a cozy amigurumi storybook world: thick rounded interlocking yarn stitches, fine wool fibers, warm golden light from upper left, soft natural material, sculptural but readable in miniature. Doily has concentric sage stitches around ivory central petals, a delicate scalloped sage rim. Camera at a 45 degree downward angle so circular doily reads as a horizontal ellipse lying flat on invisible ground, front edge visible with textile thickness. No table, no ground plane, no cup, no cat, no other object, no words, no border, absolutely transparent outside the textile; very light local self-shading only and no big ground shadow. Center full object with ample margin. One finished sprite master for a fixed-camera six-part magical construction reveal."
+    },
+    {
+      "file": "motif.png",
+      "prompt": "One transparent premium hand-crocheted daisy motif applique, no other object. Exactly FIVE plump ivory crocheted petals evenly around a small honey-gold round crochet center. Front view, all petals clearly visible, little sculptural volume, distinct chunky stitches and fine soft wool fibers. Warm upper-left sunlight, soft self-shading only. Cozy high-fidelity amigurumi storybook craft, same muted ivory and honey palette as a sage green scarf with ivory daisy decorations. The motif itself is ivory and gold, no leaves and no sage outer circle. Single finished flower applique centered with generous absolutely transparent padding. No fabric swatch behind, no surface, no hands, no needles, no diagram, no words, no extra loose parts, no ground shadow, no background glow or color haze; only textile object pixels on true alpha. A fixed-camera master for center then five-petal staged construction."
+    }
+  ],
+  "note": "One later doily background-removal variant was not selected. Original generated alpha preserved."
+}

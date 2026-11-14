@@ -9,7 +9,7 @@ import {fileURLToPath, pathToFileURL} from 'node:url';
 const {chromium} = await import(process.env.PLAYWRIGHT_MODULE ? pathToFileURL(process.env.PLAYWRIGHT_MODULE).href : 'playwright');
 const root = fileURLToPath(new URL('../../play-preview/', import.meta.url));
 const evidence = fileURLToPath(new URL('../preview-evidence/', import.meta.url));
-const mime = {'.html': 'text/html; charset=utf-8', '.mjs': 'text/javascript', '.css': 'text/css', '.json': 'application/json', '.webp': 'image/webp'};
+const mime = {'.html': 'text/html; charset=utf-8', '.mjs': 'text/javascript', '.css': 'text/css', '.json': 'application/json', '.webp': 'image/webp', '.png':'image/png'};
 const prefix = '/mir-na-nitke/play-preview/';
 let server;
 let url = process.env.PREVIEW_URL;

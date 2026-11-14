@@ -6,8 +6,8 @@ export const STAGED_LAYOUT=Object.freeze({
  tree:{x:.235,foot:.37,maxWidth:140,maxHeight:145},
  'kot-cat':{x:.43,foot:.70,maxWidth:155,maxHeight:230},
 });
-export function stagedFit(id,art,width,height){
- const pose=STAGED_LAYOUT[id],[l,t,w,h]=art.visibleBounds;
+export function stagedFit(id,art,width,height,customPose){
+ const pose=customPose??STAGED_LAYOUT[id],[l,t,w,h]=art.visibleBounds;
  const scale=Math.min(pose.maxWidth/w,pose.maxHeight/h,width*.45/w);
  return {scale,x:width*pose.x-(l+w/2)*scale,y:height*pose.foot-(t+h)*scale};
 }
