@@ -6,7 +6,7 @@
   "gameplayReview": true,
   "stagedReview": true,
   "saveKey": "mir-na-nitke-gameplay-preview-v4",
-  "appSourceCommit": "7a20ec4a811246483bef9ac6d2ff43ac9efd0aac",
+  "appSourceCommit": "afd337c6bdf3ecca512fe99ddad1b3e4d6035ca0",
   "sourceFiles": {
     "design-system/skin-v4.css": "e4f36c8097902532bbafde6589a5d916965f2b8881fd93a934d847b07d982b4c",
     "product/app/content/index.mjs": "00b9669ff7929c556b0b22b0dc1d54a8a717f80898af6668c6f674ae76033dff",
@@ -15,7 +15,7 @@
     "product/app/ui/pattern-session.mjs": "624617a318339748db73d9d9e41ad8f10f718fc13eb70eb91dcbcea9c7ee18cf",
     "product/app/ui/save-writer.mjs": "bd0a7bbd76f5249838f5c60e30005ee6bc296f4f3a8a36d82b5046435e3861e2",
     "product/app/ui/session.mjs": "d928005b4a91c2795af389b9b68f39fe735abc33a24ee3be1866b3f99414700d",
-    "product/art-experiments/pattern-v1/art.mjs": "657b05faee7df4ef56c521b74903e1355d906e27e6e869d938250e688efbcc0f",
+    "product/art-experiments/pattern-v1/art.mjs": "aefa68f57a28fad6ce83d39806a4630b7cc1b30f53530c7413d7ec157af8d6d2",
     "product/art-experiments/pattern-v1/exports/doily.png": "1a070b7d7a1ae80c72425aeafbb7e2dde0eb043eeaefe593bbf3ef3195334b20",
     "product/art-experiments/pattern-v1/exports/motif.png": "f92b8ad1da72b07d617834b1807f8e1adc29570bab856a1adbadce2e00e4bc8c",
     "product/art-experiments/pattern-v1/exports/scarf.png": "76c0006d8cc8cc9c5611283cb0a70971242ce6d07810fcf10c1ff925c8bca9a1",
@@ -524,8 +524,8 @@
     },
     {
       "path": "product/art-experiments/pattern-v1/art.mjs",
-      "bytes": 3209,
-      "sha256": "657b05faee7df4ef56c521b74903e1355d906e27e6e869d938250e688efbcc0f"
+      "bytes": 3212,
+      "sha256": "aefa68f57a28fad6ce83d39806a4630b7cc1b30f53530c7413d7ec157af8d6d2"
     },
     {
       "path": "product/art-experiments/pattern-v1/exports/doily.png",
