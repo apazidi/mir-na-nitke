@@ -1,0 +1,65 @@
+[
+  {
+    "file": "stage-000.webp",
+    "width": 1024,
+    "height": 1820,
+    "bytes": 440466,
+    "sha256": "1781ecf439989d9984d0fc97979c5b7860a603eb22d045b2d9fb4c14687dec6d"
+  },
+  {
+    "file": "stage-025.webp",
+    "width": 1024,
+    "height": 1820,
+    "bytes": 427618,
+    "sha256": "33f3b9ea9ccddb1b9e09b8a2c451d1ae8363d73bf59d615af1ad4181bf85ea30"
+  },
+  {
+    "file": "stage-050.webp",
+    "width": 1024,
+    "height": 1820,
+    "bytes": 425206,
+    "sha256": "b428cccfc014660c40efccd6bb1b1e6e6be213376e649056692e0717541bde6e"
+  },
+  {
+    "file": "stage-075.webp",
+    "width": 1024,
+    "height": 1820,
+    "bytes": 458508,
+    "sha256": "0984a154bc6618653fedf2dfd6d977b4d63a787a0f905ed7deab5f367de66f13"
+  },
+  {
+    "file": "stage-100.webp",
+    "width": 1024,
+    "height": 1820,
+    "bytes": 477250,
+    "sha256": "4cdcfdce28d6ab47873942533bb046c939ed5d56a9bedaa36731e86dfdd37748"
+  },
+  {
+    "file": "golden-frame.webp",
+    "width": 1024,
+    "height": 1820,
+    "bytes": 477250,
+    "sha256": "4cdcfdce28d6ab47873942533bb046c939ed5d56a9bedaa36731e86dfdd37748"
+  },
+  {
+    "file": "finished-sprite.webp",
+    "width": 1024,
+    "height": 1820,
+    "bytes": 234578,
+    "sha256": "f2b16b65a25c73c0f7f9d45ef73a4e30429e731598c8a65188f81f9c9576aab6"
+  },
+  {
+    "file": "meadow-day.webp",
+    "width": 1024,
+    "height": 1820,
+    "bytes": 302328,
+    "sha256": "36dec3c28772e51935ed5e90fa4a86659385ec9ca934f08a60bb1a41038d9e48"
+  },
+  {
+    "file": "meadow-evening.webp",
+    "width": 1024,
+    "height": 1820,
+    "bytes": 317562,
+    "sha256": "aa419363a9bd8732e377d5f5b9eea8e9e68a225ef36bfbeb6fcc36a1b365be8e"
+  }
+]

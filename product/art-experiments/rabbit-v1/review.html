@@ -1,0 +1,12 @@
+<!doctype html>
+<html lang="ru"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Rabbit v1 — art review only</title>
+<style>
+html,body{margin:0;width:100%;height:100%;background:#f4ebd9;overflow:hidden}
+img{display:block;width:100%;height:100%;object-fit:contain}
+</style>
+<img id="art" src="exports/golden-frame.webp" alt="Художественный эксперимент: кролик в мастерской">
+<script>
+const stage = new URLSearchParams(location.search).get('stage');
+if (['000','025','050','075','100'].includes(stage)) document.querySelector('#art').src=`exports/stage-${stage}.webp`;
+</script></html>

@@ -1,0 +1,12 @@
+{
+  "name": "rabbit-art-review",
+  "private": true,
+  "version": "0.2.0",
+  "scripts": {
+    "export": "node export.cjs",
+    "capture": "node pack-and-capture.cjs",
+    "review": "npm run export && npm run capture"
+  },
+  "engines": { "node": ">=20.9" },
+  "dependencies": { "sharp": "0.35.5", "playwright": "1.62.1" }
+}

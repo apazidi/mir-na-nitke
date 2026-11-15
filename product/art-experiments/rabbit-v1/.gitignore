@@ -1,0 +1,5 @@
+# Reproducible large intermediate PNG frames; commit WebP exports and source masters.
+/exports/*.png
+!/exports/finished-sprite.png
+/node_modules/
+/legacy-v1/
