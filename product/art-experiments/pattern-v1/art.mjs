@@ -23,7 +23,7 @@ const doilySections=[
  part('right-lower','Правый нижний лепесток',ellipse(950,650,148,125),[950,650]),
  part('rim','Шалфейная кайма',null,[780,860])];
 export const PATTERN_ART={
- 'flower-pattern':{finishedSprite:'art-experiments/pattern-v1/exports/motif.png',sectionPlan:plan('flower-pattern',motifSections,motifSections.map(s=>s.id)),stageWeights:[1,1,1,1,1,1],pose:{x:.51,foot:.65,maxWidth:200,maxHeight:170}},
- 'rabbit-scarf':{finishedSprite:'art-experiments/pattern-v1/exports/scarf.png',sectionPlan:plan('rabbit-scarf',scarfSections,scarfSections.map(s=>s.id)),stageWeights:[.5,1.5,.5,1.5,1,1],pose:{x:.52,foot:.65,maxWidth:210,maxHeight:180},application:{target:'rabbit',rect:[325,960,430,300]}},
- 'cat-doily':{finishedSprite:'art-experiments/pattern-v1/exports/doily.png',sectionPlan:plan('cat-doily',doilySections,doilySections.map(s=>s.id)),stageWeights:[1,1,1,1,1,1,1],pose:{x:.52,foot:.65,maxWidth:225,maxHeight:170},application:{target:'kot-cat',pose:{x:.73,foot:.72,maxWidth:100,maxHeight:70}}}
+ 'flower-pattern':{finishedSprite:'art-experiments/pattern-v1/exports/motif.png',sectionPlan:plan('flower-pattern',motifSections,motifSections.map(s=>s.id)),stageWeights:[1,1,1,1,1,1],pose:{x:.52,foot:.375,maxWidth:160,maxHeight:120}},
+ 'rabbit-scarf':{finishedSprite:'art-experiments/pattern-v1/exports/scarf.png',sectionPlan:plan('rabbit-scarf',scarfSections,scarfSections.map(s=>s.id)),stageWeights:[.5,1.5,.5,1.5,1,1],pose:{x:.52,foot:.375,maxWidth:170,maxHeight:120},application:{target:'rabbit',rect:[325,960,430,300]}},
+ 'cat-doily':{finishedSprite:'art-experiments/pattern-v1/exports/doily.png',sectionPlan:plan('cat-doily',doilySections,doilySections.map(s=>s.id)),stageWeights:[1,1,1,1,1,1,1],pose:{x:.52,foot:.375,maxWidth:180,maxHeight:120},application:{target:'kot-cat',pose:{x:.73,foot:.72,maxWidth:100,maxHeight:70}}}
 };
