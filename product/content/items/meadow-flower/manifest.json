@@ -1,0 +1,11 @@
+{
+  "schemaVersion":1,"kind":"item","id":"meadow-flower","status":"draft",
+  "displayName":"Луговые цветы","description":"Невысокая куртинка тёплых вязаных ромашек: будущая точка интереса для кролика.",
+  "tags":["decor","flower","nature"],"workUnits":600,
+  "art":{"styleId":"crochet-diorama-v1","logicalSize":[1024,1820],"finishedSprite":"art/finished.webp","stages":[
+    {"at":0,"image":"art/stage-00.webp","label":"Моховая основа"},
+    {"at":0.3,"image":"art/stage-01.webp","label":"Стебли и листья"},
+    {"at":0.6,"image":"art/stage-02.webp","label":"Сердцевины цветов"},
+    {"at":1,"image":"art/stage-03.webp","label":"Луговые цветы готовы"}
+  ]}
+}

@@ -1,0 +1,11 @@
+{
+  "schemaVersion":1,
+  "logicalSize":[1024,1820],
+  "placement":{"width":820,"height":1100,"left":102,"top":430},
+  "stages":[
+    {"source":"master-00.png","output":"stage-00.webp"},
+    {"source":"master-01.png","output":"stage-01.webp"},
+    {"source":"master-partial.png","output":"stage-02.webp"},
+    {"source":"master-final.png","output":"stage-03.webp"}
+  ]
+}
