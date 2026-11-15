@@ -1,0 +1,25 @@
+<!doctype html><meta charset="utf-8"><title>Pattern artwork review — internal draft</title>
+<style>body{font:16px system-ui;background:#eee6d5;color:#342e24;margin:20px}h1{font-size:22px}section{display:flex;gap:8px;margin-bottom:20px}.cell{width:200px}canvas{width:200px;height:160px;object-fit:contain;background:repeating-conic-gradient(#eee 0% 25%,#fff 0% 50%) 50%/20px 20px}.application{width:360px;height:640px;background:#96a872}.caption{font-size:13px}</style>
+<h1>Внутренняя проверка: один мастер → неизменные накопительные стадии</h1><main></main>
+<script type="module">
+import {PATTERN_ART} from './art.mjs';
+const main=document.querySelector('main');
+const load=async src=>{const img=new Image();img.src=src;await img.decode();return img;};
+const canvas=(w,h)=>{const c=document.createElement('canvas');c.width=w;c.height=h;return c;};
+const artImages={};
+for(const [id,art]of Object.entries(PATTERN_ART)){
+ const heading=document.createElement('h2');heading.textContent=id;main.append(heading);const row=document.createElement('section');main.append(row);
+ const img=await load('../../'+art.finishedSprite);artImages[id]=img;
+ const w=img.naturalWidth,h=img.naturalHeight,master=canvas(w,h),ctx=master.getContext('2d',{willReadFrequently:true});ctx.drawImage(img,0,0);
+ const data=ctx.getImageData(0,0,w,h).data,owners=new Uint8Array(w*h).fill(255),plan=art.sectionPlan;
+ for(const partId of plan.ownershipPriority){const s=plan.sections.find(s=>s.id===partId),m=canvas(w,h),mc=m.getContext('2d',{willReadFrequently:true});if(s.mask.type==='path'){mc.fill(new Path2D(s.mask.d));const alpha=mc.getImageData(0,0,w,h).data;for(let i=0;i<owners.length;i++)if(owners[i]===255&&alpha[i*4+3]>=128)owners[i]=plan.sequence.indexOf(partId);}else for(let i=0;i<owners.length;i++)if(owners[i]===255)owners[i]=plan.sequence.indexOf(partId);}
+ for(let stage=0;stage<plan.sequence.length;stage++){
+  const c=canvas(w,h),out=c.getContext('2d'),pixels=out.createImageData(w,h);for(let i=0;i<owners.length;i++)if(owners[i]<=stage)pixels.data.set(data.subarray(i*4,i*4+4),i*4);out.putImageData(pixels,0,0);
+  const cell=document.createElement('div');cell.className='cell';const label=document.createElement('div');label.className='caption';label.textContent=(stage+1)+'. '+plan.sections.find(s=>s.id===plan.sequence[stage]).label;cell.append(c,label);row.append(cell);
+ }
+}
+const title=document.createElement('h2');title.textContent='Шарфик на исходном Кролике: проверка масштаба и перекрытия банта';main.append(title);
+const rabbit=await load('../../../play-preview/product/art-experiments/rabbit-v1/exports/finished-sprite.webp');
+const application=canvas(1024,1820);application.className='application';application.getContext('2d').drawImage(rabbit,0,0);application.getContext('2d').drawImage(artImages['rabbit-scarf'],...PATTERN_ART['rabbit-scarf'].application.rect);main.append(application);
+window.__artReviewReady=true;
+</script>

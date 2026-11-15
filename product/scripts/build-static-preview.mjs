@@ -35,6 +35,13 @@ async function copySource(name) {
 await copySource('product/ui/main.mjs');
 // The semantic mask plan is a runtime JSON resource, not an ES module import.
 if (sourceFiles.has('product/ui/staged-art.mjs')) await copySource('product/ui/staged-plan.json');
+// Experiment artwork is binary and must match the reviewed source commit exactly.
+if (sourceFiles.has('product/art-experiments/pattern-v1/art.mjs')) for(const file of ['scarf','doily','motif']) {
+  const name=`product/art-experiments/pattern-v1/exports/${file}.png`,bytes=git('show',`${appRef}:${name}`);
+  if(!(await readFile(path.join(root,name))).equals(bytes))throw Error(`Commit experiment artwork before building: ${name}`);
+  if(bytes.subarray(0,8).toString('hex')!=='89504e470d0a1a0a')throw Error(`Not PNG: ${name}`);
+  sourceFiles.set(name,sha256(bytes));put(name,bytes);
+}
 await copySource('product/ui/index.html');
 await copySource('product/ui/shell.css');
 await copySource('design-system/skin-v4.css');

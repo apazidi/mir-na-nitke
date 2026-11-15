@@ -168,3 +168,9 @@ button:focus-visible{outline:3px solid #fff7d7;outline-offset:2px}
 .map-path{margin:0;border-left:3px dashed #ad8051;padding:10px 12px;max-width:90%;font-size:11px}
 .map-locked .map-landscape{filter:saturate(.4)}
 .map-requirement[data-done=true]{color:#52623c}
+.gameplay-v4 .pattern-tools{position:absolute;right:12px;top:125px;z-index:24;min-height:44px;font-size:11px;padding:5px 14px}
+.gameplay-v4 .pattern-doily{position:absolute;z-index:8;pointer-events:none;object-fit:fill}
+.gameplay-v4 .pattern-accessory{max-width:none;max-height:none;transform:none;filter:none}
+.pattern-comparison{font-size:12px;line-height:1.45;padding:10px;background:#fff1d8;border-radius:12px}
+.pattern-preview{width:52px;height:52px;flex-shrink:0;object-fit:contain}
+.gameplay-v4.pattern-study .story-note{right:95px}

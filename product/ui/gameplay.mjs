@@ -1,3 +1,7 @@
+import {patternCatalog,PATTERN_SAVE_KEY} from './pattern-catalog.mjs';
+import {createPatternSession} from '../app/ui/pattern-session.mjs';
+import {PATTERN_IDS} from '../app/core/pattern.mjs';
+import {patternMeadow,patternCompletion,patternGuide,patternPanel,applyScarf,applyDoily} from './pattern-view.mjs';
 import {createSession,summarizeAdvance} from '../app/ui/session.mjs';
 import {acquireSaveWriter} from '../app/ui/save-writer.mjs';
 import {showSaveBlocked} from './save-blocked.mjs';
@@ -11,35 +15,37 @@ import {createStagedRenderer} from './staged-renderer.mjs';
 import {loadStagedArt} from './staged-art.mjs';
 import {fitStagedSprite,stagedFit} from './staged-layout.mjs';
 
-export async function startGameplay({staged=false}={}){
+export async function startGameplay({staged=false,pattern=false}={}){
  const app=document.querySelector('#app'),params=new URLSearchParams(location.search);
- const runtime=staged?stagedCatalog():gameplayCatalog(params.get('mode')==='art-review'),{catalog,config,assetUrl}=runtime,saveKey=staged?STAGED_SAVE_KEY:GAMEPLAY_SAVE_KEY;
+ const runtime=pattern?patternCatalog():staged?stagedCatalog():gameplayCatalog(params.get('mode')==='art-review'),{catalog,config,assetUrl}=runtime,saveKey=pattern?PATTERN_SAVE_KEY:staged?STAGED_SAVE_KEY:GAMEPLAY_SAVE_KEY;
  const writer=await acquireSaveWriter({onLost:reason=>showSaveBlocked(app,reason)});
  if(!writer.active){showSaveBlocked(app,writer.reason);return;}
  let notice=writer.mode==='temporary'?'Хранилище браузера недоступно. Прогресс доступен только в этой вкладке.':'';
  const storage=writer.storage;
- const session=createSession(config,{storage,key:saveKey,legacyKey:staged?STAGED_LEGACY_KEY:LEGACY_SAVE_KEY,legacyConfig:runtime.legacyConfig,legacyMigration:staged?'config':'v1',isActive:()=>writer.active,onPersistenceUnavailable:()=>writer.isolate(),onNotice:text=>{notice=text;}});
+ let session;try{session=(pattern?createPatternSession:createSession)(config,{...(pattern?{sourceKey:STAGED_SAVE_KEY,sourceConfig:stagedCatalog().config}:{}),storage,key:saveKey,legacyKey:staged?STAGED_LEGACY_KEY:LEGACY_SAVE_KEY,legacyConfig:runtime.legacyConfig,legacyMigration:staged?'config':'v1',isActive:()=>writer.active,onPersistenceUnavailable:()=>writer.isolate(),onNotice:text=>{notice=text;}});}catch(error){showSaveBlocked(app,"corrupt");app.querySelector("p").textContent=error.message;return;}
  writer.setFlush(()=>session.tick());
  const defaults={screen:'workshop',meadowId:'test-meadow',evening:false,selected:{}};
  let restartRequest=null,restartError='';
  let ui={...defaults};try{const saved=JSON.parse(storage?.getItem(saveKey+'-ui')??'null');if(saved)ui={...defaults,...saved,selected:saved.selected??{}};}catch{}
  if(staged&&session.state.transactionSequence===0&&!session.state.project&&!session.state.owned.length)ui=structuredClone(defaults);
  if(!['workshop','meadow'].includes(ui.screen))ui.screen='workshop';if(!session.view.meadows.some(m=>m.id===ui.meadowId&&m.unlocked))ui.meadowId='test-meadow';
- if(staged&&ui.screen==='workshop'&&session.state.project){const p=session.state.project;ui.meadowId=(p.recipeId?config.recipes.find(i=>i.id===p.recipeId):catalog.items.find(i=>i.id===p.itemId)).meadowId;}
+ if(staged&&ui.screen==='workshop'&&session.state.project){const p=session.state.project;ui.meadowId=p.pattern?patternMeadow(p.itemId):(p.recipeId?config.recipes.find(i=>i.id===p.recipeId):catalog.items.find(i=>i.id===p.itemId)).meadowId;}
  let pointerHeld=false;if(staged){document.addEventListener('pointerdown',()=>{pointerHeld=true;},true);for(const type of ['pointerup','pointercancel'])document.addEventListener(type,()=>{pointerHeld=false;},true);}
  let away=session.takeAwayReport(),drawer=away?'return':null,drawerOpener='tab-projects',replay=null,hiddenState=null,projectStarted=Date.now(),reactions=[],pulse=null;
  const {image,button,preload}=viewTools(runtime.buttonArt,text=>{notice=text;});await preload();
  if(!writer.active)return;
- app.classList.add('gameplay-v3');app.classList.toggle('scene-v2',Boolean(runtime.buttonArt));app.dataset.gameplay=staged?'v4':'v3';app.classList.toggle('gameplay-v4',staged);
+ app.classList.add('gameplay-v3');app.classList.toggle('scene-v2',Boolean(runtime.buttonArt));app.dataset.gameplay=staged?'v4':'v3';app.classList.toggle('gameplay-v4',staged);app.classList.toggle('pattern-study',pattern);
  const stagedRenderer=staged?createStagedRenderer(text=>{notice=text;render();}):null,finishedSprites=new Map(),stagedArt=new Map();
- if(staged)await Promise.all(Object.keys(SECTION_WEIGHTS).map(async id=>{try{const art=await loadStagedArt(catalog.items.find(i=>i.id===id));stagedArt.set(id,art);finishedSprites.set(id,art.finishedUrl);}catch{notice='Часть изделий недоступна. Попробуйте обновить страницу.';}}));
+ if(staged)await Promise.all([...Object.keys(SECTION_WEIGHTS),...(pattern?PATTERN_IDS:[])].map(async id=>{try{const art=await loadStagedArt(catalog.items.find(i=>i.id===id));stagedArt.set(id,art);finishedSprites.set(id,art.finishedUrl);}catch{notice='Часть изделий недоступна. Попробуйте обновить страницу.';}}));
  if(staged)await Promise.all(catalog.meadows.map(async m=>{try{const img=new Image();img.src=assetUrl(m,m.art.backgroundDay);await img.decode();}catch{notice='Фон недоступен. Попробуйте обновить страницу.';}}));
  if(!writer.active)return;
  if(staged)window.__stagedGameplay=Object.freeze({snapshot:()=>structuredClone({state:session.state,view:session.view,ui,craft:stagedRenderer.snapshot()}),points:()=>({...stagedRenderer.points(),controls:Object.fromEntries([...app.querySelectorAll('[data-focus-key]')].map(n=>{const r=n.getBoundingClientRect();return [n.dataset.focusKey,{x:r.x,y:r.y,width:r.width,height:r.height}];}))})});
  const announcer=el('p','','sr-only');announcer.setAttribute('role','status');announcer.setAttribute('aria-live','polite');document.body.append(announcer);
+ if(pattern)window.__patternExperiment=Object.freeze({snapshot:()=>window.__stagedGameplay.snapshot(),exportSave:()=>session.exportSave(),exportSource:()=>session.exportSource()});
  const byId=id=>catalog.items.find(i=>i.id===id),byMeadow=id=>catalog.meadows.find(m=>m.id===id);
  const reactionText={pet:'Кролик приподнялся к ладони',water:'На цветок упали капельки',sway:'Веточка тихо качнулась',knock:'В окошке зажёгся свет',land:'Бабочка опустилась поближе',greet:'Котик сонно потянулся',brew:'Над чашкой поднялся пар',feed:'Уточка склёвывает угощение',rock:'Кресло мягко покачалось',shelter:'В листовом домике зажёгся свет',sniff:'Кролик нюхает цветок'};
- const definition=()=>session.state.project?.recipeId?config.recipes.find(r=>r.id===session.state.project.recipeId):byId(session.state.project?.itemId);
+ const definition=()=>{const p=session.state.project;if(!p)return undefined;const item=p.recipeId?config.recipes.find(r=>r.id===p.recipeId):byId(p.itemId);return p.pattern?{...item,workUnits:p.pattern.totalWork,meadowId:patternMeadow(p.itemId)}:item;};
+ const guidance=view=>pattern?patternGuide(view,nextGoal(view,config)):nextGoal(view,config);
  const saveUI=()=>{try{storage?.setItem(saveKey+'-ui',JSON.stringify(ui));}catch{}};
  writer.setFlush(()=>{session.tick();saveUI();});
  const announce=(scope,kind,text,slots=[])=>{reactions.push({scope,kind,text,slots,at:Date.now()});reactions=reactions.slice(-12);announcer.textContent=text;};
@@ -53,12 +59,14 @@ export async function startGameplay({staged=false}={}){
   const before=definition(),previous=structuredClone(session.view),start=performance.now();
   if(staged&&action.type==='click')stagedRenderer.pulse(event);
   const ok=session.act(action);if(!ok){render();return;}
-  if(action.type==='startProject'||action.type==='startRecipe'||action.type==='startRecraft'){ui.screen='workshop';if(staged&&definition().meadowId)ui.meadowId=definition().meadowId;drawer=null;replay=null;projectStarted=Date.now();announce('workshop','start','Начинаем: '+definition().displayName);}
+  if(action.type==='startPattern'||action.type==='startProject'||action.type==='startRecipe'||action.type==='startRecraft'){ui.screen='workshop';if(staged&&definition().meadowId)ui.meadowId=definition().meadowId;drawer=null;replay=null;projectStarted=Date.now();announce('workshop','start','Начинаем: '+definition().displayName);}
   if(action.type==='click'){
    const world=app.querySelector('.meadow-scene')?.getBoundingClientRect();
    pulse={at:Date.now(),seconds:savedSeconds(previous.rates.click,previous),x:event?.clientX&&world?(event.clientX-world.left)/world.width*100:54,y:event?.clientY&&world?Math.min(70,(event.clientY-world.top)/world.height*100):62};
    announce('workshop','stitch','Готовность ближе на '+amount(pulse.seconds)+' с');
   }
+  if(action.type==='completePattern'&&before&&previous.project){ui.screen='meadow';ui.meadowId=patternMeadow(before.id);announce(ui.meadowId,'complete',before.id==='flower-pattern'?'Узор изучен навсегда. Теперь оба аксессуара можно вязать по узору.':before.displayName+' украшает полянку');drawer=null;}
+  if(action.type==='cancelPattern'){drawer='pattern';}
   if(action.type==='cancelRecraft'){ui.screen='meadow';drawer=null;}
   if(action.type==='completeCraft'){
    if(before.eventId){ui.screen='meadow';ui.meadowId=config.worldEvents.find(e=>e.id===before.eventId).visitor.meadowId;announce(ui.meadowId,'complete','Приготовление закончено — друзья скоро встретятся');}
@@ -91,7 +99,7 @@ export async function startGameplay({staged=false}={}){
   const visual=image(finishedSprites.get(slot.item.id)??assetUrl(slot.item,prelit?slot.item.art.finishedSpriteEvening:slot.item.art.finishedSprite),slot.item.displayName);target.replaceChildren(visual);
   target.dataset.item=slot.item.id;target.dataset.slot=slot.id;if(visitor)target.dataset.visitor=slot.eventId;
   Object.assign(target.style,{left:slot.x*100+'%',top:slot.y*100+'%',width:50*slot.scale+'%',zIndex:String(6+(slot.z??0))});
-  const fit=()=>staged&&!visitor&&stagedArt.has(slot.item.id)?fitStagedSprite(target,visual,stagedArt.get(slot.item.id),slot.item.id,world):fitSpriteHitArea(target,visual,slot,world);
+  const fit=()=>{if(staged&&!visitor&&stagedArt.has(slot.item.id)){fitStagedSprite(target,visual,stagedArt.get(slot.item.id),slot.item.id,world);if(pattern&&slot.item.id==='rabbit')applyScarf(target,visual,stagedArt.get(slot.item.id),session.state,image);}else fitSpriteHitArea(target,visual,slot,world);};
   visual.addEventListener('load',fit);requestAnimationFrame(fit);
   const reaction=reactions.findLast(r=>r.scope===meadow.id&&r.slots.includes(slot.id)&&Date.now()-r.at<2600);
   if(reaction){target.dataset.action=reaction.kind;target.style.setProperty('--reaction-delay',-(Date.now()-reaction.at)+'ms');target.classList.add('object-reacting');
@@ -111,7 +119,7 @@ export async function startGameplay({staged=false}={}){
  function drawerPanel(world,view,meadow,meadowView){
   const shade=button('Закрыть',closeDrawer,{cls:'drawer-shade',key:'shade'});shade.tabIndex=-1;world.append(shade);
   const panel=el('section',undefined,'project-drawer');panel.id='projects-drawer';panel.setAttribute('role','dialog');panel.setAttribute('aria-modal','true');
-  const titles={projects:staged?'Проекты':'Корзинка проектов',map:staged?'Карта полянок':'Тропинки между полянками',upgrades:staged?'Улучшения':'Мастерская помогает',memories:'Тёплые воспоминания',return:'Пока вас не было',game:'Игра и сохранение',restart:'Начать заново?'};
+  const titles={pattern:'Узоры и аксессуары',projects:staged?'Проекты':'Корзинка проектов',map:staged?'Карта полянок':'Тропинки между полянками',upgrades:staged?'Улучшения':'Мастерская помогает',memories:'Тёплые воспоминания',return:'Пока вас не было',game:'Игра и сохранение',restart:'Начать заново?'};
   panel.setAttribute('aria-label',titles[drawer]);const head=el('div',undefined,'drawer-heading');head.append(el('h2',titles[drawer]),button('Закрыть',closeDrawer,{key:'close-drawer'}));panel.append(head);
   const list=el('div',undefined,'project-list');
   const row=(title,detail,control)=>{const n=el('div',undefined,'project-row'),copy=el('span',undefined,'row-copy');copy.append(el('strong',title),el('small',detail));n.append(copy);if(control)n.append(control);list.append(n);return n;};
@@ -128,11 +136,13 @@ export async function startGameplay({staged=false}={}){
      node.append(button(m.unlocked?'Перейти':'Пока закрыто',()=>navigate('meadow',m.id),{disabled:!m.unlocked,key:'scene-'+m.id}));map.append(node);
      if(index<view.meadows.length-1)map.append(el('p',view.meadows[1].unlocked?'Тропинка открыта':'Кролик → Цветок → Дерево откроют тропинку','map-path'));
     }
-    list.append(map,el('p','Уточка заглядывает с приветом после Котика, Кофе и Уточки у пруда. Приглашение в «Проектах» отправит кролика в гости.','drawer-note'),el('p',nextGoal(view,config),'drawer-note'));
+    list.append(map,el('p','Уточка заглядывает с приветом после Котика, Кофе и Уточки у пруда. Приглашение в «Проектах» отправит кролика в гости.','drawer-note'),el('p',guidance(view),'drawer-note'));
    }else for(const m of view.meadows){const source=byMeadow(m.id);row(source.displayName,m.unlocked?m.slots.filter(s=>s.placed).length+' из 5 жителей':source.unlockHint,button(m.unlocked?'Перейти':'Закрыто',()=>navigate('meadow',m.id),{disabled:!m.unlocked,key:'scene-'+m.id}));}
   }
-  if(drawer==='game'){
-   list.append(el('p','Пряжа — материал для изделий и улучшений. Показаны целые доступные единицы; небольшие поступления накапливаются до следующей единицы.','drawer-note'),el('p',nextGoal(view,config),'drawer-note'));
+  if(drawer==='pattern')patternPanel({list,row,view,config,button,el,start:(target,method,jobId)=>act({type:'startPattern',target,method,jobId}),proceed:()=>navigate('workshop'),cancel:jobId=>act({type:'cancelPattern',jobId})});
+  if(drawer==='game'&&pattern){list.append(el('p','Отдельный эксперимент. Изменения сохраняются только здесь; основное прохождение остаётся прежним.','drawer-note'));if(session.exportSource())list.append(button('Скачать исходное прохождение',()=>{const href=URL.createObjectURL(new Blob([session.exportSource()],{type:'application/json'})),a=document.createElement('a');a.href=href;a.download='mir-na-nitke-pattern-source.json';a.click();setTimeout(()=>URL.revokeObjectURL(href),1000);},{key:'download-source'}));}
+  if(drawer==='game'&&!pattern){
+   list.append(el('p','Пряжа — материал для изделий и улучшений. Показаны целые доступные единицы; небольшие поступления накапливаются до следующей единицы.','drawer-note'),el('p',guidance(view),'drawer-note'));
    list.append(button('Начать заново',()=>{restartError='';restartRequest=crypto.randomUUID();openDrawer('restart');},{disabled:!session.canRestart,key:'request-restart'}));
    if(!session.canRestart)list.append(el('p','Сейчас игра хранится только в этой вкладке. Оставьте её открытой: безопасный перезапуск недоступен, пока хранилище браузера не работает.','drawer-note'));
    if(session.exportRestartBackup())list.append(button('Скачать предыдущее прохождение',downloadBackup,{key:'download-backup'}));
@@ -147,6 +157,7 @@ export async function startGameplay({staged=false}={}){
    },{key:'confirm-restart'}));
   }
   if(drawer==='projects'){
+   if(pattern)list.append(button('Узоры и аксессуары',()=>openDrawer('pattern'),{key:'projects-pattern'}));
    panel.append(button(meadow.displayName+' · сменить',()=>openDrawer('map'),{key:'project-scene'}));
    for(const p of view.projects.filter(p=>byId(p.itemId).meadowId===meadow.id)){
     const i=byId(p.itemId),owned=view.owned.includes(i.id),slot=meadowView.slots.find(s=>s.itemId===i.id);
@@ -164,10 +175,10 @@ export async function startGameplay({staged=false}={}){
    for(const [id,memory]of Object.entries(view.memories)){const event=config.worldEvents.find(e=>e.id===id);row(event.memoryText,'Встреч: '+memory.count,button('Вспомнить',()=>{replay={eventId:id,until:Date.now()+12000};ui.screen='meadow';ui.meadowId=event.visitor.meadowId;drawer=null;render();},{key:'memory-'+id}));}
   }
   if(drawer==='return'&&away){
-   list.append(el('p','За '+duration(away.elapsedMs/1000)+' отсутствия: '+(staged?'сейчас доступно '+yarnAmount(view.wallet.yarn)+' ед. пряжи.':'+'+amount(away.yarn)+' пряжи.')+(away.work?(view.project?.canComplete?' Изделие довязалось и ждёт вас.':' Изделие стало ближе к завершению.'):'')+' Уже сохранено.','return-copy'));
+   list.append(el('p','За '+duration(away.elapsedMs/1000)+' отсутствия: '+(staged?'сейчас доступно '+yarnAmount(view.wallet.yarn)+' ед. пряжи.':'+'+amount(away.yarn)+' пряжи.')+(away.work?(view.project?.canComplete?(view.pattern?.job?' Работа готова и ждёт подтверждения.':' Изделие довязалось и ждёт вас.'):' Изделие стало ближе к завершению.'):'')+' Уже сохранено.','return-copy'));
    if(away.elapsedMs>away.productionMs)list.append(el('p','Производство учтено за первые 8 часов. Встречи завершались в своё время.','drawer-note'));
    for(const id of away.memories){const event=config.worldEvents.find(e=>e.id===id);row(event.memoryText,'Встреча сохранена в воспоминаниях',button('Вспомнить',()=>{replay={eventId:id,until:Date.now()+12000};ui.screen='meadow';ui.meadowId=event.visitor.meadowId;away=null;drawer=null;render();},{key:'return-memory-'+id}));}
-   if(staged)list.append(el('p',nextGoal(view,config),'return-copy'));
+   if(staged)list.append(el('p',guidance(view),'return-copy'));
    list.append(button('Продолжить',closeDrawer,{key:'continue-return'}));
   }
   panel.append(list,el('p','TECHNICAL PREVIEW · арт не утверждён. Темп — проверяемая гипотеза.','drawer-note'));world.append(panel);
@@ -176,23 +187,24 @@ export async function startGameplay({staged=false}={}){
  function render(focusOverride){
   if(!writer.active)return;
   const focused=focusOverride??document.activeElement?.dataset.focusKey,scroll=app.querySelector('.project-drawer')?.scrollTop??0,view=session.view;
+  const completion=view.pattern?.job?{type:'completePattern',jobId:view.pattern.job.jobId}:{type:'completeCraft'};
   const meadow=byMeadow(ui.meadowId),meadowView=view.meadows.find(m=>m.id===meadow.id),project=definition(),scope=ui.screen==='workshop'?'workshop':meadow.id;
   let absenceText='';
   reactions=reactions.filter(r=>Date.now()-r.at<5000);if(replay&&Date.now()>replay.until)replay=null;
   const reaction=reactions.findLast(r=>r.scope===scope&&r.kind!=='stitch'&&Date.now()-r.at<3400);
-  app.replaceChildren();const build=el('p',undefined,'build-label');build.append(el('strong','TECHNICAL PREVIEW — ART NOT APPROVED'),el('span','Черновик · две полянки и общая мастерская'));app.append(build);
+  app.replaceChildren();const build=el('p',undefined,'build-label');build.append(el('strong',pattern?'ЭКСПЕРИМЕНТ · УЗОРЫ · АРТ НЕ УТВЕРЖДЁН':'TECHNICAL PREVIEW — ART NOT APPROVED'),el('span',pattern?'Отдельное сохранение · основная игра не изменяется':'Черновик · две полянки и общая мастерская'));app.append(build);
   const section=el('section',undefined,'view');section.id='view-'+ui.screen;const world=el('div',undefined,'meadow-scene'+(ui.evening?' evening':''));world.dataset.screen=ui.screen;world.dataset.meadow=meadow.id;
   if(ui.screen==='workshop'){
    world.append(image(staged?assetUrl(meadow,meadow.art.backgroundDay):runtime.workshopBackdrop,'','meadow-back workshop-backdrop'));
    if(staged){const travelling=new Set(view.visitors.map(v=>v.itemId));for(const slot of placementLayout(meadow,session.state.placements[meadow.id]??{},catalog.items))if(slot.item.id!==project?.id&&!travelling.has(slot.item.id))renderSprite(world,slot,meadow,meadowView);for(const visitor of [...new Map(view.visitors.filter(v=>v.meadowId===meadow.id).map(v=>[v.itemId,v])).values()])renderSprite(world,{...visitor,id:visitor.eventId,item:byId(visitor.itemId)},meadow,meadowView,{visitor:true});}
-   if(staged&&project&&SECTION_WEIGHTS[project.id])stagedRenderer.mount(world,project,view.project.work,view.craftAuto,6+(meadow.slots.find(s=>s.itemId===project.id)?.z??0));else stagedRenderer?.detach();
-   if(project&&!session.state.project.recipeId&&!(staged&&SECTION_WEIGHTS[project.id])){const stage=selectStage(project,view.project.progress);world.append(image(assetUrl(project,stage.image),project.displayName,'meadow-back scene-art workshop-item'+(project.art.transparentStages?' transparent-stage':'')));}
+   if(staged&&project&&(SECTION_WEIGHTS[project.id]||project.art.stageWeights))stagedRenderer.mount(world,project,view.project.work,view.craftAuto,project.art.stageWeights?20:6+(meadow.slots.find(s=>s.itemId===project.id)?.z??0));else stagedRenderer?.detach();
+   if(project&&!session.state.project.recipeId&&!(staged&&(SECTION_WEIGHTS[project.id]||project.art.stageWeights))){const stage=selectStage(project,view.project.progress);world.append(image(assetUrl(project,stage.image),project.displayName,'meadow-back scene-art workshop-item'+(project.art.transparentStages?' transparent-stage':'')));}
    if(project){
-    const tap=button((view.project.canComplete?(staged&&!view.project.recraft&&!view.project.recipeId?'Разместить: ':'Завершить: '):staged?'Вязать: ':'Добавить петлю: ')+project.displayName,event=>act({type:view.project.canComplete?'completeCraft':'click'},event),{cls:'craft-target',key:'craft-art'});tap.setAttribute('aria-label',tap.textContent);tap.replaceChildren();world.append(tap);
-    if(staged&&stagedArt.has(project.id))requestAnimationFrame(()=>{const art=stagedArt.get(project.id),{scale,x,y}=stagedFit(project.id,art,world.clientWidth,world.clientHeight),[l,t,w,h]=art.visibleBounds;Object.assign(tap.style,{left:x+l*scale+'px',top:y+t*scale+'px',right:'auto',width:w*scale+'px',height:h*scale+'px'});});
+    const tap=button((view.project.canComplete?(view.pattern?.job?patternCompletion(project.id)+': ':staged&&!view.project.recraft&&!view.project.recipeId?'Разместить: ':'Завершить: '):staged?'Вязать: ':'Добавить петлю: ')+project.displayName,event=>act(view.project.canComplete?completion:{type:'click'},event),{cls:'craft-target',key:'craft-art'});tap.setAttribute('aria-label',tap.textContent);tap.replaceChildren();world.append(tap);
+    if(staged&&stagedArt.has(project.id))requestAnimationFrame(()=>{const art=stagedArt.get(project.id),{scale,x,y}=stagedFit(project.id,art,world.clientWidth,world.clientHeight,project.art.pose),[l,t,w,h]=art.visibleBounds;Object.assign(tap.style,{left:x+l*scale+'px',top:y+t*scale+'px',right:'auto',width:w*scale+'px',height:h*scale+'px'});});
     if(!view.project.canComplete&&!staged)world.append(workingYarn());
     if(session.state.project.recipeId)world.append(el('p',project.displayName+' · '+project.benefit,'recipe-label'));
-   }else world.append(el('p',staged?nextGoal(view,config):'Новая работа ждёт в корзинке',staged&&view.owned.length?'story-note next-goal-note':'world-message compact-message'));
+   }else world.append(el('p',staged?guidance(view):'Новая работа ждёт в корзинке',staged&&view.owned.length?'story-note next-goal-note':'world-message compact-message'));
   }else{
    stagedRenderer?.detach();
    world.append(image(assetUrl(meadow,meadow.art[ui.evening?'backgroundEvening':'backgroundDay']),'','meadow-back scene-art'));
@@ -205,10 +217,12 @@ export async function startGameplay({staged=false}={}){
    if(!meadowView.slots.some(s=>s.placed))world.append(el('p','Здесь поселятся ваши новые друзья','world-message compact-message'));
    const gone=meadowView.slots.find(s=>s.placed&&travelling.has(s.itemId));if(gone)absenceText=byId(gone.itemId).displayName+' гостит у друзей';
   }
+  if(pattern)applyDoily(world,session.state,meadow.id,stagedArt.get('cat-doily'),image);
   const header=el('header',undefined,'app-header');
   header.append(button(staged?'Карта':ui.screen==='workshop'?'Мастерская':meadow.displayName+' ▾',()=>openDrawer('map'),{cls:'place-title',key:'scene-chooser'}),el('span',(staged?yarnAmount(view.wallet.yarn)+' ед.':amount(view.wallet.yarn))+' пряжи','yarn-wallet'),button(ui.evening?'День':'Вечер',()=>{ui.evening=!ui.evening;saveUI();render();},{cls:'button lighting',key:'lighting'}));world.append(header);
   if(ui.screen==='workshop')world.append(button(staged?'Улучшения':'Крючок и корзинка',()=>openDrawer('upgrades'),{cls:'button workshop-tools',key:'open-upgrades'}));
   else world.append(button('Воспоминания'+(Object.keys(view.memories).length?' · '+Object.keys(view.memories).length:''),()=>openDrawer('memories'),{cls:'button memory-tools',key:'open-memories'}));
+  if(pattern)world.append(button('Узоры',()=>openDrawer('pattern'),{cls:'button pattern-tools',key:'open-pattern'}));
   if(staged)world.append(button('Игра',()=>openDrawer('game'),{cls:'button game-menu',key:'game-menu'}));
   if(!staged&&pulse&&Date.now()-pulse.at<650&&ui.screen==='workshop'){
    const stitch=el('span','−'+amount(pulse.seconds)+' с','stitch-pulse');stitch.style.left=pulse.x+'%';stitch.style.top=pulse.y+'%';stitch.style.animationDelay=-(Date.now()-pulse.at)+'ms';stitch.setAttribute('aria-hidden','true');world.append(stitch);
@@ -224,9 +238,9 @@ export async function startGameplay({staged=false}={}){
    const dock=el('div',undefined,'action-dock');
    if(ui.screen==='workshop'&&project){
     const progress=el('div',undefined,'progress-panel');progress.append(el('span',project.displayName+' · '+Math.floor(view.project.progress*100)+'%'));
-    const bar=el('progress');bar.max=1;bar.value=view.project.progress;bar.setAttribute('aria-label',project.displayName+': готовность');progress.append(bar,el('small',view.project.canComplete?(staged?(view.project.recipeId?'Приготовление закончено':view.project.recraft?'Повтор готов':'Готово — можно разместить'):'Готово! Можно завершить'):staged?(view.craftAuto?'Авто вяжет · осталось '+duration(view.project.etaSeconds):'Касайтесь — деталь постепенно проявляется'):'Касание: −'+amount(savedSeconds(view.rates.click,view))+' с · осталось '+duration(view.project.etaSeconds)));if(!staged&&!view.owned.length&&!view.project.canComplete)progress.append(el('small','Касайтесь изделия — оно свяжется быстрее'));dock.append(progress);
+    const bar=el('progress');bar.max=1;bar.value=view.project.progress;bar.setAttribute('aria-label',project.displayName+': готовность');progress.append(bar,el('small',view.project.canComplete?(view.pattern?.job?'Работа готова — '+patternCompletion(project.id).toLowerCase():staged?(view.project.recipeId?'Приготовление закончено':view.project.recraft?'Повтор готов':'Готово — можно разместить'):'Готово! Можно завершить'):staged?(view.craftAuto?'Авто вяжет · осталось '+duration(view.project.etaSeconds):'Касайтесь — деталь постепенно проявляется'):'Касание: −'+amount(savedSeconds(view.rates.click,view))+' с · осталось '+duration(view.project.etaSeconds)));if(!staged&&!view.owned.length&&!view.project.canComplete)progress.append(el('small','Касайтесь изделия — оно свяжется быстрее'));dock.append(progress);
     const controls=staged?el('div',undefined,'staged-controls'):dock;
-    controls.append(button(view.project.canComplete?(staged&&!session.state.project.recipeId&&!session.state.project.recraft?'Разместить':'Завершить'):'Вязать',event=>act({type:view.project.canComplete?'completeCraft':'click'},event),{cls:'button primary',key:'craft',art:true}));
+    controls.append(button(view.project.canComplete?(view.pattern?.job?patternCompletion(project.id):staged&&!session.state.project.recipeId&&!session.state.project.recraft?'Разместить':'Завершить'):'Вязать',event=>act(view.project.canComplete?completion:{type:'click'},event),{cls:'button primary',key:'craft',art:true}));
     if(staged&&!view.project.canComplete){const auto=button('Авто: '+(view.craftAuto?'вкл':'выкл'),()=>act({type:'setCraftAuto',enabled:!view.craftAuto}),{cls:'button staged-auto',key:'craft-auto'});auto.setAttribute('aria-pressed',String(view.craftAuto));controls.append(auto);}
     if(staged)dock.append(controls);
     if(staged&&view.project.recraft)world.append(button('Отменить повтор',()=>act({type:'cancelRecraft'}),{cls:'button staged-cancel',key:'cancel-recraft'}));
@@ -236,7 +250,7 @@ export async function startGameplay({staged=false}={}){
     else if(next){const item=byId(next.itemId);dock.append(el('p',item.displayName+' · '+next.yarnCost+' пряжи · '+item.benefit,'action-hint'),button('Начать',()=>act({type:'startProject',itemId:item.id}),{cls:'button primary',key:'next-project',disabled:!next.canStart,art:true}));if(!next.canStart)dock.append(el('small','Нужно ещё '+amount(Math.max(0,next.yarnCost-view.wallet.yarn))+' · полянки дают '+amount(view.rates.yarnPerHour)+'/ч','income-hint'));}
     else {const recipe=view.recipes.find(r=>r.unlocked&&view.events.find(e=>e.id===config.recipes.find(x=>x.id===r.recipeId).eventId).phase!=='done');
      if(recipe){const source=config.recipes.find(r=>r.id===recipe.recipeId);dock.append(el('p',source.displayName+' · '+source.yarnCost+' пряжи · '+source.benefit,'action-hint'),button('Начать',()=>act({type:'startRecipe',recipeId:recipe.recipeId}),{cls:'button primary',key:'next-recipe',disabled:!recipe.canStart,art:true}));}
-     else dock.append(el('p',staged?nextGoal(view,config):'Все жители здесь дома. Новые встречи — в корзинке проектов.','action-hint'));
+     else dock.append(el('p',staged?guidance(view):'Все жители здесь дома. Новые встречи — в корзинке проектов.','action-hint'));
     }
    }else{
     const ready=meadowView.slots.find(s=>s.canPlace&&!s.placed);

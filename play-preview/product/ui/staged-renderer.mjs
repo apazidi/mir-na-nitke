@@ -1,6 +1,12 @@
 import {loadStagedArt} from './staged-art.mjs';
 import {sectionAt} from './staged-catalog.mjs';
 import {stagedFit} from './staged-layout.mjs';
+function itemSection(item,work){
+ if(!item.art.stageWeights)return sectionAt(item.id,work);
+ const weights=item.art.stageWeights,total=weights.reduce((a,b)=>a+b,0);let left=work/item.workUnits*total;
+ for(let index=0;index<weights.length;index++){if(left<weights[index]-1e-7)return {index,progress:Math.max(0,left/weights[index])};left-=weights[index];}
+ return {index:weights.length,progress:0};
+}
 export function sectionOpacity(p,itemId,index){p=Math.max(0,Math.min(1,p));return itemId==='flower'&&index===0?(p<=.08?p/.08*.5:.5+(p-.08)/.92*.5):p**.65;}
 /** A single canvas survives the shell's DOM rebuilds. Game state stays in session. */
 export function createStagedRenderer(onError=()=>{}){
@@ -12,10 +18,10 @@ export function createStagedRenderer(onError=()=>{}){
  function accent(index,now,count=3){const s=art?.sections[Math.min(index,art.sections.length-1)];if(!s)return;for(let n=0;n<count;n++)glints.push({point:s.edge[(serial++*71+n*137)%s.edge.length]??s.anchor,born:now+n*15,duration:340+n*12,size:n%2?1.5:2.2});glints=glints.slice(-16);}
  function fit(){const r=canvas.getBoundingClientRect(),dpr=Math.min(devicePixelRatio||1,2);if(r.width===width&&r.height===height)return;
   ready=false;document.documentElement.dataset.stageReady='false';width=r.width;height=r.height;canvas.width=Math.round(width*dpr);canvas.height=Math.round(height*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);
-  if(art)({scale,x,y}=stagedFit(item.id,art,width,height));
+  if(art)({scale,x,y}=stagedFit(item.id,art,width,height,item.art.pose));
  }
  function draw(now){raf=0;if(!canvas.isConnected||!art)return;fit();const dt=Math.min(80,now-(last||now));last=now;
-  const stage=sectionAt(item.id,work);if(shownIndex!==stage.index){shownIndex=stage.index;shown=0;}const target=sectionOpacity(stage.progress,item.id,stage.index);shown=reduced.matches?target:shown+(target-shown)*Math.min(1,dt/65);if(Math.abs(target-shown)<.0001)shown=target;
+  const stage=itemSection(item,work);if(shownIndex!==stage.index){shownIndex=stage.index;shown=0;}const target=sectionOpacity(stage.progress,item.id,stage.index);shown=reduced.matches?target:shown+(target-shown)*Math.min(1,dt/65);if(Math.abs(target-shown)<.0001)shown=target;
   ctx.clearRect(0,0,width,height);
   if(work>0){const [l,t,w,h]=art.visibleBounds,p=screen([l+w/2,t+h]);ctx.save();ctx.globalAlpha=(stage.index?1:shown)*.2;ctx.fillStyle='#38451d';ctx.filter='blur(5px)';ctx.beginPath();ctx.ellipse(p.x,p.y+2,Math.min(57,w*scale*.4),8,0,0,Math.PI*2);ctx.fill();ctx.restore();}
   // Composite at source resolution before a single resampling. Independently
@@ -33,12 +39,12 @@ export function createStagedRenderer(onError=()=>{}){
   refresh(){wake();},
   mount(world,next,nextWork,isAuto,z=10){const changed=item?.id!==next.id;ready=false;document.documentElement.dataset.stageReady='false';item=next;auto=isAuto;canvas.style.zIndex=String(z);
    if(changed){art=null;ready=false;error=null;glints=[];flights=[];shownIndex=-1;work=nextWork;document.documentElement.dataset.stageReady='false';const id=next.id;loadStagedArt(next).then(a=>{if(item?.id!==id)return;art=a;native.width=a.width;native.height=a.height;width=0;wake();}).catch(e=>{error=e.message;onError('Не удалось загрузить изделие. Попробуйте обновить страницу.');});}
-   else{const before=sectionAt(next.id,work),after=sectionAt(next.id,nextWork);for(let i=before.index;i<after.index;i++)accent(i,performance.now()+160,reduced.matches?2:6);if(before.index<6&&after.index===6)for(let i=0;i<6;i++)accent(i,performance.now()+280+i*25,1);work=nextWork;}
+   else{const before=itemSection(next,work),after=itemSection(next,nextWork);for(let i=before.index;i<after.index;i++)accent(i,performance.now()+160,reduced.matches?2:6);if(before.index<(art?.sections.length??6)&&after.index===(art?.sections.length??6))for(let i=0;i<(art?.sections.length??6);i++)accent(i,performance.now()+280+i*25,1);work=nextWork;}
    world.append(canvas);wake();
   },
   detach(){canvas.remove();ready=false;document.documentElement.dataset.stageReady='true';},
-  pulse(event){if(!art)return;const r=canvas.getBoundingClientRect(),b=document.querySelector('[data-focus-key="craft"]')?.getBoundingClientRect();flights.push({from:{x:(event?.detail?event.clientX:b?b.x+b.width/2:r.x+width/2)-r.x,y:(event?.detail?event.clientY:b?b.y+b.height/2:r.y+height*.8)-r.y},index:sectionAt(item.id,work).index,born:performance.now()});flights=flights.slice(-4);wake();},
-  snapshot(){const stage=item?sectionAt(item.id,work):null;return {itemId:item?.id??null,sectionIndex:stage?.index??null,sectionProgress:stage?.progress??0,ready:ready&&canvas.isConnected,error};},
+  pulse(event){if(!art)return;const r=canvas.getBoundingClientRect(),b=document.querySelector('[data-focus-key="craft"]')?.getBoundingClientRect();flights.push({from:{x:(event?.detail?event.clientX:b?b.x+b.width/2:r.x+width/2)-r.x,y:(event?.detail?event.clientY:b?b.y+b.height/2:r.y+height*.8)-r.y},index:itemSection(item,work).index,born:performance.now()});flights=flights.slice(-4);wake();},
+  snapshot(){const stage=item?itemSection(item,work):null;return {itemId:item?.id??null,sectionIndex:stage?.index??null,sectionProgress:stage?.progress??0,ready:ready&&canvas.isConnected,error};},
   points(){const r=canvas.getBoundingClientRect(),rect={x:r.x,y:r.y,width:r.width,height:r.height};return {canvas:rect,item:art?{x:r.x+x+art.visibleBounds[0]*scale,y:r.y+y+art.visibleBounds[1]*scale,width:art.visibleBounds[2]*scale,height:art.visibleBounds[3]*scale}:null,sections:art?.sections.map(s=>{const p=screen(s.anchor);return {id:s.id,name:s.name,x:r.x+p.x,y:r.y+p.y};})??[]};},
  };
 }
