@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "kind": "item",
+  "id": "crochet-flower",
+  "status": "draft",
+  "displayName": "Вязаный цветок",
+  "description": "Первый декоративный проект. В сочетании с кроликом открывает спокойное событие: кролик нюхает цветок.",
+  "tags": [
+    "decor",
+    "plant",
+    "flower",
+    "starter"
+  ],
+  "workUnits": 360,
+  "art": {
+    "styleId": "crochet-diorama-v1",
+    "logicalSize": [
+      1024,
+      1820
+    ],
+    "stages": [
+      {
+        "at": 0,
+        "image": "art/stage-00.webp",
+        "label": "Клубочек"
+      },
+      {
+        "at": 0.25,
+        "image": "art/stage-01.webp",
+        "label": "Сердцевина"
+      },
+      {
+        "at": 0.52,
+        "image": "art/stage-02.webp",
+        "label": "Лепестки"
+      },
+      {
+        "at": 0.79,
+        "image": "art/stage-03.webp",
+        "label": "Стебель и листики"
+      },
+      {
+        "at": 1,
+        "image": "art/stage-04.webp",
+        "label": "Цветок готов"
+      }
+    ],
+    "finishedSprite": "art/finished.webp"
+  }
+}
