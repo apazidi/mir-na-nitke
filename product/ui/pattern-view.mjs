@@ -1,26 +1,42 @@
 import {PATTERN_ID,ACCESSORIES} from '../app/core/pattern.mjs';
 import {PATTERN_ART} from '../art-experiments/pattern-v1/art.mjs';
 import {stagedFit} from './staged-layout.mjs';
+import {intentPlan,intentSummary,intentComparison} from './pattern-intent.mjs';
 const seconds=n=>Number(n.toFixed(2)).toLocaleString('ru-RU',{maximumFractionDigits:2})+' с';
 export const patternMeadow=id=>id==='cat-doily'?'kotoutro':'test-meadow';
 export const patternCompletion=id=>id===PATTERN_ID?'Запомнить узор':'Применить';
-export function patternGuide(view,fallback){
+export function patternGuide(view,fallback,intent=null){
  if(!view.pattern?.unlocked)return fallback;
  if(view.pattern.job)return view.project.canComplete?'Работа готова. '+(view.project.itemId===PATTERN_ID?'Нажмите «Запомнить узор».':'Нажмите «Применить», чтобы украсить полянку.'):'Работу можно продолжить касаниями или включить «Авто».';
+ const plan=intentPlan(view,intent);
+ if(plan)return plan.remaining.length?'Мой замысел: '+plan.title+'. Готово '+plan.completed+' из '+plan.targets.length+'. Следующий выбор — в «Узорах».':'Замысел выполнен: '+plan.title+'.';
  return view.pattern.remaining.length?'Шарфик и салфетка ждут в «Узорах».': 'Оба аксессуара готовы. В этом эксперименте больше нет новых узоров.';
 }
-export function patternPanel({list,row,view,config,button,el,start,proceed,cancel}){
+export function patternPanel({list,row,view,config,button,el,start,proceed,cancel,intent=null,chooseIntent,intentError=''}){
  const begin=(target,method)=>{const jobId=crypto.randomUUID();return ()=>start(target,method,jobId);};
  const p=view.pattern,definition=id=>config.items.find(i=>i.id===id),busy=Boolean(view.project),speed=view.rates.idle;
  list.append(el('p','Необязательное украшение мира. Узор «Ромашка» запоминается навсегда и ускоряет оба аксессуара. Доход не меняется.','drawer-note'));
  if(!p.unlocked){list.append(el('p','Сначала разместите Кролика, Цветок, Дерево и Котика. Это откроет узор и два аксессуара.','return-copy'));return;}
+ if(chooseIntent){
+  list.append(el('h3','Мой замысел — необязательно'),el('p','Запомним, что вы хотите связать. Это ничего не стоит и не запускает очередь. Каждую работу вы начинаете сами.','drawer-note'));
+  const choices=el('div',undefined,'pattern-intents');
+  for(const [value,label]of [['rabbit-scarf','Шарфик'],['cat-doily','Салфетка'],['both','Оба аксессуара'],[null,'Без замысла']]){
+   const control=button(label,()=>chooseIntent(value),{key:'intent-'+(value??'none')});control.setAttribute('aria-pressed',String(intent===value));choices.append(control);
+  }
+  list.append(choices);
+  if(intentError){const error=el('p',intentError,'return-copy');error.setAttribute('role','alert');list.append(error);}
+  if(intent)list.append(el('p',intentSummary(view,intent),'return-copy'));
+  if(busy)list.append(el('p','Смена замысла не отменяет и не меняет уже оплаченную работу.','drawer-note'));
+ }
  if(busy){
   list.append(el('p','Рабочее место занято. Сначала завершите текущую работу; пауза сохраняет место за ней.','drawer-note'),button('Продолжить текущую работу',proceed,{key:'pattern-continue'}));
   if(p.job){const jobId=p.job.jobId;list.append(button('Отменить и вернуть пряжу',()=>cancel(jobId),{disabled:view.project.work!==0,key:'pattern-cancel'}),el('p','Возврат возможен только до первой петли. После начала можно выключить «Авто» и вернуться позже.','drawer-note'));}
  }
- if(!p.learned&&p.remaining.length===2)list.append(el('p',`Два аксессуара напрямую: 12 пряжи · ${seconds(288.4/speed)}. Изучить узор и связать оба: 14 пряжи · ${seconds(261.88/speed)}. Узор сбережёт ${seconds(26.52/speed)}, но потребует ещё 2 пряжи. Если нужна одна вещь, напрямую быстрее и дешевле.`,'pattern-comparison'));
- if(!p.learned&&p.remaining.length===1)list.append(el('p',`Остался один аксессуар: напрямую — 6 пряжи · ${seconds(144.2/speed)}. Вместе с изучением узора — 8 пряжи · ${seconds(160.94/speed)}. Для одной работы изучение займёт больше времени.`,'pattern-comparison'));
- if(p.remaining.length)list.append(el('p','Время указано для включённой автовязки при вашем текущем темпе. Касания ускоряют работу. Оба способа дают одинаковое украшение.','drawer-note'));
+ const comparison=intentComparison(view,intent);
+ if(comparison?.learned)list.append(el('p',`Узор уже изучен. Для оставшихся изделий (${comparison.count}): ${comparison.yarn} пряжи · ${seconds(comparison.work/speed)}. Повторно изучать узор не нужно.`,'pattern-comparison'));
+ else if(comparison?.count===2)list.append(el('p',`Два аксессуара напрямую: 12 пряжи · ${seconds(288.4/speed)}. Изучить узор и связать оба: 14 пряжи · ${seconds(261.88/speed)}. Узор сбережёт ${seconds(26.52/speed)}, но потребует ещё 2 пряжи. Если нужна одна вещь, напрямую быстрее и дешевле.`,'pattern-comparison'));
+ else if(comparison?.count===1)list.append(el('p',`Одна оставшаяся вещь: напрямую — 6 пряжи · ${seconds(144.2/speed)}. Вместе с изучением узора — 8 пряжи · ${seconds(160.94/speed)}. Для одной работы изучение займёт больше времени и потребует ещё 2 пряжи.`,'pattern-comparison'));
+ if(comparison)list.append(el('p','Это новые затраты для выбранных оставшихся вещей. Время указано для включённой автовязки при вашем текущем темпе. Касания ускоряют работу. Оба способа дают одинаковое украшение.','drawer-note'));
  row('Узор «Ромашка»',p.learned?'Изучен навсегда · не расходуется':p.remaining.length?'2 пряжи · '+seconds(60/speed)+' · занимает рабочее место':'Оба аксессуара готовы — изучение больше не нужно',button(p.learned?'Изучен':'Изучить узор',begin(PATTERN_ID,'learn'),{disabled:busy||p.learned||!p.remaining.length||view.wallet.yarn<2,key:'pattern-learn'}));
  for(const id of ACCESSORIES){
   const owned=view.owned.includes(id),controls=el('div',undefined,'staged-project-actions');

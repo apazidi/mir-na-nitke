@@ -1,6 +1,7 @@
 import {patternCatalog,PATTERN_SAVE_KEY} from './pattern-catalog.mjs';
 import {createPatternSession} from '../app/ui/pattern-session.mjs';
 import {PATTERN_IDS} from '../app/core/pattern.mjs';
+import {normalizeIntent,intentPlan,intentSummary} from './pattern-intent.mjs';
 import {patternMeadow,patternCompletion,patternGuide,patternPanel,applyScarf,applyDoily} from './pattern-view.mjs';
 import {createSession,summarizeAdvance} from '../app/ui/session.mjs';
 import {acquireSaveWriter} from '../app/ui/save-writer.mjs';
@@ -25,9 +26,10 @@ export async function startGameplay({staged=false,pattern=false}={}){
  let session;try{session=(pattern?createPatternSession:createSession)(config,{...(pattern?{sourceKey:STAGED_SAVE_KEY,sourceConfig:stagedCatalog().config}:{}),storage,key:saveKey,legacyKey:staged?STAGED_LEGACY_KEY:LEGACY_SAVE_KEY,legacyConfig:runtime.legacyConfig,legacyMigration:staged?'config':'v1',isActive:()=>writer.active,onPersistenceUnavailable:()=>writer.isolate(),onNotice:text=>{notice=text;}});}catch(error){showSaveBlocked(app,"corrupt");app.querySelector("p").textContent=error.message;return;}
  writer.setFlush(()=>session.tick());
  const defaults={screen:'workshop',meadowId:'test-meadow',evening:false,selected:{}};
- let restartRequest=null,restartError='';
+ let restartRequest=null,restartError='',intentError='';
  let ui={...defaults};try{const saved=JSON.parse(storage?.getItem(saveKey+'-ui')??'null');if(saved)ui={...defaults,...saved,selected:saved.selected??{}};}catch{}
  if(staged&&session.state.transactionSequence===0&&!session.state.project&&!session.state.owned.length)ui=structuredClone(defaults);
+ if(pattern)ui.patternIntent=session.view.pattern.unlocked?normalizeIntent(ui.patternIntent):null;
  if(!['workshop','meadow'].includes(ui.screen))ui.screen='workshop';if(!session.view.meadows.some(m=>m.id===ui.meadowId&&m.unlocked))ui.meadowId='test-meadow';
  if(staged&&ui.screen==='workshop'&&session.state.project){const p=session.state.project;ui.meadowId=p.pattern?patternMeadow(p.itemId):(p.recipeId?config.recipes.find(i=>i.id===p.recipeId):catalog.items.find(i=>i.id===p.itemId)).meadowId;}
  let pointerHeld=false;if(staged){document.addEventListener('pointerdown',()=>{pointerHeld=true;},true);for(const type of ['pointerup','pointercancel'])document.addEventListener(type,()=>{pointerHeld=false;},true);}
@@ -45,13 +47,20 @@ export async function startGameplay({staged=false,pattern=false}={}){
  const byId=id=>catalog.items.find(i=>i.id===id),byMeadow=id=>catalog.meadows.find(m=>m.id===id);
  const reactionText={pet:'Кролик приподнялся к ладони',water:'На цветок упали капельки',sway:'Веточка тихо качнулась',knock:'В окошке зажёгся свет',land:'Бабочка опустилась поближе',greet:'Котик сонно потянулся',brew:'Над чашкой поднялся пар',feed:'Уточка склёвывает угощение',rock:'Кресло мягко покачалось',shelter:'В листовом домике зажёгся свет',sniff:'Кролик нюхает цветок'};
  const definition=()=>{const p=session.state.project;if(!p)return undefined;const item=p.recipeId?config.recipes.find(r=>r.id===p.recipeId):byId(p.itemId);return p.pattern?{...item,workUnits:p.pattern.totalWork,meadowId:patternMeadow(p.itemId)}:item;};
- const guidance=view=>pattern?patternGuide(view,nextGoal(view,config)):nextGoal(view,config);
+ const guidance=view=>pattern?patternGuide(view,nextGoal(view,config),ui.patternIntent):nextGoal(view,config);
  const saveUI=()=>{try{storage?.setItem(saveKey+'-ui',JSON.stringify(ui));}catch{}};
  writer.setFlush(()=>{session.tick();saveUI();});
  const announce=(scope,kind,text,slots=[])=>{reactions.push({scope,kind,text,slots,at:Date.now()});reactions=reactions.slice(-12);announcer.textContent=text;};
  const navigate=(screen,meadowId=ui.meadowId)=>{ui.screen=screen;ui.meadowId=staged&&screen==='workshop'&&definition()?definition().meadowId:meadowId;drawer=null;replay=null;saveUI();render();};
  const openDrawer=kind=>{drawerOpener=document.activeElement?.dataset.focusKey??'tab-projects';drawer=kind;render('close-drawer');};
  const closeDrawer=()=>{drawer=null;away=null;render(drawerOpener);};
+ const chooseIntent=value=>{
+  if(!writer.active)return;
+  const candidate={...ui,patternIntent:normalizeIntent(value)};
+  try{if(!storage)throw Error('No storage');storage.setItem(saveKey+'-ui',JSON.stringify(candidate));ui=candidate;intentError='';}
+  catch{intentError='Не удалось сохранить замысел. Выбор не изменён; изготовление не запускалось.';}
+  render('intent-'+(value??'none'));
+ };
  const rewardText=value=>staged&&!Number.isInteger(value)?'Пряжа пополняется':'+'+amount(value)+' пряжи';
  const downloadBackup=()=>{const raw=session.exportRestartBackup();if(!raw)return;const href=URL.createObjectURL(new Blob([raw],{type:'application/json'})),link=document.createElement('a');link.href=href;link.download='mir-na-nitke-before-restart.json';link.click();setTimeout(()=>URL.revokeObjectURL(href),1000);};
  const savedSeconds=(work,view=session.view)=>Math.min(work,view.project?.remaining??work)/view.rates.idle;
@@ -66,6 +75,7 @@ export async function startGameplay({staged=false,pattern=false}={}){
    announce('workshop','stitch','Готовность ближе на '+amount(pulse.seconds)+' с');
   }
   if(action.type==='completePattern'&&before&&previous.project){ui.screen='meadow';ui.meadowId=patternMeadow(before.id);announce(ui.meadowId,'complete',before.id==='flower-pattern'?'Узор изучен навсегда. Теперь оба аксессуара можно вязать по узору.':before.displayName+' украшает полянку');drawer=null;}
+  if(action.type==='completePattern'&&before?.id==='flower-pattern'&&intentPlan(session.view,ui.patternIntent)?.remaining.length)drawer='pattern';
   if(action.type==='cancelPattern'){drawer='pattern';}
   if(action.type==='cancelRecraft'){ui.screen='meadow';drawer=null;}
   if(action.type==='completeCraft'){
@@ -139,7 +149,7 @@ export async function startGameplay({staged=false,pattern=false}={}){
     list.append(map,el('p','Уточка заглядывает с приветом после Котика, Кофе и Уточки у пруда. Приглашение в «Проектах» отправит кролика в гости.','drawer-note'),el('p',guidance(view),'drawer-note'));
    }else for(const m of view.meadows){const source=byMeadow(m.id);row(source.displayName,m.unlocked?m.slots.filter(s=>s.placed).length+' из 5 жителей':source.unlockHint,button(m.unlocked?'Перейти':'Закрыто',()=>navigate('meadow',m.id),{disabled:!m.unlocked,key:'scene-'+m.id}));}
   }
-  if(drawer==='pattern')patternPanel({list,row,view,config,button,el,start:(target,method,jobId)=>act({type:'startPattern',target,method,jobId}),proceed:()=>navigate('workshop'),cancel:jobId=>act({type:'cancelPattern',jobId})});
+  if(drawer==='pattern')patternPanel({list,row,view,config,button,el,intent:ui.patternIntent,chooseIntent,intentError,start:(target,method,jobId)=>act({type:'startPattern',target,method,jobId}),proceed:()=>navigate('workshop'),cancel:jobId=>act({type:'cancelPattern',jobId})});
   if(drawer==='game'&&pattern){list.append(el('p','Отдельный эксперимент. Изменения сохраняются только здесь; основное прохождение остаётся прежним.','drawer-note'));if(session.exportSource())list.append(button('Скачать исходное прохождение',()=>{const href=URL.createObjectURL(new Blob([session.exportSource()],{type:'application/json'})),a=document.createElement('a');a.href=href;a.download='mir-na-nitke-pattern-source.json';a.click();setTimeout(()=>URL.revokeObjectURL(href),1000);},{key:'download-source'}));}
   if(drawer==='game'&&!pattern){
    list.append(el('p','Пряжа — материал для изделий и улучшений. Показаны целые доступные единицы; небольшие поступления накапливаются до следующей единицы.','drawer-note'),el('p',guidance(view),'drawer-note'));
@@ -178,7 +188,9 @@ export async function startGameplay({staged=false,pattern=false}={}){
    list.append(el('p','За '+duration(away.elapsedMs/1000)+' отсутствия: '+(staged?'сейчас доступно '+yarnAmount(view.wallet.yarn)+' ед. пряжи.':'+'+amount(away.yarn)+' пряжи.')+(away.work?(view.project?.canComplete?(view.pattern?.job?' Работа готова и ждёт подтверждения.':' Изделие довязалось и ждёт вас.'):' Изделие стало ближе к завершению.'):'')+' Уже сохранено.','return-copy'));
    if(away.elapsedMs>away.productionMs)list.append(el('p','Производство учтено за первые 8 часов. Встречи завершались в своё время.','drawer-note'));
    for(const id of away.memories){const event=config.worldEvents.find(e=>e.id===id);row(event.memoryText,'Встреча сохранена в воспоминаниях',button('Вспомнить',()=>{replay={eventId:id,until:Date.now()+12000};ui.screen='meadow';ui.meadowId=event.visitor.meadowId;away=null;drawer=null;render();},{key:'return-memory-'+id}));}
-   if(staged)list.append(el('p',guidance(view),'return-copy'));
+   if(pattern&&ui.patternIntent){
+    list.append(el('p',intentSummary(view,ui.patternIntent),'return-copy'),button(view.project?'К текущей работе':'К моему замыслу',()=>{away=null;if(view.project)navigate('workshop');else openDrawer('pattern');},{key:'return-intent'}));
+   }else if(staged)list.append(el('p',guidance(view),'return-copy'));
    list.append(button('Продолжить',closeDrawer,{key:'continue-return'}));
   }
   panel.append(list,el('p','TECHNICAL PREVIEW · арт не утверждён. Темп — проверяемая гипотеза.','drawer-note'));world.append(panel);
@@ -236,7 +248,9 @@ export async function startGameplay({staged=false,pattern=false}={}){
   if(drawer)drawerPanel(world,view,meadow,meadowView);
   else{
    const dock=el('div',undefined,'action-dock');
-   if(ui.screen==='workshop'&&project){
+   if(pattern&&!view.project&&intentPlan(view,ui.patternIntent)){
+    dock.append(el('p',guidance(view),'action-hint'),button('Мой замысел',()=>openDrawer('pattern'),{cls:'button primary',key:'continue-intent'}));
+   }else if(ui.screen==='workshop'&&project){
     const progress=el('div',undefined,'progress-panel');progress.append(el('span',project.displayName+' · '+Math.floor(view.project.progress*100)+'%'));
     const bar=el('progress');bar.max=1;bar.value=view.project.progress;bar.setAttribute('aria-label',project.displayName+': готовность');progress.append(bar,el('small',view.project.canComplete?(view.pattern?.job?'Работа готова — '+patternCompletion(project.id).toLowerCase():staged?(view.project.recipeId?'Приготовление закончено':view.project.recraft?'Повтор готов':'Готово — можно разместить'):'Готово! Можно завершить'):staged?(view.craftAuto?'Авто вяжет · осталось '+duration(view.project.etaSeconds):'Касайтесь — деталь постепенно проявляется'):'Касание: −'+amount(savedSeconds(view.rates.click,view))+' с · осталось '+duration(view.project.etaSeconds)));if(!staged&&!view.owned.length&&!view.project.canComplete)progress.append(el('small','Касайтесь изделия — оно свяжется быстрее'));dock.append(progress);
     const controls=staged?el('div',undefined,'staged-controls'):dock;
