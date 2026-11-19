@@ -6,13 +6,13 @@
   "gameplayReview": true,
   "stagedReview": true,
   "saveKey": "mir-na-nitke-gameplay-preview-v4",
-  "appSourceCommit": "afd337c6bdf3ecca512fe99ddad1b3e4d6035ca0",
+  "appSourceCommit": "d8938208a216d0496e8dbad05bd5f23edbd7b19b",
   "sourceFiles": {
     "design-system/skin-v4.css": "e4f36c8097902532bbafde6589a5d916965f2b8881fd93a934d847b07d982b4c",
     "product/app/content/index.mjs": "00b9669ff7929c556b0b22b0dc1d54a8a717f80898af6668c6f674ae76033dff",
     "product/app/core/index.mjs": "b3b7b0bbc0cc91243cfde15543ac9ac6b2284954caf5cc55ce38cabe25bb75e6",
     "product/app/core/pattern.mjs": "699b5ecade2b81d7168eb0499dd06a51d7e49871f20dfa6fae011ea0e130b519",
-    "product/app/ui/pattern-session.mjs": "624617a318339748db73d9d9e41ad8f10f718fc13eb70eb91dcbcea9c7ee18cf",
+    "product/app/ui/pattern-session.mjs": "6c336ead98e24aa0f45fd4a6658bf83cd7593adc2b256bd4d2daffab90354cb0",
     "product/app/ui/save-writer.mjs": "bd0a7bbd76f5249838f5c60e30005ee6bc296f4f3a8a36d82b5046435e3861e2",
     "product/app/ui/session.mjs": "d928005b4a91c2795af389b9b68f39fe735abc33a24ee3be1866b3f99414700d",
     "product/art-experiments/pattern-v1/art.mjs": "aefa68f57a28fad6ce83d39806a4630b7cc1b30f53530c7413d7ec157af8d6d2",
@@ -21,14 +21,15 @@
     "product/art-experiments/pattern-v1/exports/scarf.png": "76c0006d8cc8cc9c5611283cb0a70971242ce6d07810fcf10c1ff925c8bca9a1",
     "product/ui/dev-catalog.mjs": "0cde75c784a37c47c3ea32a82c234b0aabfe38e5bc5029b1a2c7b84ee797c05b",
     "product/ui/gameplay-catalog.mjs": "3582a4f3bb2d442a0b4a70f646ad39beb0d189abf1b416c0fe1cb1208921657a",
-    "product/ui/gameplay.mjs": "8c8e0996045f5413b5669d89c607aa279ada6b8675b35687b3d465403b3011bb",
+    "product/ui/gameplay.mjs": "bf941ebdb69af4a964c41fb512ceb0db89b56e87c7e9fd50674ef245e612a1e7",
     "product/ui/index.html": "a0c11afe2326ccd9bc123d5fd75403be00a2943e3b328344958514a2c0542dc5",
     "product/ui/main.mjs": "c51e0c4b7df377f8f6d60e04deb5db3f8a0645df00693f996ae550b24cca86d2",
     "product/ui/pattern-catalog.mjs": "2b8061099b69bf00aa6de46697da785fabbf4d907381783bff1ef5fb2b27a25c",
-    "product/ui/pattern-view.mjs": "f3270a8c97f3d738e7d931491c8bc5149c7c426cfa9c39346b80ab9435cc46bd",
+    "product/ui/pattern-intent.mjs": "54bf5e1375bf60c50c05c0dc80d4862f29c6c5f9de2884967bc973bc9fb588b2",
+    "product/ui/pattern-view.mjs": "fae498124045e00506f45398cbd4aa21324527f5eac4768464fe2e8c9dedfb90",
     "product/ui/player-guidance.mjs": "e9548dcbf9abc6be88a0cdf2c7ab1275cdb2c0c6561b3c465ab3047251556f60",
     "product/ui/save-blocked.mjs": "396a431830f69182955d4f65342bdda5eb7afbd27b8f0256faeb2482dad7e28a",
-    "product/ui/shell.css": "a08e9d456e429db1a4ad57892b2c82e1378c3189aa7b6f4a494531114c6bdef8",
+    "product/ui/shell.css": "fec0e5daa6b2a54d8437030544f87c08cf88c0ecec526ae5b350a3057344efb8",
     "product/ui/sprite-hit.mjs": "882dd3bcf6de10ddcff144f823f0c8978179890197fc5cf8f3d279ad41d97099",
     "product/ui/staged-art.mjs": "0f4f18eae3aa986b0b4f53017f59512f8fef66ef8cfcc8ed28579a415d7b4952",
     "product/ui/staged-catalog.mjs": "85b8853ad2844ba9f1ffd68f8407ca38ded7fe0eca7348f303c4aa6caf175228",
@@ -234,8 +235,8 @@
     },
     {
       "path": "product/app/ui/pattern-session.mjs",
-      "bytes": 1396,
-      "sha256": "624617a318339748db73d9d9e41ad8f10f718fc13eb70eb91dcbcea9c7ee18cf"
+      "bytes": 1820,
+      "sha256": "6c336ead98e24aa0f45fd4a6658bf83cd7593adc2b256bd4d2daffab90354cb0"
     },
     {
       "path": "product/app/ui/save-writer.mjs",
@@ -834,8 +835,8 @@
     },
     {
       "path": "product/ui/gameplay.mjs",
-      "bytes": 43577,
-      "sha256": "8c8e0996045f5413b5669d89c607aa279ada6b8675b35687b3d465403b3011bb"
+      "bytes": 45113,
+      "sha256": "bf941ebdb69af4a964c41fb512ceb0db89b56e87c7e9fd50674ef245e612a1e7"
     },
     {
       "path": "product/ui/index.html",
@@ -853,9 +854,14 @@
       "sha256": "2b8061099b69bf00aa6de46697da785fabbf4d907381783bff1ef5fb2b27a25c"
     },
     {
+      "path": "product/ui/pattern-intent.mjs",
+      "bytes": 2429,
+      "sha256": "54bf5e1375bf60c50c05c0dc80d4862f29c6c5f9de2884967bc973bc9fb588b2"
+    },
+    {
       "path": "product/ui/pattern-view.mjs",
-      "bytes": 6374,
-      "sha256": "f3270a8c97f3d738e7d931491c8bc5149c7c426cfa9c39346b80ab9435cc46bd"
+      "bytes": 8459,
+      "sha256": "fae498124045e00506f45398cbd4aa21324527f5eac4768464fe2e8c9dedfb90"
     },
     {
       "path": "product/ui/player-guidance.mjs",
@@ -869,8 +875,8 @@
     },
     {
       "path": "product/ui/shell.css",
-      "bytes": 21874,
-      "sha256": "a08e9d456e429db1a4ad57892b2c82e1378c3189aa7b6f4a494531114c6bdef8"
+      "bytes": 22105,
+      "sha256": "fec0e5daa6b2a54d8437030544f87c08cf88c0ecec526ae5b350a3057344efb8"
     },
     {
       "path": "product/ui/sprite-hit.mjs",
