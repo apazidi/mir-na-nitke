@@ -26,7 +26,7 @@ export async function startGameplay({staged=false,pattern=false}={}){
  let session;try{session=(pattern?createPatternSession:createSession)(config,{...(pattern?{sourceKey:STAGED_SAVE_KEY,sourceConfig:stagedCatalog().config}:{}),storage,key:saveKey,legacyKey:staged?STAGED_LEGACY_KEY:LEGACY_SAVE_KEY,legacyConfig:runtime.legacyConfig,legacyMigration:staged?'config':'v1',isActive:()=>writer.active,onPersistenceUnavailable:()=>writer.isolate(),onNotice:text=>{notice=text;}});}catch(error){showSaveBlocked(app,"corrupt");app.querySelector("p").textContent=error.message;return;}
  writer.setFlush(()=>session.tick());
  const defaults={screen:'workshop',meadowId:'test-meadow',evening:false,selected:{}};
- let restartRequest=null,restartError='',intentError='';
+ let restartRequest=null,restartError='',intentError='',choosingIntent=false;
  let ui={...defaults};try{const saved=JSON.parse(storage?.getItem(saveKey+'-ui')??'null');if(saved)ui={...defaults,...saved,selected:saved.selected??{}};}catch{}
  if(staged&&session.state.transactionSequence===0&&!session.state.project&&!session.state.owned.length)ui=structuredClone(defaults);
  if(pattern)ui.patternIntent=session.view.pattern.unlocked?normalizeIntent(ui.patternIntent):null;
@@ -52,14 +52,14 @@ export async function startGameplay({staged=false,pattern=false}={}){
  writer.setFlush(()=>{session.tick();saveUI();});
  const announce=(scope,kind,text,slots=[])=>{reactions.push({scope,kind,text,slots,at:Date.now()});reactions=reactions.slice(-12);announcer.textContent=text;};
  const navigate=(screen,meadowId=ui.meadowId)=>{ui.screen=screen;ui.meadowId=staged&&screen==='workshop'&&definition()?definition().meadowId:meadowId;drawer=null;replay=null;saveUI();render();};
- const openDrawer=kind=>{drawerOpener=document.activeElement?.dataset.focusKey??'tab-projects';drawer=kind;render('close-drawer');};
+ const openDrawer=kind=>{drawerOpener=document.activeElement?.dataset.focusKey??'tab-projects';drawer=kind;choosingIntent=false;render('close-drawer');};
  const closeDrawer=()=>{drawer=null;away=null;render(drawerOpener);};
  const chooseIntent=value=>{
   if(!writer.active)return;
   const candidate={...ui,patternIntent:normalizeIntent(value)};
-  try{if(!storage)throw Error('No storage');storage.setItem(saveKey+'-ui',JSON.stringify(candidate));ui=candidate;intentError='';}
+  try{if(!storage)throw Error('No storage');storage.setItem(saveKey+'-ui',JSON.stringify(candidate));ui=candidate;intentError='';choosingIntent=false;}
   catch{intentError='Не удалось сохранить замысел. Выбор не изменён; изготовление не запускалось.';}
-  render('intent-'+(value??'none'));
+  render('intent-edit');
  };
  const rewardText=value=>staged&&!Number.isInteger(value)?'Пряжа пополняется':'+'+amount(value)+' пряжи';
  const downloadBackup=()=>{const raw=session.exportRestartBackup();if(!raw)return;const href=URL.createObjectURL(new Blob([raw],{type:'application/json'})),link=document.createElement('a');link.href=href;link.download='mir-na-nitke-before-restart.json';link.click();setTimeout(()=>URL.revokeObjectURL(href),1000);};
@@ -149,7 +149,7 @@ export async function startGameplay({staged=false,pattern=false}={}){
     list.append(map,el('p','Уточка заглядывает с приветом после Котика, Кофе и Уточки у пруда. Приглашение в «Проектах» отправит кролика в гости.','drawer-note'),el('p',guidance(view),'drawer-note'));
    }else for(const m of view.meadows){const source=byMeadow(m.id);row(source.displayName,m.unlocked?m.slots.filter(s=>s.placed).length+' из 5 жителей':source.unlockHint,button(m.unlocked?'Перейти':'Закрыто',()=>navigate('meadow',m.id),{disabled:!m.unlocked,key:'scene-'+m.id}));}
   }
-  if(drawer==='pattern')patternPanel({list,row,view,config,button,el,intent:ui.patternIntent,chooseIntent,intentError,start:(target,method,jobId)=>act({type:'startPattern',target,method,jobId}),proceed:()=>navigate('workshop'),cancel:jobId=>act({type:'cancelPattern',jobId})});
+  if(drawer==='pattern')patternPanel({list,row,view,config,button,el,intent:ui.patternIntent,chooseIntent,choosingIntent,editIntent:()=>{choosingIntent=!choosingIntent;render('intent-edit');},intentError,start:(target,method,jobId)=>act({type:'startPattern',target,method,jobId}),proceed:()=>navigate('workshop'),cancel:jobId=>act({type:'cancelPattern',jobId})});
   if(drawer==='game'&&pattern){list.append(el('p','Отдельный эксперимент. Изменения сохраняются только здесь; основное прохождение остаётся прежним.','drawer-note'));if(session.exportSource())list.append(button('Скачать исходное прохождение',()=>{const href=URL.createObjectURL(new Blob([session.exportSource()],{type:'application/json'})),a=document.createElement('a');a.href=href;a.download='mir-na-nitke-pattern-source.json';a.click();setTimeout(()=>URL.revokeObjectURL(href),1000);},{key:'download-source'}));}
   if(drawer==='game'&&!pattern){
    list.append(el('p','Пряжа — материал для изделий и улучшений. Показаны целые доступные единицы; небольшие поступления накапливаются до следующей единицы.','drawer-note'),el('p',guidance(view),'drawer-note'));

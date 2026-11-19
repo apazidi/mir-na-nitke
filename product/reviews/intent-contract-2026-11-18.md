@@ -21,3 +21,11 @@ Reject if it looks like a compulsory order or queue, misstates remaining cost, c
 Implementation, 89 unit tests and validation pass; independent designer conformance and technical review pass. The separate critic's actual Chromium scenario also passed the state transitions, but the **product verdict is RETURN**: explanatory content pushes the real craft actions below the visible drawer on small phones, including when the optional intention is skipped. See [the independent evidence](intent-critic-2026-11-18.md).
 
 The next allowed run must first compact the intention controls and comparison, expose an available action or explicit route to it on 360px, then obtain the same critic's targeted recheck. Preserve all technical save fixes. No new mechanic is needed. The source is a safe branch checkpoint only; the static bundle has deliberately not been rebuilt or deployed, and the existing public experiment remains the last delivered version. CI, exact bundle and public HTTPS checks still precede delivery. Do not claim this checkpoint is a complete daily increment.
+
+## 19 November: compact repair accepted
+
+The intention is now a compact summary with an explicit expandable editor; choosing closes that editor. Full remaining-cost comparisons are shorter, duplicate explanations are removed, and available intended accessories precede inactive cards. No price, crafting rule, source save or durable-import protection changed.
+
+The same critic independently reran the complete Chromium scenario and 21 enabled-action visibility assertions at 360/390/430 and issued **OWNER-TEST-WORTHY**. The old RETURN remains in the review. The director also ran the 89-test suite, validation and existing pattern regression scenario. [360px actions](evidence/intent-2026-11-19/chosen-360.png), [learned choice](evidence/intent-2026-11-19/learned-choice-390.png), [independent browser receipt](evidence/intent-2026-11-19/report.json).
+
+Source acceptance is complete. Final commit, CI and verified public delivery are recorded in the pull request and issue #50; acceptance alone is not evidence of deployment or enjoyment.
