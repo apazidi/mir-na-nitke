@@ -9,6 +9,14 @@ export function createPatternSession(config,{sourceKey,sourceConfig,...options})
   if(own!==null)engine.deserializeState(own,config);
   else{
    const raw=storage.getItem(sourceKey),state=raw===null?engine.createInitialState(config,now()):engine.importState(raw,sourceConfig,config);
+   // Retire an orphan intention before committing a new world. A crash or failed
+   // UI flush must not reconnect an older world's intention on the next visit.
+   const uiKey=key+'-ui',rawUI=storage.getItem(uiKey);
+   if(rawUI!==null){
+    let ui;try{ui=JSON.parse(rawUI);}catch{ui={};}
+    if(!ui||typeof ui!=='object'||Array.isArray(ui))ui={};
+    storage.setItem(uiKey,JSON.stringify({...ui,patternIntent:null}));
+   }
    if(raw!==null)storage.setItem(backupKey,raw);
    storage.setItem(key,engine.serializeState(state));
   }

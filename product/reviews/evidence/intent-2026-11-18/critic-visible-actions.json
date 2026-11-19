@@ -1,0 +1,60 @@
+[
+  {
+    "name": "single",
+    "panel": {
+      "top": 134,
+      "bottom": 684,
+      "client": 546,
+      "scroll": 865
+    },
+    "actions": [
+      {
+        "id": "pattern-learn",
+        "top": 745.125,
+        "bottom": 789.125,
+        "inside": false
+      },
+      {
+        "id": "pattern-rabbit-scarf-direct",
+        "top": 815.515625,
+        "bottom": 859.515625,
+        "inside": false
+      },
+      {
+        "id": "pattern-cat-doily-direct",
+        "top": 886.515625,
+        "bottom": 930.515625,
+        "inside": false
+      }
+    ]
+  },
+  {
+    "name": "skip",
+    "panel": {
+      "top": 134,
+      "bottom": 684,
+      "client": 546,
+      "scroll": 787
+    },
+    "actions": [
+      {
+        "id": "pattern-learn",
+        "top": 667.34375,
+        "bottom": 711.34375,
+        "inside": false
+      },
+      {
+        "id": "pattern-rabbit-scarf-direct",
+        "top": 737.734375,
+        "bottom": 781.734375,
+        "inside": false
+      },
+      {
+        "id": "pattern-cat-doily-direct",
+        "top": 808.734375,
+        "bottom": 852.734375,
+        "inside": false
+      }
+    ]
+  }
+]

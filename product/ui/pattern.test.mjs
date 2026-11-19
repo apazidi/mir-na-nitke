@@ -40,6 +40,20 @@ test('pause/reload, reverse clock and capped 8h offline preserve method without 
  assert.equal(b.project.work,60);assert.ok(!b.owned.includes(core.PATTERN_ID));assert.equal(a.wallet.yarn,b.wallet.yarn);assert.equal(b.project.pattern.method,'learn');
 });
 function fixture(raw=JSON.stringify(source())){const values=new Map([['source',raw],['legacy','unchanged']]);let now=0,active=true,failure=null;const storage={getItem:k=>values.get(k)??null,setItem:(k,v)=>{if(failure?.(k,v))throw Error('quota');values.set(k,v);}};const open=()=>createPatternSession(config,{storage,key:'own',sourceKey:'source',sourceConfig,now:()=>now,isActive:()=>active});return {values,open,fail:f=>failure=f,clock:n=>now=n,revoke:()=>active=false};}
+test('new import durably retires only an orphan intention before committing the world',()=>{
+ const f=fixture();f.values.set('own-ui',JSON.stringify({patternIntent:'both',evening:true,selected:{'test-meadow':'rabbit'}}));
+ const raw=f.values.get('source');f.open();
+ assert.deepEqual(JSON.parse(f.values.get('own-ui')),{patternIntent:null,evening:true,selected:{'test-meadow':'rabbit'}});
+ f.open();assert.equal(JSON.parse(f.values.get('own-ui')).patternIntent,null);
+ assert.equal(f.values.get('source'),raw);
+ // A real existing world's intention is preserved on resume.
+ f.values.set('own-ui',JSON.stringify({patternIntent:'cat-doily'}));f.open();assert.equal(JSON.parse(f.values.get('own-ui')).patternIntent,'cat-doily');
+});
+test('failure to retire orphan UI cannot commit a new core save or source backup',()=>{
+ const f=fixture();f.values.set('own-ui',JSON.stringify({patternIntent:'both'}));const before=[...f.values];
+ f.fail(k=>k==='own-ui');assert.throws(()=>f.open());assert.deepEqual([...f.values],before);
+ f.fail(null);f.open();assert.equal(JSON.parse(f.values.get('own-ui')).patternIntent,null);
+});
 test('protected import preserves legacy paid slot and source bytes; own resume ignores source changes',()=>{
  const src=source();
  const paid=base.dispatch(src,{type:'startRecipe',recipeId:'invitation',now:0},sourceConfig),raw=JSON.stringify(paid),f=fixture(raw),s=f.open();

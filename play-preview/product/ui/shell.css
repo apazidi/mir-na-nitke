@@ -172,5 +172,6 @@ button:focus-visible{outline:3px solid #fff7d7;outline-offset:2px}
 .gameplay-v4 .pattern-doily{position:absolute;z-index:8;pointer-events:none;object-fit:fill}
 .gameplay-v4 .pattern-accessory{max-width:none;max-height:none;transform:none;filter:none}
 .pattern-comparison{font-size:12px;line-height:1.45;padding:10px;background:#fff1d8;border-radius:12px}
+.pattern-intents{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:10px}.pattern-intents button{min-height:44px;font-size:12px}.pattern-intents button[aria-pressed="true"]{outline:2px solid #80623f;outline-offset:-3px}
 .pattern-preview{width:52px;height:52px;flex-shrink:0;object-fit:contain}
 .gameplay-v4.pattern-study .story-note{right:95px}
