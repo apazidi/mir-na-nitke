@@ -1,7 +1,7 @@
 import {patternCatalog,PATTERN_SAVE_KEY} from './pattern-catalog.mjs';
 import {createPatternSession} from '../app/ui/pattern-session.mjs';
 import {PATTERN_IDS} from '../app/core/pattern.mjs';
-import {normalizeIntent,intentPlan,intentSummary} from './pattern-intent.mjs';
+import {normalizeIntent,restoreIntent,intentPlan,intentSummary} from './pattern-intent.mjs';
 import {patternMeadow,patternCompletion,patternGuide,patternPanel,applyScarf,applyDoily} from './pattern-view.mjs';
 import {createSession,summarizeAdvance} from '../app/ui/session.mjs';
 import {acquireSaveWriter} from '../app/ui/save-writer.mjs';
@@ -29,7 +29,7 @@ export async function startGameplay({staged=false,pattern=false}={}){
  let restartRequest=null,restartError='',intentError='',choosingIntent=false;
  let ui={...defaults};try{const saved=JSON.parse(storage?.getItem(saveKey+'-ui')??'null');if(saved)ui={...defaults,...saved,selected:saved.selected??{}};}catch{}
  if(staged&&session.state.transactionSequence===0&&!session.state.project&&!session.state.owned.length)ui=structuredClone(defaults);
- if(pattern)ui.patternIntent=session.view.pattern.unlocked?normalizeIntent(ui.patternIntent):null;
+ if(pattern){ui.patternIntent=session.view.pattern.unlocked?restoreIntent(ui,session.state):null;ui.patternWorldId=session.state.patternWorldId??null;}
  if(!['workshop','meadow'].includes(ui.screen))ui.screen='workshop';if(!session.view.meadows.some(m=>m.id===ui.meadowId&&m.unlocked))ui.meadowId='test-meadow';
  if(staged&&ui.screen==='workshop'&&session.state.project){const p=session.state.project;ui.meadowId=p.pattern?patternMeadow(p.itemId):(p.recipeId?config.recipes.find(i=>i.id===p.recipeId):catalog.items.find(i=>i.id===p.itemId)).meadowId;}
  let pointerHeld=false;if(staged){document.addEventListener('pointerdown',()=>{pointerHeld=true;},true);for(const type of ['pointerup','pointercancel'])document.addEventListener(type,()=>{pointerHeld=false;},true);}
@@ -151,7 +151,7 @@ export async function startGameplay({staged=false,pattern=false}={}){
   }
   if(drawer==='pattern')patternPanel({list,row,view,config,button,el,intent:ui.patternIntent,chooseIntent,choosingIntent,editIntent:()=>{choosingIntent=!choosingIntent;render('intent-edit');},intentError,start:(target,method,jobId)=>act({type:'startPattern',target,method,jobId}),proceed:()=>navigate('workshop'),cancel:jobId=>act({type:'cancelPattern',jobId})});
   if(drawer==='game'&&pattern){list.append(el('p','Отдельный эксперимент. Изменения сохраняются только здесь; основное прохождение остаётся прежним.','drawer-note'));if(session.exportSource())list.append(button('Скачать исходное прохождение',()=>{const href=URL.createObjectURL(new Blob([session.exportSource()],{type:'application/json'})),a=document.createElement('a');a.href=href;a.download='mir-na-nitke-pattern-source.json';a.click();setTimeout(()=>URL.revokeObjectURL(href),1000);},{key:'download-source'}));}
-  if(drawer==='game'&&!pattern){
+  if(drawer==='game'){
    list.append(el('p','Пряжа — материал для изделий и улучшений. Показаны целые доступные единицы; небольшие поступления накапливаются до следующей единицы.','drawer-note'),el('p',guidance(view),'drawer-note'));
    list.append(button('Начать заново',()=>{restartError='';restartRequest=crypto.randomUUID();openDrawer('restart');},{disabled:!session.canRestart,key:'request-restart'}));
    if(!session.canRestart)list.append(el('p','Сейчас игра хранится только в этой вкладке. Оставьте её открытой: безопасный перезапуск недоступен, пока хранилище браузера не работает.','drawer-note'));
@@ -159,11 +159,11 @@ export async function startGameplay({staged=false,pattern=false}={}){
   }
   if(drawer==='restart'){
    if(restartError){const error=el('p',restartError,'drawer-note');error.setAttribute('role','alert');list.append(error);}
-   list.append(el('p','Начнётся новый мир: без готовых изделий, улучшений и текущей работы, со стартовыми 32 единицами пряжи. Перед этим сохраним копию текущего прохождения: её можно скачать в меню «Игра». Новая копия заменит предыдущую. Другие версии игры не изменятся.','return-copy'));
+   list.append(el('p',pattern?'Эксперимент начнётся с пустой полянки и 32 единиц пряжи. Изделия, изученный узор, улучшения, текущая работа и замысел сбросятся. Копию этого прохождения можно будет скачать в меню «Игра»; она заменит предыдущую копию перезапуска. Основное прохождение и его исходная копия не изменятся.':'Начнётся новый мир: без готовых изделий, улучшений и текущей работы, со стартовыми 32 единицами пряжи. Перед этим сохраним копию текущего прохождения: её можно скачать в меню «Игра». Новая копия заменит предыдущую. Другие версии игры не изменятся.','return-copy'));
    list.append(button('Отмена',()=>{restartRequest=null;restartError='';openDrawer('game');},{key:'cancel-restart'}),button('Сохранить копию и начать',()=>{
     if(drawer!=='restart'||!restartRequest)return;const id=restartRequest;restartRequest=null;restartError='';
     if(!session.restart(id)){restartError=notice||'Перезапуск недоступен. Прежний мир не изменён.';notice='';restartRequest=crypto.randomUUID();render();return;}
-    ui=structuredClone(defaults);away=null;replay=null;hiddenState=null;reactions=[];pulse=null;notice='';drawer=null;projectStarted=Date.now();saveUI();render('next-project');
+    ui=structuredClone(defaults);if(pattern)ui.patternWorldId=session.state.patternWorldId??null;away=null;replay=null;hiddenState=null;reactions=[];pulse=null;notice='';drawer=null;projectStarted=Date.now();saveUI();render('next-project');
    },{key:'confirm-restart'}));
   }
   if(drawer==='projects'){

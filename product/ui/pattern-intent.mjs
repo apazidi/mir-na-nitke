@@ -6,6 +6,7 @@ export const INTENTS = Object.freeze({
  both: 'Оба аксессуара',
 });
 export const normalizeIntent = value => typeof value === 'string' && Object.hasOwn(INTENTS, value) ? value : null;
+export const restoreIntent = (ui,state) => (ui.patternWorldId??null)===(state.patternWorldId??null)?normalizeIntent(ui.patternIntent):null;
 export function intentPlan(view, value) {
  const intent = normalizeIntent(value);
  if (!intent) return null;

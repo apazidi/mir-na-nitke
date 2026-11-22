@@ -21,6 +21,9 @@ export function createPatternSession(config,{sourceKey,sourceConfig,...options})
    storage.setItem(key,engine.serializeState(state));
   }
  }catch{throw Error('Не удалось открыть сохранение эксперимента. Данные не перезаписаны; основная игра сохранена.');}
- const session=createSession(config,{...options,engine,strictLoad:true});
- return {...session,get state(){return session.state;},get view(){return session.view;},get canRestart(){return false;},exportSource(){try{return isActive()?storage.getItem(backupKey):null;}catch{return null;}}};
+ // A new identity is committed atomically with the reset world, even when the
+ // separate UI key cannot be written. Existing/imported worlds remain compatible.
+ const restartEngine={...engine,createInitialState:(c,t)=>({...engine.createInitialState(c,t),patternWorldId:crypto.randomUUID()})};
+ const session=createSession(config,{...options,engine:restartEngine,strictLoad:true});
+ return {...session,get state(){return session.state;},get view(){return session.view;},get canRestart(){return session.canRestart;},exportSource(){try{return isActive()?storage.getItem(backupKey):null;}catch{return null;}}};
 }

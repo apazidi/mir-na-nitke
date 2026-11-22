@@ -6,13 +6,13 @@
   "gameplayReview": true,
   "stagedReview": true,
   "saveKey": "mir-na-nitke-gameplay-preview-v4",
-  "appSourceCommit": "d8938208a216d0496e8dbad05bd5f23edbd7b19b",
+  "appSourceCommit": "81d49d64e1d364dd6de0c40c9379ce22b9e667a7",
   "sourceFiles": {
     "design-system/skin-v4.css": "e4f36c8097902532bbafde6589a5d916965f2b8881fd93a934d847b07d982b4c",
     "product/app/content/index.mjs": "00b9669ff7929c556b0b22b0dc1d54a8a717f80898af6668c6f674ae76033dff",
     "product/app/core/index.mjs": "b3b7b0bbc0cc91243cfde15543ac9ac6b2284954caf5cc55ce38cabe25bb75e6",
-    "product/app/core/pattern.mjs": "699b5ecade2b81d7168eb0499dd06a51d7e49871f20dfa6fae011ea0e130b519",
-    "product/app/ui/pattern-session.mjs": "6c336ead98e24aa0f45fd4a6658bf83cd7593adc2b256bd4d2daffab90354cb0",
+    "product/app/core/pattern.mjs": "79c242876fd793d587b4862422eae4ed484a0e1d474260c36a233871f0122439",
+    "product/app/ui/pattern-session.mjs": "4a6af6b24e893680bd5553791e7aa8a62627430b9044468d65e2cf66ac4adadd",
     "product/app/ui/save-writer.mjs": "bd0a7bbd76f5249838f5c60e30005ee6bc296f4f3a8a36d82b5046435e3861e2",
     "product/app/ui/session.mjs": "d928005b4a91c2795af389b9b68f39fe735abc33a24ee3be1866b3f99414700d",
     "product/art-experiments/pattern-v1/art.mjs": "aefa68f57a28fad6ce83d39806a4630b7cc1b30f53530c7413d7ec157af8d6d2",
@@ -21,11 +21,11 @@
     "product/art-experiments/pattern-v1/exports/scarf.png": "76c0006d8cc8cc9c5611283cb0a70971242ce6d07810fcf10c1ff925c8bca9a1",
     "product/ui/dev-catalog.mjs": "0cde75c784a37c47c3ea32a82c234b0aabfe38e5bc5029b1a2c7b84ee797c05b",
     "product/ui/gameplay-catalog.mjs": "3582a4f3bb2d442a0b4a70f646ad39beb0d189abf1b416c0fe1cb1208921657a",
-    "product/ui/gameplay.mjs": "bf941ebdb69af4a964c41fb512ceb0db89b56e87c7e9fd50674ef245e612a1e7",
+    "product/ui/gameplay.mjs": "2b1889eadbf3ac0e0d2843eede7e79c50631a0de583bd1a1650c49440d53c9bc",
     "product/ui/index.html": "a0c11afe2326ccd9bc123d5fd75403be00a2943e3b328344958514a2c0542dc5",
     "product/ui/main.mjs": "c51e0c4b7df377f8f6d60e04deb5db3f8a0645df00693f996ae550b24cca86d2",
     "product/ui/pattern-catalog.mjs": "2b8061099b69bf00aa6de46697da785fabbf4d907381783bff1ef5fb2b27a25c",
-    "product/ui/pattern-intent.mjs": "54bf5e1375bf60c50c05c0dc80d4862f29c6c5f9de2884967bc973bc9fb588b2",
+    "product/ui/pattern-intent.mjs": "33142e0b779543a2fc2b7ed934f4fc612ed0e113220d45930069679434b271f2",
     "product/ui/pattern-view.mjs": "fae498124045e00506f45398cbd4aa21324527f5eac4768464fe2e8c9dedfb90",
     "product/ui/player-guidance.mjs": "e9548dcbf9abc6be88a0cdf2c7ab1275cdb2c0c6561b3c465ab3047251556f60",
     "product/ui/save-blocked.mjs": "396a431830f69182955d4f65342bdda5eb7afbd27b8f0256faeb2482dad7e28a",
@@ -230,13 +230,13 @@
     },
     {
       "path": "product/app/core/pattern.mjs",
-      "bytes": 6723,
-      "sha256": "699b5ecade2b81d7168eb0499dd06a51d7e49871f20dfa6fae011ea0e130b519"
+      "bytes": 6916,
+      "sha256": "79c242876fd793d587b4862422eae4ed484a0e1d474260c36a233871f0122439"
     },
     {
       "path": "product/app/ui/pattern-session.mjs",
-      "bytes": 1820,
-      "sha256": "6c336ead98e24aa0f45fd4a6658bf83cd7593adc2b256bd4d2daffab90354cb0"
+      "bytes": 2142,
+      "sha256": "4a6af6b24e893680bd5553791e7aa8a62627430b9044468d65e2cf66ac4adadd"
     },
     {
       "path": "product/app/ui/save-writer.mjs",
@@ -835,8 +835,8 @@
     },
     {
       "path": "product/ui/gameplay.mjs",
-      "bytes": 45113,
-      "sha256": "bf941ebdb69af4a964c41fb512ceb0db89b56e87c7e9fd50674ef245e612a1e7"
+      "bytes": 45766,
+      "sha256": "2b1889eadbf3ac0e0d2843eede7e79c50631a0de583bd1a1650c49440d53c9bc"
     },
     {
       "path": "product/ui/index.html",
@@ -855,8 +855,8 @@
     },
     {
       "path": "product/ui/pattern-intent.mjs",
-      "bytes": 2429,
-      "sha256": "54bf5e1375bf60c50c05c0dc80d4862f29c6c5f9de2884967bc973bc9fb588b2"
+      "bytes": 2569,
+      "sha256": "33142e0b779543a2fc2b7ed934f4fc612ed0e113220d45930069679434b271f2"
     },
     {
       "path": "product/ui/pattern-view.mjs",

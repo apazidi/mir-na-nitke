@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import {mkdir,writeFile} from 'node:fs/promises';
+import {mkdir,readFile,writeFile} from 'node:fs/promises';
 import {fileURLToPath,pathToFileURL} from 'node:url';
 import path from 'node:path';
 import {startServer} from '../scripts/serve-preview.mjs';
@@ -53,6 +53,22 @@ try{
   await focus(p,'pattern-cat-doily-learned').click();await finish(p);await focus(p,'craft').click();await focus(p,'continue-intent').click();
   assert.match(await p.getByRole('dialog').innerText(),/Замысел выполнен/);assert.equal(await p.locator('.pattern-comparison').count(),0);assert.equal((await snap(p)).state.project,null);await shot(p,'complete-'+width);
   await choose(p,'none');assert.equal((await snap(p)).ui.patternIntent,null);assert.equal(await p.evaluate(k=>localStorage.getItem(k),STAGED_SAVE_KEY),raw);
+  // The same route must let its player deliberately restart a paid experiment.
+  await seed(p);await focus(p,'open-pattern').click();await choose(p,'both');await focus(p,'pattern-learn').click();await focus(p,'craft').click();
+  const paidSave=await p.evaluate(k=>localStorage.getItem(k),PATTERN_SAVE_KEY);
+  await focus(p,'game-menu').click();await visibleAction(p,'request-restart');await shot(p,'restart-menu-'+width);
+  await focus(p,'request-restart').click();assert.match(await p.getByRole('dialog').innerText(),/изученный узор.*замысел сбросятся.*Основное прохождение/s);
+  await visibleAction(p,'confirm-restart');await shot(p,'restart-confirm-'+width);await focus(p,'cancel-restart').click();
+  assert.equal(await p.evaluate(k=>localStorage.getItem(k),PATTERN_SAVE_KEY),paidSave);assert.equal((await snap(p)).ui.patternIntent,'both');
+  await focus(p,'request-restart').click();await focus(p,'confirm-restart').evaluate(b=>{b.click();b.click();});
+  let fresh=await snap(p);assert.deepEqual(fresh.state.owned,[]);assert.equal(fresh.state.wallet.yarn,32);assert.equal(fresh.state.project,null);assert.equal(fresh.ui.patternIntent??null,null);
+  await p.reload();await ready(p);await close(p);fresh=await snap(p);assert.equal(fresh.state.owned.length,0);assert.equal(fresh.ui.patternIntent??null,null);
+  await focus(p,'game-menu').click();const downloading=p.waitForEvent('download');await focus(p,'download-backup').click();const download=await downloading;
+  assert.equal(await readFile(await download.path(),'utf8'),paidSave);assert.equal(await p.evaluate(k=>localStorage.getItem(k),STAGED_SAVE_KEY),raw);
+  assert.equal(await p.evaluate(()=>window.__patternExperiment.exportSource()),raw);await close(p);
+  await focus(p,'next-project').click();await finish(p);await focus(p,'craft').click();assert.ok((await snap(p)).state.owned.includes('rabbit'));
+  await shot(p,'restart-first-rabbit-'+width);
+  (report.restartSizes??=[]).push(width);
   await context.close();report.sizes.push(width);
  }
  // Failed UI writes keep the former choice, without starting work or touching the core save.
@@ -72,6 +88,39 @@ try{
  await p.goto(new URL('seed',base).href);
  await p.evaluate(key=>{localStorage.removeItem(key);localStorage.removeItem('mir-na-nitke-gameplay-preview-v4');localStorage.setItem(key+'-ui',JSON.stringify({patternIntent:'both'}));},PATTERN_SAVE_KEY);
  await p.goto(url);await ready(p);assert.equal((await snap(p)).ui.patternIntent,null);assert.equal((await snap(p)).state.owned.length,0);await c.close();
- assert.deepEqual(errors,[]);Object.assign(report,{noAutomaticQueue:true,explicitClaims:true,remainingCost:true,paidSlotPreserved:true,sourceBytesPreserved:true,invalidIntentSafe:true,writeFailureHonest:true,freshWorldClearsIntent:true});
+ // Both failure points preserve the paid pattern and remembered goal, including reload.
+ for(const suffix of ['-restart-backup','']){
+  const c=await browser.newContext({viewport:{width:390,height:844}});await c.addInitScript(now=>{Date.now=()=>now;},now);const p=await c.newPage();await seed(p);
+  await focus(p,'open-pattern').click();await choose(p,'both');await focus(p,'pattern-learn').click();await focus(p,'craft').click();
+  const paid=await p.evaluate(k=>localStorage.getItem(k),PATTERN_SAVE_KEY);
+  await focus(p,'game-menu').click();await focus(p,'request-restart').click();
+  await p.evaluate(key=>{const set=Storage.prototype.setItem;Storage.prototype.setItem=function(k,v){if(k===key&& (key.endsWith('-restart-backup')||JSON.parse(v).owned.length===0))throw Error('quota');return set.call(this,k,v);};},PATTERN_SAVE_KEY+suffix);
+  await focus(p,'confirm-restart').click();assert.match(await p.getByRole('alert').innerText(),/Прежняя игра сохранена/);
+  assert.equal(await p.evaluate(k=>localStorage.getItem(k),PATTERN_SAVE_KEY),paid);assert.equal((await snap(p)).ui.patternIntent,'both');
+  await p.reload();await ready(p);assert.equal(await p.evaluate(k=>localStorage.getItem(k),PATTERN_SAVE_KEY),paid);assert.equal((await snap(p)).ui.patternIntent,'both');await c.close();
+ }
+ // A persistent UI-write failure must not resurrect a pre-reset intention.
+ {
+  const c=await browser.newContext({viewport:{width:390,height:844}});await c.addInitScript(now=>{Date.now=()=>now;},now);const p=await c.newPage();await seed(p);
+  await focus(p,'open-pattern').click();await choose(p,'both');await close(p);
+  await p.evaluate(key=>{const set=Storage.prototype.setItem;Storage.prototype.setItem=function(k,v){if(k===key+'-ui')throw Error('quota');return set.call(this,k,v);};},PATTERN_SAVE_KEY);
+  await focus(p,'game-menu').click();await focus(p,'request-restart').click();await focus(p,'confirm-restart').click();
+  const worldId=(await snap(p)).state.patternWorldId;assert.ok(worldId);
+  // Progress through real engine commands in a neutral fixture page; then load the
+  // resulting unlocked world against the stale UI key, without a pagehide repair.
+  await p.goto(new URL('seed',base).href);
+  await p.evaluate(async ({key,base})=>{
+   const core=await import(new URL('product/app/core/pattern.mjs',base));const {patternCatalog}=await import(new URL('product/ui/pattern-catalog.mjs',base));const {config}=patternCatalog();let s=core.deserializeState(localStorage.getItem(key),config);
+   const act=(type,fields={})=>s=core.dispatch(s,{type,now:s.lastTimestamp,...fields},config);
+   for(const itemId of ['rabbit','flower','tree','kot-cat']){
+    s=core.advanceTime(s,s.lastTimestamp+config.maxOfflineMs,config);act('startProject',{itemId});while(!core.selectView(s,config).project.canComplete)act('click');act('completeCraft');
+    const m=config.meadows.find(m=>m.slots.some(p=>p.itemId===itemId)),slot=m.slots.find(p=>p.itemId===itemId);act('placeItem',{meadowId:m.id,slotId:slot.id});
+   }
+   localStorage.setItem(key,core.serializeState(s));
+  },{key:PATTERN_SAVE_KEY,base});
+  assert.equal(await p.evaluate(key=>JSON.parse(localStorage.getItem(key+'-ui')).patternIntent,PATTERN_SAVE_KEY),'both');
+  await p.goto(url);await ready(p);assert.equal((await snap(p)).view.pattern.unlocked,true);assert.equal((await snap(p)).state.patternWorldId,worldId);assert.equal((await snap(p)).ui.patternIntent,null);await c.close();
+ }
+ assert.deepEqual(errors,[]);Object.assign(report,{noAutomaticQueue:true,explicitClaims:true,remainingCost:true,paidSlotPreserved:true,sourceBytesPreserved:true,invalidIntentSafe:true,writeFailureHonest:true,freshWorldClearsIntent:true,restartFailuresPreserve:true,staleIntentAfterRestartBlocked:true});
  await writeFile(path.join(evidence,'report.json'),JSON.stringify(report,null,2));console.log(JSON.stringify(report));
 }finally{await browser.close();if(server)await new Promise(resolve=>server.close(resolve));}
