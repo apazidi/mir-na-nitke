@@ -31,3 +31,9 @@ Independent checks on the repaired working tree:
 - Repeating the same successful restart request after further progress preserves the new progress, its ID and the existing restart backup. Revoked writers still cannot restart. Original source and source-backup bytes remain unchanged. Invalid optional ID types/values reject deserialization.
 
 No remaining technical blockers in this bounded restoration. The previously described per-key backup limitation remains unchanged. Browser/visual review and delivery checks remain separate; this PASS does not claim enjoyment or public deployment.
+
+## External harness follow-up
+
+After PR #54, all eight merged-main CI/Pages/public-receipt checks passed. The exact 143-file HTTPS bundle and existing mobile journeys passed. The external intention runner failed twice only at its final fixture's dynamic import: the neutral `seed` URL is GitHub's 404 document, whose observed CSP is `default-src 'none'`. A browser probe confirmed a `csp` request failure; the existing public JSON manifest returned 200 and allowed importing the same real public module.
+
+The test-only correction uses that inert manifest for this one neutral navigation when `PREVIEW_URL` is set. The local fixture, game URL, public modules and every assertion remain unchanged. Independent narrow review: **PASS**; no CSP bypass or game substitution. Full external acceptance is recorded with the follow-up PR. No runtime or preview-bundle change is needed.
