@@ -1,0 +1,268 @@
+{
+  "url": "http://127.0.0.1:62021/product/ui/?gameplay=v4&experiment=pattern",
+  "sizes": [
+    360,
+    390,
+    430
+  ],
+  "visibleActions": [
+    {
+      "width": 360,
+      "key": "pattern-rabbit-scarf-direct",
+      "top": 503.34375,
+      "bottom": 547.34375,
+      "panelTop": 134,
+      "panelBottom": 684,
+      "disabled": false
+    },
+    {
+      "width": 360,
+      "key": "pattern-rabbit-scarf-direct",
+      "top": 485.953125,
+      "bottom": 529.953125,
+      "panelTop": 134,
+      "panelBottom": 684,
+      "disabled": false
+    },
+    {
+      "width": 360,
+      "key": "pattern-cat-doily-direct",
+      "top": 485.953125,
+      "bottom": 529.953125,
+      "panelTop": 134,
+      "panelBottom": 684,
+      "disabled": false
+    },
+    {
+      "width": 360,
+      "key": "pattern-learn",
+      "top": 432.953125,
+      "bottom": 476.953125,
+      "panelTop": 134,
+      "panelBottom": 684,
+      "disabled": false
+    },
+    {
+      "width": 360,
+      "key": "pattern-rabbit-scarf-direct",
+      "top": 503.34375,
+      "bottom": 547.34375,
+      "panelTop": 134,
+      "panelBottom": 684,
+      "disabled": false
+    },
+    {
+      "width": 360,
+      "key": "pattern-rabbit-scarf-learned",
+      "top": 398.78125,
+      "bottom": 442.78125,
+      "panelTop": 134,
+      "panelBottom": 684,
+      "disabled": false
+    },
+    {
+      "width": 360,
+      "key": "pattern-cat-doily-learned",
+      "top": 398.78125,
+      "bottom": 442.78125,
+      "panelTop": 134,
+      "panelBottom": 684,
+      "disabled": false
+    },
+    {
+      "width": 360,
+      "key": "request-restart",
+      "top": 582,
+      "bottom": 626,
+      "panelTop": 340,
+      "panelBottom": 684,
+      "disabled": false
+    },
+    {
+      "width": 360,
+      "key": "confirm-restart",
+      "top": 582,
+      "bottom": 626,
+      "panelTop": 264.875,
+      "panelBottom": 684,
+      "disabled": false
+    },
+    {
+      "width": 390,
+      "key": "pattern-rabbit-scarf-direct",
+      "top": 497,
+      "bottom": 541,
+      "panelTop": 134.4375,
+      "panelBottom": 728,
+      "disabled": false
+    },
+    {
+      "width": 390,
+      "key": "pattern-rabbit-scarf-direct",
+      "top": 497,
+      "bottom": 541,
+      "panelTop": 151.828125,
+      "panelBottom": 728,
+      "disabled": false
+    },
+    {
+      "width": 390,
+      "key": "pattern-cat-doily-direct",
+      "top": 497,
+      "bottom": 541,
+      "panelTop": 151.828125,
+      "panelBottom": 728,
+      "disabled": false
+    },
+    {
+      "width": 390,
+      "key": "pattern-learn",
+      "top": 430,
+      "bottom": 474,
+      "panelTop": 134.4375,
+      "panelBottom": 728,
+      "disabled": false
+    },
+    {
+      "width": 390,
+      "key": "pattern-rabbit-scarf-direct",
+      "top": 497,
+      "bottom": 541,
+      "panelTop": 134.4375,
+      "panelBottom": 728,
+      "disabled": false
+    },
+    {
+      "width": 390,
+      "key": "pattern-rabbit-scarf-learned",
+      "top": 434,
+      "bottom": 478,
+      "panelTop": 169.21875,
+      "panelBottom": 728,
+      "disabled": false
+    },
+    {
+      "width": 390,
+      "key": "pattern-cat-doily-learned",
+      "top": 434,
+      "bottom": 478,
+      "panelTop": 169.21875,
+      "panelBottom": 728,
+      "disabled": false
+    },
+    {
+      "width": 390,
+      "key": "request-restart",
+      "top": 626,
+      "bottom": 670,
+      "panelTop": 384,
+      "panelBottom": 728,
+      "disabled": false
+    },
+    {
+      "width": 390,
+      "key": "confirm-restart",
+      "top": 626,
+      "bottom": 670,
+      "panelTop": 331.265625,
+      "panelBottom": 728,
+      "disabled": false
+    },
+    {
+      "width": 430,
+      "key": "pattern-rabbit-scarf-direct",
+      "top": 615,
+      "bottom": 659,
+      "panelTop": 269.828125,
+      "panelBottom": 816,
+      "disabled": false
+    },
+    {
+      "width": 430,
+      "key": "pattern-rabbit-scarf-direct",
+      "top": 615,
+      "bottom": 659,
+      "panelTop": 287.21875,
+      "panelBottom": 816,
+      "disabled": false
+    },
+    {
+      "width": 430,
+      "key": "pattern-cat-doily-direct",
+      "top": 615,
+      "bottom": 659,
+      "panelTop": 287.21875,
+      "panelBottom": 816,
+      "disabled": false
+    },
+    {
+      "width": 430,
+      "key": "pattern-learn",
+      "top": 548,
+      "bottom": 592,
+      "panelTop": 269.828125,
+      "panelBottom": 816,
+      "disabled": false
+    },
+    {
+      "width": 430,
+      "key": "pattern-rabbit-scarf-direct",
+      "top": 615,
+      "bottom": 659,
+      "panelTop": 269.828125,
+      "panelBottom": 816,
+      "disabled": false
+    },
+    {
+      "width": 430,
+      "key": "pattern-rabbit-scarf-learned",
+      "top": 552,
+      "bottom": 596,
+      "panelTop": 287.21875,
+      "panelBottom": 816,
+      "disabled": false
+    },
+    {
+      "width": 430,
+      "key": "pattern-cat-doily-learned",
+      "top": 552,
+      "bottom": 596,
+      "panelTop": 287.21875,
+      "panelBottom": 816,
+      "disabled": false
+    },
+    {
+      "width": 430,
+      "key": "request-restart",
+      "top": 729,
+      "bottom": 773,
+      "panelTop": 502,
+      "panelBottom": 816,
+      "disabled": false
+    },
+    {
+      "width": 430,
+      "key": "confirm-restart",
+      "top": 729,
+      "bottom": 773,
+      "panelTop": 456.65625,
+      "panelBottom": 816,
+      "disabled": false
+    }
+  ],
+  "restartSizes": [
+    360,
+    390,
+    430
+  ],
+  "noAutomaticQueue": true,
+  "explicitClaims": true,
+  "remainingCost": true,
+  "paidSlotPreserved": true,
+  "sourceBytesPreserved": true,
+  "invalidIntentSafe": true,
+  "writeFailureHonest": true,
+  "freshWorldClearsIntent": true,
+  "restartFailuresPreserve": true,
+  "staleIntentAfterRestartBlocked": true
+}
