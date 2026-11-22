@@ -108,7 +108,8 @@ try{
   const worldId=(await snap(p)).state.patternWorldId;assert.ok(worldId);
   // Progress through real engine commands in a neutral fixture page; then load the
   // resulting unlocked world against the stale UI key, without a pagehide repair.
-  await p.goto(new URL('seed',base).href);
+  // GitHub's 404 document forbids module imports; use its inert public manifest.
+  await p.goto(new URL(process.env.PREVIEW_URL?'preview-manifest.json':'seed',base).href);
   await p.evaluate(async ({key,base})=>{
    const core=await import(new URL('product/app/core/pattern.mjs',base));const {patternCatalog}=await import(new URL('product/ui/pattern-catalog.mjs',base));const {config}=patternCatalog();let s=core.deserializeState(localStorage.getItem(key),config);
    const act=(type,fields={})=>s=core.dispatch(s,{type,now:s.lastTimestamp,...fields},config);
