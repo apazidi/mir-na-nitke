@@ -21,6 +21,7 @@ export function serializeState(state){return base.serializeState(state);}
 export function deserializeState(raw,config){
  let source;try{source=JSON.parse(raw);}catch{fail('Повреждено сохранение эксперимента');}
  if(source?.patternVersion!==1||!source.patternJobs||typeof source.patternJobs!=='object'||Array.isArray(source.patternJobs))fail('Повреждены записи работ');
+ if(source.patternWorldId!==undefined&&(typeof source.patternWorldId!=='string'||!/^[a-f0-9-]{36}$/.test(source.patternWorldId)))fail('Повреждён идентификатор мира');
  const state=base.deserializeState(raw,effectiveConfig(source,config)),active=[];
  const completed=new Set();
  for(const [id,job]of Object.entries(state.patternJobs)){

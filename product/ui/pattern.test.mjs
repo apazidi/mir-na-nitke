@@ -5,6 +5,7 @@ import * as core from '../app/core/pattern.mjs';
 import {createPatternSession} from '../app/ui/pattern-session.mjs';
 import {patternCatalog} from './pattern-catalog.mjs';
 import {stagedCatalog} from './staged-catalog.mjs';
+import {restoreIntent} from './pattern-intent.mjs';
 const config=patternCatalog().config,sourceConfig=stagedCatalog().config;
 function source(){const s=base.createInitialState(sourceConfig,0);s.wallet.yarn=18722.7;s.accrual.baseYarn=s.wallet.yarn;s.owned=sourceConfig.items.map(i=>i.id);s.placements=Object.fromEntries(sourceConfig.meadows.map(m=>[m.id,Object.fromEntries(m.slots.map(p=>[p.id,p.itemId]))]));return base.dispatch(s,{type:"setCraftAuto",enabled:false,now:0},sourceConfig);}
 const initial=()=>core.importState(JSON.stringify(source()),sourceConfig,config);
@@ -40,6 +41,42 @@ test('pause/reload, reverse clock and capped 8h offline preserve method without 
  assert.equal(b.project.work,60);assert.ok(!b.owned.includes(core.PATTERN_ID));assert.equal(a.wallet.yarn,b.wallet.yarn);assert.equal(b.project.pattern.method,'learn');
 });
 function fixture(raw=JSON.stringify(source())){const values=new Map([['source',raw],['legacy','unchanged']]);let now=0,active=true,failure=null;const storage={getItem:k=>values.get(k)??null,setItem:(k,v)=>{if(failure?.(k,v))throw Error('quota');values.set(k,v);}};const open=()=>createPatternSession(config,{storage,key:'own',sourceKey:'source',sourceConfig,now:()=>now,isActive:()=>active});return {values,open,fail:f=>failure=f,clock:n=>now=n,revoke:()=>active=false};}
+test('pattern restart backs up paid work, starts a persistent empty world and keeps source bytes',()=>{
+ const f=fixture(),s=f.open(),raw=s.exportSource();
+ assert.ok(s.act({type:'startPattern',target:'rabbit-scarf',method:'direct',jobId:'paid'}));s.act({type:'click'});
+ const paid=structuredClone(s.state);assert.equal(s.canRestart,true);assert.equal(s.restart('restart'),true);
+ assert.deepEqual(core.deserializeState(s.exportRestartBackup(),config),paid);
+ assert.equal(s.state.wallet.yarn,32);assert.deepEqual(s.state.owned,[]);assert.equal(s.state.project,null);
+ assert.deepEqual(f.open().state,s.state);assert.equal(s.restart('restart'),true);
+ assert.deepEqual(core.deserializeState(s.exportRestartBackup(),config),paid);
+ assert.equal(f.values.get('source'),raw);assert.equal(s.exportSource(),raw);assert.equal(f.values.get('legacy'),'unchanged');
+ f.revoke();assert.equal(s.canRestart,false);assert.equal(s.restart('another'),false);
+});
+test('pattern restart failures keep the paid world live and reloadable',()=>{
+ for(const key of ['own-restart-backup','own']){
+  const f=fixture(),s=f.open();s.act({type:'startPattern',target:'rabbit-scarf',method:'direct',jobId:'paid'});
+  const before=structuredClone(s.state),source=s.exportSource();f.fail(k=>k===key);
+  assert.equal(s.restart('reset'),false);assert.deepEqual(s.state,before);
+  assert.deepEqual(core.deserializeState(f.values.get('own'),config),before);
+  f.fail(null);assert.deepEqual(f.open().state,before);assert.equal(s.exportSource(),source);
+ }
+});
+test('failed UI writes cannot reconnect a pre-restart intention after unlocking again',()=>{
+ const f=fixture(),s=f.open(),oldUI={patternIntent:'both'};f.values.set('own-ui',JSON.stringify(oldUI));
+ assert.equal(restoreIntent(oldUI,s.state),'both');f.fail(k=>k==='own-ui');assert.ok(s.restart('new-world'));
+ const id=s.state.patternWorldId;assert.ok(id);assert.equal(restoreIntent(oldUI,s.state),null);
+ for(const itemId of ['rabbit','flower','tree','kot-cat']){
+  f.clock(s.state.lastTimestamp+config.maxOfflineMs);s.tick();assert.ok(s.act({type:'startProject',itemId}));
+  while(!s.view.project.canComplete)assert.ok(s.act({type:'click'}));assert.ok(s.act({type:'completeCraft'}));
+  const m=config.meadows.find(m=>m.slots.some(p=>p.itemId===itemId)),slot=m.slots.find(p=>p.itemId===itemId);
+  assert.ok(s.act({type:'placeItem',meadowId:m.id,slotId:slot.id}));
+ }
+ const reload=f.open();assert.equal(reload.view.pattern.unlocked,true);assert.equal(reload.state.patternWorldId,id);
+ assert.equal(restoreIntent(JSON.parse(f.values.get('own-ui')),reload.state),null);
+ assert.equal(restoreIntent({...oldUI,patternWorldId:id},reload.state),'both');
+ assert.ok(reload.restart('second-world'));assert.notEqual(reload.state.patternWorldId,id);
+ assert.equal(restoreIntent({...oldUI,patternWorldId:id},reload.state),null);
+});
 test('new import durably retires only an orphan intention before committing the world',()=>{
  const f=fixture();f.values.set('own-ui',JSON.stringify({patternIntent:'both',evening:true,selected:{'test-meadow':'rabbit'}}));
  const raw=f.values.get('source');f.open();
